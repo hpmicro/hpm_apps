@@ -1,0 +1,6 @@
+add_subdirectory(apps)
+add_subdirectory(boards)
+add_subdirectory(components)
+add_subdirectory(middleware)
+add_subdirectory(services)
+add_subdirectory(tools)

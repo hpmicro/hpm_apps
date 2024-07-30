@@ -1,0 +1,51 @@
+# Copyright (c) 2021 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+board:
+    name: hpm6750femc
+    soc: HPM6750
+    device: HPM6750xVMx
+    openocd-soc: hpm6750-dual-core
+    openocd-probe: ft2232
+    feature:
+      - adc
+      - sdcard
+      - usb-otg
+      - dao
+      - pdm
+      - vad
+      - cam
+      - lcd
+      - spi
+      - uart
+      - can
+      - i2c
+      - femc
+      - gpio
+      - gpio-led
+      - gpio-key
+      - pwm
+      - pwm-beep
+      - pwm-rgb-led
+      - hall
+      - qei
+      - motor-control
+      - audio-codec
+      - sgtl5000
+      - tflm
+      - multicore
+      - drv_pllctl
+      - drv_sysctl
+      - sdxc
+      - i2s
+      - uart_software_rx_idle
+      - ptp
+      - gpiom
+      - adc12
+      - adc16
+      - adc_tempsns
+      - enet
+      - enet_pps_pinout
+      - enet_phy_on_board
+      - sw_gm_api
+      - hall-qei

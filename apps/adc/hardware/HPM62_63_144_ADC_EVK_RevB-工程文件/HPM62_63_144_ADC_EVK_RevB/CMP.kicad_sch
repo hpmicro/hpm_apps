@@ -1,0 +1,15 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 122c5bc1-46a5-401d-9c0d-27a7801b9107)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (hierarchical_label "CMP_IN" (shape input) (at 38.735 66.04 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid c07fbe59-3b30-4688-ac15-a15c0eaa812b)
+  )
+)

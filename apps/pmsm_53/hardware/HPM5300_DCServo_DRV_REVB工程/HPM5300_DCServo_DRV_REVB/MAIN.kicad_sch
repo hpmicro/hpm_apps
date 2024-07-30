@@ -1,0 +1,49 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 9b2dfa14-4f59-476e-83c0-b3f75e4292cf)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (text "MAIN" (at 217.17 171.45 0)
+    (effects (font (size 4 4) (thickness 0.6) bold italic) (justify left bottom))
+    (uuid ce6c83b6-d38e-4fa1-9d2f-395fa8365a9c)
+  )
+
+  (sheet (at 90.805 66.04) (size 16.51 33.655) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 255 120 36 1.0000))
+    (uuid 6572f675-6f46-4035-b81c-f1a229529a1a)
+    (property "Sheetname" "DRV" (at 90.805 65.3284 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "DRV.kicad_sch" (at 90.805 100.2796 0)
+      (effects (font (size 1.27 1.27)) (justify left top) hide)
+    )
+    (instances
+      (project "HPM5300_DCServo_DRV_REVB"
+        (path "/06b9b7eb-9c11-4fa4-9ae7-136261ecc1fe/c714394e-8621-4327-883e-bc2b57aad50f" (page "4"))
+      )
+    )
+  )
+
+  (sheet (at 90.805 103.505) (size 16.51 6.35) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 83 255 169 1.0000))
+    (uuid d53458ef-6089-46bc-91bc-dba3a2ef031a)
+    (property "Sheetname" "POWER" (at 90.805 102.7934 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "POWER.kicad_sch" (at 90.805 110.4396 0)
+      (effects (font (size 1.27 1.27)) (justify left top) hide)
+    )
+    (instances
+      (project "HPM5300_DCServo_DRV_REVB"
+        (path "/06b9b7eb-9c11-4fa4-9ae7-136261ecc1fe/c714394e-8621-4327-883e-bc2b57aad50f" (page "3"))
+      )
+    )
+  )
+)

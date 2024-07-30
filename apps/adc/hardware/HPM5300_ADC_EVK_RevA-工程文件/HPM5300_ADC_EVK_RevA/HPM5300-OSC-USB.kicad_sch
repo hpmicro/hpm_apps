@@ -1,0 +1,21 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 659b0b5b-566b-41f3-a393-5f4114700757)
+
+  (paper "A4")
+
+  (title_block
+    (title "HPM6750 ADC EVK")
+    (date "2023-5-25")
+    (rev "A")
+  )
+
+  (lib_symbols
+  )
+
+
+  (text "HPM6750-OSC-USB" (at 179.07 175.26 0)
+    (effects (font (size 2.54 2.54) (thickness 0.508) bold) (justify left bottom))
+    (uuid a2b09189-9dec-42d6-b391-3f308c79ffb2)
+  )
+)

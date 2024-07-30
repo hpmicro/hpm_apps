@@ -1,0 +1,47 @@
+# Copyright (c) 2023 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+board:
+    name: hpm5300evk
+    soc: HPM5361
+    device: HPM5361xCBx
+    openocd-soc: hpm5300
+    openocd-probe: cmsis_dap
+    on-board-flash:
+      type: qspi-nor-flash
+      size: 1M
+    feature:
+      - sei
+      - sdp
+      - rng
+      - rdc
+      - qeiv2
+      - linv2
+      - dmav2
+      - qeo
+      - pwm
+      - mmc
+      - uart_hardware_rx_idle
+      - uart_tamagawa
+      - uart_9bit
+      - uart
+      - plb
+      - dac
+      - adc16
+      - pdgo
+      - mcan
+      - ewdg
+      - gpiom
+      - tsns
+      - crc
+      - spi
+      - i2c
+      - usb-otg
+      - ptp
+      - motor-control
+      - bldc_hfi
+      - bldc_smc
+      - opamp
+      - gpt_pin
+      - acmp
+      - ptpc

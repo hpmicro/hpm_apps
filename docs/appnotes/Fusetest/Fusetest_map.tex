@@ -1,0 +1,172 @@
+%-*- coding: UTF-8 -*-
+% DS.tex
+% 数据手册
+
+\documentclass[AutoFakeBold,hyperref, UTF8]{ctexart}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{subfiles}
+\usepackage{seqsplit}
+\usepackage{amssymb}
+\usepackage{tocloft}
+\usepackage{listings}
+%\usepackage{bookmark}
+
+\input{Fusetest_preamble.tex}
+\renewcommand\listfigurename{}
+\renewcommand\listtablename{}
+
+
+    \begin{document}
+
+     \subfile{Fusetest_cover.tex}
+	 
+    \begin{centering}
+    \pagestyle{fancy} 	
+    \tocloftpagestyle{fancy}\tableofcontents\thispagestyle{fancy}
+    \newpage
+    \pagenumbering{arabic}
+    \pagestyle{fancy} 
+    \end{centering}
+
+	%\subfile{src/soc/hpm1000/HPM1000_Introbookmark}
+    \subfile{Fusetest.tex}
+	%\subfile{HPMan_template2.tex}
+	\subfile{Fusetest_revhis.tex}
+    
+
+    
+    %	
+	\begin{comment}   
+    \subfile{src/soc/hpm1000/HPM1000_d45}
+    \subfile{src/generated/soc/hpm1000/d45csr/csr}
+	\subfile{src/soc/hpm1000/HPM1000_trap}
+
+	\subfile{src/ip/mchtmr/mchtmr}
+	\subfile{src/ip/plic/plic}
+	\subfile{src/ip/plicsw/plicsw}
+	
+	\subfile{src/soc/hpm1000/HPM1000_power}
+	\subfile{src/soc/hpm1000/HPM1000_reset}
+	\subfile{src/soc/hpm1000/HPM1000_clock}
+	\subfile{src/ip/bmu/bmu}
+	\subfile{src/ip/pmu/pmu}
+%	\subfile{src/ip/butn/butn}
+%	\subfile{src/ip/bpor/bpor}
+%	\subfile{src/ip/ppor/ppor}
+	\subfile{src/soc/hpm1000/hpm1000_sysctl}
+	\subfile{src/ip/pllctl/pllctl}
+	\subfile{src/soc/hpm1000/HPM1000_lowpower}
+ 
+%	\bookmarksetup{startatroot}
+	
+    \subfile{src/soc/hpm1000/HPM1000_memorymap}    %   
+    \subfile{src/soc/hpm1000/HPM1000_bus}
+	\subfile{src/soc/hpm1000/rom_rm/rom_top}    
+	\subfile{src/soc/hpm1000/HPM1000_pinmux}
+
+		
+	\subfile{src/soc/hpm1000/HPM1000_memoverview}
+	\subfile{src/ip/otp/otp}
+	\subfile{src/ip/xpi/xpi}
+	\subfile{src/ip/dram/dram}
+	\subfile{src/ip/sdxc/sdxc}
+	
+	
+	\subfile{src/soc/hpm1000/HPM1000_sysperoverview}
+	\subfile{src/ip/dma/dma}
+	\subfile{src/ip/dmamux/dmamux}
+	\subfile{src/ip/mbx/mbx}
+	
+	\subfile{src/soc/hpm1000/HPM1000_visoverview}
+	\subfile{src/ip/lcdc/lcdc}
+	\subfile{src/ip/cam/cam}
+	\subfile{src/ip/pdma/pdma}
+	\subfile{src/ip/jpeg/jpeg}
+%	\begin{comment} 	
+	\subfile{src/soc/hpm1000/HPM1000_audiooverview}
+	\subfile{src/ip/i2s/i2s}
+	\subfile{src/ip/pdm/pdm}
+	\subfile{src/ip/dao/dao}
+	\subfile{src/ip/vad/vad}
+	
+	\subfile{src/soc/hpm1000/HPM1000_motoroverview}
+	\subfile{src/ip/pwm/pwm}
+	\subfile{src/ip/qei/qei}
+	\subfile{src/ip/hall/hall}
+	\subfile{src/soc/hpm1000/hpm1000_trgm}
+	\subfile{src/ip/synt/synt}
+	
+	\subfile{src/soc/hpm1000/HPM1000_timeroverview}
+	\subfile{src/ip/tmr/tmr}
+	\subfile{src/ip/wdog/wdog}
+	\subfile{src/ip/rtc/rtc}
+	
+	\subfile{src/soc/hpm1000/HPM1000_connoverview}
+	\subfile{src/ip/uart/uart}
+	\subfile{src/ip/spi/spi}
+	\subfile{src/ip/i2c/i2c}
+	\subfile{src/ip/can/can}
+	\subfile{src/ip/ptpc/ptpc}
+	\subfile{src/ip/enet/enet}
+	\subfile{src/ip/usb/usb}
+	\subfile{src/ip/conctl/conctl}
+	
+	\subfile{src/soc/hpm1000/HPM1000_iooverview}
+	\subfile{src/soc/hpm1000/hpm1000_ioc}
+	\subfile{src/ip/gpio/gpio}
+	\subfile{src/ip/gpiom/gpiom}
+	
+	\subfile{src/soc/hpm1000/HPM1000_analogoverview}
+	\subfile{src/ip/adc12/adc12}
+	\subfile{src/ip/adc16/adc16}
+	\subfile{src/ip/acmp/acmp}
+	
+	\subfile{src/soc/hpm1000/HPM1000_securityoverview}	
+	\subfile{src/ip/sdp/sdp}
+	\subfile{src/ip/exip/exip}
+	\subfile{src/ip/rng/rng}
+	\subfile{src/ip/keym/keym}
+	\subfile{src/ip/bkey/bkey}
+	\subfile{src/ip/psec/psec}
+	\subfile{src/ip/pmon/pmon}
+	\subfile{src/ip/bsec/bsec}
+	\subfile{src/ip/bmon/bmon}
+	\subfile{src/ip/tamp/tamp}
+	\subfile{src/ip/mono/mono}	
+	
+	\subfile{src/soc/hpm1000/HPM1000_debugoverview}
+	\subfile{src/ip/jtag/jtag}
+	\subfile{src/ip/dtm/dtm}
+	\subfile{src/ip/dm/dm}
+	\end{comment}
+
+
+	\newpage
+	\bookmarksetup{startatroot}
+	\def\sectionabstract{免责声明}
+	\section*{免责声明}
+	上海先楫半导体科技有限公司（以下简称：“先楫”）保留随时更改、更正、增强、修改先楫半导体产品和/或
+	本文档的权利，恕不另行通知。用户可在先楫官方网站
+	\hypertarget{https://www.hpmicro.com}{\textcolor{blue}{https://www.hpmicro.com}}
+	获取最新相关信息。\par
+	
+	
+	本声明中的信息取代并替换先前版本中声明的信息。\par
+   % \begin{centering}
+        
+    %    \def\sectionabstract{表格}
+    %    \section*{表格}
+     %   \tocloftpagestyle{fancy}\listoftables\thispagestyle{fancy}	
+     %   \newpage 
+        
+     %   \def\sectionabstract{图片}
+     %   \section*{图片}
+     %   \tocloftpagestyle{fancy}\listoffigures\thispagestyle{fancy}
+     %   \newpage
+        
+   % \end{centering}
+%	\newpage
+%	\subfilegraphics[scale=0.81, angle=90]{img/mgs.png}
+
+     \end{document}
