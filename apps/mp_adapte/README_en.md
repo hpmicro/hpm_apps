@@ -22,7 +22,7 @@
 
 - The Power API supports configuring PWM frequency, duty cycle, trigger time, etc.
 
-- The Power API supports the creation of high-precision timers (unit: microseconds). 
+- The Power API supports the creation of high-precision timers (unit: microseconds).
 
 Notes：
 - This solution does not include power loop algorithm content.
@@ -133,7 +133,7 @@ static void hpm_mp_pair1_adc_cb(void* handle)
 
      for (int i = 0; i < pwm_pair_t->adc_count; i++)
      {
-        printf("adc1[%d]:%d\n", pwm_pair_t->adc_pack[i].adc_index, pwm_pair_t->adc_pack[i].adc_data);    
+        printf("adc1[%d]:%d\n", pwm_pair_t->adc_pack[i].adc_index, pwm_pair_t->adc_pack[i].adc_data);
      }
      printf("---\n");
 }
@@ -235,7 +235,7 @@ int main(void)
 
     while (1)
     {
-        
+
     }
 
     return 0;
@@ -265,7 +265,7 @@ none
     mkdir build
     //Switch directory to "build"
     cd build
-    //Ninja-build 
+    //Ninja-build
     cmake -GNinja -DBOARD_SEARCH_PATH=/home/work/workspace/hpm_apps/boards -DBOARD=hpm6200power -DCMAKE_BUILD_TYPE=flash_xip ..
     //Build
     ninja
@@ -298,5 +298,5 @@ The following is the waveform diagram:
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ 。
+About software API: `API doc <../../_static/apps/mp_adapte/html/index.html>`_ 。
 :::

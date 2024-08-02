@@ -5,7 +5,7 @@
 HPM series MCU is a high-performance real-time RISC-V microcontroller from Shanghai HPM Semiconductor Technology Co., Ltd., which provides great computing power and efficient control capability for industrial automation and edge computing applications. Shanghai HPM  Semiconductor has currently released multiple series of high-performance microcontroller products, such as HPM6700/6400, HPM6300, HPM6200, HPM5300, etc.
 The HPM6700/6400 series microcontrollers are equipped with three 12 bit and one 16 bit ADC controller, the HPM6300 and HPM6200 series microcontrollers are equipped with three 16 bit ADC controllers, and the HPM5300 series microcontrollers are equipped with two 16 bit microcontrollers. The 12 bit ADC supports a maximum sampling rate of 5MSPS, while the 16 bit ADC supports a maximum sampling rate of 2MSPS. Supports multiple sampling modes such as read, cycle, sequence, and preemption. The input mode supports single ended (12 bit, 16 bit) and differential input (12 bit), and supports configurable resolution and sampling cycle number, as well as DMA conversion results written into memory.
 For the HPM series MCU high-precision ADC, HPM Semiconductor has launched a series of ADC EVK to evaluate ADC performance, which includes ADC EVK hardware design drawings, ADC EVK user guide, ADC design guide, and ADC test code. Intended to help users achieve optimal ADC performance.
-  
+
 ## Test samples
 ### adc16_sinad(ADC batch sampling demo)
 #### Overview
@@ -17,26 +17,26 @@ The sampled data can be imported into scientific computing software for sinad an
 
 #### Hardware Support
 
-Please read user guide  [HPM5300_ADC_EVK User Guide](doc/HPM5300_ADC_EVK_UG_V1.0.pdf)  
-Please read hardware schematic [HPM5300_ADC_EVK_RevA](hardware/HPM5300_ADC_EVK_RevA.pdf)  
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM5300_ADC_EVK_RevA-Project Files) 
+Please read user guide  [HPM5300_ADC_EVK User Guide](doc/HPM5300_ADC_EVK_UG_V1.0.pdf)
+Please read hardware schematic [HPM5300_ADC_EVK_RevA](hardware/HPM5300_ADC_EVK_RevA.pdf)
+Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM5300_ADC_EVK_RevA-Project Files)
 
-Please read user guide [HPM62\6300_ADC_EVK User Guide](doc/HPM62_6300_ADC_EVK_UG_V1.0.pdf)  
-Please read hardware schematic [HPM62\6300_ADC_EVK_RevA](hardware/HPM62_63_144_ADC_EVK_RevB.pdf)  
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM62\6300_ADC_EVK_RevA-Project Files) 
-  
-Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)   
-Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)  
+Please read user guide [HPM62\6300_ADC_EVK User Guide](doc/HPM62_6300_ADC_EVK_UG_V1.0.pdf)
+Please read hardware schematic [HPM62\6300_ADC_EVK_RevA](hardware/HPM62_63_144_ADC_EVK_RevB.pdf)
+Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM62\6300_ADC_EVK_RevA-Project Files)
+
+Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)
+Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)
 Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
 
 #### Device Connection
 
 - Connect PC USB to DEBUG Type-C interface
 - Connect the debugger to the JTAG interface
-- Connect the signal source to the signal input SMA interface   
+- Connect the signal source to the signal input SMA interface
 
-- The signal source connection diagram is as follows:  
-![Test connection diagram](doc/api/assets/Test_connection_diagram.png)  
+- The signal source connection diagram is as follows:
+![Test connection diagram](doc/api/assets/Test_connection_diagram.png)
 The signal source motherboard model is PSIEVMTI and the manufacturer is Texas Instruments.
 
 #### Port Settings
@@ -45,10 +45,10 @@ The signal source motherboard model is PSIEVMTI and the manufacturer is Texas In
 
 #### Create Project
 
-- windows GUI create project  
+- windows GUI create project
 ![window gui create project](doc/api/assets/create_project_for_adc16_sinad.png)
 
-- windows cmd create project  
+- windows cmd create project
   Please read [HPM5300_ADC_EVK User Guide](doc/HPM5300_ADC_EVK_UG_V1.0.pdf)  as reference.
 
 #### Running the example
@@ -122,20 +122,20 @@ The sampled data can be imported into scientific computing software for inl and 
 
 #### Hardware Support
 
-Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)  
-Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)  
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files) 
+Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)
+Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)
+Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
 
 #### Device Connection
 
 - Connect PC USB to DEBUG Type-C interface
 - Connect the debugger to the JTAG interface
 - Connect the USB disk to USB0 port
-- Connect the signal source to the signal input SMA interface  
-- The signal source connection diagram is as follows:  
-![Test connection diagram](doc/api/assets/Test_connection_diagram.png)  
-The signal source motherboard model is PSIEVMTI and the manufacturer is Texas Instruments. 
-Note: USB disk need to be formated to FAT32  
+- Connect the signal source to the signal input SMA interface
+- The signal source connection diagram is as follows:
+![Test connection diagram](doc/api/assets/Test_connection_diagram.png)
+The signal source motherboard model is PSIEVMTI and the manufacturer is Texas Instruments.
+Note: USB disk need to be formated to FAT32
 ![U disk FAT32](doc/api/assets/5787290392e91e104dbffcee0030e3f.png)
 
 #### Port Settings
@@ -144,10 +144,10 @@ Note: USB disk need to be formated to FAT32
 
 #### Create Project
 
-- windows GUI create project  
-![window gui create project](doc/api/assets/create_project_for_adc16_inl_dnl.png) 
+- windows GUI create project
+![window gui create project](doc/api/assets/create_project_for_adc16_inl_dnl.png)
 
-- windows cmd create project  
+- windows cmd create project
   Please read [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)  as reference.
 
 #### Running the example
@@ -235,10 +235,10 @@ Direcotry Path: /
 
 File   Name: USBHost.txt
 
-```  
+```
 ## API
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ 。
+About software API: `API doc <../../_static/apps/adc/html/index.html>`_ 。
 :::

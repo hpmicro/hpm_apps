@@ -8,8 +8,8 @@
 
 -该方案通过PWM特定时刻触发ADC采样和触发HDMA转换ADC数据，并依靠HDMA链式模式，做成循环链表，考虑到中断响应占用CPU资源，在链式任务中增加状态标识，从而不启用中断，以此达到ADC采样及数据转换全自动完成，无需CPU参与，且将转换后的数据放到ILM/DLM，CPU零等待访问。最终达到性能最优。
 
-应用笔记[HPM ADC+ENET开发案列](./doc/HPM%20ADC+ENET开发案例_V1.1.pdf)
-测试方法[HPM ADC+ENET测试方法](./doc/HPM%20ADC_LWIP测试方法.pdf)
+应用笔记[HPM ADC+ENET开发案列](doc/HPM_ADC+ENET开发案例_V1.1.pdf)
+测试方法[HPM ADC+ENET测试方法](doc/HPM_ADC_LWIP测试方法.pdf)
 
 ## 框图及调用流程
 
@@ -165,7 +165,7 @@ int main(void)
 - PC端的IP地址和端口设置：\n
 ![pc_enet_config](doc/api/assets/enet_config.png)
 - 如果使用的开发板上晶振为50MHz，使用百兆以太网会有丢包问题，解决办法参考如下：
-解决丢包问题方法[HPM6300EVK百兆丢包问题解决办法](./doc/HPM6300EVK百兆丢包问题解决办法.pdf)
+解决丢包问题方法[HPM6300EVK百兆丢包问题解决办法](doc/HPM6300EVK百兆丢包问题解决办法.pdf)
 
 ## 工程运行
 
@@ -185,9 +185,9 @@ int main(void)
 ![result_enet_transmission_rate](doc/api/assets/result_enet_transmission_rate.png)
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/lwip_adc/html/index.html>`_ 。
 :::

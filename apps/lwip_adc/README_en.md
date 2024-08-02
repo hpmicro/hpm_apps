@@ -9,8 +9,8 @@
 
 -This scheme triggers ADC sampling and HDMA conversion of ADC data at a specific time through PWM, and relies on HDMA chain mode to create a looped linked list. Considering that interrupt response occupies CPU resources, a status identifier is added to the chain task, so that interrupts are not enabled. This achieves full automatic completion of ADC sampling and data conversion without the need for CPU participation, and the converted data is placed in ILM/DLM, with zero CPU waiting access. Ultimately achieving optimal performance.
 
-Application Notes[HPM ADC+ENET开发案列](./doc/HPM%20ADC+ENET开发案例_V1.1.pdf)
-Test Method [HPM ADC+ENET测试方法](./doc/HPM%20ADC_LWIP测试方法.pdf)
+Application Notes[HPM ADC+ENET开发案列](doc/HPM_ADC+ENET开发案例_V1.1.pdf)
+Test Method [HPM ADC+ENET测试方法](doc/HPM_ADC_LWIP测试方法.pdf)
 
 ## general_solution
 
@@ -154,7 +154,7 @@ int main(void)
     mkdir build
     //Switch directory to "build"
     cd build
-    //Ninja-build 
+    //Ninja-build
     cmake -GNinja  -DBOARD=hpm6300evk -DCMAKE_BUILD_TYPE=flash_xip ..
     //Build
     ninja
@@ -169,7 +169,7 @@ int main(void)
 - PC IP address and port settings:\n
 ![pc_enet_config](doc/api/assets/enet_config.png)
 - If the crystal oscillator on the development board used is 50MHz, there may be packet loss issues when using 100Mbps Ethernet. The solution is as follows:
-Methods to solve packet loss problems[HPM6300EVKSolution to 100Mbps packet loss problem](./doc/HPM6300EVK百兆丢包问题解决办法.pdf)
+Methods to solve packet loss problems[HPM6300EVKSolution to 100Mbps packet loss problem](doc/HPM6300EVK百兆丢包问题解决办法.pdf)
 
 ## Code Run
 
@@ -191,5 +191,5 @@ The following are the ADC test results:
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ 。
+About software API: `API doc <../../_static/apps/lwip_adc/html/index.html>`_ 。
 :::

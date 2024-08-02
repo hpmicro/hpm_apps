@@ -6,7 +6,7 @@ This solution utilizes PWM to trigger ADC sampling at specific moments . Simulta
 
 Using the HDMA (High-Speed Direct Memory Access) chain mode and implementing it as a circular linked list, the HDMA autonomously executes SPI (Serial Peripheral Interface) read and write tasks. The data read is stored in the designated memory without the need for CPU involvement.
 
-Users can directly utilize the ADC sampling results and SPI encoder information within the ADC completion interrupt to implement subsequent closed-loop algorithms. 
+Users can directly utilize the ADC sampling results and SPI encoder information within the ADC completion interrupt to implement subsequent closed-loop algorithms.
 
 Chain transfer with DMA typically reduces the latency of data transfers, which is crucial for real-time systems and applications requiring rapid response.
 
@@ -14,7 +14,7 @@ Welcome to view the [hpmicro.com](https://www.hpmicro.com) site for more informa
 
 ## Application note
 
-Application note 
+Application note
 [AN](doc/HPM%20电机外接SPI编码器方案.pdf)
 
 ## general_solution
@@ -224,6 +224,6 @@ None
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/pwm_adc_spi/html/index.html>`_ .
 :::
 

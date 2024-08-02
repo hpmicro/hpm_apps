@@ -30,11 +30,11 @@ In this test sample, the servo drive control system controls the motion of a mot
 
 ### Hardware Option
 
-- The HPM5300 drive control hardware consists of two boards, control board is used to communicate with the upper tool, receive the encoder feedback, send PWM drive signal to the DRV board and receive the current sampling signal.Please read CTL board schematic: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf)  
+- The HPM5300 drive control hardware consists of two boards, control board is used to communicate with the upper tool, receive the encoder feedback, send PWM drive signal to the DRV board and receive the current sampling signal.Please read CTL board schematic: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf)
 
 ![ctlboard](doc/api/assets/ctlboard.jpg)
 
-- The drive board is composed of a power drive module and a current sampling module, and contains a motor and a power interface. Please read DRV board schematic:  [《HPM5300_DCServo_DRV_REVB》](doc/hardware/HPM5300_DCServo_DRV_REVB.pdf) 
+- The drive board is composed of a power drive module and a current sampling module, and contains a motor and a power interface. Please read DRV board schematic:  [《HPM5300_DCServo_DRV_REVB》](doc/hardware/HPM5300_DCServo_DRV_REVB.pdf)
 
 ![drvboard](doc/api/assets/drvboard.jpg)S
 
@@ -81,8 +81,8 @@ Note: You need to select the corresponding resistance welding or not according t
 
 - Project Path: hpm_apps/apps/pmsm_53/software/pmsm_abz
 
-- windows GUI create project  
-![windows GUI create project](doc/api/assets/sei_build.png)  
+- windows GUI create project
+![windows GUI create project](doc/api/assets/sei_build.png)
 
 - windows cmd create project
   Please read [HPM5300_DCServo User Guide](doc/HPM5300_DCServo_UG.pdf)
@@ -93,17 +93,17 @@ Note: You need to select the corresponding resistance welding or not according t
 
 - Load the elf file and create a json file
 
-![PC](doc/api/assets/elf_json.png) 
+![PC](doc/api/assets/elf_json.png)
 
 - Click the device and connect the communication
 
-![uart_connect](doc/api/assets/uart_connect.png) 
+![uart_connect](doc/api/assets/uart_connect.png)
 
 - add params
 
-![params1](doc/api/assets/param_config_en_1.png) 
+![params1](doc/api/assets/param_config_en_1.png)
 
-![params2](doc/api/assets/param_config_en_2.png) 
+![params2](doc/api/assets/param_config_en_2.png)
 
 #### SEI
 
@@ -121,7 +121,7 @@ Note: You need to select the corresponding resistance welding or not according t
 
 - Test results
 
-![sei_result](doc/api/assets/sei_result_zh.png) 
+![sei_result](doc/api/assets/sei_result_zh.png)
 
 #### ABZ
 
@@ -139,7 +139,7 @@ Note: You need to select the corresponding resistance welding or not according t
 
 - Test results
 
-![qei_result_zh](doc/api/assets/qei_result_zh.png) 
+![qei_result_zh](doc/api/assets/qei_result_zh.png)
 
 #### EEPROM
 
@@ -149,7 +149,7 @@ Note: You need to select the corresponding resistance welding or not according t
 
 (2)if success, parameter status displays 1, as shown in the figure below.
 
-![eeprom_save](doc/api/assets/eeprom_save.png) 
+![eeprom_save](doc/api/assets/eeprom_save.png)
 
 - restore factory setting
 
@@ -157,11 +157,11 @@ Note: You need to select the corresponding resistance welding or not according t
 
 (2)if success, parameter status displays 0
 
-![eeprom_save](doc/api/assets/param_default.png) 
+![eeprom_save](doc/api/assets/param_default.png)
 
 ## API
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/pmsm_53/html/index.html>`_ .
 :::

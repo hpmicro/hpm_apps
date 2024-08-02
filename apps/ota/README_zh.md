@@ -118,7 +118,7 @@ Flash分区表路径：ota/software/common/include/hpm_flashmap.h
 
 ### 非后台下载模式(二级Boot)
 
-![bootloader_mode_zh](doc/api/assets/bootloader_mode_zh.png) 
+![bootloader_mode_zh](doc/api/assets/bootloader_mode_zh.png)
 
 ### 后台下载升级模式(User_app)
 
@@ -380,9 +380,9 @@ CMakeLists.txt选择USB host msc通道->构建->编译->烧录。
 ![usb_host_env4](doc/api/assets/usb_host_env4.png)
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/ota/html/index.html>`_ 。
 :::

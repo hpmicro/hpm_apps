@@ -150,17 +150,17 @@ void board_init_pmp(void)
 
 ## 点亮效果图
 
-![display](doc/api/assets/display.png) 
+![display](doc/api/assets/display.png)
 
 - HPM6300evk接8080屏实物图 (注：hpm6200evk上贴HPM6300系列MCU)
 
-![display_board](doc/api/assets/display_board.png) 
+![display_board](doc/api/assets/display_board.png)
 
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/femc_8080lcd/html/index.html>`_ 。
 :::

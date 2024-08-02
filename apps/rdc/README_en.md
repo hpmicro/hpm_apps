@@ -59,5 +59,5 @@ See the detailed signal waveform and ABZ platform performance comparison test re
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/rdc/html/index.html>`_ .
 :::

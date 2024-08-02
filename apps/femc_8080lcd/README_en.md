@@ -9,7 +9,7 @@ this app introduces how to use FEMC controller to drive 8080 screen.The 8080 scr
 From the 8080 protocol timing diagram and SRAM timing diagram comparison, 8080 parallel port timing and SRAM timing is basically the same.Therefore, it can use the FEMC controller to drive 8080 screen.
 
 
-## Application note 
+## Application note
 [AN](doc/HPM_FEMC驱动8080屏开发指南_V1.1.pdf)
 
 ## Sample code
@@ -151,17 +151,17 @@ none
 
 ## Lighting up the screen
 
-![display](doc/api/assets/display.png) 
+![display](doc/api/assets/display.png)
 
 - HPM6300evk with 8080 screen physical figure (note: hpm6200evk posted HPM6300 series MCU).
 
-![display_board](doc/api/assets/display_board.png) 
+![display_board](doc/api/assets/display_board.png)
 
 
 ## API
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/femc_8080lcd/html/index.html>`_ .
 :::
 

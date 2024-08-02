@@ -72,7 +72,7 @@ void libcall(void)
 #ifdef POS_MODE
 //位置模式下，轨迹规划函数生成位置/速度指令
    pos_cmd_gene(&cmdpar);
-#else 
+#else
 //速度模式下，轨迹规划函数生成速度指令
    vel_cmd_gene(&cmdpar);
 #endif
@@ -82,21 +82,21 @@ void libcall(void)
 ```c
 void isr_gptmr(void)
 {
-  
+
     volatile uint32_t s = BOARD_BLDC_TMR_MS->SR;
     BOARD_BLDC_TMR_MS->SR = s;
 
-    if (s & GPTMR_CH_CMP_STAT_MASK(BOARD_BLDC_TMR_CH, BOARD_BLDC_TMR_CMP)) 
+    if (s & GPTMR_CH_CMP_STAT_MASK(BOARD_BLDC_TMR_CH, BOARD_BLDC_TMR_CMP))
     {
        libcall();
        if(ii==5000)
        {
              return;
-       }     
+       }
        poscmd[ii] = cmdpar.cmdgene_out_par.poscmd;
        velcmd[ii] = cmdpar.cmdgene_out_par.velcmd;
        ii++;
-    
+
     }
 }
 SDK_DECLARE_EXT_ISR_M(BOARD_BLDC_TMR_IRQ, isr_gptmr)
@@ -109,7 +109,7 @@ int main (void)
    board_init();
    lib_params_cfg();
    timer_init();
-   
+
 }
 ```
 ## 工程路径
@@ -193,9 +193,9 @@ int main (void)
 
 ![测试结果](doc/api/assets/7.png)
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/lib_demo/html/index.html>`_ 。
 :::

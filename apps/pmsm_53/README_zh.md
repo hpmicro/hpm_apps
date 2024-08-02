@@ -32,7 +32,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 ### 硬件方案
 
-- HPM5300驱控硬件由两块子板组成，其中控制板用于与上位工具通信、接收编码器反馈、向驱动板发送PWM驱动信号并接收电流采样信号。请查看控制板原理图: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf) 
+- HPM5300驱控硬件由两块子板组成，其中控制板用于与上位工具通信、接收编码器反馈、向驱动板发送PWM驱动信号并接收电流采样信号。请查看控制板原理图: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf)
 
 ![控制板](doc/api/assets/ctlboard.jpg)
 
@@ -46,7 +46,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 软件方案主要由以下几部分组成：三闭环控制、矢量控制、PWM触发ADC采样、PWM电流环中断产生以及通用上位机，整体框图如下，更多详情请查看软件方案: [《HPM53伺服闭环软件方案》](doc/HPM53伺服闭环方案.pdf)
 
-![软件框图](doc/api/assets/soft.png)  
+![软件框图](doc/api/assets/soft.png)
 
 ### 测试方法
 
@@ -65,7 +65,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 连接PC USB到UART Type-C接口
 - 连接调试器到JTAG接口
-- 连接电机与编码器  
+- 连接电机与编码器
 
 ![硬件连接](doc/api/assets/test_env.jpg)
 
@@ -83,11 +83,11 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 工程路径: hpm_apps/apps/pmsm_53/software
 
-- windows下GUI工程构建  
-![window gui 创建工程](doc/api/assets/sei_build.png)  
+- windows下GUI工程构建
+![window gui 创建工程](doc/api/assets/sei_build.png)
 
-- windows下命令行工程构建  
-  请参考 [HPM5300_DCServo用户指南](doc/HPM5300_DCServo_UG.pdf) 
+- windows下命令行工程构建
+  请参考 [HPM5300_DCServo用户指南](doc/HPM5300_DCServo_UG.pdf)
 
 ### 测试流程
 
@@ -95,17 +95,17 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 加载elf文件，并创建json文件
 
-![上位机软件](doc/api/assets/elf_json.png) 
+![上位机软件](doc/api/assets/elf_json.png)
 
 - 点击设备，通信连接
 
-![通信连接](doc/api/assets/uart_connect.png) 
+![通信连接](doc/api/assets/uart_connect.png)
 
 - 添加参数
 
-![参数](doc/api/assets/param_config_zh_1.png) 
+![参数](doc/api/assets/param_config_zh_1.png)
 
-![参数](doc/api/assets/param_config_zh_2.png) 
+![参数](doc/api/assets/param_config_zh_2.png)
 
 #### 绝对式编码器
 
@@ -123,7 +123,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 测试结果
 
-![sei_result](doc/api/assets/sei_result_zh.png) 
+![sei_result](doc/api/assets/sei_result_zh.png)
 
 #### 增量式编码器
 
@@ -141,7 +141,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 测试结果
 
-![qei_result_zh](doc/api/assets/qei_result_zh.png) 
+![qei_result_zh](doc/api/assets/qei_result_zh.png)
 
 #### EEPROM
 
@@ -151,7 +151,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 (2)保存至eeprom成功，参数状态显示1，如下图所示。
 
-![eeprom_save](doc/api/assets/eeprom_save.png) 
+![eeprom_save](doc/api/assets/eeprom_save.png)
 
 - 恢复默认值
 
@@ -159,12 +159,12 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 (2)保存至eeprom成功，参数状态显示0，如下图所示。
 
-![eeprom_save](doc/api/assets/param_default.png) 
+![eeprom_save](doc/api/assets/param_default.png)
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/mpsm_53/html/index.html>`_ 。
 :::

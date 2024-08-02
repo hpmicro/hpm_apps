@@ -98,9 +98,9 @@ bool ota_board_auto_write(void const *src, uint32_t len)
 
 参考 [HPM BootROM OTA 操作说明](doc/HPM_BootROM_OTA操作说明_V2.0.pdf)
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/bootrom_ota/html/index.html>`_ 。
 :::

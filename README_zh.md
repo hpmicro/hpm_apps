@@ -23,63 +23,22 @@ HPM APP版本和HPM SDK版本一一对应，为了保持版本兼容，版本号
 例如：
 | 软件名称 | 版本号 |
 |--- | --- |
-| hpm_sdk | 1.4.0 |
-| hpm_apps | 1.4.0 |
+| hpm_sdk | 1.x.y |
+| hpm_apps | 1.x.y |
 
-
-### 安装依赖
-- Note1:将hpm_apps和hpm_sdk放到同一级目录下:
-![hpm_app_dir](docs/assets/hpm_app_dir.png)
-
-- Note2:需要修改hpm_sdk目录下CMakeLists.txt文件，将hpm_apps添加为工程子目录:
-![hpm_app_setup](docs/assets/hpm_app_setup.png)
-路径：hpm_sdk/CMakeLists.txt
-    ```shell
-    add_subdirectory(../hpm_apps ../hpm_apps/build_tmp)
-    ```
 
 ### 构建编译
-- Windows:
-    Windows下使用env环境，只支持命令行构建工程，使用SES编译调试工程。
-    - Windows命令行:
-    首先双击运行env环境：start_cmd.cmd命令窗口。
-    cd到需要构建的apps目录下，使用generate_project命令构建工程。
-    如下：
-    ```shell
-    cd hpm_apps\apps\mp_adapte\power_core2
-    generate_project -b hpm6200power -x D:\workspace\hpm_apps\boards -f -t flash_xip
-    ```
-    其中：
-    | generate_project 选项 | 说明 |
-    |--- | --- |
-    | -b | 构建工程所使用的board |
-    | -x | 使用board的绝对路径 |
-    | -f | 删除历史构建工程 |
-    | -t | 工程构建类型 debug/release/flash_xip/flash_sdram_xip 等 |
 
-- Linux:
-    Linux下需添加HPM_SDK_BASE路径到环境变量，手动添加或通过运行命令添加。
-    
-    1.通过运行命令添加HPM_SDK_BASE路径到环境变量:
-    ```shell
-      cd hpm_sdk/
-      source env.sh
-    ```
-    2.cd到需要构建编译的apps目录下，使用命令构建编译成功。
-    如下：
-    ```c
-    //切换到示例应用目录
-    cd hpm_apps\apps\mp_adapte\power_core2
-    //创建build目录
-    mkdir build
-    //切换目录到"build"
-    cd build
-    //Ninja-build产生构建文件
-    cmake -GNinja -DBOARD_SEARCH_PATH=/home/work/workspace/hpm_apps/boards -DBOARD=hpm6200power -DCMAKE_BUILD_TYPE=flash_xip ..
-    //编译
-    ninja
-    ```
-    当编译完成后,生成的elf以及对应的其他文件可以在output目录中找到。
+推荐在 Windows下使用 sdk_env 环境，构建 SES 编译调试工程。在 SDK ENV 工具中勾选 **Enable User Application Path** 并选择 **hpm_apps/apps** 目录即可，或者选择到自己需要用的 demo 目录，推荐使用前者，可以扫描所有 demo 文件。
+
+![sdk_env](docs/assets/hpm_app_sdkenv.png)
+
+如果需要增加 hpm_apps/middleware 中的相关中间件，请在 demo 下的 CMakeLists.txt 文件中增加以下代码, 推荐放在 `generate_ses_project` 之前,举例如下：
+
+```
+add_subdirectory(../../.. hpm_apps/build_tmp)
+generate_ses_project()
+```
 
 ## HPM_APPS文档
 - 本地文档:
@@ -88,7 +47,8 @@ HPM APP版本和HPM SDK版本一一对应，为了保持版本兼容，版本号
   - <HPM_APP_BASE>>/docs/index_zh.html
 
 - 在线文档:
-  
+  - https://hpm-apps.readthedocs.io/en/latest/
+  - https://hpm-apps.readthedocs.io/zh-cn/latest/
 
 ## 代码仓库
 - hpm_apps github: https://github.com/hpmicro/hpm_apps

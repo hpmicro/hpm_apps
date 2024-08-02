@@ -2,23 +2,23 @@
 
 ## 概述
 
-上海先楫半导体科技有限公司推出了国产高性能微控制器HPM6800系列，致力于提供单主控的数字仪表及HMI解决方案，其产品主频高达600MHz，内置RISC-V内核，  
+上海先楫半导体科技有限公司推出了国产高性能微控制器HPM6800系列，致力于提供单主控的数字仪表及HMI解决方案，其产品主频高达600MHz，内置RISC-V内核，
 
-算力高达1710DMIPS，其具有增强图像系统如下：  
+算力高达1710DMIPS，其具有增强图像系统如下：
 
 -  2.5D OpenVG 1.1 GPU
 
 -  2 个 4 Lane MIPI-DSI/LVDS-Tx 显示接口
 
--  2 个 2 Lane MIPI-CSI/LVDS-Rx 摄像头接口 
+-  2 个 2 Lane MIPI-CSI/LVDS-Rx 摄像头接口
 
 -  LCD 控制器支持多图层 Alpha-blending
 
--  1920×1080 分辨率显示屏刷新率可达60fps 
+-  1920×1080 分辨率显示屏刷新率可达60fps
 
 -  集成 JPEG 编解码器可实现快速 JPEG 编码和解码， 减轻处理器负荷
 
--  包含1个DDR控制器，支持 DDR2-800、DDR3-1333，DDR3L-1333  
+-  包含1个DDR控制器，支持 DDR2-800、DDR3-1333，DDR3L-1333
 
 本文主要介绍HPM6880 单颗DDR2，单颗DDR3l硬件设计要求，并分别提供两种DDR的DEMO源文件以做参考，建议客户直接使用DEMO提供的原理图和PCB进行设计。
 
@@ -27,15 +27,15 @@
 
 ### 电源
 
-HPM6880 芯片内置DCDC_1.2V核心电源，客户只需提供3V3主电源（建议使用DCDC芯片，电流能力至少2A)的输入电源，  
+HPM6880 芯片内置DCDC_1.2V核心电源，客户只需提供3V3主电源（建议使用DCDC芯片，电流能力至少2A)的输入电源，
 
-且在3V3的电源输入端串接一个磁珠，以抑制电源线上的高频噪声和尖峰干扰。  
+且在3V3的电源输入端串接一个磁珠，以抑制电源线上的高频噪声和尖峰干扰。
 
 此外，HPM6800芯片内置DDR的DCDC电源模块，只需简单的外围电路即可为DDR2和DDR3供电，该电源模块可以内部编程设置其输出电压。
 
 ### 布局
 
-在单板PCB设计空间足够的情况下，优先考虑留出DDR电路模块所需要的布局布线空间，拷贝先楫提供的DDR模板，  
+在单板PCB设计空间足够的情况下，优先考虑留出DDR电路模块所需要的布局布线空间，拷贝先楫提供的DDR模板，
 
 包括芯片与DDR颗粒相对位置、电源滤波电容位置、Vref 电路位置、铺铜间距等。
 
@@ -51,17 +51,17 @@ DDR包含数据和地址线，其中数据线共16位，具体走线要求建议
 
 时钟差分线对内误差5mil，并且对其进行包地处理，每隔400mil打一个过孔，以时钟线为基准进行等长设计。
 
-等长走线时蛇形绕线自身的串扰会影响信号延时，走线绕等长是间距在3W以上， 
+等长走线时蛇形绕线自身的串扰会影响信号延时，走线绕等长是间距在3W以上，
 
 在做等长时，需要考虑过孔的延时，简化设计，同组走线过孔数量一致，以此抵消过孔距离差异。
 
-查看布线top层  
+查看布线top层
 
-![window gui create project](doc/api/assets/TOP_L2.jpg)     
+![window gui create project](doc/api/assets/TOP_L2.jpg)
 
-查看布线L3层  
+查看布线L3层
 
-![window gui create project](doc/api/assets/L3_Bottom.jpg)     
+![window gui create project](doc/api/assets/L3_Bottom.jpg)
 
 
 ###  阻抗控制
@@ -76,7 +76,7 @@ DDR包含数据和地址线，其中数据线共16位，具体走线要求建议
 
 两个DEMO板工程目录路径如下："hpm_apps\apps\ddr\hardware"。
 
-DEMO板整体设计： 
+DEMO板整体设计：
 
 HPM6880 采用BGA417封装，该封装对PAD进行位置优化使其方便布线，使其在417个引脚情况下，依旧能够使用4层板对其进行Layout，为客户节约PCB成本。
 
@@ -88,9 +88,9 @@ HPM6880 采用BGA417封装，该封装对PAD进行位置优化使其方便布线
 
 ### DDR DEMO 原理图
 
-查看硬件原理图 [HPM6880_DDR2_CORE_RevA](doc/../hardware/HPM6880_DDR2_CORE_RevA.pdf)   
+查看硬件原理图 [HPM6880_DDR2_CORE_RevA](doc/../hardware/HPM6880_DDR2_CORE_RevA.pdf)
 
-查看硬件原理图 [HPM6880_DDR3_CORE_RevB](doc/../hardware/HPM6880_DDR3_CORE_RevB.pdf)   
+查看硬件原理图 [HPM6880_DDR3_CORE_RevB](doc/../hardware/HPM6880_DDR3_CORE_RevB.pdf)
 
 ### DDR DEMO 设备连接
 
@@ -102,13 +102,13 @@ HPM6880 采用BGA417封装，该封装对PAD进行位置优化使其方便布线
 
 -  连接调试器到JTAG接口
 
-DDR2实物如图所示： 
+DDR2实物如图所示：
 
-![window gui create project](doc/api/assets/ddr2_demo_pcb.jpg)     
+![window gui create project](doc/api/assets/ddr2_demo_pcb.jpg)
 
 DDR3实物如图所示：
 
-![window gui create project](doc/api/assets/ddr3_demo_pcb.jpg) 
+![window gui create project](doc/api/assets/ddr3_demo_pcb.jpg)
 
 #### 端口设置
 
@@ -116,11 +116,11 @@ DDR3实物如图所示：
 
 ### DDR DEMO性能测试
 
-创建ramstress 压力测试历程，使用flash_xip 选项。 
+创建ramstress 压力测试历程，使用flash_xip 选项。
 
-创建工程如图：  
+创建工程如图：
 
-- windows下GUI工程构建   
+- windows下GUI工程构建
 
 ![window gui create project](doc/api/assets/create_project_for_ddr.jpg)
 
@@ -234,7 +234,7 @@ fill_selfaddress: 7/16
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/ddr/html/index.html>`_ 。
 :::
 
 

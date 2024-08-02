@@ -130,7 +130,7 @@ static void hpm_mp_pair1_adc_cb(void* handle)
      //注意:当开启打印调试时，必须要把PWM频率降低(降低中断频率)，否则中断会溢出导致异常
      for (int i = 0; i < pwm_pair_t->adc_count; i++)
      {
-        printf("adc1[%d]:%d\n", pwm_pair_t->adc_pack[i].adc_index, pwm_pair_t->adc_pack[i].adc_data);    
+        printf("adc1[%d]:%d\n", pwm_pair_t->adc_pack[i].adc_index, pwm_pair_t->adc_pack[i].adc_data);
      }
      printf("---\n");
 }
@@ -232,7 +232,7 @@ int main(void)
 
     while (1)
     {
-        
+
     }
 
     return 0;
@@ -250,7 +250,7 @@ int main(void)
 
 ## 工程构建
 - windows下工程构建
-![WIN构建](./doc/api/assets/mp_adapte_build.png)
+![WIN构建](doc/api/assets/mp_adapte_build.png)
 
 - linux工程构建编译
 ```shell
@@ -291,9 +291,9 @@ int main(void)
 
 ![result_pwm_adc](doc/api/assets/result_pwm_adc.png)
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/mp_adapte/html/index.html>`_ 。
 :::

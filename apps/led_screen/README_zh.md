@@ -39,10 +39,10 @@ LED RGB灯需要通过特定的波形驱动，本方案使用UCS1903驱动芯片
 ### DMA
 
 HPM6750支持2个DMA控制器：XDMA和HDMA，可以实现实时的外设寄存器和内存及内存之间的数据搬移。
-	
-支持DMA请求路由器(DMAMUX)。将来自各个外设模块的DMA请求分配到16个输出信号，作为XDMA和HDMA的DMA传输请求源。 
 
-DMAMUX 的输出0-7连接到外设总线DMA控制器HDMA，DMAMUX的输出8-15连接到系统总线DMA控制器XDMA。 
+支持DMA请求路由器(DMAMUX)。将来自各个外设模块的DMA请求分配到16个输出信号，作为XDMA和HDMA的DMA传输请求源。
+
+DMAMUX 的输出0-7连接到外设总线DMA控制器HDMA，DMAMUX的输出8-15连接到系统总线DMA控制器XDMA。
 
 用户可以通过配置DMAMUX寄存器，把来自特定外设的DMA请求，连接到XDMA或者HDMA的各个通道。
 
@@ -52,9 +52,9 @@ DMA控制器支持8对请求-响应的握手信号，请求信号来自功能模
 
 HPM6750支持11个通用定时器，每个通用定时器支持4个通道，每个通道支持32位计数器，重载寄存器和一个输入捕获/输出比较通道，支持通用计时，输入捕获，输出比较，PWM 生成，以及产生中断和DMA请求。
 其中：
-8 个定时器位于系统电源域称为通用定时器 GPTMR0∼7 
-2 个定时器位于系统电源域的 CONN 子系统，称为网络定时器 NTMR0, NTMR1 
-1 个定时器位于电源管理域，称为电源管理域定时器 PTMR。 
+8 个定时器位于系统电源域称为通用定时器 GPTMR0∼7
+2 个定时器位于系统电源域的 CONN 子系统，称为网络定时器 NTMR0, NTMR1
+1 个定时器位于电源管理域，称为电源管理域定时器 PTMR。
 
 ### GPIO
 
@@ -135,9 +135,9 @@ dma transfer down!
 
 ![led_pwm_2](doc/api/assets/led_pwm_2.png)
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/led_screen/html/index.html>`_ 。
 :::

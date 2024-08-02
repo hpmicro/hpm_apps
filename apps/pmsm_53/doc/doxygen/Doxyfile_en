@@ -876,7 +876,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = $(HPM_APP_BASE)/apps/pmsm_53/doc/mainpage/md/en/mainpage_en.md \
+INPUT                  = $(HPM_APP_BASE)/docs/en/apps/pmsm_53/doc/doxygen/mainpage_en.md \
                          $(HPM_APP_BASE)/apps/pmsm_53/software
 
 # This tag can be used to specify the character encoding of the source files
@@ -922,7 +922,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = 
+EXCLUDE                =
 # $(HPM_APP_BASE)/soc/ip/*_regs.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc_feature.h \

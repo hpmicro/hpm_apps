@@ -102,5 +102,5 @@ Refer to [HPM BootROM OTA guide](doc/HPM_BootROM_OTA操作说明_V2.0.pdf)
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ 。
+About software API: `API doc <../../_static/apps/bootrom_ota/html/index.html>`_ 。
 :::

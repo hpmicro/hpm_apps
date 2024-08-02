@@ -62,10 +62,10 @@ S型曲线主要由加速段（T_a），匀速段段（T_v），减速段（T_d�
 
 （1）入口参数
 
-|        | 名称 | 说明 | 
+|        | 名称 | 说明 |
 | ---- | ---- | ---- |
 | 轨迹生成配置参数CMDGENE_INPUT_PARA | CMDGENE_POSCFG_PARA | 位置模式下 |
-| 轨迹生成配置参数CMDGENE_INPUT_PARA | CMDGENE_VELCFG_PARA | 速度模式下 | 
+| 轨迹生成配置参数CMDGENE_INPUT_PARA | CMDGENE_VELCFG_PARA | 速度模式下 |
 | 中间变量 | CMDGENE_USER_PARA |   |
 | 输出变量 | CMDGENE_OUTPUT_PARA | 位置/速度/加速度/加速度序列 |
 
@@ -100,11 +100,11 @@ S型曲线主要由加速段（T_a），匀速段段（T_v），减速段（T_d�
 
 （3）函数接口
 
-|  函数接口名称  | 说明 | 调用状态 | 
+|  函数接口名称  | 说明 | 调用状态 |
 | ---- | ---- | ---- |
-| pos_cmd_gene | 位置模式下，位置/速度序列更新 | 中断函数内调用 | 
-| vel_cmd_gene | 速度模式下，速度序列更新 | 中断函数内调用 | 
-| cmd_gene_disable | 轨迹规划重置 |  轨迹规划结束后重置 | 
+| pos_cmd_gene | 位置模式下，位置/速度序列更新 | 中断函数内调用 |
+| vel_cmd_gene | 速度模式下，速度序列更新 | 中断函数内调用 |
+| cmd_gene_disable | 轨迹规划重置 |  轨迹规划结束后重置 |
 
 #### 使用方法
 
@@ -160,7 +160,7 @@ cmd_gene_disable
 
 为了方便大家更快捷的对此功能了解使用，这里记录了一些基础配置下速度曲线，位置曲线供大家参考，具体如下表所示。
 
-| 运行模式 | 绝对位置r | 速度r/s | 加速度r/s/s | 加加速度r/s/s/s | 匀速时间s | 运动模式 | 运行次数 | 中断 | 示意图 | 
+| 运行模式 | 绝对位置r | 速度r/s | 加速度r/s/s | 加加速度r/s/s/s | 匀速时间s | 运动模式 | 运行次数 | 中断 | 示意图 |
 | ---- | ---- | ---- |---- |---- | ---- | ---- |---- |--- |---- |
 | 速度 | 0 | 10 | 100 | 1000 | 10 | / | / |1ms | 图1 |
 | 速度 | 0 | 10 | 10 | 100 | 10 | / | / |1ms | 图2 |
@@ -188,9 +188,9 @@ cmd_gene_disable
 
 ![图9](doc/api/assets/9.png)
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/middleware/hpm_motor/html/index.html>`_ 。
 :::

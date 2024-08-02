@@ -71,7 +71,7 @@ void libcall(void)
 {
 #ifdef POS_MODE
    pos_cmd_gene(&cmdpar);
-#else 
+#else
    vel_cmd_gene(&cmdpar);
 #endif
 }
@@ -80,21 +80,21 @@ void libcall(void)
 ```c
 void isr_gptmr(void)
 {
-  
+
     volatile uint32_t s = BOARD_BLDC_TMR_MS->SR;
     BOARD_BLDC_TMR_MS->SR = s;
 
-    if (s & GPTMR_CH_CMP_STAT_MASK(BOARD_BLDC_TMR_CH, BOARD_BLDC_TMR_CMP)) 
+    if (s & GPTMR_CH_CMP_STAT_MASK(BOARD_BLDC_TMR_CH, BOARD_BLDC_TMR_CMP))
     {
        libcall();
        if(ii==5000)
        {
              return;
-       }     
+       }
        poscmd[ii] = cmdpar.cmdgene_out_par.poscmd;
        velcmd[ii] = cmdpar.cmdgene_out_par.velcmd;
        ii++;
-    
+
     }
 }
 SDK_DECLARE_EXT_ISR_M(BOARD_BLDC_TMR_IRQ, isr_gptmr)
@@ -107,7 +107,7 @@ int main (void)
    board_init();
    lib_params_cfg();
    timer_init();
-   
+
 }
 ```
 ## Code Path
@@ -126,7 +126,7 @@ int main (void)
 
 ## Hardware
 - The hpm_6200_FourMotor_MB_RevA used in this routine
-- Users can use the others EVK board 
+- Users can use the others EVK board
 
 ## Code Run
 
@@ -208,5 +208,5 @@ int main (void)
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/lib_demo/html/index.html>`_ .
 :::

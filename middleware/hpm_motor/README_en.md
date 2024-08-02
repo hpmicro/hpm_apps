@@ -52,7 +52,7 @@ There is a step in the speed of the motor when it is started and stopped. A sudd
 
 The trajectory planning algorithm used in libhpm_motor.a is an S-shaped curve, the core of which is to control the change of acceleration through variable acceleration, ensure that acceleration does not mutate, and smooth the acceleration and deceleration speed curve, so as to achieve the purpose of smooth operation of the motor.
 
-#### function 
+#### function
 
 The S-shaped curve is mainly composed of acceleration section (T_a), uniform velocity section (T_v) and deceleration section (T_d). The acceleration section is further divided into acceleration (T_j1), uniform acceleration and deceleration (T_j1), and the deceleration section is divided into acceleration and deceleration (T_j2), uniform deceleration and deceleration (T_j2). There are seven sections in total, as shown in Figure 1, where v_max is the maximum acceleration of the system, v_0 is the start speed, v_1 is the end speed, and a_max is the maximum acceleration of the system. a_min is the maximum deceleration of the system, j_max is the maximum acceleration of the system, and j_min is the maximum deceleration of the system.
 
@@ -62,10 +62,10 @@ The S-shaped curve is mainly composed of acceleration section (T_a), uniform vel
 
 （1）parameter
 
-|        | name | note | 
+|        | name | note |
 | ---- | ---- | ---- |
 | Trajectory generation configuration parameters CMDGENE_INPUT_PARA | CMDGENE_POSCFG_PARA | position mode |
-| Trajectory generation configuration parameters CMDGENE_INPUT_PARA | CMDGENE_VELCFG_PARA | velocity mode | 
+| Trajectory generation configuration parameters CMDGENE_INPUT_PARA | CMDGENE_VELCFG_PARA | velocity mode |
 | user variable | CMDGENE_USER_PARA |   |
 | output params | CMDGENE_OUTPUT_PARA | pos/vel/acc/jerk array|
 
@@ -100,11 +100,11 @@ The S-shaped curve is mainly composed of acceleration section (T_a), uniform vel
 
 （3）API
 
-|  name  | note | call state | 
+|  name  | note | call state |
 | ---- | ---- | ---- |
-| pos_cmd_gene | position mode，update pos/vel array | called in isr | 
-| vel_cmd_gene | speed mode，updatevel array | called in isr | 
-| cmd_gene_disable | reset trajectory planning | reset after trajectory planning end | 
+| pos_cmd_gene | position mode，update pos/vel array | called in isr |
+| vel_cmd_gene | speed mode，updatevel array | called in isr |
+| cmd_gene_disable | reset trajectory planning | reset after trajectory planning end |
 
 #### Steps to use the HPM MOTOR library
 
@@ -160,7 +160,7 @@ Call this function to reset the trajectory planning intermediate variable in ord
 
 In order to facilitate the use of this function more quickly, here is a record of some basic configuration under the speed curve, position curve for your reference, as shown in the following table.
 
-| operation mode | absloute pos r | vel r/s | acc r/s/s | jerk r/s/s/s | Tv s | motion type | cycle cnt | isr | fig | 
+| operation mode | absloute pos r | vel r/s | acc r/s/s | jerk r/s/s/s | Tv s | motion type | cycle cnt | isr | fig |
 | ---- | ---- | ---- |---- |---- | ---- | ---- |---- |--- |---- |
 | speed | 0 | 10 | 100 | 1000 | 1 | / | / |1ms | fig1 |
 | speed | 0 | 10 | 10 | 100 | 1 | / | / |1ms | fig2 |
@@ -192,5 +192,5 @@ In order to facilitate the use of this function more quickly, here is a record o
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/middleware/hpm_motor/html/index.html>`_ .
 :::

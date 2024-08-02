@@ -4,7 +4,7 @@
 
 LED large screen display system uses the dot matrix module or pixel unit composed of RGB lamp beads to form a large-area display to display characters、 images and other information、with low power consumption、 low cost、high brightness、long life、wide viewing Angle and other advantages、in recent years with the continuous update of LED display technology、widely used in various media occasions.
 
-The LED large screen is composed of countless LED RGB lights, and displays different patterns by controlling the brightness and color of each LED RGB in real time. In the LED large screen display application, the traditional core control chip choice can be described as a variety of MCU, FPGA or PLD can be used as the core control chip to design, and the effect is also good and bad.  
+The LED large screen is composed of countless LED RGB lights, and displays different patterns by controlling the brightness and color of each LED RGB in real time. In the LED large screen display application, the traditional core control chip choice can be described as a variety of MCU, FPGA or PLD can be used as the core control chip to design, and the effect is also good and bad.
 
 While the application of LED large screen display continues to expand, the large screen display system has also put forward more stringent requirements for refresh frequency and delay:
 
@@ -41,7 +41,7 @@ The overall application scheme uses the __High precision timer GPTMR+DMA+GPIO__ 
 ### DMA
 
 The HPM6750 supports two DMA controllers: XDMA and HDMA, which can realize real-time peripheral registers and memory and data transfer between memory.
-	
+
 DMA Request Router (DMAMUX) is supported. DMA requests from various peripheral modules are assigned to 16 output signals as DMA transfer request sources for XDMA and HDMA.
 
 The outputs of DMAMUX 0-7 are connected to the peripheral bus DMA controller HDMA, and the outputs of DMAMUX 8-15 are connected to the system bus DMA controller XDMA.
@@ -142,5 +142,5 @@ The following operating waveform diagram:
 
 :::{eval-rst}
 
-About software API:  `API doc <doc/api/index.html>`_ 。
+About software API:  `API doc <../../_static/apps/led_screen/html/index.html>`_ 。
 :::

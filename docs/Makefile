@@ -7,8 +7,6 @@ SPHINXOPTS    ?=
 #SPHINXBUILD   ?= sphinx-build
 SPHINXBUILD   ?= python3 -m sphinx.cmd.build
 
-CLEAN_DOC     ?= python3 _ext/clean_docs.py
-
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 html: Makefile
@@ -16,5 +14,11 @@ html: Makefile
 	@$(SPHINXBUILD) -M $@ "en" "output/en" $(SPHINXOPTS) $(O)
 
 clean:
-	@$(CLEAN_DOC)
+	rm -rf output
+	rm -rf en/_static
+	rm -rf zh/_static
+	rm -rf en/apps
+	rm -rf zh/apps
+	rm -rf en/middleware
+	rm -rf zh/middleware
 

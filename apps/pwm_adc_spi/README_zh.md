@@ -10,7 +10,7 @@
 
 DMA链式传输通常能够降低数据传输的延时以及将规则的连续任务由DMA自主完成。此方案中ADC抢占采样、DMA获取SPI编码器信息并行执行，从而减少了数据从源到目标的传输时间。这对于实时系统和需要快速响应的应用非常关键。
 
-See the [hpmicro.com](https://www.hpmicro.com) site for more information about HPMicro 
+See the [hpmicro.com](https://www.hpmicro.com) site for more information about HPMicro
 
 ## 应用文档
 
@@ -19,7 +19,7 @@ See the [hpmicro.com](https://www.hpmicro.com) site for more information about H
 
 ## 整体方案的功能框图
 
-![general_solution](doc/api/assets/general_solution.png) 
+![general_solution](doc/api/assets/general_solution.png)
 
 
 ## ADC抢占模式下的功能框图
@@ -224,9 +224,9 @@ void isr_adc16(void)
 
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <doc/api/index_zh.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/pwm_adc_spi/html/index.html>`_ 。
 :::

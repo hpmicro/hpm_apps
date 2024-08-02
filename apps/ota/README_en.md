@@ -32,7 +32,7 @@ According to the communication protocol agreed between the upper software and th
 
 ### 3.Check the upgrade package
 
-After receiving all upgrade packages, the MCU verifies the legality and integrity of the received firmware to ensure the validity. Verification is typically conducted by calculating the digest of the new firmware based on agreed-upon characteristics and signature algorithms specified in the upgrade package. Subsequently, comparison and validation are performed based on the header information within the upgrade package. 
+After receiving all upgrade packages, the MCU verifies the legality and integrity of the received firmware to ensure the validity. Verification is typically conducted by calculating the digest of the new firmware based on agreed-upon characteristics and signature algorithms specified in the upgrade package. Subsequently, comparison and validation are performed based on the header information within the upgrade package.
 
 If the comparison and validation pass, the verification is successful; if not, the verification fails. In the event of a failed verification, the upgrade process is aborted, and the current operation is maintained.
 
@@ -132,7 +132,7 @@ Please note: The flash partition table in the project is a general partition and
 
 ### Non-background download mode (secondary Boot)
 
-![bootloader_mode_en](doc/api/assets/bootloader_mode_en.png) 
+![bootloader_mode_en](doc/api/assets/bootloader_mode_en.png)
 
 ### Background download and upgrade mode (User app)
 
@@ -186,11 +186,11 @@ ota/software/user_app
 
 - Download channel selection
 
-Similarly, in the corresponding CMakeLists.txt file for user_app, enable the corresponding macro definition. 
+Similarly, in the corresponding CMakeLists.txt file for user_app, enable the corresponding macro definition.
 
 Note: After modifying the CMakeLists.txt, the project must be rebuilt and compiled.
 
-For example: Open the USB device MSC channel. 
+For example: Open the USB device MSC channel.
 
 ```
 # set(CONFIG_UART_CHANNEL 1)
@@ -242,7 +242,7 @@ Note：need python3
 
 The generated update_sign.bin is the upgrade package.
 
-Note: Due to the discontinuous transmission in USB virtual disk transfer, the USB device MSC requires the use of usb_device_update.upd as the firmware upgrade package. 
+Note: Due to the discontinuous transmission in USB virtual disk transfer, the USB device MSC requires the use of usb_device_update.upd as the firmware upgrade package.
 
 
 #### Channel upgrade by UART
@@ -296,11 +296,11 @@ Serial port baud rate is set to ``115200bps``, with ``one stop bit`` and ``no pa
 
 - Network Environment Setup
 
-Ensure that the MCU and PC are on the same network subnet to avoid communication failures. 
+Ensure that the MCU and PC are on the same network subnet to avoid communication failures.
 
 ![enet_config_env1](doc/api/assets/enet_env_config1.png)
 
-- Use network tools on the PC to establish a connection, select the upgrade package, and initiate the upgrade process. 
+- Use network tools on the PC to establish a connection, select the upgrade package, and initiate the upgrade process.
 
 Tool path：ota/tool/NetAssistv4325.exe
 
@@ -321,7 +321,7 @@ Due to the discontinuous transmission nature of USB device MSC, directly transmi
 
  1. usb dev msc sector size 512 byte.
 
- 2. The upgrade package is sliced into segments according to each packet (512-profile struct) and then reassembled (with added magic/num/size/end). 
+ 2. The upgrade package is sliced into segments according to each packet (512-profile struct) and then reassembled (with added magic/num/size/end).
 
  3. There's no need to add the FATFS file system, ensuring high efficiency and saving Flash space.
 
@@ -401,18 +401,5 @@ Serial port baud rate is set to ``115200bps``, with ``one stop bit`` and ``no pa
 
 :::{eval-rst}
 
-About software API: `API doc <doc/api/index.html>`_ .
+About software API: `API doc <../../_static/apps/ota/html/index.html>`_ .
 :::
-
-
-
-
-
-
-
-
-
-
-
-
-

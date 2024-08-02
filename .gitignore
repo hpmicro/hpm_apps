@@ -26,6 +26,7 @@ docs/en/html/*
 docs/en/_static/*
 docs/en/CHANGELOG.md
 docs/en/apps/*
+docs/en/middleware/*
 docs/en/customer/*
 docs/zh/boards/*
 docs/zh/samples/*
@@ -33,6 +34,7 @@ docs/zh/html/*
 docs/zh/_static/*
 docs/zh/CHANGELOG.md
 docs/zh/apps/*
+docs/zh/middleware/*
 docs/zh/customer/*
 cmake_intro.rst
 cmake_intro.rst
