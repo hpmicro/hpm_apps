@@ -6,5 +6,6 @@
    :numbered:
 
    hpm_motor/README_en
+   hpm_monitor/README_en
 
 :::

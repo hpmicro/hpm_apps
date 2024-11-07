@@ -30,19 +30,19 @@ In this test sample, the servo drive control system controls the motion of a mot
 
 ### Hardware Option
 
-- The HPM5300 drive control hardware consists of two boards, control board is used to communicate with the upper tool, receive the encoder feedback, send PWM drive signal to the DRV board and receive the current sampling signal.Please read CTL board schematic: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf)
+- The HPM5300 drive control hardware consists of two boards, control board is used to communicate with the upper tool, receive the encoder feedback, send PWM drive signal to the DRV board and receive the current sampling signal.Please read CTL board schematic: [《HPM5300_DCServo_CTL_REVB》](hardware/HPM5300_DCServo_CTL_REVB.pdf)
 
 ![ctlboard](doc/api/assets/ctlboard.jpg)
 
-- The drive board is composed of a power drive module and a current sampling module, and contains a motor and a power interface. Please read DRV board schematic:  [《HPM5300_DCServo_DRV_REVB》](doc/hardware/HPM5300_DCServo_DRV_REVB.pdf)
+- The drive board is composed of a power drive module and a current sampling module, and contains a motor and a power interface. Please read DRV board schematic:  [《HPM5300_DCServo_DRV_REVB》](hardware/HPM5300_DCServo_DRV_REVB.pdf)
 
-![drvboard](doc/api/assets/drvboard.jpg)S
+![drvboard](doc/api/assets/drvboard.jpg)
 
 - Please refer to the user guide for detailed technical parameters: [《HPM5300_DCServo User Guide》](doc/HPM5300_DCServo_UG.pdf)
 
 ### Software Option
 
-The software scheme is mainly composed of the following parts: three-closed loop control, vector control, PWM triggered ADC sampling, PWM current loop interrupt generation and upper and lower computer communication. The overall block diagram is as follows. See software scheme for more details: [《HPM53Servo Closed-loop scheme》](doc/HPM53伺服闭环方案.pdf)
+The software scheme is mainly composed of the following parts: three-closed loop control, vector control, PWM triggered ADC sampling, PWM current loop interrupt generation and upper and lower computer communication. The overall block diagram is as follows. See software scheme for more details: [《HPM53Servo Closed-loop scheme》](doc/HPM53伺服闭环软件方案.pdf)
 
 ![Software block diagram](doc/api/assets/soft.png)
 
@@ -82,6 +82,7 @@ Note: You need to select the corresponding resistance welding or not according t
 - Project Path: hpm_apps/apps/pmsm_53/software/pmsm_abz
 
 - windows GUI create project
+
 ![windows GUI create project](doc/api/assets/sei_build.png)
 
 - windows cmd create project
@@ -101,13 +102,25 @@ Note: You need to select the corresponding resistance welding or not according t
 
 - add params
 
+（1）Motor and encoder parameters
+
 ![params1](doc/api/assets/param_config_en_1.png)
 
+（2）Oscilloscope monitors parameters
+
 ![params2](doc/api/assets/param_config_en_2.png)
+
+![params1](doc/api/assets/param_config_en_3.png)
+
+（3）Motor operation control word and parameter management
+
+![params2](doc/api/assets/param_config_en_4.png)
 
 #### SEI
 
 - Modify motor and encoder parameters
+
+(1) Modify the motor pole logarithm as 5, encoder type as 1, encoder pulse number of one turn as 131072
 
 - auto phase find
 
@@ -126,6 +139,8 @@ Note: You need to select the corresponding resistance welding or not according t
 #### ABZ
 
 - Modify motor and encoder parameters
+
+(1) Modify the logarithm of the motor pole to 2, the encoder type to 0, and the pulse number of one turn of the encoder to 4000
 
 - auto phase find
 

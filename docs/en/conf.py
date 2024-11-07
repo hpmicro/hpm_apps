@@ -35,6 +35,7 @@ extensions = [
     'sphinx_inline_tabs',
     "sphinx.ext.viewcode",
     "external_content",
+    "update_version",
     "doxygenrun_en",
 ]
 
@@ -53,15 +54,16 @@ source_suffix = {
 
 external_content_contents = [
     (HPM_APP_BASE / "docs/en", "[!_]*"),
-    (HPM_APP_BASE, "apps/**/tool"),
-    (HPM_APP_BASE, "apps/**/*_en.md",),
+    (HPM_APP_BASE, "apps/**/*_en.md"),
     (HPM_APP_BASE, "apps/**/doc"),
-    (HPM_APP_BASE, "apps/**/hardware/*.*"),
+    (HPM_APP_BASE, "apps/**/hardware/*.pdf"),
     (HPM_APP_BASE, "middleware/*_en.md",),
-    (HPM_APP_BASE, "middleware/hpm_motor/tool"),
     (HPM_APP_BASE, "middleware/hpm_motor/*_en.md",),
     (HPM_APP_BASE, "middleware/hpm_motor/doc"),
     (HPM_APP_BASE, "middleware/hpm_motor/hardware/*.*"),
+    (HPM_APP_BASE, "middleware/hpm_monitor/*_en.md",),
+    (HPM_APP_BASE, "middleware/hpm_monitor/doc"),
+    (HPM_APP_BASE, "middleware/hpm_monitor/hardware/*.*"),
 ]
 
 # -- Options for HTML output -------------------------------------------------

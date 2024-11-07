@@ -35,6 +35,7 @@ def doxygen_run(base_path, doxygen_path, app_name):
     if 0 != return_code:
         print("Doxygen failed!!!")
         print(out)
+        exit()
 
 def doxygen_build(base_path):
     doxygen_path = search_doxygen_directories(str(HPM_APP_BASE / "docs" / "zh" / base_path))
@@ -47,9 +48,9 @@ def doxygen_build(base_path):
             third_last_dir_path = os.path.dirname(os.path.dirname(abs_path))
             dir_name = os.path.basename(os.path.normpath(third_last_dir_path))
 
-            #print(third_last_dir_path)
+            print(third_last_dir_path)
 
-            with open(third_last_dir_path + '/README_zh.md', 'r') as file:
+            with open(third_last_dir_path + '/README_zh.md', 'r', encoding='utf-8') as file:
                 content = file.read()
 
                 # 删除包含特定字符串的部分
@@ -61,16 +62,16 @@ def doxygen_build(base_path):
                 content = re.sub(r'## API.*:::{eval-rst}.*:::', '## Licensing\r\n\r\nHPM APP is permissively licensed using the BSD 3-clause license', content, flags=re.DOTALL)
 
             # 将处理后的内容写入新文件
-            with open(third_last_dir_path + '/doc/doxygen/mainpage_zh.md', 'w') as new_file:
+            with open(third_last_dir_path + '/doc/doxygen/mainpage_zh.md', 'w', encoding='utf-8') as new_file:
                 new_file.write(content)
 
             # 读取文件内容
-            with open(third_last_dir_path + '/doc/doxygen/Doxyfile_zh', 'r') as file:
+            with open(third_last_dir_path + '/doc/doxygen/Doxyfile_zh', 'r', encoding='utf-8') as file:
                 file_content = file.readlines()
 
             new_content = []
 
-            # 处理文件内容
+            # # 处理文件内容
             for line in file_content:
                 if line.startswith('HTML_EXTRA_FILES       ='):
                     # 在 HTML_EXTRA_FILES 后插入其他字符串
@@ -90,11 +91,13 @@ def doxygen_build(base_path):
                 else:
                     new_content.append(line)
 
-            # 将处理后的内容写入文件
-            with open(third_last_dir_path + '/doc/doxygen/Doxyfile_zh', 'w') as file:
+            # # 将处理后的内容写入文件
+            with open(third_last_dir_path + '/doc/doxygen/Doxyfile_zh', 'w', encoding='utf-8') as file:
                 file.writelines(new_content)
 
             doxygen_run(base_path, dir_path, dir_name)
+
+            os.remove(third_last_dir_path + '/doc/doxygen/mainpage_zh.md')
 
     else:
         print("未找到包含 Doxyfile_en 的目录.")

@@ -1,23 +1,23 @@
 # ADC batch sampling demo
 ## Overview
-***
+
 In this example, ADC16 batch samples several data from the specified channel and outputs them to the serial port terminal.
 The default sampling rate is 2MSPS.
 
 The sampled data can be imported into scientific computing software for sinad and thd analysis.
 
 ## Device Connection
-***
+
 - Connect PC USB to DEBUG Type-C interface
 - Connect the debugger to the JTAG interface
 - Connect the signal source to the signal input SMA interface
 
 ## Port Settings
-***
+
 - Serial port baud rate is set to ``115200bps``, with ``one stop bit`` and ``no parity bit``
 
 ## Running the example
-***
+
 When the project runs correctly, the serial port terminal will output the following information:
 ```
 ==============================

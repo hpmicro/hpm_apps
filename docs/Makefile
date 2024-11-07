@@ -4,8 +4,8 @@
 # You can set these variables from the command line, and also
 # from the environment for the first two.
 SPHINXOPTS    ?=
-#SPHINXBUILD   ?= sphinx-build
-SPHINXBUILD   ?= python3 -m sphinx.cmd.build
+SPHINXBUILD   ?= sphinx-build
+#SPHINXBUILD   ?= python -m sphinx.cmd.build
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

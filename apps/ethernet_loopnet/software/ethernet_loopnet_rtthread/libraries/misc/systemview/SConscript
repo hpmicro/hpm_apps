@@ -1,0 +1,22 @@
+# RT-Thread building script for trace component
+
+from building import *
+
+src_folder = 'SystemView_Src'
+CPPDEFINES=[]
+
+cwd = GetCurrentDir()
+src = Glob(src_folder +'/Config/*.c')
+if not GetDepend('RT_SEGGER_RTT_AS_SERIAL_DEVICE'):
+    SrcRemove(src, [src_folder + '/Config/SEGGER_RTT_Device.c'])
+
+src += Glob(src_folder +'/SEGGER/*.c')
+src += Glob('*.c')
+CPPPATH = [cwd, os.path.join(cwd, src_folder+'/Config')]
+CPPPATH += [cwd, os.path.join(cwd, src_folder+'/SEGGER')]
+if GetDepend('RT_SEGGER_SYSVIEW_INTERRUPT_ENTER_HOOK') or GetDepend('RT_SEGGER_SYSVIEW_INTERRUPT_LEAVE_HOOK'):
+    CPPDEFINES += ['HPM_RTT_CLAIM_INTERRUPT_IN_HOOK']
+
+group = DefineGroup('trace', src, depend = ['RT_USING_SYSTEMVIEW'], CPPPATH = CPPPATH, CPPDEFINES=CPPDEFINES)
+
+Return('group')

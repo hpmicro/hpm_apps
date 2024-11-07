@@ -1,0 +1,172 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid d3c35e9b-9bde-47f2-871a-72f435ac007e)
+
+  (paper "A4")
+
+  (title_block
+    (title "HPM6E00ADCEVKRevC")
+    (date "2024-09-17")
+    (rev "RevC")
+    (comment 1 "Assembly")
+  )
+
+  (lib_symbols
+    (symbol "01-HPM-Peripheral:MountingHole_Pad" (pin_numbers hide) (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "H2" (at -1.27 7.62 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Value" "MountingHole_Pad" (at 2.54 -0.635 0)
+        (effects (font (size 1.27 1.27)) (justify left) hide)
+      )
+      (property "Footprint" "01_HPM_Peripheral:MountingHole_3.2mm_M3_Pad" (at 1.27 -3.81 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "mounting hole" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "Mounting Hole with connection" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_fp_filters" "MountingHole*Pad*" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "MountingHole_Pad_0_1"
+        (circle (center 0 1.27) (radius 1.27)
+          (stroke (width 1.27) (type default))
+          (fill (type none))
+        )
+      )
+      (symbol "MountingHole_Pad_1_1"
+        (pin input line (at 0 -2.54 90) (length 2.54)
+          (name "1" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+  )
+
+
+  (symbol (lib_id "01-HPM-Peripheral:MountingHole_Pad") (at 99.187 84.455 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 094bac67-8593-4dae-a152-f0e7a67857a2)
+    (property "Reference" "H?" (at 101.727 83.82 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 101.727 86.36 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "01_HPM_Peripheral:MountingHole_3.2mm_M3_Pad" (at 100.457 88.265 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 99.187 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid b045311a-c027-4299-acdd-386808051e75))
+    (instances
+      (project "HPM62_63_144_ADC_EVK_RevC"
+        (path "/1dc89c2d-757a-411a-b940-86240dccb980/bc71c1ca-378d-428f-938c-c46401305fc2"
+          (reference "H?") (unit 1)
+        )
+      )
+      (project "HPM6E00ADCEVKRevC"
+        (path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/0a18b315-61a2-46ea-af43-107654e65688"
+          (reference "H3") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "01-HPM-Peripheral:MountingHole_Pad") (at 58.547 84.455 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 309f1311-890d-4fc3-a632-405d4d952c41)
+    (property "Reference" "H?" (at 61.087 83.82 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 61.087 86.36 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "01_HPM_Peripheral:MountingHole_3.2mm_M3_Pad" (at 59.817 88.265 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 58.547 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid d8191f1d-95e1-46ae-a67d-ed9f0c7c8dbf))
+    (instances
+      (project "HPM62_63_144_ADC_EVK_RevC"
+        (path "/1dc89c2d-757a-411a-b940-86240dccb980/bc71c1ca-378d-428f-938c-c46401305fc2"
+          (reference "H?") (unit 1)
+        )
+      )
+      (project "HPM6E00ADCEVKRevC"
+        (path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/0a18b315-61a2-46ea-af43-107654e65688"
+          (reference "H1") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "01-HPM-Peripheral:MountingHole_Pad") (at 116.967 84.455 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 5397f2af-0723-41c4-8bbb-6c1aa92f3bbe)
+    (property "Reference" "H?" (at 119.507 83.82 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 119.507 86.36 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "01_HPM_Peripheral:MountingHole_3.2mm_M3_Pad" (at 118.237 88.265 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 116.967 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 38b08aae-9ff3-4c7e-a1c1-e1d47626267a))
+    (instances
+      (project "HPM62_63_144_ADC_EVK_RevC"
+        (path "/1dc89c2d-757a-411a-b940-86240dccb980/bc71c1ca-378d-428f-938c-c46401305fc2"
+          (reference "H?") (unit 1)
+        )
+      )
+      (project "HPM6E00ADCEVKRevC"
+        (path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/0a18b315-61a2-46ea-af43-107654e65688"
+          (reference "H4") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "01-HPM-Peripheral:MountingHole_Pad") (at 80.137 84.455 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b5f50f0d-bdcf-4c42-85cb-2f6203cd728b)
+    (property "Reference" "H?" (at 82.677 83.82 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 82.677 86.36 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "01_HPM_Peripheral:MountingHole_3.2mm_M3_Pad" (at 81.407 88.265 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 80.137 84.455 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 3096f41e-0c7b-4bd7-934a-ddd983f10d72))
+    (instances
+      (project "HPM62_63_144_ADC_EVK_RevC"
+        (path "/1dc89c2d-757a-411a-b940-86240dccb980/bc71c1ca-378d-428f-938c-c46401305fc2"
+          (reference "H?") (unit 1)
+        )
+      )
+      (project "HPM6E00ADCEVKRevC"
+        (path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/0a18b315-61a2-46ea-af43-107654e65688"
+          (reference "H2") (unit 1)
+        )
+      )
+    )
+  )
+)

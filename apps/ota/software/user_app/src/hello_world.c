@@ -16,6 +16,9 @@
 #include "uart_channel.h"
 #include "enet_channel.h"
 #include "usb_channel.h"
+#if defined(CONFIG_ECAT_FOE_CHANNEL) && CONFIG_ECAT_FOE_CHANNEL
+#include "ecat_foe.h"
+#endif
 
 #define LED_FLASH_PERIOD_IN_MS 300
 
@@ -46,6 +49,7 @@ void rgb_timer_create(uint32_t ms)
     gptmr_start_counter(HPM_GPTMR1, 1);
 }
 
+#if defined(CONFIG_USB_DEVICE_CHANNEL) && CONFIG_USB_DEVICE_CHANNEL
  /* Write file to flash */
 static int writefile_addr(unsigned int addr, unsigned char* data, int len)
 {
@@ -53,7 +57,7 @@ static int writefile_addr(unsigned int addr, unsigned char* data, int len)
     hpm_ota_auto_write_of_addr(addr, (void*)data, len, true);
     return 0;
 }
-
+#else
  /* Write file to flash */
 static int writefile(unsigned char* data, int len)
 {
@@ -61,10 +65,11 @@ static int writefile(unsigned char* data, int len)
     hpm_ota_auto_write((void*)data, len, true);
     return 0;
 }
+#endif
 
 int main(void)
 {
-    int u, ret;
+    int ret;
     board_init();
     board_init_led_pins();
 
@@ -94,6 +99,9 @@ int main(void)
 #elif defined(CONFIG_USB_HOST_CHANNEL) && CONFIG_USB_HOST_CHANNEL
     hpm_usb_host_channel_init();
     hpm_usb_host_block_task(writefile);
+#elif defined(CONFIG_ECAT_FOE_CHANNEL) && CONFIG_ECAT_FOE_CHANNEL
+    hpm_ecat_foe_init();
+    hpm_ecat_foe_task();
 #endif
 #endif
 

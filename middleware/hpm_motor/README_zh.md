@@ -188,6 +188,37 @@ cmd_gene_disable
 
 ![图9](doc/api/assets/9.png)
 
+### 惯量辨识算法
+为达到伺服控制系统的良好动静态特性，需要辨识出转动惯量，对系统控制参数进行调整。本库主要是为了说明惯量辨识原理、实现方式，原理请查看：[《hpm_motor库使用说明2.0》](doc/hpm_motor库使用说明2.0.pdf)
+
+该库函数使用步骤：
+1、使用前，电机需要设置为速度模式，需要对INTERIA_CalHdl的相关变量赋值：
+  INTERIA_CalHdl.INTERIA_InObj.flux = 永磁磁链幅值;//单位Wb
+
+  INTERIA_CalHdl.INTERIA_InObj.vel1 = 0.0000167*第一加速阶段最大速度（单位，r/min）;//可设置为350r/min
+
+  INTERIA_CalHdl.INTERIA_InObj.cycle = 10;//辨识过程一共10次连续加减速
+
+  INTERIA_CalHdl.INTERIA_InObj.interia_start = 1;//1：启动惯量辨识，0：不启动惯量辨识
+
+  INTERIA_CalHdl.INTERIA_InObj.kk = 4;//第二阶段的加速度是第一阶段加速度的KK倍
+
+  INTERIA_CalHdl.INTERIA_InObj.step = 500；//单位ms，每段加速时间500ms
+
+  INERTIA_CalObj.INTERIA_InObj.iq = 三相永磁同步电机Q轴反馈电流;//单位：A
+
+  INERTIA_CalObj.INTERIA_InObj.speed_fdk = 反馈速度;//单位，r/s
+
+  INERTIA_CalObj.INTERIA_InObj.poles = 三相永磁同步电机极对数;//
+
+2、函数调用：interia_cal_process(&INERTIA_CalObj)；
+
+3、指令速度 = INERTIA_CalObj.INTERIA_UserObj.Vel_out*1000；//单位r/s
+
+4、惯量结果存放变量：INTERIA_CalHdl->INTERIA_OutObj.J，单位（𝑘𝑔 ∙ 𝑚2）。//前提是惯量辨识已经结束，即INERTIA_CalObj.INTERIA_OutObj.status = 0。
+
+
+
 ## API
 
 :::{eval-rst}

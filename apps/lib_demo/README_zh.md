@@ -6,7 +6,7 @@
 
 1.0版本电机库仅包含轨迹规划算法。
 
-[hpm_motor 库说明](hpm_motor_instruction_zh)
+[hpm_motor 库说明2.0](hpm_motor_instruction_zh)
 
 ## 例程
 

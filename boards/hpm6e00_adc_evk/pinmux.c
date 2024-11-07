@@ -1,0 +1,231 @@
+/*
+ * Copyright (c) 2023 hpmicro
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ */
+
+/*
+ * Note:
+ *   PY and PZ IOs: if any SOC pin function needs to be routed to these IOs,
+ *  besides of IOC, PIOC/BIOC needs to be configured SOC_GPIO_X_xx, so that
+ *  expected SoC function can be enabled on these IOs.
+ *
+ */
+#include "board.h"
+
+void init_uart_pins(UART_Type *ptr)
+{
+    if (ptr == HPM_UART0) {
+        HPM_IOC->PAD[IOC_PAD_PA00].FUNC_CTL = IOC_PA00_FUNC_CTL_UART0_TXD;
+        HPM_IOC->PAD[IOC_PAD_PA01].FUNC_CTL = IOC_PA01_FUNC_CTL_UART0_RXD;
+    } else if (ptr == HPM_UART1) {
+        HPM_IOC->PAD[IOC_PAD_PA07].FUNC_CTL = IOC_PA07_FUNC_CTL_UART1_TXD;
+        HPM_IOC->PAD[IOC_PAD_PA06].FUNC_CTL = IOC_PA06_FUNC_CTL_UART1_RXD;
+    } else if (ptr == HPM_UART2) {
+        HPM_IOC->PAD[IOC_PAD_PA08].FUNC_CTL = IOC_PA08_FUNC_CTL_UART2_TXD;
+        HPM_IOC->PAD[IOC_PAD_PA09].FUNC_CTL = IOC_PA09_FUNC_CTL_UART2_RXD;
+    } else if (ptr == HPM_UART6) {
+        HPM_IOC->PAD[IOC_PAD_PA24].FUNC_CTL = IOC_PA24_FUNC_CTL_UART6_TXD;
+        HPM_IOC->PAD[IOC_PAD_PA25].FUNC_CTL = IOC_PA25_FUNC_CTL_UART6_RXD;
+    } else if (ptr == HPM_UART11) {
+        HPM_IOC->PAD[IOC_PAD_PB14].FUNC_CTL = IOC_PB14_FUNC_CTL_UART11_RXD;
+        HPM_IOC->PAD[IOC_PAD_PB15].FUNC_CTL = IOC_PB15_FUNC_CTL_UART11_TXD;
+    } else if (ptr == HPM_UART13) {
+        HPM_IOC->PAD[IOC_PAD_PB23].FUNC_CTL = IOC_PB23_FUNC_CTL_UART13_TXD;
+        HPM_IOC->PAD[IOC_PAD_PB22].FUNC_CTL = IOC_PB22_FUNC_CTL_UART13_RXD;
+    } else {
+        ;
+    }
+}
+
+void init_uart_pin_as_gpio(UART_Type *ptr)
+{
+    if (ptr == HPM_UART5) {
+        /* pull-up */
+        HPM_IOC->PAD[IOC_PAD_PC22].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1);
+        HPM_IOC->PAD[IOC_PAD_PC23].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1);
+
+        HPM_IOC->PAD[IOC_PAD_PC22].FUNC_CTL = IOC_PC22_FUNC_CTL_GPIO_C_22;
+        HPM_IOC->PAD[IOC_PAD_PC23].FUNC_CTL = IOC_PC23_FUNC_CTL_GPIO_C_23;
+    }
+}
+
+
+void init_gpio_pins(void)
+{
+    /* configure pad setting: pull enable and pull up, schmitt trigger enable */
+    /* enable schmitt trigger to eliminate jitter of pin used as button */
+
+    /* Button */
+    uint32_t pad_ctl = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1) | IOC_PAD_PAD_CTL_HYS_SET(1);
+    HPM_IOC->PAD[IOC_PAD_PA10].FUNC_CTL = IOC_PA10_FUNC_CTL_GPIO_A_10;
+    HPM_IOC->PAD[IOC_PAD_PA10].PAD_CTL = pad_ctl;
+}
+
+
+void init_gptmr_pins(GPTMR_Type *ptr)
+{
+    if (ptr == HPM_GPTMR0) {
+        HPM_IOC->PAD[IOC_PAD_PC06].FUNC_CTL = IOC_PC06_FUNC_CTL_GPTMR0_CAPT_0;
+        HPM_IOC->PAD[IOC_PAD_PC07].FUNC_CTL = IOC_PC07_FUNC_CTL_GPTMR0_COMP_0;
+        HPM_IOC->PAD[IOC_PAD_PC08].FUNC_CTL = IOC_PC08_FUNC_CTL_GPTMR0_COMP_1;
+    }
+}
+
+
+void init_butn_pins(void)
+{
+    /* configure pad setting: pull enable and pull up, schmitt trigger enable */
+    /* enable schmitt trigger to eliminate jitter of pin used as button */
+
+    /* Button */
+    uint32_t pad_ctl = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1) | IOC_PAD_PAD_CTL_HYS_SET(1);
+    HPM_IOC->PAD[IOC_PAD_PA10].FUNC_CTL = IOC_PA10_FUNC_CTL_GPIO_A_10;
+    HPM_IOC->PAD[IOC_PAD_PA10].PAD_CTL = pad_ctl;
+}
+
+void init_acmp_pins(void)
+{
+}
+
+void init_pwm_fault_pins(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PB05].FUNC_CTL = IOC_PB05_FUNC_CTL_TRGM_P_05;
+}
+
+void init_pwm_pins(PWMV2_Type *ptr)
+{
+    if (ptr == HPM_PWM0) {
+        HPM_IOC->PAD[IOC_PAD_PE00].FUNC_CTL = IOC_PE00_FUNC_CTL_PWM0_P_0;    /* Motor CON1 */
+        HPM_IOC->PAD[IOC_PAD_PE01].FUNC_CTL = IOC_PE01_FUNC_CTL_PWM0_P_1;
+        HPM_IOC->PAD[IOC_PAD_PE02].FUNC_CTL = IOC_PE02_FUNC_CTL_PWM0_P_2;
+        HPM_IOC->PAD[IOC_PAD_PE03].FUNC_CTL = IOC_PE03_FUNC_CTL_PWM0_P_3;
+        HPM_IOC->PAD[IOC_PAD_PE04].FUNC_CTL = IOC_PE04_FUNC_CTL_PWM0_P_4;
+        HPM_IOC->PAD[IOC_PAD_PE05].FUNC_CTL = IOC_PE05_FUNC_CTL_PWM0_P_5;
+    } else if (ptr == HPM_PWM1) {
+        HPM_IOC->PAD[IOC_PAD_PE08].FUNC_CTL = IOC_PE08_FUNC_CTL_PWM1_P_0;    /* Motor CON2 */
+        HPM_IOC->PAD[IOC_PAD_PE09].FUNC_CTL = IOC_PE09_FUNC_CTL_PWM1_P_1;
+        HPM_IOC->PAD[IOC_PAD_PE10].FUNC_CTL = IOC_PE10_FUNC_CTL_PWM1_P_2;
+        HPM_IOC->PAD[IOC_PAD_PE11].FUNC_CTL = IOC_PE11_FUNC_CTL_PWM1_P_3;
+        HPM_IOC->PAD[IOC_PAD_PE12].FUNC_CTL = IOC_PE12_FUNC_CTL_PWM1_P_4;
+        HPM_IOC->PAD[IOC_PAD_PE13].FUNC_CTL = IOC_PE13_FUNC_CTL_PWM1_P_5;
+    } else if (ptr == HPM_PWM2) {
+        HPM_IOC->PAD[IOC_PAD_PE16].FUNC_CTL = IOC_PE16_FUNC_CTL_PWM2_P_0;    /* Motor CON3 */
+        HPM_IOC->PAD[IOC_PAD_PE17].FUNC_CTL = IOC_PE17_FUNC_CTL_PWM2_P_1;
+        HPM_IOC->PAD[IOC_PAD_PE18].FUNC_CTL = IOC_PE18_FUNC_CTL_PWM2_P_2;
+        HPM_IOC->PAD[IOC_PAD_PE19].FUNC_CTL = IOC_PE19_FUNC_CTL_PWM2_P_3;
+        HPM_IOC->PAD[IOC_PAD_PE20].FUNC_CTL = IOC_PE20_FUNC_CTL_PWM2_P_4;
+        HPM_IOC->PAD[IOC_PAD_PE21].FUNC_CTL = IOC_PE21_FUNC_CTL_PWM2_P_5;
+    } else if (ptr == HPM_PWM3) {
+        HPM_IOC->PAD[IOC_PAD_PE24].FUNC_CTL = IOC_PE24_FUNC_CTL_PWM3_P_0;    /* Motor CON4 */
+        HPM_IOC->PAD[IOC_PAD_PE25].FUNC_CTL = IOC_PE25_FUNC_CTL_PWM3_P_1;
+        HPM_IOC->PAD[IOC_PAD_PE26].FUNC_CTL = IOC_PE26_FUNC_CTL_PWM3_P_2;
+        HPM_IOC->PAD[IOC_PAD_PE27].FUNC_CTL = IOC_PE27_FUNC_CTL_PWM3_P_3;
+        HPM_IOC->PAD[IOC_PAD_PE28].FUNC_CTL = IOC_PE28_FUNC_CTL_PWM3_P_4;
+        HPM_IOC->PAD[IOC_PAD_PE29].FUNC_CTL = IOC_PE29_FUNC_CTL_PWM3_P_5;
+    } else {
+        ;
+    }
+}
+
+void init_usb_pins(void)
+{
+    /* USB0_ID */
+    HPM_IOC->PAD[IOC_PAD_PF22].FUNC_CTL = IOC_PF22_FUNC_CTL_USB0_ID;
+    /* USB0_OC */
+    HPM_IOC->PAD[IOC_PAD_PF23].FUNC_CTL = IOC_PF23_FUNC_CTL_USB0_OC;
+    /* USB0_PWR */
+    HPM_IOC->PAD[IOC_PAD_PF19].FUNC_CTL = IOC_PF19_FUNC_CTL_USB0_PWR;
+}
+
+void init_adc16_pins(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PF04].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC0/1.IN3 */
+    HPM_IOC->PAD[IOC_PAD_PF14].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC0/1.IN6 */
+    HPM_IOC->PAD[IOC_PAD_PF15].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC0/1.IN7 */
+    HPM_IOC->PAD[IOC_PAD_PF16].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC2/3.IN8 */
+    HPM_IOC->PAD[IOC_PAD_PF17].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC2/3.IN12 */
+}
+
+void init_adc_qeiv2_pins(void)
+{
+    /* Motor CON1 */
+    HPM_IOC->PAD[IOC_PAD_PF03].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC_B: ADC0.13 / ADC1.13 : cos_ch  */
+    HPM_IOC->PAD[IOC_PAD_PF28].FUNC_CTL = IOC_PAD_FUNC_CTL_ANALOG_MASK;        /* ADC_C: ADC2.5 / ADC3.5   : sin_ch  */
+}
+
+void init_led_pins(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PA09].FUNC_CTL = IOC_PA09_FUNC_CTL_GPIO_A_09;
+}
+
+void init_led_pins_as_gpio(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PA09].FUNC_CTL = IOC_PA09_FUNC_CTL_GPIO_A_09;
+}
+
+void init_led_pins_as_pwm(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PA09].FUNC_CTL = IOC_PA09_FUNC_CTL_TRGM_P_09;
+}
+
+void init_plb_pins(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PB02].FUNC_CTL = IOC_PB02_FUNC_CTL_TRGM_P_02;
+}
+
+/* ESC input/output demo pins */
+void init_switch_led_pins(void)
+{
+    /* switch */
+    HPM_IOC->PAD[IOC_PAD_PD30].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD26].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD20].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD16].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC28].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD10].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD06].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PD02].FUNC_CTL = 0;
+
+    HPM_IOC->PAD[IOC_PAD_PD30].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD26].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD20].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD16].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC28].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD10].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD06].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PD02].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+
+    HPM_IOC->PAD[IOC_PAD_PC00].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC04].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC14].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC10].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC20].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC24].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC30].FUNC_CTL = 0;
+    HPM_IOC->PAD[IOC_PAD_PC08].FUNC_CTL = 0;
+
+    HPM_IOC->PAD[IOC_PAD_PC00].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC04].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC14].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC10].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC20].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC24].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC30].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+    HPM_IOC->PAD[IOC_PAD_PC08].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(0);
+}
+
+
+void init_tamper_pins(void)
+{
+}
+
+/* for uart_rx_line_status case, need to a gpio pin to sent break signal */
+void init_uart_break_signal_pin(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PA05].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1);
+    HPM_IOC->PAD[IOC_PAD_PA05].FUNC_CTL = IOC_PA05_FUNC_CTL_GPIO_A_05;
+}
+
+

@@ -46,7 +46,9 @@
 // /------------------/
 // /     FAFTS        / 1M
 // /------------------/
-// /      USER        / 256k
+// / EEPROM emulation / 64K
+// /------------------/
+// /      USER        / 192k
 // /------------------/
 
 #define FLASH_ADDR_BASE          (0x80000000)
@@ -84,7 +86,10 @@
 #define FLASH_FILESYSTEM_ADDR    (FLASH_KEYVALUE2_ADDR + FLASH_KEYVALUE2_SIZE)
 #define FLASH_FILESYSTEM_SIZE    (0x100000)
 
-#define FLASH_USER_COMMON_ADDR   (FLASH_FILESYSTEM_ADDR + FLASH_FILESYSTEM_SIZE)
+#define FLASH_EEPROM_ADDR        (FLASH_FILESYSTEM_ADDR + FLASH_FILESYSTEM_SIZE)
+#define FLASH_EEPROM_SIZE        (0x10000)
+
+#define FLASH_USER_COMMON_ADDR   (FLASH_EEPROM_ADDR + FLASH_EEPROM_SIZE)
 #define FLASH_USER_COMMON_SIZE   (0x40000)
 #else
 //1M

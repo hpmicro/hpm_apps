@@ -123,9 +123,9 @@ Perform ground wrapping on both DQS and clock lines, and ensure that all routing
 The actual impedance may have some deviation from the design impedance.
 
 ### DDR DEMO schematic diagram
-View hardware schematic[HPM6880-DDR2-CORE-Reva](doc/../hardware/HPM6880_DDR2_CORE_RevA.pdf)
+View hardware schematic[HPM6880-DDR2-CORE-Reva](hardware/HPM6880_DDR2_CORE_RevA.pdf)
 
-View hardware schematic[HPM6880-DDR3-CORE-RevB](doc/../hardware/HPM6880_DDR3_CORE_RevB.pdf)
+View hardware schematic[HPM6880-DDR3-CORE-RevB](hardware/HPM6880_DDR3_CORE_RevB.pdf)
 
 ###DDR DEMO device connection
 
@@ -145,7 +145,7 @@ The physical DDR2 is shown in the figure:
 
 The physical DDR3 is shown in the figure:
 
-![window gui create project](doc/API/assets/ddr3_demo_pcb.jpg)
+![window gui create project](doc/api/assets/ddr3_demo_pcb.jpg)
 
 #### Port settings
 

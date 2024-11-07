@@ -3,4 +3,5 @@
 
 sdk_src(
     libhpm_motor.a
+    libhpm_motor_inertia_identification.a	
     )

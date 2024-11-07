@@ -379,6 +379,156 @@ CMakeLists.txt选择USB host msc通道->构建->编译->烧录。
 
 ![usb_host_env4](doc/api/assets/usb_host_env4.png)
 
+#### 基于ECAT通道升级
+
+ECAT通道基于FOE协议。
+ECAT_FOE示例用于演示基于HPM6E80的ECAT外设和从站协议栈代码(SSC)实现ECAT FOE读写从站文件的功能。
+
+##### 1.准备
+
+请参照HPM_SDK samples/ethercat/ecat_io的README
+
+##### 2.工程设置
+
+请参照HPM_SDK samples/ethercat/ecat_io的README
+
+##### 3.生成ECAT通道从站协议栈代码
+
+由于许可问题, HPM_APPS不提供EtherCAT从站协议栈代码(SSC), 用户须从倍福官网下载SSC Tool并生成从站协议栈代码
+该功能需要需要使用SSC tool生成协议站代码，之后才能正确够构建编译。
+请参照HPM_SDK samples/ethercat/ecat_io的README
+
+##### 4.SSC Tool中导入配置文件
+
+配置文件路径为: ota/software/common/channel/ecat/SSC/Config/HPM_ECAT_FOE_Config.xml
+
+##### 5.SSC Tool中创建新的工程
+  应用文件路径为：ota/software/common/channel/ecat/SSC/foe.xlsx
+
+##### 6.生成协议栈代码
+  协议栈代码输出路径为: ota/software/common/channel/ecat/SSC/Src
+
+##### 7.TwinCAT工程设置
+  请参照ECAT_IO的README
+
+##### 8.添加ESI文件
+  ESI文件名称: ECAT_FOE.xml
+
+##### 9.工程设置
+
+在文件`CMakeLists.txt`中
+选择ECAT_FOE通道(设置"set(CONFIG_ECAT_FOE_CHANNEL 1)")， 然后构建->编译->烧录。
+使用实际eeprom时, 设置"set(CONFIG_EEPROM_EMULATION 0)"
+
+##### 10.工程编译运行
+
+构建工程，并编译运行。
+设备ECAT网口连接PC网口。
+
+##### 11.软件配置
+
+  请参照ECAT_IO的README
+
+##### 12.扫描设备
+
+  请参照ECAT_IO的README
+
+##### 13.更新EEPROM
+
+  请选择**foe**设备描述文件
+  ![](doc/api/assets/twincat_eeprom_update.png)
+
+
+##### 14.FOE操作
+
+  1. 设置MailBox timeout时间(当文件比较大时， 需要调整timeout时间)
+  ![](doc/api/assets/twincat_device_timeout.png)
+  2. 选择从站， 进入Bootstrap模式
+  ![](doc/api/assets/twincat_device_bootstrap.png)
+  3. 进入Bootstrap模式后， 下载文件到从站
+    点击Download
+    ![](doc/api/assets/twincat_foe_download_1.png)
+    选择要下载的文件，注意：此文件为脚本签名之后的文件(update_sign.bin)
+    ![](doc/api/assets/twincat_foe_download_2.png)
+    编辑文件名称和密码， 文件名称是：**app**; 密码是：**87654321**.
+    ![](doc/api/assets/twincat_foe_download_3.png)
+    等待写进度条完成
+    (注意: 下载完成后，并不会立即重启，需退出Bootstrap模式才可以会重启跳转到新的固件中。)
+  4. 进入Bootstrap模式后，从从站读取文件
+    点击Uplaod
+    ![](doc/api/assets/twincat_foe_read_1.png)
+    选择文件保存文件和名称
+    ![](doc/api/assets/twincat_foe_read_2.png)
+    编辑文件名称和密码， 文件名称是：**app**; 密码是：**87654321**. (注意:文件名称和密码是固定的)
+    ![](doc/api/assets/twincat_foe_download_3.png)
+    等待读进度条完成
+  5. 退出Bootstrap模式
+    点击Init.
+    退出Bootstrap，重启跳转新固件运行。
+
+##### 15. 运行现象
+
+当工程正确运行后, 串口终端会输出如下信息：
+当EEPROM未被初始化时，输出如下信息提示需要初始化EEPROM内容。
+
+```console
+EtherCAT FOE sample
+Write or Read file from flash by FOE
+EEPROM loading with checksum error.
+EtherCAT communication is possible even if the EEPROM is blank(checksum error),
+but PDI not operational, please update eeprom  context.
+```
+
+当EEPROM被正确初始化后， 输出如下信息， 在Twincat中可以进行文件写读操作，对比写下去与读回来的文件保持一致。
+
+```console
+EtherCAT IO sample
+Write or Read file from flash by FOE
+EEPROM loading successful, no checksum error.
+```
+
+固件下载中
+
+```console
+EEPROM loading successful, no checksum error.
+Write file start
+ota0, device:0x0048504D, length:85416, version:1728558561, hash_type:0x00000004
+ota0 data download...
+complete checksum and reset!
+
+ota success!
+
+Write file finish
+```
+
+退出Bootstrap模式，重启跳转新固件运行
+
+```console
+system reset...
+
+----------------------------------------------------------------------
+$$\   $$\ $$$$$$$\  $$\      $$\ $$\
+$$ |  $$ |$$  __$$\ $$$\    $$$ |\__|
+$$ |  $$ |$$ |  $$ |$$$$\  $$$$ |$$\  $$$$$$$\  $$$$$$\   $$$$$$\
+$$$$$$$$ |$$$$$$$  |$$\$$\$$ $$ |$$ |$$  _____|$$  __$$\ $$  __$$\
+$$  __$$ |$$  ____/ $$ \$$$  $$ |$$ |$$ /      $$ |  \__|$$ /  $$ |
+$$ |  $$ |$$ |      $$ |\$  /$$ |$$ |$$ |      $$ |      $$ |  $$ |
+$$ |  $$ |$$ |      $$ | \_/ $$ |$$ |\$$$$$$$\ $$ |      \$$$$$$  |
+\__|  \__|\__|      \__|     \__|\__| \_______|\__|       \______/
+----------------------------------------------------------------------
+boot user
+
+ver1:1728558561,ver2:1726018801
+
+APP0, verify SUCCESS!
+
+APP index:0
+hello world, THIS OTA0
+ECAT FOE Funcation
+EEPROM loading successful, no checksum error.
+
+```
+
 
 ## API
 

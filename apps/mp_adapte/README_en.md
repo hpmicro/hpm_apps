@@ -254,7 +254,7 @@ none
 
 ## Code Build
 - Build for windows
-![WIN](doc/api/assets/mp_adapte_build.png)
+![WIN](doc/api/assets/windows_build.png)
 
 
 - Build for linux

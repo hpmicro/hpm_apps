@@ -14,5 +14,10 @@
    led_screen/README_zh
    lib_demo/README_zh
    rdc/README_zh
+   hpm_monitor/README_zh
+   nor_flash/README_zh
+   ethercat_master/README_zh
+   i2s_dma_chain/README_zh
+   ethernet_loopnet/README_zh
 
 :::

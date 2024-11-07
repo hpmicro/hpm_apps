@@ -250,7 +250,7 @@ int main(void)
 
 ## 工程构建
 - windows下工程构建
-![WIN构建](doc/api/assets/mp_adapte_build.png)
+![WIN构建](doc/api/assets/windows_build.png)
 
 - linux工程构建编译
 ```shell
@@ -261,7 +261,7 @@ int main(void)
     //切换目录到"build"
     cd build
     //Ninja-build产生构建文件
-    cmake -GNinja -DBOARD_SEARCH_PATH=/home/work/workspace/hpm_apps/boards -DBOARD=hpm6200power -DCMAKE_BUILD_TYPE=flash_xip ..
+    cmake -GNinja -DBOARD_SEARCH_PATH=/home/work/workspace/hpm_apps/boards -DBOARD=hpm6200power -DCMAKE_BUILD_TYPE=debug ..
     //编译
     ninja
   ```

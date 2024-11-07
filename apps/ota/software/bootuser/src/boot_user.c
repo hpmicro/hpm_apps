@@ -13,6 +13,10 @@
 #include "uart_channel.h"
 #include "enet_channel.h"
 #include "usb_channel.h"
+#if defined(CONFIG_ECAT_FOE_CHANNEL) && CONFIG_ECAT_FOE_CHANNEL
+#include "ecat_foe.h"
+#endif
+
 
 
 #ifndef BIT
@@ -136,7 +140,8 @@ int bootuser_check_jump_app(bool pbutn_enable)
     return -1;
 }
 
-static uint8_t reboot = 0;
+#if defined(CONFIG_USB_DEVICE_CHANNEL) && CONFIG_USB_DEVICE_CHANNEL
+
  /* Write file to flash */
 static int boot_writefile_addr(unsigned int addr, unsigned char* data, int len)
 {
@@ -145,6 +150,9 @@ static int boot_writefile_addr(unsigned int addr, unsigned char* data, int len)
     return 0;
 }
 
+#else
+
+static uint8_t reboot = 0;
 static int boot_writefile(unsigned char *data, int len)
 {
     /* First packet contain file header info */
@@ -154,6 +162,7 @@ static int boot_writefile(unsigned char *data, int len)
     }
     return 0;
 }
+#endif
 
 int main(void)
 {
@@ -205,6 +214,9 @@ int main(void)
 #elif defined(CONFIG_USB_HOST_CHANNEL) && CONFIG_USB_HOST_CHANNEL
     hpm_usb_host_channel_init();
     hpm_usb_host_block_task(boot_writefile);
+#elif defined(CONFIG_ECAT_FOE_CHANNEL) && CONFIG_ECAT_FOE_CHANNEL
+    hpm_ecat_foe_init();
+    hpm_ecat_foe_task();
 #endif
     while (1)
     {

@@ -7,5 +7,6 @@
 
    adc/README_zh
    ddr/README_zh
+   daugherboard/README_zh
 
 :::

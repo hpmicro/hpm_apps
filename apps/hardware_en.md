@@ -7,5 +7,6 @@
 
    adc/README_en
    ddr/README_en
+   daugherboard/README_en
 
 :::

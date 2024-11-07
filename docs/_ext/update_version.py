@@ -22,6 +22,7 @@ from sphinx.util import logging
 __version__ = "0.1.0"
 
 # logger = logging.getLogger(__name__)
+HPM_APP_BASE = Path(__file__).resolve().parents[2]
 
 def update_version_in_file(filename, new_version):
     try:
@@ -29,7 +30,7 @@ def update_version_in_file(filename, new_version):
         with open(filename, 'rb') as f:
             result = chardet.detect(f.read())
             input_encoding = result['encoding']
-        
+
         # 使用检测到的编码读取输入文件内容
         with open(filename, 'r', encoding=input_encoding) as file:
             content = file.read()
@@ -77,14 +78,8 @@ def updateversion_sphinx_run(app: Sphinx) -> None:
 
     print("\033[92m:{}\033[0m".format("Build: update version start...."))
 
-    if app.config.hpm_app_base:
-        outdir = Path(app.config.hpm_app_base)
-        update_version_auto(outdir)
-        print("\033[92m:{}\033[0m".format("Done: udpate version over!"))
-    else:
-        print("\033[1;31mError:{} \033[0m".format("hpm_app dir error!"))
-        sys.exit(1)
-
+    update_version_auto(str(HPM_APP_BASE))
+    print("\033[92m:{}\033[0m".format("Done: udpate version over!"))
 
 def setup(app: Sphinx) -> Dict[str, Any]:
     # app.add_config_value("doxyrunner_doxygen", None, "env")
@@ -120,6 +115,6 @@ def main(argv):
 
 if __name__ == '__main__':
     main(sys.argv)
-    
 
-    
+
+

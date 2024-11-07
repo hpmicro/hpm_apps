@@ -1,0 +1,15 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 83eb6482-3d55-41a5-b61c-b569186b38b5)
+
+  (paper "A3")
+
+  (lib_symbols
+  )
+
+
+  (hierarchical_label "DAC_OUT0" (shape input) (at 67.945 61.595 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 9927364b-427e-49cd-944b-82e90abcc491)
+  )
+)

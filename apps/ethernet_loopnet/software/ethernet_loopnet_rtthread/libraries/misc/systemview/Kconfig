@@ -1,0 +1,266 @@
+menuconfig RT_USING_SYSTEMVIEW
+    bool "Segger SystemView"
+    default n
+    select RT_USING_HOOK
+
+if RT_USING_SYSTEMVIEW
+
+    config RT_SYSVIEW_APP_NAME
+        string "App name"
+        default "RT-Thread&HPMicro Trace"
+        ---help---
+            The application name to be displayed in SystemViewer UI
+
+    config RT_SYSVIEW_DEVICE_NAME
+        string "Device name"
+        default "HPM6750xVMx"
+        ---help---
+            The target device name
+
+    config RT_SYSVIEW_TIMESTAMP_FREQ
+        int "Timestap freq"
+        default 816000000
+        ---help---
+            Frequency of the timestamp. Must match SEGGER_SYSVIEW_Conf.h. 0: using SystemCoreClock
+
+    config RT_SYSVIEW_CPU_FREQ
+        int "cpu freq"
+        default 816000000
+        ---help---
+            System Frequency. SystemcoreClock is used in most CMSIS compatible projects. 0: using SystemCoreClock
+
+    config RT_SYSVIEW_RAM_BASE
+        hex 
+        default 0x0
+        ---help---
+            The lowest RAM address used for IDs (pointers)
+
+    config RT_SYSVIEW_EVENTID_OFFSET
+        int "Event ID offset"
+        default 32
+
+    config RT_SYSVIEW_SYSDESC0
+        string "System description 0"
+        default "I#2055=mchtmr"
+        ---help---
+            format is "I#%num%=%name%, ..." number is IRQ number, name is IRQ name
+
+    config RT_SYSVIEW_SYSDESC1
+        string "System description 1"
+        default ""
+        ---help---
+            format is "I#%num%=%name%, ..." number is IRQ number, name is IRQ name
+
+    config RT_SYSVIEW_SYSDESC2
+        string "System description 2"
+        default ""
+        ---help---
+            format is "I#%num%=%name%, ..." number is IRQ number, name is IRQ name
+
+    menu "Segger RTT configuration"
+        config RT_SEGGER_RTT_MAX_NUM_UP_BUFFERS
+            int "Max num of up buffer"
+            default 3
+            ---help---
+                Max. number of up-buffers (T->H) available on this target
+
+        config RT_SEGGER_RTT_MAX_NUM_UP_BUFFERS
+            int "Max num of dowm buffer"
+            default 3
+            ---help---
+                Max. number of down-buffers (H->T) available on this target
+
+        config RT_SEGGER_RTT_BUFFER_SIZE_UP
+            int "buffer size up"
+            default 4096
+            ---help---
+                Size of the buffer for terminal output of target, up to host
+
+        config RT_SEGGER_RTT_BUFFER_SIZE_DOWN
+            int "buffer size down"
+            default 16
+            ---help---
+                Size of the buffer for terminal input to target from host (Usually keyboard input)
+
+        config RT_SEGGER_RTT_PRINTF_BUFFER_SIZE
+            int "Segger RTT printf buffer size"
+            default 64
+            ---help---
+                Size of buffer for RTT printf to bulk-send chars via RTT
+
+        config RT_SEGGER_RTT_AS_SERIAL_DEVICE
+            bool "Use Segger RTT channel 0 as RT-Thread Serial Device"
+            default y
+
+        if RT_SEGGER_RTT_AS_SERIAL_DEVICE
+            config RT_SERIAL_DEVICE_NAME
+                string "Segger-RTT Serial Device Name"
+                default "segger"
+        endif
+
+        choice
+            prompt "Mode for pre-initialized terminal channel"
+            default RT_SEGGER_RTT_MODE_ENABLE_NO_BLOCK_SKIP
+            ---help---
+                Select the Mode for pre-initialized terminal channel (buffer 0)
+            config RT_SEGGER_RTT_MODE_ENABLE_NO_BLOCK_SKIP
+                bool "No block skip"
+                ---help---
+                    Skip. Do not block, output nothing.
+            config RT_SEGGER_RTT_MODE_ENABLE_NO_BLOCK_TRIM
+                bool "No block trim"
+                ---help---
+                    Trim: Do not block, output as much as fits.
+            config RT_SEGGER_RTT_MODE_ENABLE_BLOCK_IF_FIFO_FULL
+                bool "block if fifo full"
+                ---help---
+                    Block: Wait until there is space in the buffer
+        endchoice
+
+        config RT_SEGGER_RTT_MAX_INTERRUPT_PRIORITY
+            hex "Max Interrupt priority"
+            default 0x20
+            ---help---
+                Target is not allowed to perform other RTT operations while string still has not been stored completely.
+                Otherwise we would probably end up with a mixed string in the buffer.
+                If using  RTT from within interrupts, multiple tasks or multi processors, define the SEGGER_RTT_LOCK() and SEGGER_RTT_UNLOCK() function here.
+                SEGGER_RTT_MAX_INTERRUPT_PRIORITY can be used in the sample lock routines on Cortex-M3/4.
+                Make sure to mask all interrupts which can send RTT data, i.e. generate SystemView events, or cause task switches.
+                When high-priority interrupts must not be masked while sending RTT data, SEGGER_RTT_MAX_INTERRUPT_PRIORITY needs to be adjusted accordingly.
+                (Higher priority = lower priority number)
+
+
+        config RT_SEGGER_RTT_USE_RTT_ASM
+            bool "Use RTT ASM"
+            default 64
+            ---help---
+                n:disable, y:Use assembler version of SEGGER_RTT.c
+
+        config RT_SEGGER_RTT_MEMCPY_USE_BYTELOOP
+            bool "memcpy use byte-loop"
+            default n
+            ---help---
+                n: Use memcpy/SEGGER_RTT_MEMCPY, y: Use a simple byte-loop
+    endmenu
+
+    menu "SystemView buffer configuration"
+        config RT_SEGGER_SYSVIEW_RTT_BUFFER_SIZE
+            int "RTT buffer size"
+            default 2048
+            ---help---
+                Number of bytes that SystemView uses for the buffer
+
+        config RT_SEGGER_SYSVIEW_RTT_CHANNEL
+            int "RTT channel"
+            default 1
+            ---help---
+                The RTT channel that SystemView will use. 0: Auto selection
+
+        config RT_SEGGER_SYSVIEW_USE_STATIC_BUFFER
+            bool "Use static buffer"
+            default y
+            ---help---
+                Use a static buffer to generate events instead of a buffer on the stack
+
+        config RT_SEGGER_SYSVIEW_POST_MORTEM_MODE
+            bool "Enable post mortem analysis mode"
+            default n
+            ---help---
+                n: disable, y: Enable post mortem analysis mode"
+
+    endmenu
+
+    menu "SystemView rtthread hook register"
+        config RT_SEGGER_SYSVIEW_OBJ_ATTACH_HOOK
+            bool "Use obj attach hook"
+            default n
+            ---help---
+                Use rt_object_attach_sethook
+
+        config RT_SEGGER_SYSVIEW_OBJ_DETACH_HOOK
+            bool "Use obj detath hook"
+            default n
+            ---help---
+                Use rt_object_detach_sethook
+
+        config RT_SEGGER_SYSVIEW_OBJ_TRYTAKE_HOOK
+            bool "Use obj trytake hook"
+            default n
+            ---help---
+                Use rt_object_trytake_sethook
+        
+        config RT_SEGGER_SYSVIEW_OBJ_TAKE_HOOK
+            bool "Use obj take hook"
+            default n
+            ---help---
+                Use rt_object_take_sethook
+
+        config RT_SEGGER_SYSVIEW_OBJ_PUT_HOOK
+            bool "Use obj put hook"
+            default n
+            ---help---
+                Use rt_object_put_sethook
+        
+        config RT_SEGGER_SYSVIEW_THREAD_SUSPEND_HOOK
+            bool "Use thread suspend hook"
+            default y
+            ---help---
+                Use rt_thread_suspend_sethook
+
+        config RT_SEGGER_SYSVIEW_THREAD_RESUME_HOOK
+            bool "Use thread resume hook"
+            default y
+            ---help---
+                Use rt_thread_resume_sethook
+
+        config RT_SEGGER_SYSVIEW_THREAD_INITED_HOOK
+            bool "Use thread inited hook"
+            default y
+            ---help---
+                Use rt_thread_inited_sethook
+
+        config RT_SEGGER_SYSVIEW_SCHEDULER_HOOK
+            bool "Use scheduler hook"
+            default y
+            ---help---
+                Use rt_scheduler_sethook
+
+        config RT_SEGGER_SYSVIEW_TIMER_ENTER_HOOK
+            bool "Use timer enter hook"
+            default n
+            ---help---
+                Use rt_timer_enter_sethook
+
+        config RT_SEGGER_SYSVIEW_TIMER_EXIT_HOOK
+            bool "Use timer exit hook"
+            default n
+            ---help---
+                Use rt_timer_exit_sethook
+
+        config RT_SEGGER_SYSVIEW_INTERRUPT_ENTER_HOOK
+            bool "Use interrupt enter hook"
+            default y
+            ---help---
+                Use rt_interrupt_enter_sethook
+
+        config RT_SEGGER_SYSVIEW_INTERRUPT_LEAVE_HOOK
+            bool "Use interrupt leave hook"
+            default y
+            ---help---
+                Use rt_interrupt_leave_sethook
+    endmenu
+
+    menu "SystemView Id configuration"
+        config RT_SEGGER_SYSVIEW_ID_BASE
+            hex "ID Base"
+            default 0x10000000
+            ---help---
+                Default value for the lowest Id reported by the application. Can be overridden by the application via SEGGER_SYSVIEW_SetRAMBase(). (i.e. 0x20000000 when all Ids are an address in this RAM)
+        config RT_SEGGER_SYSVIEW_ID_SHIFT
+            int "ID Shift"
+            default 2
+            ---help---
+                Number of bits to shift the Id to save bandwidth. (i.e. 2 when Ids are 4 byte aligned)
+    endmenu
+
+endif

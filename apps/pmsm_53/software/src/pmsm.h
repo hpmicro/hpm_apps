@@ -10,9 +10,7 @@
 #include "hpm_pwm_drv.h"
 #include "parm_global.h"
 
-#include "usb_channel.h"
-#include "debug_task.h"
-#include "uart_channel.h"
+#include "monitor.h"
 
 
 #endif //PMSM_H_

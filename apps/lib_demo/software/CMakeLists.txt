@@ -25,6 +25,4 @@ sdk_ses_compile_options(-march=rv32imafc)
 # sdk_compile_options("-mabi=ilp32f")
 # sdk_compile_options("-march=rv32imafc")
 # sdk_compile_options("-mabi=ilp32d")
-
-add_subdirectory(../../.. hpm_apps/build_tmp)
 generate_ses_project()

@@ -32,11 +32,11 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 ### 硬件方案
 
-- HPM5300驱控硬件由两块子板组成，其中控制板用于与上位工具通信、接收编码器反馈、向驱动板发送PWM驱动信号并接收电流采样信号。请查看控制板原理图: [《HPM5300_DCServo_CTL_REVB》](doc/hardware/HPM5300_DCServo_CTL_REVB.pdf)
+- HPM5300驱控硬件由两块子板组成，其中控制板用于与上位工具通信、接收编码器反馈、向驱动板发送PWM驱动信号并接收电流采样信号。请查看控制板原理图: [《HPM5300_DCServo_CTL_REVB》](hardware/HPM5300_DCServo_CTL_REVB.pdf)
 
 ![控制板](doc/api/assets/ctlboard.jpg)
 
-- 驱动板构成为功率驱动模块和电流采样模块，并载有电机和电源接口。请查看驱动板原理图:[《HPM5300_DCServo_DRV_REVB》](doc/hardware/HPM5300_DCServo_DRV_REVB.pdf)
+- 驱动板构成为功率驱动模块和电流采样模块，并载有电机和电源接口。请查看驱动板原理图:[《HPM5300_DCServo_DRV_REVB》](hardware/HPM5300_DCServo_DRV_REVB.pdf)
 
 ![驱动板](doc/api/assets/drvboard.jpg)
 
@@ -44,7 +44,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 ### 软件方案
 
-软件方案主要由以下几部分组成：三闭环控制、矢量控制、PWM触发ADC采样、PWM电流环中断产生以及通用上位机，整体框图如下，更多详情请查看软件方案: [《HPM53伺服闭环软件方案》](doc/HPM53伺服闭环方案.pdf)
+软件方案主要由以下几部分组成：三闭环控制、矢量控制、PWM触发ADC采样、PWM电流环中断产生以及通用上位机，整体框图如下，更多详情请查看软件方案: [《HPM53伺服闭环软件方案》](doc/HPM53伺服闭环软件方案.pdf)
 
 ![软件框图](doc/api/assets/soft.png)
 
@@ -84,6 +84,7 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 - 工程路径: hpm_apps/apps/pmsm_53/software
 
 - windows下GUI工程构建
+
 ![window gui 创建工程](doc/api/assets/sei_build.png)
 
 - windows下命令行工程构建
@@ -103,19 +104,31 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 - 添加参数
 
+（1）电机、编码器参数
+
 ![参数](doc/api/assets/param_config_zh_1.png)
+
+（2）示波器监测参数
 
 ![参数](doc/api/assets/param_config_zh_2.png)
 
+![参数](doc/api/assets/param_config_zh_3.png)
+
+（3）电机运行控制字及参数管理
+
+![参数](doc/api/assets/param_config_zh_4.png)
+
 #### 绝对式编码器
 
-- 修改电机及编码器参数
+- 根据电机/编码器型号修改电机及编码器参数
+
+(1) 修改电机极对数为5，编码器类型为1，编码器一圈脉冲数为131072
 
 - 预定位
 
 (1)预定位控制字（回零控制字）写1
 
-(2)预定位成功，预定位状态为1
+(2)预定位成功，回零状态为1
 
 - 电机使能运行
 
@@ -128,6 +141,8 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 #### 增量式编码器
 
 - 修改电机及编码器参数
+
+（1）修改电机极对数为2，编码器类型为0，编码器一圈脉冲数为4000
 
 - 预定位
 

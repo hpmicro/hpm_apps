@@ -3,7 +3,7 @@
 HPM APPS Documentation
 ############################
 
-version:1.6.0
+version:1.7.0
 
 Welcome to the hpm_apps's documentation.
 
@@ -17,7 +17,6 @@ Sections
    :caption: Contents
 
    get_started
-   instructions
    apps/software_en
    apps/hardware_en
    apps/solution_en

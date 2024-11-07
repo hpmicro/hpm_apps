@@ -34,6 +34,7 @@ void ota_board_flash_init(void)
     option.option1.U = BOARD_APP_XPI_NOR_CFG_OPT_OPT1;
     disable_global_irq(CSR_MSTATUS_MIE_MASK);
     rom_xpi_nor_auto_config(BOARD_APP_XPI_NOR_XPI_BASE, &s_xpi_nor_config, &option);
+    fencei();
     enable_global_irq(CSR_MSTATUS_MIE_MASK);
 }
 
@@ -43,12 +44,11 @@ void ota_board_flash_init(void)
 
 static void soc_reset(void)
 {
-    SOC_ROM_FLAG_REG = 0;                            //warning: this is rom reset flag,
-    HPM_PPOR->RESET_ENABLE |= HPM_BITSMASK(1UL, 31); // Enable Software reset   HPM_PPOR->RESET_HOT &= ~HPM_BITSMASK(1UL, 31);
-    HPM_PPOR->RESET_COLD |= HPM_BITSMASK(1UL, 31);
-    HPM_PPOR->RESET_HOT = 0;
-    HPM_PPOR->SOFTWARE_RESET = 1000U;
-    while (1) {
+    disable_global_irq(CSR_MSTATUS_MIE_MASK);
+    SOC_ROM_FLAG_REG = 0;                            // warning: this is rom reset flag,
+    ppor_sw_reset(HPM_PPOR, 1000);
+    while (1)
+    {
     }
 }
 
@@ -283,6 +283,7 @@ void ota_board_complete_reset(void)
     enable_global_irq(CSR_MSTATUS_MIE_MASK);
 }
 
+ATTR_RAMFUNC
 uint8_t ota_check_current_otaindex(void)
 {
     hpm_stat_t status;
@@ -292,17 +293,21 @@ uint8_t ota_check_current_otaindex(void)
     uint16_t fw_version1, fw_version2;
 
     printf("sw_version:%d\n", sw_version);
-
+    disable_global_irq(CSR_MSTATUS_MIE_MASK);
     status = rom_xpi_nor_read(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config, &version,
                               FLASH_APP1_BOOT_HEAD_ADDR + FW_HEADER_SW_VERSION_OFFSET - FLASH_ADDR_BASE, 2);
+    fencei();
+    enable_global_irq(CSR_MSTATUS_MIE_MASK);
     if (status != status_success) {
         printf("flash read fail\r\n");
         return -1;
     }
     fw_version1 = (uint16_t)version;
-
+    disable_global_irq(CSR_MSTATUS_MIE_MASK);
     status = rom_xpi_nor_read(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config, &version,
                               FLASH_APP2_BOOT_HEAD_ADDR + FW_HEADER_SW_VERSION_OFFSET - FLASH_ADDR_BASE, 2);
+    fencei();
+    enable_global_irq(CSR_MSTATUS_MIE_MASK);
     if (status != status_success) {
         printf("flash read fail\r\n");
         return -1;

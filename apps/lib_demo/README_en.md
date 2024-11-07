@@ -6,7 +6,7 @@ In order to facilitate users to use and understand the functions of the motor li
 
 Version 1.0 of the library contains only trajectory planning algorithms.
 
-[hpm_motor library instruction](hpm_motor_instruction_zh)
+[hpm_motor library instruction 2.0](hpm_motor_instruction_en)
 
 ## Sample
 

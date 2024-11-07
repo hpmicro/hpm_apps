@@ -88,9 +88,9 @@ HPM6880 采用BGA417封装，该封装对PAD进行位置优化使其方便布线
 
 ### DDR DEMO 原理图
 
-查看硬件原理图 [HPM6880_DDR2_CORE_RevA](doc/../hardware/HPM6880_DDR2_CORE_RevA.pdf)
+查看硬件原理图 [HPM6880_DDR2_CORE_RevA](hardware/HPM6880_DDR2_CORE_RevA.pdf)
 
-查看硬件原理图 [HPM6880_DDR3_CORE_RevB](doc/../hardware/HPM6880_DDR3_CORE_RevB.pdf)
+查看硬件原理图 [HPM6880_DDR3_CORE_RevB](hardware/HPM6880_DDR3_CORE_RevB.pdf)
 
 ### DDR DEMO 设备连接
 

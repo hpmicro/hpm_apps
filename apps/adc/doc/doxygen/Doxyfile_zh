@@ -879,7 +879,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = $(HPM_APP_BASE)/docs/zh/apps/adc/doc/doxygen/mainpage_zh.md\
+INPUT                  = $(HPM_APP_BASE)/docs/zh/apps/adc/doc/doxygen/mainpage_zh.md \
                          $(HPM_APP_BASE)/apps/adc/software/adc16_inl_dnl \
 			 $(HPM_APP_BASE)/apps/adc/software/adc16_sinad
 
@@ -927,7 +927,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
+EXCLUDE                = 
 # $(HPM_APP_BASE)/soc/ip/*_regs.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc_feature.h \

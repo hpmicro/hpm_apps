@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "board.h"
 #include "hpm_debug_console.h"
-#include "hpm_pwm_drv.h"
 #include "hpm_trgm_drv.h"
 #include "hpm_trgmmux_src.h"
 #include "hpm_synt_drv.h"
@@ -9,10 +8,17 @@
 #include "hpm_l1c_drv.h"
 #include "hpm_gpio_drv.h"
 
+#if defined(HPMSOC_HAS_HPMSDK_PWM)
+#include "hpm_pwm_drv.h"
+#endif
+
+#if defined(HPMSOC_HAS_HPMSDK_PWMV2)
+#include "hpm_pwmv2_drv.h"
+#endif
 
 
-uint32_t data_buffer[BOARD_ADC_DATA_BUFFER_LEN];
- __attribute__((section(".fast"))) uint32_t seq_buff[BOARD_ADC_DMA_BUFFER_LEN];
+ __attribute__((section(".framebuffer"))) uint32_t data_buffer[BOARD_ADC_DATA_BUFFER_LEN];
+__attribute__((section(".fast"))) uint32_t seq_buff[BOARD_ADC_DMA_BUFFER_LEN];
 
 uint8_t seq_channel[] = { BOARD_APP_ADC16_CH_1 };
 
@@ -22,7 +28,7 @@ uint8_t seq_channel[] = { BOARD_APP_ADC16_CH_1 };
  * @param [in] ptr TRGM base address;TRGM基地址
  */
 
-void init_trigger_mux(TRGM_Type * ptr)
+void  init_trigger_mux(TRGM_Type * ptr)
 {
     trgm_output_t trgm_output_cfg;
 
@@ -37,11 +43,50 @@ void init_trigger_mux(TRGM_Type * ptr)
  * @brief Setting ADC sampling trigger by PWM hardware;ADC采样触发设置,硬件PWM触发
  *
  * @param [in] ptr PWM base address;触发PWM基地址
- * @param [in] sample_freq PWM trigger frequency for sampling in KHz;PWM触发采样频率，以KHz为单位
  */
 
-void trigger_init(PWM_Type * ptr,uint32_t sample_freq)
+#if defined(HPMSOC_HAS_HPMSDK_PWMV2)
+void init_trigger_source(PWMV2_Type *ptr)
 {
+    int mot_clock_freq;
+
+    mot_clock_freq =  clock_get_frequency(BOARD_APP_ADC16_HW_TRIG_SRC_CLK_NAME);
+
+    pwmv2_shadow_register_unlock(ptr);
+    pwmv2_set_reload_update_time(ptr, pwm_counter_0, pwm_reload_update_on_reload);
+    pwmv2_set_shadow_val(ptr, PWMV2_SHADOW_INDEX(0), (mot_clock_freq/APP_ADC16_TRIG_SRC_FREQUENCY) - 1, 0, false);
+    pwmv2_set_shadow_val(ptr, PWMV2_SHADOW_INDEX(1), ((mot_clock_freq/APP_ADC16_TRIG_SRC_FREQUENCY) - 1) >> 1, 0, false);
+    pwmv2_select_cmp_source(ptr, 16, cmp_value_from_shadow_val, PWMV2_SHADOW_INDEX(1));
+    pwmv2_shadow_register_lock(ptr);
+
+    pwmv2_counter_select_data_offset_from_shadow_value(ptr, pwm_counter_0, PWMV2_SHADOW_INDEX(0));
+    pwmv2_counter_burst_disable(ptr, pwm_counter_0);
+
+    pwmv2_set_trigout_cmp_index(ptr, APP_ADC16_HW_TRGM_SRC_OUT_CH, 16);
+    pwmv2_enable_counter(ptr, pwm_counter_0);
+}
+
+void start_trigger_source(PWMV2_Type *ptr)
+{
+    pwmv2_enable_counter(ptr, pwm_counter_0);
+}
+
+void stop_trigger_source(PWMV2_Type *ptr)
+{
+    pwmv2_disable_counter(ptr, pwm_counter_0);
+}
+#endif
+
+#if defined(HPMSOC_HAS_HPMSDK_PWM)
+/**
+ * @brief Setting ADC sampling trigger by PWM hardware;ADC采样触发设置,硬件PWM触发
+ *
+ * @param [in] ptr PWM base address;触发PWM基地址
+ */
+
+void init_trigger_source(PWM_Type * ptr)
+{
+    uint32_t sample_freq = 2000;
     pwm_cmp_config_t pwm_cmp_cfg;
     pwm_output_channel_t pwm_output_ch_cfg;
 
@@ -70,7 +115,7 @@ void trigger_init(PWM_Type * ptr,uint32_t sample_freq)
     pwm_config_output_channel(ptr, BOARD_APP_ADC_PMT_PWM_REFCH_A, &pwm_output_ch_cfg);
 
     /* Trigger mux initialization */
-    init_trigger_mux(BOARD_APP_ADC_TRIG_TRGM);
+    //init_trigger_mux(BOARD_APP_ADC_TRIG_TRGM);
 }
 
 /**
@@ -79,10 +124,12 @@ void trigger_init(PWM_Type * ptr,uint32_t sample_freq)
  * @param [in] ptr PWM base address;触发PWM基地址
  */
 
-void trigger_start(PWM_Type * ptr)
+void start_trigger_source(PWM_Type * ptr)
 {
   pwm_start_counter(ptr);
 }
+#endif
+
 
 /**
  * @brief Initialize ADC;初始化ADC
@@ -129,7 +176,7 @@ void adc_init(void)
     seq_cfg.sw_trig_en = false;
     seq_cfg.hw_trig_en = true;
 
-    for (int i = BOARD_ADC_SEQ_START_POS; i < seq_cfg.seq_len; i++) {
+    for (int i =BOARD_ADC_SEQ_START_POS; i < seq_cfg.seq_len; i++) {
         seq_cfg.queue[i].ch = seq_channel[i];
     }
 
@@ -155,22 +202,27 @@ int main(void)
 
   board_init();
   
+
   /*DCDC_section*/
   board_DCDC_power_config();
-
+ 
   printf("This is an ADC16 demo for sinad test:\n");
 
   /* ADC pin initialization */
   board_init_adc16_pins();
   
   /* ADC clock initialization */
-  board_init_adc16_clock(BOARD_APP_ADC16_BASE,true);
+  board_init_adc16_clock(BOARD_APP_ADC16_BASE, true);
 
   /* ADC initialization */
   adc_init();
 
-  /* Trigger source initialization */
-  trigger_init(BOARD_APP_ADC_TRIG_PWM,BOARD_ADC_SAMPLE_FRE_IN_KHZ);//2000KHz sample fre
+  /* Trigger source initialization  */
+  init_trigger_source(BOARD_APP_ADC_TRIG_PWM);
+
+  /* Trigger mux initialization */
+  init_trigger_mux(BOARD_APP_ADC_TRIG_TRGM);
+
 
   for(uint32_t i = 0;i < BOARD_ADC_DATA_BUFFER_LEN; i++)
   {
@@ -181,17 +233,19 @@ int main(void)
   {
     seq_buff[i]=0;
   }
-
   cycle = 1;
   
   board_delay_ms(150);
+
   /* Start pwm to trigger adc convert */
-  trigger_start(BOARD_APP_ADC_TRIG_PWM);
+  start_trigger_source(BOARD_APP_ADC_TRIG_PWM);
 
   while(1)
   {
+ 
      while(seq_rdptr < BOARD_ADC_DATA_BUFFER_LEN)
      {
+     
         if(cycle) 
         {
           while((seq_buff[BOARD_ADC_DMA_BUFFER_LEN >> 1 ] & 0x80000000) == 0);
@@ -205,6 +259,8 @@ int main(void)
         {
           data_buffer[i+seq_rdptr] = seq_buff[i];
         }
+
+       
       
         if(cycle) 
         {
@@ -219,10 +275,11 @@ int main(void)
         {
            data_buffer[i + seq_rdptr + (BOARD_ADC_DMA_BUFFER_LEN >> 1)] = seq_buff[i + (BOARD_ADC_DMA_BUFFER_LEN >> 1)];
         }
-    
+              
         seq_rdptr += BOARD_ADC_DMA_BUFFER_LEN;
         
         cycle = 1-cycle;
+         
      }
 
      printf("adc data buff is full, buffer start addr:%x. end addr:%x\n",&data_buffer[0],&data_buffer[BOARD_ADC_DATA_BUFFER_LEN-1]);
@@ -231,6 +288,9 @@ int main(void)
      {
         printf("Ch: %d val: %d %d%%\n ",dma_data[i].adc_ch,dma_data[i].result,100*(i+1)/BOARD_ADC_DATA_BUFFER_LEN);
      }
+  
+    
+
     
      while(1);
   }

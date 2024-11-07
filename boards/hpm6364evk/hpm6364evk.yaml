@@ -1,0 +1,27 @@
+# Copyright (c) 2022-2024 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+board:
+    name: hpm6364evk
+    soc: HPM6360
+    device: HPM6364xPAx
+    openocd-soc: hpm6360
+    openocd-probe: jlink
+    on-board-ram:
+      type: sdram
+      size: 32M
+      width: 16bit
+    on-board-flash:
+      type: qspi-nor-flash
+      size: 16M
+    feature:
+      - board_uart_software_rx_idle_pin
+      - board_gpt_pin
+      - board_motor_control
+      - board_puart_pin
+      - board_enet_pps_output_pin
+      - board_enet_pps_input_pin
+      - board_enet_phy
+      - board_sdram
+      - board_sdcard
+      - board_power_button

@@ -1,12 +1,9 @@
 [中文](README_zh.md)
 
-# Introduction
-
-## HPM APPS introduction
+# HPM APPS introduction
 HPM APPS is an upper layer application software development kit based on HPM SDK. It provides a variety of typical general-purpose application solutions, including middleware, components, services, etc., for users to use and evaluate.
 
 ## HPM APPS directory structure
-![hpm_apps](docs/assets/hpm_app.png)
 
 | Directory name | Description |
 |--------|--------|

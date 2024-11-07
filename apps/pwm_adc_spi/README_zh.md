@@ -15,7 +15,7 @@ See the [hpmicro.com](https://www.hpmicro.com) site for more information about H
 ## 应用文档
 
 应用文档路径：
-[HPM电机外接SPI编码器方案](doc/HPM%20电机外接SPI编码器方案.pdf)
+[HPM电机外接SPI编码器方案](doc/HPM_电机外接SPI编码器方案.pdf)
 
 ## 整体方案的功能框图
 

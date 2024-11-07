@@ -924,7 +924,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                =
+EXCLUDE                = 
 # $(HPM_APP_BASE)/soc/ip/*_regs.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc.h \
 #                          $(HPM_APP_BASE)/soc/*/hpm_soc_feature.h \

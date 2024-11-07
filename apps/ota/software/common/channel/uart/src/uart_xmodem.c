@@ -1,11 +1,7 @@
 #include "hpm_clock_drv.h"
-#include "hpm_sysctl_drv.h"
-#include "hpm_soc.h"
 #include "hpm_common.h"
-#include "hpm_pllctlv2_drv.h"
 #include "hpm_csr_regs.h"
 #include "riscv/riscv_core.h"
-#include "hpm_debug_console.h"
 #include "hpm_uart_drv.h"
 
 #include "uart_xmodem.h"
@@ -73,7 +69,7 @@ int system_xmodem_deinit(void)
     return 0;
 }
 
-static unsigned short crc16_ccitt(const char* buf, int len)
+static unsigned short crc16_ccitt(const unsigned char* buf, int len)
 {
     register int counter;
     register unsigned short crc = 0;
@@ -82,7 +78,7 @@ static unsigned short crc16_ccitt(const char* buf, int len)
     return crc;
 }
 
-static void inline port_outbyte(unsigned char trychar)
+static inline void port_outbyte(unsigned char trychar)
 {
     uart_send_byte(USE_UART_ID, trychar);
 }
@@ -106,7 +102,7 @@ static uint64_t get_core_mcycle(void)
     return result;
 }
 
-static unsigned char inline port_inbyte(unsigned int time_out)
+static inline unsigned char port_inbyte(unsigned int time_out)
 {
     unsigned char ch;
     last_error = 0;
@@ -174,7 +170,7 @@ int xmodemReceive(unsigned char* dest, int destsz, void* proc)
 
     for (;;)
     {
-        for (retry = 0; retry < 64; ++retry)
+        for (retry = 0; retry < 128; ++retry)
         {
             if (trychar)
                 port_outbyte(trychar);

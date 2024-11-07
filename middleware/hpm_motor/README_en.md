@@ -114,7 +114,7 @@ Step1: Add library headers. The C header file "libhpm_motor.h" contains the func
 
 #include “libhpm_motor.h”
 
-The.h file is under hpm_apps\middleware\hpm_motor\inc.
+The.h file is under hpm_app\middleware\hpm_motor\inc.
 
 Step2: Define the trajectory planning structure global variable in the {ProjectName}-Main.c file.
 
@@ -187,6 +187,29 @@ In order to facilitate the use of this function more quickly, here is a record o
 - fig5
 
 ![fig9](doc/api/assets/9_en.png)
+
+### Inertia identification algorithm
+In order to achieve good dynamic and static characteristics of servo control system, it is necessary to identify the moment of inertia and adjust the system control parameters. This library is mainly to explain the inertia identification principle, the implementation method, the principle please see：[《hpm_motor库使用说明2.0》](doc/hpm_motor库使用说明2.0.pdf)
+
+Steps to use the library function:
+
+1, before use, the motor driver needs to be set to speed mode, and the related variables of INTERIA_CalHdl need to be assigned:
+
+    INTERIA_CalHdl.INTERIA_InObj.flux = amplitude of permanent magnet flux; // Unit Wb
+    INTERIA_CalHdl.INTERIA_InObj.vel1 = 0.0000167* Maximum speed of the first acceleration stage (unit, r/min); // Can be set to 350r/min
+    INTERIA_CalHdl.INTERIA_InObj.cycle = 10; // The identification process is 10 consecutive acceleration and deceleration
+    INTERIA_CalHdl.INTERIA_InObj.interia_start = 1; //1: starting inertia identification, 0: not starting inertia identification
+    INTERIA_CalHdl.INTERIA_InObj.kk = 4; // The acceleration in the second stage is KK times the acceleration in the first stage
+    INTERIA_CalHdl.INTERIA_InObj.step = 500; // The unit is ms, each acceleration time is 500ms
+    INERTIA_CalObj.INTERIA_InObj.iq = three-phase permanent magnet synchronous motor Q-axis feedback current; // Unit: A
+    INERTIA_CalObj.INTERIA_InObj.speed_fdk = Feedback speed; // Unit, r/s
+    INERTIA_CalObj.INTERIA_InObj.poles = Number of three-phase permanent magnet synchronous motor poles; //
+2, function call: interia_cal_process(&INERTIA_CalObj);
+
+3, target speed = INERTIA_CalObj.INTERIA_UserObj.Vel_out*1000；//Unit:r/s
+
+4, Storage variable of inertia result: INTERIA_CalHdl->INTERIA_OutObj.J, unit (𝑘𝑔 ∙ 𝑚2). // The premise is that inertia identification has been completed, that is, INERTIA_CalObj.INTERIA_OutObj.status = 0.
+
 
 ## API
 

@@ -99,7 +99,7 @@ def makeup_udp(isusb, type, firmwarefile, otafile):
 
     fota_magic = HPM_APP_FILE_FLAG_MAGIC
     touch_id = HPM_APP_FILE_TOUCH_ID
-    fota_device = 0x6750
+    fota_device = 0x0048504D # "hpm"
     
     utc_time = calendar.timegm(time.gmtime())
     print("version:", utc_time)

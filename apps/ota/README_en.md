@@ -396,6 +396,159 @@ Serial port baud rate is set to ``115200bps``, with ``one stop bit`` and ``no pa
 
 ![usb_host_env4](doc/api/assets/usb_host_env4.png)
 
+#### Channel upgrade by ECAT FOE
+
+ECAT channels are based on the FOE protocol. 
+The ECAT_FOE example is used to demonstrate the implementation of ECAT FOE for reading and writing slave files based on the HPM6E80's ECAT peripheral and slave stack code (SSC).
+
+##### 1. Preparation
+
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 2.Engineering setup
+
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 3. Generate ECAT channel slave protocol stack code
+
+Due to licensing issues, HPM_APPS does not provide the EtherCAT Slave Stack Code (SSC), so you have to download the SSC Tool from the official website of Peifu and generate the Slave Stack Code.
+This feature requires the use of the SSC tool to generate the protocol station code before it can be built and compiled correctly.
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 4. Importing configuration files in SSC Tool
+
+The configuration file path is: ota/software/common/channel/ecat/SSC/Config/HPM_ECAT_FOE_Config.xml
+
+##### 5. Creating a new project in SSC Tool
+
+The application file path is:ota/software/common/channel/ecat/SSC/foe.xlsx
+
+##### 6. Generate protocol stack code
+
+The protocol stack code output path is:ota/software/common/channel/ecat/SSC/Src
+
+##### 7. TwinCAT Project Settings
+
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 8. Add ESI files
+
+ESI file name. ECAT_FOE.xml
+
+##### 9. Engineering Settings
+
+In the file `CMakeLists.txt` select the ECAT_FOE channel (set "set(CONFIG_ECAT_FOE_CHANNEL 1)"), then build -> compile -> burn. 
+When using the actual eeprom, set "set(CONFIG_EEPROM_EMULATION 0)".
+
+##### 10. Project compile and run
+
+Build the project and compile and run it. 
+The device ECAT network port is connected to the PC network port.
+
+##### 11. Software Configuration
+
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 12. Scanning equipment
+
+Please refer to the README for HPM_SDK samples/ethercat/ecat_io.
+
+##### 13. Update EEPROM
+
+  Please select **foe** device description file
+  ![](doc/api/assets/twincat_eeprom_update.png)
+
+
+##### 14. FOE operation
+
+  1. Set MailBox timeout time (when the file is larger, you need to adjust the timeout time)
+  ![](doc/api/assets/twincat_device_timeout.png)
+
+  2. Select the slave and enter Bootstrap mode.
+  ![](doc/api/assets/twincat_device_bootstrap.png)
+
+  3. After entering Bootstrap mode, download the file to the slave and click Download.
+    ![](doc/api/assets/twincat_foe_download_1.png)
+    Select the file you want to download, note: this file is the file after the script is signed(update_sign.bin)
+    ![](doc/api/assets/twincat_foe_download_2.png)
+    Edit the file name and password, the file name is: **app**; password is: **87654321**.
+    ![](doc/api/assets/twincat_foe_download_3.png)
+    Waiting for the write progress bar to finish
+    (Note: It will not reboot immediately after the download finishes, you need to exit Bootstrap mode to reboot and jump to the new firmware).
+  4. Reading files from the slave after entering Bootstrap mode
+    Click on Uplaod
+    ![](doc/api/assets/twincat_foe_read_1.png)
+    Selecting a File Save File and Name
+    ![](doc/api/assets/twincat_foe_read_2.png)
+    Edit the file name and password, the file name is: **app**; password is: **87654321**. (Note: the file name and password are fixed)
+    ![](doc/api/assets/twincat_foe_download_3.png)
+    Wait for the progress bar to finish reading
+  5. Exit Bootstrap mode
+    Click on Init.
+    Exit Bootstrap and reboot to jump to a new firmware run.
+
+##### 15. Operational phenomena
+
+When the project is running correctly, the serial terminal will output the following message:
+When the EEPROM is not initialized, the following message is output to indicate that the EEPROM contents need to be initialized.
+
+```console
+EtherCAT FOE sample
+Write or Read file from flash by FOE
+EEPROM loading with checksum error.
+EtherCAT communication is possible even if the EEPROM is blank(checksum error),
+but PDI not operational, please update eeprom  context.
+```
+
+When the EEPROM is initialized correctly, the following message is output. In Twincat, you can write and read the file, and compare the file written down with the file read back.
+
+```console
+EtherCAT IO sample
+Write or Read file from flash by FOE
+EEPROM loading successful, no checksum error.
+```
+
+Firmware download in progress
+
+```console
+EEPROM loading successful, no checksum error.
+Write file start
+ota0, device:0x0048504D, length:85416, version:1728558561, hash_type:0x00000004
+ota0 data download...
+complete checksum and reset!
+
+ota success!
+
+Write file finish
+```
+
+Exit Bootstrap mode and reboot to jump to the new firmware running
+
+```console
+system reset...
+
+----------------------------------------------------------------------
+$$\   $$\ $$$$$$$\  $$\      $$\ $$\
+$$ |  $$ |$$  __$$\ $$$\    $$$ |\__|
+$$ |  $$ |$$ |  $$ |$$$$\  $$$$ |$$\  $$$$$$$\  $$$$$$\   $$$$$$\
+$$$$$$$$ |$$$$$$$  |$$\$$\$$ $$ |$$ |$$  _____|$$  __$$\ $$  __$$\
+$$  __$$ |$$  ____/ $$ \$$$  $$ |$$ |$$ /      $$ |  \__|$$ /  $$ |
+$$ |  $$ |$$ |      $$ |\$  /$$ |$$ |$$ |      $$ |      $$ |  $$ |
+$$ |  $$ |$$ |      $$ | \_/ $$ |$$ |\$$$$$$$\ $$ |      \$$$$$$  |
+\__|  \__|\__|      \__|     \__|\__| \_______|\__|       \______/
+----------------------------------------------------------------------
+boot user
+
+ver1:1728558561,ver2:1726018801
+
+APP0, verify SUCCESS!
+
+APP index:0
+hello world, THIS OTA0
+ECAT FOE Funcation
+EEPROM loading successful, no checksum error.
+
+```
 
 ## API
 

@@ -19,15 +19,19 @@ The sampled data can be imported into scientific computing software for sinad an
 
 Please read user guide  [HPM5300_ADC_EVK User Guide](doc/HPM5300_ADC_EVK_UG_V1.0.pdf)
 Please read hardware schematic [HPM5300_ADC_EVK_RevA](hardware/HPM5300_ADC_EVK_RevA.pdf)
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM5300_ADC_EVK_RevA-Project Files)
+Please See the hardware engineering path (hpm_app/apps/adc/hardware/HPM5300_ADC_EVK_RevA-Project Files)
 
 Please read user guide [HPM62\6300_ADC_EVK User Guide](doc/HPM62_6300_ADC_EVK_UG_V1.0.pdf)
 Please read hardware schematic [HPM62\6300_ADC_EVK_RevA](hardware/HPM62_63_144_ADC_EVK_RevB.pdf)
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM62\6300_ADC_EVK_RevA-Project Files)
+Please See the hardware engineering path (hpm_app/apps/adc/hardware/HPM62\6300_ADC_EVK_RevA-Project Files)
 
 Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)
 Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
+Please See the hardware engineering path (hpm_app/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
+
+Please read user guide [HPM6E00_ADC_EVK用户指南](doc/HPM6E00_ADC_EVK_UG_V1.0.pdf)
+Please read hardware schematic [HPM6E00_ADC_EVK_RevA](hardware/HPM6E00ADCEVKRevC.pdf)
+Please See the hardware engineering path(hpm_app/apps/adc/hardware/HPM6E00ADCEVKRevC-Project)
 
 #### Device Connection
 
@@ -36,7 +40,7 @@ Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_A
 - Connect the signal source to the signal input SMA interface
 
 - The signal source connection diagram is as follows:
-![Test connection diagram](doc/api/assets/Test_connection_diagram.png)
+![Test connection diagram](doc/api/assets/test_connection_diagram.png)
 The signal source motherboard model is PSIEVMTI and the manufacturer is Texas Instruments.
 
 #### Port Settings
@@ -124,7 +128,7 @@ The sampled data can be imported into scientific computing software for inl and 
 
 Please read hardware schematic [HPM6750_ADC_EVK_RevA](hardware/HPM6750_ADC_EVK_RevA.pdf)
 Please read user guide [HPM6750_ADC_EVK User Guide](doc/HPM6750_ADC_EVK_UG_V1.0.pdf)
-Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
+Please See the hardware engineering path (hpm_app/apps/adc/hardware/HPM675000_ADC_EVK_RevA-Project Files)
 
 #### Device Connection
 
@@ -133,7 +137,7 @@ Please See the hardware engineering path (hpm_apps/apps/adc/hardware/HPM675000_A
 - Connect the USB disk to USB0 port
 - Connect the signal source to the signal input SMA interface
 - The signal source connection diagram is as follows:
-![Test connection diagram](doc/api/assets/Test_connection_diagram.png)
+![Test connection diagram](doc/api/assets/test_connection_diagram.png)
 The signal source motherboard model is PSIEVMTI and the manufacturer is Texas Instruments.
 Note: USB disk need to be formated to FAT32
 ![U disk FAT32](doc/api/assets/5787290392e91e104dbffcee0030e3f.png)

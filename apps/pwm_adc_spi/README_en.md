@@ -15,7 +15,7 @@ Welcome to view the [hpmicro.com](https://www.hpmicro.com) site for more informa
 ## Application note
 
 Application note
-[AN](doc/HPM%20电机外接SPI编码器方案.pdf)
+[AN](doc/HPM_电机外接SPI编码器方案.pdf)
 
 ## general_solution
 

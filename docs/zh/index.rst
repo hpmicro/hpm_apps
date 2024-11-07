@@ -3,7 +3,7 @@
 HPM APPS 文档
 ############################
 
-version:1.6.0
+version:1.7.0
 
 欢迎查阅hpm_apps开发文档
 
@@ -17,7 +17,6 @@ hpm_apps遵循 `BSD 3-Clause license`_ 许可 (许可文件具体内容请 查�
    :caption: 内容
 
    get_started
-   instructions
    apps/software_zh
    apps/hardware_zh
    apps/solution_zh

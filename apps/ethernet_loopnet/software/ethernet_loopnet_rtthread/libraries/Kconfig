@@ -1,0 +1,4 @@
+config SOC_SERIES_HPM5000
+    bool 
+    select ARCH_RISCV32
+    select ARCH_RISCV_DPU

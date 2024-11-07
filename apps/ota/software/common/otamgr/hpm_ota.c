@@ -112,17 +112,17 @@ hpm_app_header_t *hpm_ota_get_flash_header_info(uint8_t ota_index)
     return ota_index == HPM_APP1 ? (hpm_app_header_t *)(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE) : NULL;
 #endif
 #else
-    static hpm_app_header_t header_info;
+    static hpm_app_header_t header_info1, header_info2;
     if(ota_index == HPM_APP1)
     {
-        hpm_flash_read(FLASH_USER_APP1_ADDR, (unsigned char*)&header_info, sizeof(hpm_app_header_t));
-        return &header_info;
+        hpm_flash_read(FLASH_USER_APP1_ADDR, (unsigned char*)&header_info1, sizeof(hpm_app_header_t));
+        return &header_info1;
     }
     else
     {
 #ifdef FLASH_USER_APP2_ADDR
-        hpm_flash_read(FLASH_USER_APP2_ADDR, (unsigned char*)&header_info, sizeof(hpm_app_header_t));
-        return &header_info;
+        hpm_flash_read(FLASH_USER_APP2_ADDR, (unsigned char*)&header_info2, sizeof(hpm_app_header_t));
+        return &header_info2;
 #else
         return NULL;
 #endif
@@ -159,7 +159,6 @@ uint8_t hpm_ota_check_download_appindex(void)
 int hpm_ota_auto_write(void const *src, uint32_t len, bool reset_enable)
 {
     int ret = -1;
-    hpm_app_header_t *temp_header = NULL;
     hpm_app_header_t *current_header = (hpm_app_header_t *)src;
     if (current_header->magic == HPM_APP_FILE_FLAG_MAGIC &&
         current_header->touchid == HPM_APP_FILE_TOUCH_ID)
@@ -175,7 +174,7 @@ int hpm_ota_auto_write(void const *src, uint32_t len, bool reset_enable)
                        current_header->device, current_header->len, current_header->version, current_header->hash_type);
 #endif
 #if !defined(BOOTUSER_ENABLE) && defined(CONFIG_USB_HOST_CHANNEL) && CONFIG_USB_HOST_CHANNEL //this prevent loop ota!
-                temp_header = hpm_ota_get_flash_header_info(HPM_APP1);
+                hpm_app_header_t *temp_header = hpm_ota_get_flash_header_info(HPM_APP1);
                 if(temp_header != NULL && temp_header->version == current_header->version)
                 {
                     printf("Same version number, ignore!\r\n");
@@ -195,7 +194,7 @@ int hpm_ota_auto_write(void const *src, uint32_t len, bool reset_enable)
                        current_header->device, current_header->len, current_header->version, current_header->hash_type);
 #endif
 #if !defined(BOOTUSER_ENABLE) && defined(CONFIG_USB_HOST_CHANNEL) && CONFIG_USB_HOST_CHANNEL //this prevent loop ota!
-                temp_header = hpm_ota_get_flash_header_info(HPM_APP2);
+                hpm_app_header_t *temp_header = hpm_ota_get_flash_header_info(HPM_APP2);
                 if(temp_header != NULL && temp_header->version == current_header->version)
                 {
                     printf("Same version number, ignore!\r\n");
@@ -222,8 +221,12 @@ int hpm_ota_auto_write(void const *src, uint32_t len, bool reset_enable)
 
     if (ota_handle.current_addr != 0)
     {
-        ret = 0;
-        hpm_ota_flash_write(ota_handle.current_addr + ota_handle.pack_offset, src, len);
+        ret = hpm_ota_flash_write(ota_handle.current_addr + ota_handle.pack_offset, src, len);
+        if (ret < 0)
+        {
+            printf("Error: write flash failed!, addr: 0x%x, length: 0x%x\n", ota_handle.current_addr + ota_handle.pack_offset, len);
+            return -1;
+        }
 
         ota_handle.pack_offset += len;
         if (ota_handle.pack_offset >= ota_handle.current_header.len + sizeof(hpm_app_header_t))
@@ -246,7 +249,6 @@ int hpm_ota_auto_write(void const *src, uint32_t len, bool reset_enable)
 int hpm_ota_auto_write_of_addr(uint32_t addr, void const *src, uint32_t len, bool reset_enable)
 {
     int ret = -1;
-    hpm_app_header_t *temp_header = NULL;
     hpm_app_header_t *current_header = (hpm_app_header_t *)src;
     if(ota_handle.current_addr == 0) //first pack
     {
@@ -255,14 +257,24 @@ int hpm_ota_auto_write_of_addr(uint32_t addr, void const *src, uint32_t len, boo
         {
             ota_handle.current_addr = FLASH_USER_APP1_ADDR;
             printf("ota0 data download...\n");
-            hpm_flash_erase(FLASH_USER_APP1_ADDR, FLASH_USER_APP1_SIZE);
+            ret = hpm_flash_erase(FLASH_USER_APP1_ADDR, FLASH_USER_APP1_SIZE);
+            if (ret < 0)
+            {
+                printf("Error: erase flash failed!, addr: 0x%x, length: 0x%x\n", FLASH_USER_APP1_ADDR, FLASH_USER_APP1_SIZE);
+                return -1;
+            }
         }
         else
         {
 #ifdef FLASH_USER_APP2_ADDR
             ota_handle.current_addr = FLASH_USER_APP2_ADDR;
             printf("ota1 data download...\n");
-            hpm_flash_erase(FLASH_USER_APP2_ADDR, FLASH_USER_APP2_SIZE);
+            ret = hpm_flash_erase(FLASH_USER_APP2_ADDR, FLASH_USER_APP2_SIZE);
+            if (ret < 0)
+            {
+                printf("Error: erase flash failed!, addr: 0x%x, length: 0x%x\n", FLASH_USER_APP2_ADDR, FLASH_USER_APP2_SIZE);
+                return -1;
+            }
 #else
             ota_handle.current_addr = 0;
             printf("BAD! not support update!\r\n");
@@ -283,8 +295,12 @@ int hpm_ota_auto_write_of_addr(uint32_t addr, void const *src, uint32_t len, boo
 
     if (ota_handle.current_addr != 0)
     {
-        ret = 0;
-        hpm_flash_write(ota_handle.current_addr + addr, src, len);
+        ret = hpm_flash_write(ota_handle.current_addr + addr, src, len);
+        if (ret < 0)
+        {
+            printf("Error: write flash failed!, addr: 0x%x, length: 0x%x\n", ota_handle.current_addr + addr, len);
+            return -1;
+        }
 
         ota_handle.pack_offset += len;
         if (ota_handle.pack_offset >= ota_handle.current_header.len + sizeof(hpm_app_header_t))
@@ -372,7 +388,6 @@ bool hpm_ota_package_verify(uint32_t addr, uint32_t len, hpm_app_header_t *ota_h
 
 void hpm_appindex_jump(uint8_t appindex)
 {
-    int cnt;
 #ifdef FLASH_USER_APP2_ADDR
     rom_xpi_nor_remap_disable(HPM_XPI0);
     if (appindex == HPM_APP2)
@@ -384,7 +399,7 @@ void hpm_appindex_jump(uint8_t appindex)
     disable_global_irq(CSR_MSTATUS_MIE_MASK);
     //disable_global_irq(CSR_MSTATUS_SIE_MASK);
     disable_global_irq(CSR_MSTATUS_UIE_MASK);
-    l1c_dc_writeback_all();
+    l1c_dc_invalidate_all();
     l1c_dc_disable();
     l1c_ic_disable();
     fencei();

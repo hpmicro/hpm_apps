@@ -173,9 +173,6 @@ void init_dac(void)
 }
 #endif
 
-/**
- * @brief           init Rdc   .
- */
 void rdc_init(void)
 {
     uint32_t freq;
@@ -250,9 +247,7 @@ void rdc_init(void)
     rdc_set_acc_sync_delay(HPM_RDC, rdc_acc_chn_q, val_delay_q >> 1);
 /******************************end**********************************************/
 }
-/**
- * @brief           config  PWM.
- */
+
 void Pwm_Duty_Init(void)
 {
     pwm_cmp_config_t cmp_config[4] = {0};
@@ -268,9 +263,7 @@ void Pwm_Duty_Init(void)
 
 }
 
-/**
- * @brief           Config the PWM channel trig for speed calculation interrupt.
- */
+
 void Pwm_TrigFor_interrupt_Init(void)
 {
     
