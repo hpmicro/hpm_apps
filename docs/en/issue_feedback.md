@@ -11,7 +11,7 @@
 
     Thanks again for your support!
     
-    Please send your requirements , questions or code scenarios to this email: feedback@hpmicro.com
+    Please send your requirements , questions or code scenarios to this email: feedback2ae@hpmicro.com
 
 Emails - Format & Style:
 

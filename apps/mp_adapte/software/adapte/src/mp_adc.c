@@ -379,6 +379,7 @@ static int mp_adc_pwmpair_init(hpm_pwm_pair_t* pwm_pair_t)
 {
     adc_config_t cfg;
     adc_channel_config_t ch_cfg;
+    uint8_t adc_init[3] = {0};
     int i;
     if (NULL == pwm_pair_t)
         return -1;
@@ -398,6 +399,26 @@ static int mp_adc_pwmpair_init(hpm_pwm_pair_t* pwm_pair_t)
         cfg.config.adc16.adc_ahb_en = true;
 
         cfg.adc_base.adc16 = MP_ADC_MAP_CTX[pwm_pair_t->adc_pack[i].adc_map_index].adc16;
+        if(cfg.adc_base.adc16 == HPM_ADC0 && adc_init[0] == 0)
+        {
+            adc_init[0] = 1;
+            clock_add_to_group(clock_adc0, 0);
+            clock_set_adc_source(clock_adc0, clk_adc_src_ahb0);
+        }
+        else if(cfg.adc_base.adc16 == HPM_ADC1 && adc_init[1] == 0)
+        {
+            adc_init[1] = 1;
+            clock_add_to_group(clock_adc1, 0);
+            clock_set_adc_source(clock_adc1, clk_adc_src_ahb0);
+        }
+#ifdef HPM_ADC2
+        else if(cfg.adc_base.adc16 == HPM_ADC2 && adc_init[2] == 0)
+        {
+            adc_init[2] = 1;
+            clock_add_to_group(clock_adc2, 0);
+            clock_set_adc_source(clock_adc2, clk_adc_src_ahb0);
+        }
+#endif
         hpm_adc_init(&cfg);
 
     }

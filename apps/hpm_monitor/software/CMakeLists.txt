@@ -29,6 +29,8 @@ find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
     sdk_compile_definitions("-DCONFIG_UART_CHANNEL=1")
+    sdk_compile_definitions("-DCONFIG_USE_CONSOLE_UART=1")
+    sdk_compile_definitions("-DCONFIG_MONITOR_DBG_LEVEL=0")
 elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "usb")
     sdk_compile_definitions("-DCONFIG_USB_CHANNEL=1")
 endif()

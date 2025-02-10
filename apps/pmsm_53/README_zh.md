@@ -181,5 +181,5 @@ HPM5300系列微控制器作为高性能运动控制MCU，具备强劲性能、�
 
 :::{eval-rst}
 
-关于软件API 请查看 `方案API 文档 <../../_static/apps/mpsm_53/html/index.html>`_ 。
+关于软件API 请查看 `方案API 文档 <../../_static/apps/pmsm_53/html/index.html>`_ 。
 :::

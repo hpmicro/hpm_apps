@@ -4,7 +4,7 @@
 
 本节主要介绍基于开源 Ethercat 主站 **SOEM** 的使用。由于 **SOEM** 开源协议的限制，故源代码不会放在 SDK 中，请自行下载源代码并安装到下面目录。
 
-SOEM 下载链接：https://github.com/hpmicro/ethercat_soem/releases/tag/v1.3.1。
+SOEM 下载链接：https://github.com/hpmicro/ethercat_soem/releases。
 
 ![soem](doc/api/assets/soem.png)
 

@@ -44,7 +44,7 @@
 #define CODEC_I2C                 BOARD_APP_I2C_BASE
 #define CODEC_I2S                 BOARD_APP_I2S_BASE
 #define CODEC_I2S_CLK_NAME        BOARD_APP_I2S_CLK_NAME
-#define CODEC_I2S_DATA_LINE       BOARD_APP_I2S_DATA_LINE
+#define CODEC_I2S_DATA_LINE       BOARD_APP_I2S_RX_DATA_LINE
 #define CODEC_BIT_WIDTH           (32U)
 #define CODEC_SAMPLE_RATE_HZ      (16000U)
 /**

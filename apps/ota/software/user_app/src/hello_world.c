@@ -58,11 +58,16 @@ static int writefile_addr(unsigned int addr, unsigned char* data, int len)
     return 0;
 }
 #else
+
+static uint8_t reboot = 0;
  /* Write file to flash */
 static int writefile(unsigned char* data, int len)
 {
     /* First packet contain file header info */
-    hpm_ota_auto_write((void*)data, len, true);
+    if(hpm_ota_auto_write((void *)data, len, true) == 1)
+    {
+        reboot = 1;
+    }
     return 0;
 }
 #endif
@@ -90,6 +95,10 @@ int main(void)
 #if defined(CONFIG_UART_CHANNEL) && CONFIG_UART_CHANNEL
     hpm_uart_channel_init();
     hpm_uart_block_task(writefile);
+    if(reboot)
+    {
+        hpm_ota_soc_reset();
+    }
 #elif defined(CONFIG_ENET_CHANNEL) && CONFIG_ENET_CHANNEL
     hpm_enet_channel_init();
     hpm_enet_block_task(writefile);

@@ -89,7 +89,7 @@ comparison test: from 0xf8000000 to 0xf8020000
  ```  
 
 
-## 软件API
+## API
 
 :::{eval-rst}
 

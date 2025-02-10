@@ -11,7 +11,7 @@
 
     再次感谢您的支持！
     
-    请将您的需求或问题、复现场景发送至此邮箱: feedback@hpmicro.com
+    请将您的需求或问题、复现场景发送至此邮箱: feedback2ae@hpmicro.com
 
 邮件格式：
     联系方式：邮箱即可

@@ -11,6 +11,7 @@
 #define BOARD_BLDC_TMR_CMP    0
 #define BOARD_BLDC_TMR_IRQ    IRQn_GPTMR2
 #define BOARD_BLDC_TMR_RELOAD (1000000U)//10ms
+#define BOARD__BLDC_GPTMR_CLK_NAME                      clock_gptmr2
 
 
 /**

@@ -187,6 +187,8 @@ void rdc_init(void)
     trgm_dac_matrix_config(HPM_TRGM0, trgm_dac_matrix_output_to_dac0, trgm_dac_matrix_in_from_rdc_dac0, false);
 #endif
     init_rdc_pin();    //rdc pins init.
+    board_init_adc_clock(BOARD_RDC_ADC_I_BASE, true);
+    board_init_adc_clock(BOARD_RDC_ADC_Q_BASE, true);
     adc_init();        //rdc adc include exc, sin and cos signals.
     init_pwm_pla_trgm(BOARD_RDC_TRGM);      //pwm trig for adc.
     init_trigger_cfg(BOARD_RDC_ADC_TRG, true);    //adc init with preemption mode.

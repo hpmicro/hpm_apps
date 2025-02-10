@@ -56,6 +56,7 @@ from gmssl import sm3, func
 # } hpm_app_header_t;
 
 HPM_USB_DEVICE_FILE_NAME = "usb_device_update.upd"
+HPM_MERGE_BOOTUSER_APPS_NAME = "merge_bootuser_app1.bin"
 
 GROUPSPLIT_BLOCKSIZE    =       (512)
 
@@ -188,10 +189,63 @@ def makeup_udp(isusb, type, firmwarefile, otafile):
         signfile_obj.close()
         usbdevicefile_obj.close()
 
+FLASH_ADDR_BASE       =   (0x80000000)
+FLASH_START_ADDR      =   (0)
+FLASH_MAX_SIZE        =   (0x400000)
+
+FLASH_EXIP_INFO_ADDR  =   (FLASH_START_ADDR)
+FLASH_EXIP_INFO_SIZE  =   (0x400)
+
+FLASH_NORCFG_OPTION_ADDR = (FLASH_EXIP_INFO_ADDR + FLASH_EXIP_INFO_SIZE)
+FLASH_NORCFG_OPTION_SIZE = (0xC00)
+
+FLASH_BOOT_HEADER_ADDR   = (FLASH_NORCFG_OPTION_ADDR + FLASH_NORCFG_OPTION_SIZE)
+FLASH_BOOT_HEADER_SIZE   = (0x2000)
+
+FLASH_BOOT_USER_ADDR     = (FLASH_BOOT_HEADER_ADDR + FLASH_BOOT_HEADER_SIZE) 
+FLASH_BOOT_USER_SIZE     = (0x40000)
+
+FLASH_USER_APP1_ADDR     = (FLASH_BOOT_USER_ADDR + FLASH_BOOT_USER_SIZE)
+FLASH_USER_APP1_SIZE     = (0x100000)
+
+def merge_burnfile(isexip, bootuserbin, otafilebin):
+    bootuser_obj = open(bootuserbin, 'rb')
+    bootuser_obj.seek(0,0)
+    bootuser_binary = bootuser_obj.read()
+
+    otafile_obj = open(otafilebin, 'rb')
+    otafile_obj.seek(0,0)
+    otafile_binary = otafile_obj.read()
+
+    burnfile_obj = open(HPM_MERGE_BOOTUSER_APPS_NAME, 'wb+')
+    burnfile_obj.seek(0,0)
+
+    cnt = 0
+    #init full 0xff
+    if(isexip) :
+        while (cnt < (FLASH_USER_APP1_ADDR)):
+            burnfile_obj.write(b'\xff')
+            cnt += 1
+    else:
+        while (cnt < (FLASH_USER_APP1_ADDR - FLASH_EXIP_INFO_SIZE)):
+            burnfile_obj.write(b'\xff')
+            cnt += 1
+
+    burnfile_obj.seek(0,0)
+    burnfile_obj.write(bootuser_binary)
+
+    if(isexip) :
+        burnfile_obj.seek(FLASH_USER_APP1_ADDR,0)
+    else:
+        burnfile_obj.seek(FLASH_USER_APP1_ADDR - FLASH_EXIP_INFO_SIZE,0)
+    burnfile_obj.write(otafile_binary)
+    burnfile_obj.close()
+    print ("merge boot and apps success! -> :merge_bootuser_app1.bin")
+
 
 def help():
     print("---------help------------")
-    print("一共4个参数")
+    print("一共6个参数")
     print("第一个参数：此脚本文件 pack_ota.py")
     print("第二个参数：签名type类型")
     print("           0-checksum 校验和校验")
@@ -202,15 +256,18 @@ def help():
     print("           5-SM3 校验")
     print("第三个参数：原始固件路径")
     print("第四个参数：目标OTA路径")
+    print("第五个参数(可缺省)：BOOTUSER类型：0:正常固件, 1:exip加密固件")
+    print("第六个参数(可缺省)：BOOTUSER固件路径")
     print("")
     print("举例：")
-    print("     python pack_ota.py 0 demo.bin update_sign.bin")
-    print("     python pack_ota.py 1 demo.bin update_sign.bin")
-    print("     python pack_ota.py 2 demo.bin update_sign.bin")
-    print("     python pack_ota.py 3 demo.bin update_sign.bin")
-    print("     python pack_ota.py 4 demo.bin update_sign.bin")
-    print("     python pack_ota.py 5 demo.bin update_sign.bin")
+    print("     python pack_ota.py 0 demo.bin update_sign.bin 0 bootuser.bin")
+    print("     python pack_ota.py 1 demo.bin update_sign.bin 0 bootuser.bin")
+    print("     python pack_ota.py 2 demo.bin update_sign.bin 0 bootuser.bin")
+    print("     python pack_ota.py 3 demo.bin update_sign.bin 0 bootuser.bin")
+    print("     python pack_ota.py 4 demo.bin update_sign.bin 0 bootuser.bin")
+    print("     python pack_ota.py 5 demo.bin update_sign.bin 0 bootuser.bin")
     print(" 同时会生成基于USB DEVICE的OTA包(usb_device_update.upd)")
+    print(" 若包含第5/6参数，同时会生成bootuser+userapp合并的用于烧录的固件: %s " %(HPM_MERGE_BOOTUSER_APPS_NAME))
     print("-------------------------")
 
 def main(argv):
@@ -221,10 +278,18 @@ def main(argv):
     if (int(argv[1]) > 5):
         help()
         return
-    print ("0:", argv[0], ",1:", argv[1], ",2:", argv[2], ",3:", argv[3])
+    if (argc == 4) :
+        print ("0:", argv[0], ",1:", argv[1], ",2:", argv[2], ",3:", argv[3])
+    else:
+        print ("0:", argv[0], ",1:", argv[1], ",2:", argv[2], ",3:", argv[3], ",4:", argv[4], ",5:", argv[5])
+
     makeup_udp(1, int(argv[1]), argv[2], argv[3])
     print ("type:%d, pack %s -> %s Success!!!" %(int(argv[1]), argv[2],argv[3]))
     print ("USB device: %s make Success!!!" %(HPM_USB_DEVICE_FILE_NAME))
+
+    if (argc == 6) :
+        merge_burnfile(int(argv[4]), argv[5], argv[3])
+        print ("merge bootuser+app: %s make Success!!!" %(HPM_MERGE_BOOTUSER_APPS_NAME))
 
 if __name__ == '__main__':
     main(sys.argv)

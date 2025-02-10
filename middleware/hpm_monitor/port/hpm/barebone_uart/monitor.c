@@ -71,7 +71,7 @@ static int monitor_uart_dma_tx_chain(uint8_t *data, uint32_t len)
     dma_default_channel_config(MONITOR_UART_DMA_CONTROLLER, &dma_ch_config);
     dma_ch_config.size_in_byte = 1;
     dma_ch_config.src_addr = core_local_mem_to_sys_address(CONFIG_MONITOR_RUNNING_CORE, (uint32_t)&dma_done);
-    dma_ch_config.dst_addr = (uint32_t)&monitor_uart_tx_done;
+    dma_ch_config.dst_addr = core_local_mem_to_sys_address(CONFIG_MONITOR_RUNNING_CORE, (uint32_t)&monitor_uart_tx_done);
     dma_ch_config.src_width = DMA_TRANSFER_WIDTH_BYTE;
     dma_ch_config.dst_width = DMA_TRANSFER_WIDTH_BYTE;
     dma_ch_config.src_burst_size = DMA_NUM_TRANSFER_PER_BURST_1T;

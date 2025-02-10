@@ -10,6 +10,7 @@
 #include "hpm_l1c_drv.h"
 #include "hpm_soc_feature.h"
 #include "hpm_hashs.h"
+#include "board.h"
 
 ATTR_PLACE_AT_NONCACHEABLE static sdp_hash_ctx_t s_hash_ctx;
 static uint8_t s_hash_data[HASH_DATA_MAXSIZE] = {0};
@@ -86,6 +87,7 @@ static void app_cache_flush(uint32_t addr, uint32_t size)
 int hpm_hash_init(uint8_t type)
 {
     hpm_stat_t status;
+    clock_add_to_group(clock_sdp, (BOARD_RUNNING_CORE & 0x1)); /* enable sdp clock */
     static uint8_t init_done = 0;
     uint32_t *crc32val = NULL;
     memset(s_hash_data, 0, sizeof(s_hash_data));

@@ -13,7 +13,7 @@ uint32_t ii = 0;
 void timer_init(void)
 {
     gptmr_channel_config_t config;
-
+    clock_add_to_group(BOARD__BLDC_GPTMR_CLK_NAME, 0);
     gptmr_channel_get_default_config(BOARD_BLDC_TMR_MS, &config);
     config.cmp[0] = BOARD_BLDC_TMR_RELOAD;
     config.debug_mode = 0;

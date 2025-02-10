@@ -876,8 +876,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = $(HPM_APP_BASE)/docs/en/apps/ethernet_loopnet/doc/doxygen/mainpage_en.md \
-                         $(HPM_APP_BASE)/apps/ethernet_loopnet/software
+INPUT                  = $(HPM_APP_BASE)/docs/en/apps/ethernet_loopnet/doc/doxygen/mainpage_en.md
 
 
 # This tag can be used to specify the character encoding of the source files

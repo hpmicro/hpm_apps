@@ -4,7 +4,7 @@
 
 This chapter mainly introduces the use of the open-source EtherCAT master named **SOEM**. Due to the restrictions of the **SOEM** open-source license, the source code will not be included in the SDK. Please download the source code yourself and install it in the following directory.
 
-SOEM download url：https://github.com/hpmicro/ethercat_soem/releases/tag/v1.3.1.
+SOEM download url：https://github.com/hpmicro/ethercat_soem/releases.
 
 ![soem](doc/api/assets/soem.png)
 

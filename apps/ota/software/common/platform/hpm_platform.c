@@ -64,6 +64,7 @@ int hpm_platform_flash_init(void)
     rom_xpi_nor_auto_config(BOARD_APP_XPI_NOR_XPI_BASE, &s_xpi_nor_config, &option);
     rom_xpi_nor_get_property(BOARD_APP_XPI_NOR_XPI_BASE, &s_xpi_nor_config, xpi_nor_property_total_size,
                              &flash_size);
+    fencei();
     ENABLE_GLOBAL_INTERRUPT();
     for(cnt = 0; cnt < 4; cnt++)
     {
@@ -101,6 +102,7 @@ int hpm_flash_read(unsigned int addr, unsigned char *buffer, unsigned int len)
     DISABLE_GLOBAL_INTERRUPT();
     status = rom_xpi_nor_read(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config,
                               (uint32_t *)buffer, addr, len);
+    fencei();
     ENABLE_GLOBAL_INTERRUPT();
     FLASH_MUTEX_PUT();
     if (status_success == status)
@@ -124,6 +126,7 @@ int hpm_flash_write(unsigned int addr, const unsigned char *buffer, unsigned int
     DISABLE_GLOBAL_INTERRUPT();
     status = rom_xpi_nor_program(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config,
                                  (uint32_t *)buffer, addr, len);
+    fencei();
     ENABLE_GLOBAL_INTERRUPT();
     FLASH_MUTEX_PUT();
     if (status == status_success)
@@ -150,6 +153,7 @@ int hpm_flash_erase_sector(unsigned int addr)
     FLASH_MUTEX_GET();
     DISABLE_GLOBAL_INTERRUPT();
     status = rom_xpi_nor_erase_sector(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config, addr);
+    fencei();
     ENABLE_GLOBAL_INTERRUPT();
     FLASH_MUTEX_PUT();
 
@@ -174,6 +178,7 @@ int hpm_flash_erase(unsigned int addr, unsigned int len)
     FLASH_MUTEX_GET();
     DISABLE_GLOBAL_INTERRUPT();
     status = rom_xpi_nor_erase(BOARD_APP_XPI_NOR_XPI_BASE, xpi_xfer_channel_auto, &s_xpi_nor_config, addr, len);
+    fencei();
     ENABLE_GLOBAL_INTERRUPT();
     FLASH_MUTEX_PUT();
 

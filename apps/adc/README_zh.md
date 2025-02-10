@@ -46,7 +46,7 @@ HPM6E00:硬件工程路径见：(hpm_app/apps/adc/hardware/HPM6E00ADCEVKRevC-工
 - 连接信号源到信号输入SMA接口  
 
 - 信号源连接示意图如下：   
-![Test connection diagram](doc/api/assets/connection _diagram .png)  
+![Test connection diagram](doc/api/assets/test_connection_diagram.png)  
 信号源主板型号为PSIEVMTI，制造厂商为德州仪器 Texas Instruments
 
 
@@ -247,7 +247,7 @@ Direcotry Path: /
 File   Name: USBHost.txt
 
 ```  
-## 软件API
+## API
 
 :::{eval-rst}
 

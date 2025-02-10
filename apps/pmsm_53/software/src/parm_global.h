@@ -69,6 +69,7 @@
 #define BOARD_BLDC_TMR_CMP                              0
 #define BOARD_BLDC_TMR_IRQ                              IRQn_GPTMR2
 #define BOARD_BLDC_TMR_RELOAD                           (100000U)
+#define BOARD__BLDC_GPTMR_CLK_NAME                      clock_gptmr2
 
 /**
  * @brief     definition of encoder

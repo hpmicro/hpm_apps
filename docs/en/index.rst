@@ -3,7 +3,7 @@
 HPM APPS Documentation
 ############################
 
-version:1.7.0
+version:1.8.0
 
 Welcome to the hpm_apps's documentation.
 

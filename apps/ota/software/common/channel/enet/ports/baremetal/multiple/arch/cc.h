@@ -68,6 +68,12 @@
 
 #elif defined (__GNUC__)
 
+#if defined(__SEGGER_RTL_VERSION) && (__SEGGER_RTL_VERSION <= 42404)   /* 8.10d */
+#include <sys/time.h>
+#else
+#include <time.h>
+#endif
+
 #define PACK_STRUCT_BEGIN
 #define PACK_STRUCT_STRUCT __attribute__ ((__packed__))
 #define PACK_STRUCT_END
@@ -75,10 +81,12 @@
 
 #elif defined (__ICCRISCV__)
 
+#include <time.h>
 #define PACK_STRUCT_BEGIN
 #define PACK_STRUCT_STRUCT __attribute__ ((__packed__))
 #define PACK_STRUCT_END
 #define PACK_STRUCT_FIELD(x) x
+typedef unsigned long clockid_t;
 
 #elif defined (__TASKING__)
 
@@ -92,7 +100,7 @@
 #define LWIP_PLATFORM_ASSERT(x) printf(x)
 
 #ifndef LWIP_MEM_SECTION
-#define LWIP_MEM_SECTION ".fast_ram"
+#define LWIP_MEM_SECTION ".fast_ram.non_init"
 #endif
 
 #endif /* __CC_H__ */

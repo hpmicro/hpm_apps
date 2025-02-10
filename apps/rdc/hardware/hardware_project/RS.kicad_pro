@@ -492,7 +492,7 @@
       "model_mode": 0,
       "workbook_filename": ""
     },
-    "page_layout_descr_file": "",
+    "page_layout_descr_file": "E:\\HPM_Kicad_Libary\\SCH.kicad_wks",
     "plot_directory": "./",
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,

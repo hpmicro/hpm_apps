@@ -170,7 +170,7 @@ void pwm_trigfor_currentctrl_init(PWM_Type *ptr, uint32_t PWM_PRD, uint8_t CMP_S
 void timer_init(void)
 {
     gptmr_channel_config_t config;
-
+    clock_add_to_group(BOARD__BLDC_GPTMR_CLK_NAME, 0);
     gptmr_channel_get_default_config(BOARD_BLDC_TMR_1MS, &config);
     config.cmp[0] = BOARD_BLDC_TMR_RELOAD;
     config.debug_mode = 0;
@@ -679,6 +679,10 @@ void pmsm_motor1_init(void)
     adc_pins_init(BOARD_PMSM0PWM);
 
     pwm_pins_init(BOARD_PMSM0PWM);
+    /* ADC clock initialization */
+    board_init_adc_clock(BOARD_PMSM0_ADC_U_BASE, true);
+    board_init_adc_clock(BOARD_PMSM0_ADC_V_BASE, true);
+
 
     adc_cfg_init(BOARD_PMSM0_ADC_U_BASE, BOARD_PMSM0_ADC_CH_U, 15, BOARD_PMSM0_ADC_MODULE);
     adc_cfg_init(BOARD_PMSM0_ADC_V_BASE, BOARD_PMSM0_ADC_CH_V, 15, BOARD_PMSM0_ADC_MODULE);

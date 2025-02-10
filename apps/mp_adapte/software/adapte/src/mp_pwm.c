@@ -277,11 +277,13 @@ int mp_pwm_pair_config(hpm_pwm_pair_t* pwm_pair_t)
     pwm_enable_reload_at_synci(PWM_PAIR_BASE);
     if (PWM_PAIR_BASE == HPM_PWM0)
     {
+        clock_add_to_group(clock_mot0, 0);
         trgm_t = HPM_TRGM0;
     }
 #ifdef HPM_PWM1
     else if (PWM_PAIR_BASE == HPM_PWM1)
     {
+        clock_add_to_group(clock_mot1, 0);
 #ifdef HPM_TRGM1
         trgm_t = HPM_TRGM1;
 #else
@@ -292,12 +294,14 @@ int mp_pwm_pair_config(hpm_pwm_pair_t* pwm_pair_t)
 #ifdef HPM_PWM2
     else if (PWM_PAIR_BASE == HPM_PWM2)
     {
+        clock_add_to_group(clock_mot2, 0);
         trgm_t = HPM_TRGM2;
     }
 #endif
 #ifdef HPM_PWM3
     else if (PWM_PAIR_BASE == HPM_PWM3)
     {
+        clock_add_to_group(clock_mot3, 0);
         trgm_t = HPM_TRGM3;
     }
 #endif
@@ -526,23 +530,27 @@ int mp_pwm_config(hpm_pwm_t* pwm_t)
     pwm_enable_reload_at_synci(PWM_BASE);
     if (PWM_BASE == HPM_PWM0)
     {
+        clock_add_to_group(clock_mot0, 0);
         trgm_t = HPM_TRGM0;
     }
 #ifdef HPM_TRGM1
     else if (PWM_BASE == HPM_PWM1)
     {
+        clock_add_to_group(clock_mot1, 0);
         trgm_t = HPM_TRGM1;
     }
 #endif
 #ifdef HPM_PWM2
     else if (PWM_BASE == HPM_PWM2)
     {
+        clock_add_to_group(clock_mot2, 0);
         trgm_t = HPM_TRGM2;
     }
 #endif
 #ifdef HPM_PWM3
     else if (PWM_BASE == HPM_PWM3)
     {
+        clock_add_to_group(clock_mot3, 0);
         trgm_t = HPM_TRGM3;
     }
 #endif

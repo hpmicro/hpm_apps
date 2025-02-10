@@ -57,11 +57,11 @@ DDR包含数据和地址线，其中数据线共16位，具体走线要求建议
 
 查看布线top层
 
-![window gui create project](doc/api/assets/TOP_L2.jpg)
+![window_gui_create_project](doc/api/assets/TOP_L2.png)
 
 查看布线L3层
 
-![window gui create project](doc/api/assets/L3_Bottom.jpg)
+![window_gui_create_project](doc/api/assets/L3_Bottom.png)
 
 
 ###  阻抗控制
@@ -104,11 +104,11 @@ HPM6880 采用BGA417封装，该封装对PAD进行位置优化使其方便布线
 
 DDR2实物如图所示：
 
-![window gui create project](doc/api/assets/ddr2_demo_pcb.jpg)
+![window_gui_create_project](doc/api/assets/ddr2_demo_pcb.png)
 
 DDR3实物如图所示：
 
-![window gui create project](doc/api/assets/ddr3_demo_pcb.jpg)
+![window_gui_create_project](doc/api/assets/ddr3_demo_pcb.png)
 
 #### 端口设置
 
@@ -122,7 +122,7 @@ DDR3实物如图所示：
 
 - windows下GUI工程构建
 
-![window gui create project](doc/api/assets/create_project_for_ddr.jpg)
+![window_gui_create_project](doc/api/assets/create_project_for_ddr.png)
 
 默认SDK历程创建后运行DDR3，如果测试DDR2 ，需要在board.h 中修改DDR使用类型即可，
 
@@ -230,7 +230,7 @@ fill_selfaddress: 6/16
 fill_selfaddress: 7/16
 ```
 
-## 文档
+## API
 
 :::{eval-rst}
 

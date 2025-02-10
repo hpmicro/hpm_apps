@@ -208,14 +208,14 @@ int usbd_channel_input(uint8_t *data, uint32_t length)
 
 int monitor_init(void)
 {
-    board_init_usb_pins();
+    board_init_usb(MONITOR_USB_BASE);
     intc_set_irq_priority(MONITOR_USB_IRQ, MONITOR_USB_PRIORITY);
 
     monitor_task_init();
 
     monitor_task_output_register(usbd_channel_output);
 
-    cdc_acm_init(MONITOR_USB_BUSID, MONITOR_USB_BASE);
+    cdc_acm_init(MONITOR_USB_BUSID, (uint32_t)MONITOR_USB_BASE);
 
 #ifdef CONFIG_USB_POLLING_ENABLE
     intc_m_disable_irq(MONITOR_USB_IRQ);

@@ -106,10 +106,36 @@ uint8_t hpm_ota_get_nowrunning_appindex(void)
 hpm_app_header_t *hpm_ota_get_flash_header_info(uint8_t ota_index)
 {
 #if defined(BOOTUSER_ENABLE) && BOOTUSER_ENABLE
+    uint32_t aligned_start;
+    uint32_t aligned_end;
+    uint32_t aligned_size;
 #ifdef FLASH_USER_APP2_ADDR
-    return ota_index == HPM_APP1 ? (hpm_app_header_t *)(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE) : (hpm_app_header_t *)(FLASH_USER_APP2_ADDR + FLASH_ADDR_BASE);
+    if(ota_index == HPM_APP1)
+    {
+        aligned_start = HPM_L1C_CACHELINE_ALIGN_DOWN(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE);
+        aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE + sizeof(hpm_app_header_t));
+        aligned_size = aligned_end - aligned_start;
+        l1c_dc_invalidate(aligned_start, aligned_size);
+        return (hpm_app_header_t *)(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE);
+    }
+    else
+    {
+        aligned_start = HPM_L1C_CACHELINE_ALIGN_DOWN(FLASH_USER_APP2_ADDR + FLASH_ADDR_BASE);
+        aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(FLASH_USER_APP2_ADDR + FLASH_ADDR_BASE + sizeof(hpm_app_header_t));
+        aligned_size = aligned_end - aligned_start;
+        l1c_dc_invalidate(aligned_start, aligned_size);
+        return (hpm_app_header_t *)(FLASH_USER_APP2_ADDR + FLASH_ADDR_BASE);
+    }
 #else
-    return ota_index == HPM_APP1 ? (hpm_app_header_t *)(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE) : NULL;
+    if(ota_index == HPM_APP1)
+    {
+        aligned_start = HPM_L1C_CACHELINE_ALIGN_DOWN(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE);
+        aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE + sizeof(hpm_app_header_t));
+        aligned_size = aligned_end - aligned_start;
+        l1c_dc_invalidate(aligned_start, aligned_size);
+        return (hpm_app_header_t *)(FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE);
+    }
+    return NULL;
 #endif
 #else
     static hpm_app_header_t header_info1, header_info2;
@@ -352,6 +378,10 @@ bool hpm_ota_package_verify(uint32_t addr, uint32_t len, hpm_app_header_t *ota_h
 #endif
     {
         /*NOTE:xip points to the firmware address, reads the firmware content, firmware length*/
+        uint32_t aligned_start = HPM_L1C_CACHELINE_ALIGN_DOWN(xip_point);
+        uint32_t aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(xip_point + len);
+        uint32_t aligned_size = aligned_end - aligned_start;
+        l1c_dc_invalidate(aligned_start, aligned_size);
         if (hpm_hash_update(xip_point, len) != 0)
         {
             printf("hash update fail\r\n");

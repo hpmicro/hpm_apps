@@ -81,11 +81,11 @@ and ensure that the number of through-holes in the same group is consistent to o
 
 View the top layer of wiring
 
-![window gui create project](doc/api/assets/TOP_L2.jpg)
+![window_gui_create_project](doc/api/assets/TOP_L2.png)
 
 View wiring L3 layer [L3_Bottom]
 
-![window gui create project](doc/api/assets/L3_Bottom.jpg)
+![window_gui_create_project](doc/api/assets/L3_Bottom.png)
 
 ### Impedance control
 Equal length is the most basic requirement in DDR design, followed by impedance control.
@@ -141,11 +141,11 @@ Be careful not to plug in both jump caps as it may cause a short circuit in the 
 
 The physical DDR2 is shown in the figure:
 
-![window gui create project](doc/api/assets/ddr2_demo_pcb.jpg)
+![window_gui_create_project](doc/api/assets/ddr2_demo_pcb.png)
 
 The physical DDR3 is shown in the figure:
 
-![window gui create project](doc/api/assets/ddr3_demo_pcb.jpg)
+![window_gui_create_project](doc/api/assets/ddr3_demo_pcb.png)
 
 #### Port settings
 
@@ -159,7 +159,7 @@ Create the project as shown in the figure:
 
 -GUI Engineering Construction under Windows
 
-![window gui create project](doc/api/assets/create_project_for_ddr.jpg)
+![window_gui_create_project](doc/api/assets/create_project_for_ddr.png)
 
 After the default SDK process is created, run DDR3. If testing DDR2, you need to modify the DDR usage type in board. h,
 ```
@@ -268,7 +268,7 @@ fill_selfaddress: 6/16
 fill_selfaddress: 7/16
 ```
 
-## DOC
+## API
 
 :::{eval-rst}
 

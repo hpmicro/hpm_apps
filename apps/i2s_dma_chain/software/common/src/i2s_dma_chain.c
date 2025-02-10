@@ -346,6 +346,7 @@ void i2s_dma_rx_init(void)
     board_init_i2c(CODEC_I2C);
     init_i2s_pins(CODEC_I2S);
     dma_auto_config_rx();
+    board_config_i2s_clock(CODEC_I2S, CODEC_SAMPLE_RATE_HZ);
     codec_i2s_init();
 }
 void rx_data_process(void)
