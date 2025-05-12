@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 if("${CMAKE_BUILD_TYPE}" STREQUAL "")
     SET(CMAKE_BUILD_TYPE flash_xip)
 endif()
@@ -27,5 +29,7 @@ sdk_app_src(src/main.c)
 sdk_app_src(src/msc_app.c)
 sdk_app_src(src/file_op.c)
 sdk_app_src(src/adc.c)
+
+add_subdirectory(../../../../ hpm_apps/build_tmp)
 
 generate_ses_project()

@@ -134,10 +134,10 @@ void dual_tcpclient1_thread_entry(void *arg)
             continue;
         }
 
-        while (!get_phy_link_state(0))
-        {
-            rt_thread_mdelay(200);
-        }
+//        while (!get_phy_link_state(0))
+//        {
+//            rt_thread_mdelay(200);
+//        }
 
         server_ip = TCP_SERVER_IP1;
         /* 初始化预连接的服务端地址 */
@@ -184,25 +184,17 @@ void dual_tcpclient1_thread_entry(void *arg)
 
         setsockopt(fd1, IPPROTO_TCP, TCP_KEEPCNT, (void *)&keepcount, sizeof(keepcount));
 
-//        mode = 1;
-//        ioctlsocket(fd1, FIONBIO, &mode);
         while (1)
         {
-            if (!get_phy_link_state(0))
-            {
-                rt_kprintf("link1 disconnect!\r\n");
-                closesocket(fd1);
-                fd1 = -1;
-                break;
-            }
+//            if (!get_phy_link_state(0))
+//            {
+//                rt_kprintf("link1 disconnect!\r\n");
+//                closesocket(fd1);
+//                fd1 = -1;
+//                break;
+//            }
             memset(recv1_buf, 0, sizeof(recv1_buf));
             recv_len = select_read(fd1, recv1_buf, sizeof(recv1_buf) - 1, 1000*10);
-//            recv_len = recv(fd1, recv1_buf, sizeof(recv1_buf) - 1, MSG_DONTWAIT);
-//            if (recv_len < 0 && (errno == 0 || errno == EINTR || errno == EAGAIN || errno == EWOULDBLOCK))
-//            {
-//                rt_thread_mdelay(10);
-//                continue;
-//            }
             if(recv_len == 0)
             {
                 continue;
@@ -216,14 +208,13 @@ void dual_tcpclient1_thread_entry(void *arg)
                 break;
             }
 
-            rt_kprintf("recv1:%s\r\n", recv1_buf);
+            rt_kprintf("recv1 len:%d,:%s\r\n", recv_len, recv1_buf);
             recv_len = snprintf(recv1_buf, 1024, "ip:%s, send count:%d", RT_LWIP_IPADDR1, count++);
             recv_len = select_write(fd1, recv1_buf, recv_len, 1000*10);
             if(recv_len <= 0)
             {
                 rt_kprintf("error! send1:%d\r\n", recv_len);
             }
-//            send(fd1, recv1_buf, recv_len, 0);
         }
     } while (1);
 }
@@ -270,10 +261,10 @@ void dual_tcpclient2_thread_entry(void *arg)
             continue;
         }
 
-        while (!get_phy_link_state(1))
-        {
-            rt_thread_mdelay(200);
-        }
+//        while (!get_phy_link_state(1))
+//        {
+//            rt_thread_mdelay(200);
+//        }
 
         server_ip = TCP_SERVER_IP2;
         /* 初始化预连接的服务端地址 */
@@ -322,22 +313,15 @@ void dual_tcpclient2_thread_entry(void *arg)
 //        ioctlsocket(fd2, FIONBIO, &mode);
         while (1)
         {
-            if (!get_phy_link_state(1))
-            {
-                rt_kprintf("link2 disconnect!\r\n");
-                closesocket(fd2);
-                fd2 = -1;
-                break;
-            }
-            memset(recv2_buf, 0, sizeof(recv2_buf));
-//            recv_len = recv(fd2, recv2_buf, sizeof(recv2_buf) - 1, MSG_DONTWAIT);
-            recv_len = select_read(fd2, recv2_buf, sizeof(recv2_buf) - 1, 1000*10);
-//            if (recv_len < 0 && (errno == 0 || errno == EINTR || errno == EAGAIN || errno == EWOULDBLOCK))
+//            if (!get_phy_link_state(1))
 //            {
-//                rt_thread_mdelay(10);
-//                continue;
+//                rt_kprintf("link2 disconnect!\r\n");
+//                closesocket(fd2);
+//                fd2 = -1;
+//                break;
 //            }
-//            else if (recv_len <= 0)
+            memset(recv2_buf, 0, sizeof(recv2_buf));
+            recv_len = select_read(fd2, recv2_buf, sizeof(recv2_buf) - 1, 1000*10);
             if(recv_len == 0)
             {
                 continue;
@@ -353,7 +337,6 @@ void dual_tcpclient2_thread_entry(void *arg)
 
             rt_kprintf("recv2:%s\r\n", recv2_buf);
             recv_len = snprintf(recv2_buf, 1024, "ip:%s, send count:%d", RT_LWIP_IPADDR2, count++);
-//            send(fd2, recv2_buf, recv_len, 0);
             recv_len = select_write(fd2, recv2_buf, recv_len, 1000*10);
             if(recv_len <= 0)
             {

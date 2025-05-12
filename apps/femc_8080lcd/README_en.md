@@ -1,5 +1,7 @@
 # HPM FEMC driver 8080 screen
 
+## Depend on SDK1.8.0
+
 ## Introduction
 
 this app introduces how to use FEMC controller to drive 8080 screen.The 8080 screen is mounted through the FEMC controller, like access RAM operation, through reading and writing the corresponding address can easily drive lit 8080 screen, and achieve high speed refresh rate.

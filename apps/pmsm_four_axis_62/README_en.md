@@ -1,5 +1,7 @@
 # HPM6200 four-axis servo-driver Solution
 
+## Depend on SDK1.8.0
+
 ## Overview
 
 HPM6200 is a 32-bit high performance microcontroller based on RISC_V kernel from Shanghai HPM Semiconductor Technology Co., LTD.
@@ -39,7 +41,6 @@ The specific function interfaces are shown in the following table.
 |  API name | description | calling state | 
 | ---- | ---- | ---- | 
 | pwm_sync | synchronous timer | init | 
-| get_cmd_char | serial port communication | init | 
 | pmsm0_foc_angle_align | axis 0 presets | servo start | 
 | motor0_highspeed_loop | axis 0 current loop | 50us interrupt | 
 | pos_cmd_gene | position trajectory planning | 1ms interrupt | 
@@ -122,9 +123,9 @@ Timer generates 1ms interrupt, control speed loop/position loop update:
 
 By configuring a synchronous trigger input SYNCI module connected to PWM, the four motors are turned on at a certain phase difference.
 
-### serial port communication
+### UART/USB communication
 
-In order to facilitate the user to control the motor, the serial debugging tool is used to issue the motion command. The MCU moves according to the motion instructions received.
+In order to facilitate user control of the motor, it supports issuing motion commands using UART or USB debugging tools. Users can choose to use UART or USB in the cmakelist file. The MCU performs corresponding movements based on the received motion instructions.
 
 ## test method
 

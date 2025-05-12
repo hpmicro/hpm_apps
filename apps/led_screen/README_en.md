@@ -1,5 +1,7 @@
 # LED large screen driver scheme
 
+## Depend on SDK1.8.0
+
 ## Overview
 
 LED large screen display system uses the dot matrix module or pixel unit composed of RGB lamp beads to form a large-area display to display characters、 images and other information、with low power consumption、 low cost、high brightness、long life、wide viewing Angle and other advantages、in recent years with the continuous update of LED display technology、widely used in various media occasions.

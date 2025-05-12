@@ -82,7 +82,6 @@ int main(void)
 
     printf("hello world, THIS OTA%d\n", hpm_ota_get_nowrunning_appindex());
 
-#ifndef CONFIG_USE_HPM5300
     ret = hpm_platform_flash_init();
     if (ret != 0)
     {
@@ -111,7 +110,6 @@ int main(void)
 #elif defined(CONFIG_ECAT_FOE_CHANNEL) && CONFIG_ECAT_FOE_CHANNEL
     hpm_ecat_foe_init();
     hpm_ecat_foe_task();
-#endif
 #endif
 
     while (1)

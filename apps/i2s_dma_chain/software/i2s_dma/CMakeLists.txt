@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 if(NOT DEFINED CONFIG_CODEC)
 # set(CONFIG_CODEC "sgtl5000")
 set(CONFIG_CODEC "wm8960")
@@ -31,4 +33,7 @@ sdk_compile_options("-O3")
 sdk_app_src(src/audio_codec.c)
 sdk_inc(../common/inc)
 sdk_app_src(../common/src/i2s_dma_chain.c)
+
+add_subdirectory(../../../.. hpm_apps/build_tmp)
+
 generate_ide_projects()

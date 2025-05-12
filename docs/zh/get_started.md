@@ -15,14 +15,9 @@ HPM_APPS是基于HPM SDK开发的上层应用软件开发套件。支持各类�
 
 ## HPM_APPS使用说明
 
-### 依赖HPM SDK版本要求
+### HPM SDK版本要求
 
-HPM APP版本和HPM SDK版本一一对应，为了保持版本兼容，版本号必须相同。
-例如：
-| 软件名称 | 版本号 |
-|--- | --- |
-| hpm_sdk | 1.x.y |
-| hpm_apps | 1.x.y |
+注意：HPM APP的每个CASE都依赖对应HPM SDK版本，为保证工程能够正确的构建和编译，请查阅对应CASE目录下README文档中SDK版本依赖说明。
 
 
 ### 构建编译

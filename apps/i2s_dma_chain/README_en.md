@@ -1,5 +1,6 @@
 # I2S_DMA_CHAIN solutions
 
+## Depend on SDK1.8.0
 
 ## Introduction
 

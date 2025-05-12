@@ -1,5 +1,6 @@
 # HPM 5300 series rotary transformer hardware decoding scheme
 
+## Depend on SDK1.8.0
 
 ## INTROduction
 

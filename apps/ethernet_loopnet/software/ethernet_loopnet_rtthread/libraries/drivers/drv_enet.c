@@ -26,10 +26,10 @@ __RW enet_rx_desc_t enet0_dma_rx_desc_tab[ENET0_RX_BUFF_COUNT]; /* Ethernet0 Rx 
 ATTR_PLACE_AT_NONCACHEABLE_WITH_ALIGNMENT(ENET_SOC_DESC_ADDR_ALIGNMENT)
 __RW enet_tx_desc_t enet0_dma_tx_desc_tab[ENET0_TX_BUFF_COUNT]; /* Ethernet0 Tx DMA Descriptor */
 
-ATTR_PLACE_AT_WITH_ALIGNMENT(".fast_ram", ENET_SOC_BUFF_ADDR_ALIGNMENT)
+ATTR_PLACE_AT_FAST_RAM_WITH_ALIGNMENT(ENET_SOC_BUFF_ADDR_ALIGNMENT)
 __RW uint8_t enet0_rx_buff[ENET0_RX_BUFF_COUNT][ENET0_RX_BUFF_SIZE]; /* Ethernet0 Receive Buffer */
 
-ATTR_PLACE_AT_WITH_ALIGNMENT(".fast_ram", ENET_SOC_BUFF_ADDR_ALIGNMENT)
+ATTR_PLACE_AT_FAST_RAM_WITH_ALIGNMENT(ENET_SOC_BUFF_ADDR_ALIGNMENT)
 __RW uint8_t enet0_tx_buff[ENET0_TX_BUFF_COUNT][ENET0_TX_BUFF_SIZE]; /* Ethernet0 Transmit Buffer */
 
 struct eth_device eth0_dev;
@@ -91,10 +91,10 @@ __RW enet_rx_desc_t enet1_dma_rx_desc_tab[ENET1_RX_BUFF_COUNT]; /* Ethernet1 Rx 
 ATTR_PLACE_AT_NONCACHEABLE_WITH_ALIGNMENT(ENET_SOC_DESC_ADDR_ALIGNMENT)
 __RW enet_tx_desc_t enet1_dma_tx_desc_tab[ENET1_TX_BUFF_COUNT]; /* Ethernet1 Tx DMA Descriptor */
 
-ATTR_PLACE_AT_WITH_ALIGNMENT(".fast_ram", ENET_SOC_BUFF_ADDR_ALIGNMENT)
+ATTR_PLACE_AT_FAST_RAM_WITH_ALIGNMENT(ENET_SOC_BUFF_ADDR_ALIGNMENT)
 __RW uint8_t enet1_rx_buff[ENET1_RX_BUFF_COUNT][ENET1_RX_BUFF_SIZE]; /* Ethernet1 Receive Buffer */
 
-ATTR_PLACE_AT_WITH_ALIGNMENT(".fast_ram", ENET_SOC_BUFF_ADDR_ALIGNMENT)
+ATTR_PLACE_AT_FAST_RAM_WITH_ALIGNMENT(ENET_SOC_BUFF_ADDR_ALIGNMENT)
 __RW uint8_t enet1_tx_buff[ENET1_TX_BUFF_COUNT][ENET1_TX_BUFF_SIZE]; /* Ethernet1 Transmit Buffer */
 
 struct eth_device eth1_dev;
@@ -319,103 +319,83 @@ static rt_err_t rt_hpm_eth_control(rt_device_t dev, int cmd, void * args)
     return RT_EOK;
 }
 
-ATTR_RAMFUNC static rt_err_t rt_hpm_eth_tx(rt_device_t dev, struct pbuf * p)
+ATTR_RAMFUNC static inline rt_err_t rt_hpm_eth_tx(rt_device_t dev, struct pbuf * p)
 {
-    rt_err_t ret = RT_ERROR;
     uint32_t status;
     enet_device *enet_dev = (enet_device *)dev->user_data;
     uint32_t tx_buff_size = enet_dev->desc.tx_buff_cfg.size;
-    struct pbuf *q;
-    uint8_t *buffer;
-    __IO enet_tx_desc_t *dma_tx_desc;
+    struct pbuf *temp_p = NULL;
     uint32_t frame_length = 0;
-    uint32_t buffer_offset = 0;
-    uint32_t bytes_left_to_copy = 0;
-    uint32_t payload_offset = 0;
-    enet_tx_desc_t  *tx_desc_list_cur = enet_dev->desc.tx_desc_list_cur;
-
-    dma_tx_desc = tx_desc_list_cur;
-    buffer = (uint8_t *)(dma_tx_desc->tdes2_bm.buffer1);
-    buffer_offset = 0;
     rt_tick_t t_start;
+    static struct pbuf *old_p[2] = {NULL, NULL};
 
-    /* copy frame from pbufs to driver buffers */
-    for (q = p; q != NULL; q = q->next)
+    if(p == NULL)
     {
-        /* Get bytes in current lwIP buffer */
-        bytes_left_to_copy = q->len;
-        payload_offset = 0;
-
-        /* Check if the length of data to copy is bigger than Tx buffer size*/
-        while ((bytes_left_to_copy + buffer_offset) > tx_buff_size)
-        {
-            /* check DMA own status within timeout */
-            t_start = rt_tick_get();
-            while (dma_tx_desc->tdes0_bm.own)
-            {
-                if (rt_tick_get() - t_start > RT_TICK_PER_SECOND / 100)
-                {
-                    return ERR_TIMEOUT;
-                }
-            }
-
-            /* Copy data to Tx buffer*/
-            SMEMCPY((uint8_t *)((uint8_t *)buffer + buffer_offset),
-                    (uint8_t *)((uint8_t *)q->payload + payload_offset),
-                    tx_buff_size - buffer_offset);
-
-            /* Point to next descriptor */
-            dma_tx_desc = (enet_tx_desc_t *)(dma_tx_desc->tdes3_bm.next_desc);
-
-            /* Check if the buffer is available */
-            if (dma_tx_desc->tdes0_bm.own != 0)
-            {
-                LOG_E("DMA tx desc buffer is not valid\n");
-                return ERR_BUF;
-            }
-
-            buffer = (uint8_t *)(dma_tx_desc->tdes2_bm.buffer1);
-
-            bytes_left_to_copy = bytes_left_to_copy - (tx_buff_size - buffer_offset);
-            payload_offset = payload_offset + (tx_buff_size - buffer_offset);
-            frame_length = frame_length + (tx_buff_size - buffer_offset);
-            buffer_offset = 0;
-        }
-
-        /* check DMA own status within timeout */
-        t_start = rt_tick_get();
-        while (dma_tx_desc->tdes0_bm.own)
-        {
-            if (rt_tick_get() - t_start > RT_TICK_PER_SECOND / 100)
-            {
-                return ERR_TIMEOUT;
-            }
-        }
-
-        /* Copy the remaining bytes */
-        buffer = (void *)sys_address_to_core_local_mem(0, (uint32_t)buffer);
-        SMEMCPY((uint8_t *)((uint8_t *)buffer + buffer_offset),
-                (uint8_t *)((uint8_t *)q->payload + payload_offset),
-                bytes_left_to_copy);
-
-        buffer_offset = buffer_offset + bytes_left_to_copy;
-        frame_length = frame_length + bytes_left_to_copy;
+        return ERR_BUF;
     }
 
-    /* Prepare transmit descriptors to give to DMA */
-    LOG_D("The length of the transmitted frame: %d\n", frame_length);
+    if(p->next != NULL)
+    {
+        printf("tx bad! no support next send!\r\n");
+        return ERR_BUF;
+    }
+    if(p->len > tx_buff_size)
+    {
+        printf("tx bad! tx this case no support lage data:%d!\r\n", p->len);
+        return ERR_BUF;
+    }
 
+    t_start = rt_tick_get();
+    while (enet_dev->desc.tx_desc_list_cur->tdes0_bm.own)
+    {
+        if (rt_tick_get() - t_start > RT_TICK_PER_SECOND / 100)
+        {
+            return ERR_TIMEOUT;
+        }
+    }
+
+    enet_dev->desc.tx_desc_list_cur->tdes2_bm.buffer1 = core_local_mem_to_sys_address(0, (uint32_t)p->payload);
+    frame_length = p->len;
     frame_length += 4;
     status = enet_prepare_transmission_descriptors(enet_dev->instance, &enet_dev->desc.tx_desc_list_cur, frame_length, enet_dev->desc.tx_buff_cfg.size);
     if (status != ENET_SUCCESS)
     {
-        LOG_E("Ethernet controller transmit unsuccessfully: %d\n", status);
+        printf("Ethernet controller transmit unsuccessfully: %d\n", status);
+    }
+
+    if(enet_dev->instance == HPM_ENET0)
+    {
+        if(old_p[0] == NULL)
+        {
+            old_p[0] = p;
+            p = NULL;
+        }
+        else
+        {
+            temp_p = p;
+            p = old_p[0];
+            old_p[0] = temp_p;
+        }
+    }
+    else
+    {
+        if(old_p[1] == NULL)
+        {
+            old_p[1] = p;
+            p = NULL;
+        }
+        else
+        {
+            temp_p = p;
+            p = old_p[1];
+            old_p[1] = temp_p;
+        }
     }
 
     return ERR_OK;
 }
 
-ATTR_RAMFUNC static struct pbuf *rt_hpm_loopnet_process(enet_device* enet_dev, struct pbuf* p)
+ATTR_RAMFUNC static inline struct pbuf *rt_hpm_loopnet_process(enet_device* enet_dev, struct pbuf* p)
 {
     uint8_t index = 0;
     struct eth_hdr *ethhdr;
@@ -465,71 +445,47 @@ ATTR_RAMFUNC static struct pbuf *rt_hpm_loopnet_process(enet_device* enet_dev, s
     return NULL;
 }
 
-ATTR_RAMFUNC static struct pbuf *rt_hpm_eth_rx(rt_device_t dev)
+ATTR_RAMFUNC static inline struct pbuf *rt_hpm_eth_rx(rt_device_t dev)
 {
-    struct pbuf *p = NULL, *q = NULL;
+    struct pbuf *p = NULL;// = &recv_pbuf;
+    struct pbuf *ret_p = NULL;
     enet_device *enet_dev = (enet_device *)dev->user_data;
+    enet_rx_desc_t *dma_rx_desc = NULL;
     uint32_t rx_buff_size = enet_dev->desc.rx_buff_cfg.size;
-    uint16_t len = 0;
-    uint8_t *buffer;
     enet_frame_t frame = {0, 0, 0};
-    enet_rx_desc_t *dma_rx_desc;
-    uint32_t buffer_offset = 0;
-    uint32_t payload_offset = 0;
-    uint32_t bytes_left_to_copy = 0;
-    uint32_t i = 0;
 
     /* Get a received frame */
     frame = enet_get_received_frame_interrupt(&enet_dev->desc.rx_desc_list_cur,
                                               &enet_dev->desc.rx_frame_info,
                                               enet_dev->desc.rx_buff_cfg.count);
-
-    /* Obtain the size of the packet and put it into the "len" variable. */
-    len = frame.length;
-    buffer = (uint8_t *)frame.buffer;
-
-    LOG_D("The current received frame length : %d\n", len);
-
-    if (len > 0)
+    do
     {
-        /* allocate a pbuf chain of pbufs from the Lwip buffer pool */
-        p = pbuf_alloc(PBUF_RAW, len, PBUF_POOL);
-
-        if (p != NULL)
+        if(frame.length <= 0)
         {
-            dma_rx_desc = frame.rx_desc;
-            buffer_offset = 0;
-            for (q = p; q != NULL; q = q->next)
-            {
-                bytes_left_to_copy = q->len;
-                payload_offset = 0;
-
-                /* Check if the length of bytes to copy in current pbuf is bigger than Rx buffer size*/
-                while ((bytes_left_to_copy + buffer_offset) > rx_buff_size)
-                {
-                    /* Copy data to pbuf */
-                    SMEMCPY((uint8_t *)((uint8_t *)q->payload + payload_offset), (uint8_t *)((uint8_t *)buffer + buffer_offset), (rx_buff_size - buffer_offset));
-
-                    /* Point to next descriptor */
-                    dma_rx_desc = (enet_rx_desc_t *)(dma_rx_desc->rdes3_bm.next_desc);
-                    buffer = (uint8_t *)(dma_rx_desc->rdes2_bm.buffer1);
-
-                    bytes_left_to_copy = bytes_left_to_copy - (rx_buff_size - buffer_offset);
-                    payload_offset = payload_offset + (rx_buff_size - buffer_offset);
-                    buffer_offset = 0;
-                }
-                /* Copy remaining data in pbuf */
-                q->payload = (void *)sys_address_to_core_local_mem(0, (uint32_t)buffer);
-                buffer_offset = buffer_offset + bytes_left_to_copy;
-            }
+            break;
         }
-
-        /* Release descriptors to DMA */
-        /* Point to first descriptor */
         dma_rx_desc = frame.rx_desc;
+        if(frame.length > rx_buff_size)
+        {
+            printf("bad! this case no support large data, len:%d!\r\n", frame.length);
+            break;
+        }
+        p = pbuf_alloc(PBUF_RAW, (u16_t)frame.length, PBUF_POOL);
+        if(p == NULL)
+        {
+           printf("bad pbuf alloc failed!\r\n");
+           break;
+        }
+        p->tot_len = frame.length;
+        p->len = frame.length;
+        p->payload = (void *)sys_address_to_core_local_mem(0, (uint32_t)frame.buffer);
+        ret_p = rt_hpm_loopnet_process(enet_dev, p);
+    } while(0);
 
+    if(dma_rx_desc != NULL)
+    {
         /* Set Own bit in Rx descriptors: gives the buffers back to DMA */
-        for (i = 0; i < enet_dev->desc.rx_frame_info.seg_count; i++)
+        for (int i = 0; i < enet_dev->desc.rx_frame_info.seg_count; i++)
         {
             dma_rx_desc->rdes0_bm.own = 1;
             dma_rx_desc = (enet_rx_desc_t*)(dma_rx_desc->rdes3_bm.next_desc);
@@ -546,8 +502,7 @@ ATTR_RAMFUNC static struct pbuf *rt_hpm_eth_rx(rt_device_t dev)
         enet_dev->instance->DMA_RX_POLL_DEMAND = 1;
     }
 
-
-    return rt_hpm_loopnet_process(enet_dev, p);
+    return ret_p;
 }
 
 static void eth_rx_callback(struct eth_device* dev)

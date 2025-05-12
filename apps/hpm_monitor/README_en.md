@@ -1,5 +1,7 @@
 # hpm_monitor service demo
 
+## Depend on SDK1.8.0
+
 ## introduction
 
 hpm_monitor is an efficient, easy to use, and highly portable service, which is used to view and set global variables in the current device in real time, or to report global variables at high speed (1Khz-1ms). Often used as a monitoring data oscilloscope; Very friendly to motor, power supply and other debugging;

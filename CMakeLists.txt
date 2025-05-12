@@ -1,6 +1,10 @@
-add_subdirectory(apps)
-add_subdirectory(boards)
 add_subdirectory(components)
 add_subdirectory(middleware)
 add_subdirectory(services)
 add_subdirectory(tools)
+
+message(STATUS "SDK_VERSION_STRING: ${SDK_VERSION_STRING}")
+message(STATUS "APP_VERSION_STRING: ${APP_VERSION_STRING}")
+if(APP_VERSION_STRING AND NOT (SDK_VERSION_STRING STREQUAL APP_VERSION_STRING))
+    message(FATAL_ERROR "SDK version mismatch, current case adapted SDK version: ${APP_VERSION_STRING}")
+endif()

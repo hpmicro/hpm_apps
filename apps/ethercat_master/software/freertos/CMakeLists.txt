@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.9.0\"")
+
 set(CONFIG_FREERTOS 1)
 set(CONFIG_A_ETHERCAT 1)
 
@@ -24,6 +26,9 @@ sdk_compile_definitions(-DDISABLE_IRQ_PREEMPTIVE=1)
 
 sdk_inc(src)
 sdk_app_src(src/main.c)
+
+sdk_inc(../common)
+sdk_src(../common/ethercat_common.c)
 
 add_subdirectory(../../../.. hpm_apps/build_tmp)
 generate_ses_project()

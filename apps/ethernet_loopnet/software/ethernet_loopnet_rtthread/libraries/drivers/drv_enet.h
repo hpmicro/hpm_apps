@@ -84,15 +84,15 @@ typedef struct _hpm_enet
 
 #if ENET_SOC_RGMII_EN
 #ifndef ENET0_TX_BUFF_COUNT
-#define ENET0_TX_BUFF_COUNT  (50U)
+#define ENET0_TX_BUFF_COUNT  (5U)
 #endif
 
 #ifndef ENET0_RX_BUFF_COUNT
-#define ENET0_RX_BUFF_COUNT  (60U)
+#define ENET0_RX_BUFF_COUNT  (20U)
 #endif
 #else
 #ifndef ENET0_TX_BUFF_COUNT
-#define ENET0_TX_BUFF_COUNT  (10U)
+#define ENET0_TX_BUFF_COUNT  (5U)
 #endif
 
 #ifndef ENET0_RX_BUFF_COUNT
@@ -109,11 +109,11 @@ typedef struct _hpm_enet
 #endif
 
 #ifndef ENET1_TX_BUFF_COUNT
-#define ENET1_TX_BUFF_COUNT  (10U)
+#define ENET1_TX_BUFF_COUNT  (5U)
 #endif
 
 #ifndef ENET1_RX_BUFF_COUNT
-#define ENET1_RX_BUFF_COUNT  (30U)
+#define ENET1_RX_BUFF_COUNT  (20U)
 #endif
 
 #ifndef ENET1_RX_BUFF_SIZE

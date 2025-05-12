@@ -1,6 +1,9 @@
 # Copyright 2021 hpmicro
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.13)
+
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 # set(CONFIG_HPM_MATH 1)
 set(CONFIG_MOTORCTRL  1)
 set(CONFIG_A_LIBMOTORCTRL 1)

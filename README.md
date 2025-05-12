@@ -19,12 +19,7 @@ HPM APPS is an upper layer application software development kit based on HPM SDK
 
 ### HPM SDK version requirements
 
-The versions of HPM APP and HPM SDK correspond one-to-one. To maintain version compatibility, the version number should be the same.
-For example:
-| Software Name | Version |
-|--- | --- |
-| hpm_sdk | 1.x.y |
-| hpm_apps | 1.x.y |
+Note: Each CASE of the HPM APP relies on the corresponding HPM SDK version. To ensure that the project can be built and compiled correctly, please refer to the SDK version dependency instructions in the README document located in the corresponding CASE directory.
 
 ### Build
 

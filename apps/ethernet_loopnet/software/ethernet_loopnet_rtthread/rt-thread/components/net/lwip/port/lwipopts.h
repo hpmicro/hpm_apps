@@ -282,67 +282,119 @@
 //#define MEM_LIBC_MALLOC             1
 //#define MEM_USE_POOLS               1
 //#define MEMP_USE_CUSTOM_POOLS       1
-//#define MEM_SIZE                    (1024*64)
+#define MEM_SIZE                    (1024*60)
 
-#define MEMP_MEM_MALLOC             0
+//#define MEMP_MEM_MALLOC             0
+
 
 /* MEMP_NUM_PBUF: the number of memp struct pbufs. If the application
    sends a lot of data out of ROM (or other static memory), this
    should be set high. */
-#define MEMP_NUM_PBUF               32 //16
+#define MEMP_NUM_PBUF           100
+/* MEMP_NUM_UDP_PCB: the number of UDP protocol control blocks. One
+   per active UDP "connection". */
+#define MEMP_NUM_UDP_PCB        6
+/* MEMP_NUM_TCP_PCB: the number of simulatenously active TCP
+   connections. */
+#define MEMP_NUM_TCP_PCB        10
+/* MEMP_NUM_TCP_PCB_LISTEN: the number of listening TCP
+   connections. */
+#define MEMP_NUM_TCP_PCB_LISTEN 5
+/* MEMP_NUM_TCP_SEG: the number of simultaneously queued TCP
+   segments. */
+#define MEMP_NUM_TCP_SEG        20
+/* MEMP_NUM_SYS_TIMEOUT: the number of simulateously active
+   timeouts. */
+//#define MEMP_NUM_SYS_TIMEOUT    10
 
-/* the number of struct netconns */
-#ifdef RT_MEMP_NUM_NETCONN
-#define MEMP_NUM_NETCONN            RT_MEMP_NUM_NETCONN
-#endif
-
-/* the number of UDP protocol control blocks. One per active RAW "connection". */
-#ifdef RT_LWIP_RAW_PCB_NUM
-#define MEMP_NUM_RAW_PCB            RT_LWIP_RAW_PCB_NUM
-#endif
-
-/* the number of UDP protocol control blocks. One per active UDP "connection". */
-#ifdef RT_LWIP_UDP_PCB_NUM
-#define MEMP_NUM_UDP_PCB            RT_LWIP_UDP_PCB_NUM
-#endif
-
-/* the number of simulatenously active TCP connections. */
-#ifdef RT_LWIP_TCP_PCB_NUM
-#define MEMP_NUM_TCP_PCB            RT_LWIP_TCP_PCB_NUM
-#endif
-
-/* the number of simultaneously queued TCP */
-#ifdef RT_LWIP_TCP_SEG_NUM
-#define MEMP_NUM_TCP_SEG            RT_LWIP_TCP_SEG_NUM
-#else
-#define MEMP_NUM_TCP_SEG            TCP_SND_QUEUELEN
-#endif
-
-/*
- * You can re-define following setting in rtcofnig.h to overwrite the default
- * setting in the lwip opts.h
- */
-/* MEMP_NUM_NETBUF: the number of struct netbufs. */
-// #define MEMP_NUM_NETBUF             2
-/* MEMP_NUM_NETCONN: the number of struct netconns. */
-// #define MEMP_NUM_NETCONN            4
-
-/* MEMP_NUM_TCPIP_MSG_*: the number of struct tcpip_msg, which is used
-   for sequential API communication and incoming packets. Used in
-   src/api/tcpip.c. */
-// #define MEMP_NUM_TCPIP_MSG_API      16
-// #define MEMP_NUM_TCPIP_MSG_INPKT    16
 
 /* ---------- Pbuf options ---------- */
 /* PBUF_POOL_SIZE: the number of buffers in the pbuf pool. */
-#ifdef RT_LWIP_PBUF_NUM
-#define PBUF_POOL_SIZE               RT_LWIP_PBUF_NUM
-#endif
+#define PBUF_POOL_SIZE          20
 
 /* PBUF_POOL_BUFSIZE: the size of each pbuf in the pbuf pool. */
-#ifdef RT_LWIP_PBUF_POOL_BUFSIZE
-#define PBUF_POOL_BUFSIZE            RT_LWIP_PBUF_POOL_BUFSIZE
-#endif
+#define PBUF_POOL_BUFSIZE       1600
+
+
+/* ---------- TCP options ---------- */
+#define LWIP_TCP                1
+#define TCP_TTL                 255
+
+/* Controls if TCP should queue segments that arrive out of
+   order. Define to 0 if your device is low on memory. */
+//#define TCP_QUEUE_OOSEQ         0
+//
+///* TCP Maximum segment size. */
+//#define TCP_MSS                 (1500 - 40)   /* TCP_MSS = (Ethernet MTU - IP header size - TCP header size) */
+//
+///* TCP sender buffer space (bytes). */
+#define TCP_SND_BUF             (5*TCP_MSS)
+//
+///*  TCP_SND_QUEUELEN: TCP sender buffer space (pbufs). This must be at least
+//  as much as (2 * TCP_SND_BUF/TCP_MSS) for things to work. */
+//
+//#define TCP_SND_QUEUELEN        (4* TCP_SND_BUF/TCP_MSS)
+//
+///* TCP receive window. */
+//#define TCP_WND                 (2*TCP_MSS)
+//
+///* MEMP_NUM_PBUF: the number of memp struct pbufs. If the application
+//   sends a lot of data out of ROM (or other static memory), this
+//   should be set high. */
+//#define MEMP_NUM_PBUF               100//32 //16
+//
+///* the number of struct netconns */
+//#ifdef RT_MEMP_NUM_NETCONN
+//#define MEMP_NUM_NETCONN            RT_MEMP_NUM_NETCONN
+//#endif
+//
+///* the number of UDP protocol control blocks. One per active RAW "connection". */
+//#ifdef RT_LWIP_RAW_PCB_NUM
+//#define MEMP_NUM_RAW_PCB            RT_LWIP_RAW_PCB_NUM
+//#endif
+//
+///* the number of UDP protocol control blocks. One per active UDP "connection". */
+//#ifdef RT_LWIP_UDP_PCB_NUM
+//#define MEMP_NUM_UDP_PCB            RT_LWIP_UDP_PCB_NUM
+//#endif
+//
+///* the number of simulatenously active TCP connections. */
+//#ifdef RT_LWIP_TCP_PCB_NUM
+//#define MEMP_NUM_TCP_PCB            RT_LWIP_TCP_PCB_NUM
+//#endif
+//
+///* the number of simultaneously queued TCP */
+//#ifdef RT_LWIP_TCP_SEG_NUM
+//#define MEMP_NUM_TCP_SEG            RT_LWIP_TCP_SEG_NUM
+//#else
+//#define MEMP_NUM_TCP_SEG            TCP_SND_QUEUELEN
+//#endif
+//
+///*
+// * You can re-define following setting in rtcofnig.h to overwrite the default
+// * setting in the lwip opts.h
+// */
+///* MEMP_NUM_NETBUF: the number of struct netbufs. */
+//// #define MEMP_NUM_NETBUF             2
+///* MEMP_NUM_NETCONN: the number of struct netconns. */
+//// #define MEMP_NUM_NETCONN            4
+//
+///* MEMP_NUM_TCPIP_MSG_*: the number of struct tcpip_msg, which is used
+//   for sequential API communication and incoming packets. Used in
+//   src/api/tcpip.c. */
+//// #define MEMP_NUM_TCPIP_MSG_API      16
+//// #define MEMP_NUM_TCPIP_MSG_INPKT    16
+//
+///* ---------- Pbuf options ---------- */
+///* PBUF_POOL_SIZE: the number of buffers in the pbuf pool. */
+//#ifdef RT_LWIP_PBUF_NUM
+//#define PBUF_POOL_SIZE               RT_LWIP_PBUF_NUM
+//#endif
+//
+///* PBUF_POOL_BUFSIZE: the size of each pbuf in the pbuf pool. */
+//#ifdef RT_LWIP_PBUF_POOL_BUFSIZE
+//#define PBUF_POOL_BUFSIZE            RT_LWIP_PBUF_POOL_BUFSIZE
+//#endif
 
 /* PBUF_LINK_HLEN: the number of bytes that should be allocated for a
    link level header. */
@@ -375,11 +427,11 @@
 #define TCP_MSS                     1460
 
 /* TCP sender buffer space (bytes). */
-#ifdef RT_LWIP_TCP_SND_BUF
-#define TCP_SND_BUF                 RT_LWIP_TCP_SND_BUF
-#else
-#define TCP_SND_BUF                 (TCP_MSS * 2)
-#endif
+//#ifdef RT_LWIP_TCP_SND_BUF
+//#define TCP_SND_BUF                 RT_LWIP_TCP_SND_BUF
+//#else
+//#define TCP_SND_BUF                 (TCP_MSS * 2)
+//#endif
 
 /* TCP sender buffer space (pbufs). This must be at least = 2 *
    TCP_SND_BUF/TCP_MSS for things to work. */

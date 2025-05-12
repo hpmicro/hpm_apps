@@ -1,5 +1,7 @@
 # hpm_motor library test demo
 
+## Depend on SDK1.8.0
+
 ## introduction
 
 In order to facilitate users to use and understand the functions of the motor library, a test demo is set up for the motor library.

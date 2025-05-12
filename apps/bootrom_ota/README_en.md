@@ -1,5 +1,7 @@
 # Bootrom OTA
 
+## Depend on SDK1.8.0
+
 ## Overview
 
 This section primarily introduces how to use the **SEC_IMG_OFFSET** feature provided by the bootrom for OTA upgrades. For OTA upgrades, we use the UART xmodem functionality, and the firmware is encrypted.

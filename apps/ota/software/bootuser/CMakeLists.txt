@@ -3,10 +3,11 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.9.0\"")
+
 # set(FLASH_XIP 1)
 # set(LINK_TO_FLASH 1)
 set(INCLUDE_BOOTHEADER 1)
-set(HPM_SDK_NO_NANO_SPECS 1)
 
 # set(CONFIG_UART_CHANNEL 1)
 # set(CONFIG_ENET_CHANNEL 1)
@@ -33,11 +34,24 @@ endif()
 string(FIND ${BOARD} "53" found)
 if(${found} GREATER_EQUAL 0)
     set(CONFIG_USE_HPM5300 1)
+    set(CONFIG_USE_FLASH_1M 1)
 endif()
 
 string(FIND ${BOARD} "68" found)
 if(${found} GREATER_EQUAL 0)
     set(CONFIG_USE_HPM6800 1)
+endif()
+
+string(FIND ${BOARD} "6e" found)
+if(${found} GREATER_EQUAL 0)
+    set(CONFIG_USE_HPM6E00 1)
+endif()
+
+string(FIND ${BOARD} "5e" found)
+if(${found} GREATER_EQUAL 0)
+    set(CONFIG_USE_HPM5E00 1)
+    set(CONFIG_USE_FLASH_1M 1)
+    set(CONFIG_MBEDTLS 1)
 endif()
 
 if(DEFINED CONFIG_UART_CHANNEL)
@@ -89,9 +103,15 @@ sdk_compile_definitions(-DFLASH_XIP=1)
 sdk_compile_definitions(-DBOARD_SHOW_CLOCK=0)
 sdk_compile_definitions(-DBOOTUSER_ENABLE=1)
 
-if(DEFINED CONFIG_USE_HPM5300)
-    if (${CONFIG_USE_HPM5300})
-        sdk_compile_definitions("-DCONFIG_USE_HPM5300=1")
+if(DEFINED CONFIG_USE_HPM5E00)
+    if (${CONFIG_USE_HPM5E00})
+        sdk_compile_definitions(-DMBEDTLS_CONFIG_FILE="hpm_sdk_mbedtls_config.h")
+    endif()
+endif()
+
+if(DEFINED CONFIG_USE_FLASH_1M)
+    if (${CONFIG_USE_FLASH_1M})
+        sdk_compile_definitions("-DCONFIG_USE_FLASH_1M=1")
     endif()
 endif()
 
@@ -195,4 +215,7 @@ sdk_app_src(../common/crypto/hpm_hashs.c)
 sdk_app_src(../common/otamgr/hpm_ota.c)
 sdk_app_src(../common/platform/hpm_platform.c)
 sdk_app_src(src/boot_user.c)
+
+add_subdirectory(../../../.. hpm_apps/build_tmp)
+
 generate_ses_project()

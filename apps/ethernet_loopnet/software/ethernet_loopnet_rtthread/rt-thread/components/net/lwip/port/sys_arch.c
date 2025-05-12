@@ -539,32 +539,32 @@ u32_t sys_now(void)
 {
     return rt_tick_get_millisecond();
 }
-
-rt_weak void mem_init(void)
-{
-}
-
-void *mem_calloc(mem_size_t count, mem_size_t size)
-{
-    return rt_calloc(count, size);
-}
-
-void *mem_trim(void *mem, mem_size_t size)
-{
-    // return rt_realloc(mem, size);
-    /* not support trim yet */
-    return mem;
-}
-
-void *mem_malloc(mem_size_t size)
-{
-    return rt_malloc(size);
-}
-
-void  mem_free(void *mem)
-{
-    rt_free(mem);
-}
+//
+//rt_weak void mem_init(void)
+//{
+//}
+//
+//void *mem_calloc(mem_size_t count, mem_size_t size)
+//{
+//    return rt_calloc(count, size);
+//}
+//
+//void *mem_trim(void *mem, mem_size_t size)
+//{
+//    // return rt_realloc(mem, size);
+//    /* not support trim yet */
+//    return mem;
+//}
+//
+//void *mem_malloc(mem_size_t size)
+//{
+//    return rt_malloc(size);
+//}
+//
+//void  mem_free(void *mem)
+//{
+//    rt_free(mem);
+//}
 
 #ifdef RT_LWIP_PPP
 u32_t sio_read(sio_fd_t fd, u8_t *buf, u32_t size)

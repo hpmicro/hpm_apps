@@ -1,4 +1,4 @@
-# hpm_monitor service
+# hpm_monitor
 
 [English](./README.md)
 

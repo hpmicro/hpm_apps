@@ -1,5 +1,9 @@
 # HPM secondary Boot firmware upgrade solution
 
+(hpm_ota_v1_instruction_en)=
+
+## Depend on SDK1.9.0
+
 ## Introduction
 
 - IPA(in application programming).

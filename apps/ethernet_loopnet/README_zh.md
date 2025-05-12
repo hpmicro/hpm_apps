@@ -1,5 +1,7 @@
 # HPM 双网口环网通信方案
 
+## 依赖Rtthread: V5.0.2
+
 ## 环网组网拓扑结构
 
 ![loop_net1](doc/api/assets/loop_net_1.png)

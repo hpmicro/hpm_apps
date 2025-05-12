@@ -11,10 +11,19 @@
 #include "hpm_soc_feature.h"
 #include "hpm_hashs.h"
 #include "board.h"
+#ifndef HPMSOC_HAS_HPMSDK_SDP
+#include "mbedtls/sha1.h"
+#include "mbedtls/sha256.h"
+#endif
 
+#ifdef HPMSOC_HAS_HPMSDK_SDP
 ATTR_PLACE_AT_NONCACHEABLE static sdp_hash_ctx_t s_hash_ctx;
-static uint8_t s_hash_data[HASH_DATA_MAXSIZE] = {0};
 static sdp_hash_ctx_t *p_sys_sdp_ctx = NULL;
+#else
+static mbedtls_sha1_context sha1_ctx;
+static mbedtls_sha256_context sha256_ctx;
+#endif
+static uint8_t s_hash_data[HASH_DATA_MAXSIZE] = {0};
 static uint8_t s_hash_type = 0;
 
 static uint32_t crc32_tab[] =
@@ -87,7 +96,6 @@ static void app_cache_flush(uint32_t addr, uint32_t size)
 int hpm_hash_init(uint8_t type)
 {
     hpm_stat_t status;
-    clock_add_to_group(clock_sdp, (BOARD_RUNNING_CORE & 0x1)); /* enable sdp clock */
     static uint8_t init_done = 0;
     uint32_t *crc32val = NULL;
     memset(s_hash_data, 0, sizeof(s_hash_data));
@@ -104,8 +112,13 @@ int hpm_hash_init(uint8_t type)
     if (init_done == 0)
     {
         init_done = 1;
-        rom_sdp_init();
+#ifdef HPMSOC_HAS_HPMSDK_SDP
+        clock_add_to_group(clock_sdp, (BOARD_RUNNING_CORE & 0x1)); /* enable sdp clock */
+        rom_sdp_init(); 
+#endif
     }
+
+#ifdef HPMSOC_HAS_HPMSDK_SDP
     p_sys_sdp_ctx = (sdp_hash_ctx_t *)core_local_mem_to_sys_address(HPM_CORE0, (uint32_t)&s_hash_ctx);
     if (type == HASH_TYPE_SHA1)
     {
@@ -121,9 +134,21 @@ int hpm_hash_init(uint8_t type)
         status = rom_sdp_hash_init(p_sys_sdp_ctx, sdp_hash_alg_sm3);
     }
 #endif
+#else
+    if (type == HASH_TYPE_SHA1)
+    {
+        mbedtls_sha1_init(&sha1_ctx);
+        status = mbedtls_sha1_starts_ret(&sha1_ctx);
+    }
+    else if(type == HASH_TYPE_SHA256)
+    {
+        mbedtls_sha256_init(&sha256_ctx);
+        status = mbedtls_sha256_starts_ret(&sha256_ctx, 0);
+    }
+#endif
     else
     {
-        printf("BAD! This type is not support!\r\n");
+        printf("BAD! This type is not support, hashtype:%d!\r\n", type);
         return -2;
     }
     return (status == status_success) ? 0 : -1;
@@ -131,7 +156,6 @@ int hpm_hash_init(uint8_t type)
 
 int hpm_hash_update(uint8_t *buffer, uint32_t len)
 {
-    uint8_t *p_sys_input;
     uint32_t *result = (uint32_t *)s_hash_data;
     uint32_t i, tmp;
     if (buffer == NULL)
@@ -159,29 +183,59 @@ int hpm_hash_update(uint8_t *buffer, uint32_t len)
             *result = crc32_tab[(*result ^ buffer[i]) & 0xFF] ^ ((*result >> 8) & 0x00FFFFFF);
         }
     }
+#ifdef HPMSOC_HAS_HPMSDK_SDP
     else
     {
         if (p_sys_sdp_ctx == NULL)
             return -3;
-        p_sys_input = (uint8_t *)core_local_mem_to_sys_address(HPM_CORE0, (uint32_t)buffer);
+        uint8_t *p_sys_input = (uint8_t *)core_local_mem_to_sys_address(HPM_CORE0, (uint32_t)buffer);
         app_cache_flush((uint32_t)p_sys_input, len);
         if (status_success != rom_sdp_hash_update(p_sys_sdp_ctx, p_sys_input, len))
         {
             return -1;
         }
     }
+#else
+    else if(s_hash_type == HASH_TYPE_SHA1)
+    {
+         if(mbedtls_sha1_update_ret(&sha1_ctx, buffer, len))
+         {
+             return -1;
+         }
+    }
+    else if(s_hash_type == HASH_TYPE_SHA256)
+    {
+         if(mbedtls_sha256_update_ret(&sha256_ctx, buffer, len))
+         {
+             return -1;
+         }
+    }
+    else
+    {
+        return -1;
+    }
+#endif
 
     return 0;
 }
 
 uint8_t *hpm_hash_finsh(void)
 {
-    if (s_hash_type == HASH_TYPE_CRC32)
+    if(s_hash_type == HASH_TYPE_CHECKSUM)
+    {
+    }
+    else if(s_hash_type == HASH_TYPE_XOR)
+    {
+    }
+    else if (s_hash_type == HASH_TYPE_CRC32)
     {
         *(uint32_t *)s_hash_data ^= 0xFFFFFFFF;
     }
-    else if (s_hash_type != HASH_TYPE_CHECKSUM && s_hash_type != HASH_TYPE_XOR)
+    
+#ifdef HPMSOC_HAS_HPMSDK_SDP
+    else
     {
+
         if (p_sys_sdp_ctx == NULL)
             return NULL;
         if (status_success != rom_sdp_hash_finish(p_sys_sdp_ctx, s_hash_data))
@@ -189,5 +243,25 @@ uint8_t *hpm_hash_finsh(void)
             return NULL;
         }
     }
+#else
+    else if(s_hash_type == HASH_TYPE_SHA1)
+    {
+        if(mbedtls_sha1_finish_ret(&sha1_ctx, s_hash_data))
+        {
+            return NULL;
+        }
+    }
+    else if(s_hash_type == HASH_TYPE_SHA256)
+    {
+        if(mbedtls_sha256_finish_ret(&sha256_ctx, s_hash_data))
+        {
+            return NULL;
+        }
+    }
+    else
+    {
+        return NULL;
+    }
+#endif
     return s_hash_data;
 }

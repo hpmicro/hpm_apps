@@ -64,6 +64,9 @@ external_content_contents = [
     (HPM_APP_BASE, "middleware/hpm_monitor/*_en.md",),
     (HPM_APP_BASE, "middleware/hpm_monitor/doc"),
     (HPM_APP_BASE, "middleware/hpm_monitor/hardware/*.*"),
+    (HPM_APP_BASE, "middleware/hpm_ota/*_en.md",),
+    (HPM_APP_BASE, "middleware/hpm_ota/doc"),
+    (HPM_APP_BASE, "middleware/hpm_ota/hardware/*.*"),
 ]
 
 # -- Options for HTML output -------------------------------------------------

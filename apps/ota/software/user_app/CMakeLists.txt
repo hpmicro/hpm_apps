@@ -3,13 +3,14 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.9.0\"")
+
 # set(CONFIG_UART_CHANNEL 1)
 # set(CONFIG_ENET_CHANNEL 1)
 set(CONFIG_USB_DEVICE_CHANNEL 1)
 # set(CONFIG_USB_HOST_CHANNEL 1)
 # set(CONFIG_ECAT_FOE_CHANNEL 1)
 
-set(HPM_SDK_NO_NANO_SPECS 1)
 
 # set(SES_TOOLCHAIN_VARIANT "Andes")
 
@@ -46,6 +47,7 @@ endif()
 string(FIND ${BOARD} "53" found)
 if(${found} GREATER_EQUAL 0)
     set(CONFIG_USE_HPM5300 1)
+    set(CONFIG_USE_FLASH_1M 1)
     if(DEFINED SES_TOOLCHAIN_VARIANT)
     set(CUSTOM_GCC_LINKER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../linker/HPM5361/gcc/user_app_flash_xip.ld)
     else()
@@ -73,8 +75,17 @@ if(${found} GREATER_EQUAL 0)
     endif()
 endif()
 
-
-
+string(FIND ${BOARD} "5e" found)
+if(${found} GREATER_EQUAL 0)
+    set(CONFIG_USE_HPM5E00 1)
+    set(CONFIG_USE_FLASH_1M 1)
+    set(CONFIG_MBEDTLS 1)
+    if(DEFINED SES_TOOLCHAIN_VARIANT)
+    set(CUSTOM_GCC_LINKER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../linker/HPM5E31/gcc/user_app_flash_xip.ld)
+    else()
+    set(CUSTOM_GCC_LINKER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../linker/HPM5E31/segger/user_app_flash_xip.icf)
+    endif()
+endif()
 
 if(DEFINED CONFIG_UART_CHANNEL)
     if (${CONFIG_UART_CHANNEL})
@@ -126,10 +137,15 @@ sdk_compile_definitions(-DFLASH_XIP=1)
 sdk_compile_definitions(-DBOARD_SHOW_CLOCK=0)
 sdk_compile_definitions(-DBOARD_SHOW_BANNER=0)
 
+if(DEFINED CONFIG_USE_HPM5E00)
+    if (${CONFIG_USE_HPM5E00})
+        sdk_compile_definitions(-DMBEDTLS_CONFIG_FILE="hpm_sdk_mbedtls_config.h")
+    endif()
+endif()
 
-if(DEFINED CONFIG_USE_HPM5300)
-    if (${CONFIG_USE_HPM5300})
-        sdk_compile_definitions("-DCONFIG_USE_HPM5300=1")
+if(DEFINED CONFIG_USE_FLASH_1M)
+    if (${CONFIG_USE_FLASH_1M})
+        sdk_compile_definitions("-DCONFIG_USE_FLASH_1M=1")
     endif()
 endif()
 
@@ -232,5 +248,7 @@ sdk_app_src(../common/crypto/hpm_hashs.c)
 sdk_app_src(../common/otamgr/hpm_ota.c)
 sdk_app_src(../common/platform/hpm_platform.c)
 sdk_app_src(src/hello_world.c)
+
+add_subdirectory(../../../.. hpm_apps/build_tmp)
 
 generate_ses_project()

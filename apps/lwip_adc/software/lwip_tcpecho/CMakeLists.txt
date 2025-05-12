@@ -2,6 +2,9 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required(VERSION 3.13)
+
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 #set(HPM_SDK_LD_NO_NANO_SPECS 1)
 set(CONFIG_LWIP 1)
 set(CONFIG_ENET_PHY 1)
@@ -35,6 +38,7 @@ project(lwip_tcpecho_example)
 sdk_inc(../common)
 sdk_inc(../common/arch)
 sdk_inc(../common/feature)
+sdk_inc(../common/adc)
 sdk_inc(inc)
 sdk_inc(inc/eth)
 sdk_inc(inc/app)
@@ -42,8 +46,11 @@ sdk_inc(inc/app)
 sdk_app_src(../common/arch/sys_arch.c)
 sdk_app_src(../common/arch/ethernetif.c)
 sdk_app_src(../common/feature/common_lwip.c)
+sdk_app_src(../common/adc/adc_16_pmt.c)
 sdk_app_src(src/eth/netconf.c)
 sdk_app_src(src/app/tcp_echo.c)
-sdk_app_src(src/app/adc_16_pmt.c)
 sdk_app_src(src/lwip.c)
+
+add_subdirectory(../../../.. hpm_apps/build_tmp)
+
 generate_ses_project()

@@ -149,9 +149,10 @@
 #define RT_LWIP_MEM_ALIGNMENT 4
 #define RT_LWIP_ICMP
 #define RT_LWIP_DNS
-#define IP_SOF_BROADCAST 1
-#define IP_SOF_BROADCAST_RECV 1
-
+//#define RT_LWIP_DEBUG 1
+//#define RT_LWIP_PBUF_DEBUG 1
+//#define RT_LWIP_MEM_DEBUG 1
+//#define RT_LWIP_MEMP_DEBUG 1
 /* Static IPv4 Address */
 
 #define RT_LWIP_IPADDR1 "192.168.100.70"
@@ -163,10 +164,10 @@
 #define RT_LWIP_TCP
 #define RT_LWIP_RAW
 #define RT_MEMP_NUM_NETCONN 8
-#define RT_LWIP_PBUF_NUM 14
+#define RT_LWIP_PBUF_NUM
 #define RT_LWIP_RAW_PCB_NUM 4
-#define RT_LWIP_UDP_PCB_NUM 4
-#define RT_LWIP_TCP_PCB_NUM 4
+#define RT_LWIP_UDP_PCB_NUM 6
+#define RT_LWIP_TCP_PCB_NUM 10
 #define RT_LWIP_TCP_SEG_NUM 56
 #define RT_LWIP_TCP_SND_BUF 20440
 #define RT_LWIP_TCP_WND 20440
@@ -174,7 +175,7 @@
 #define RT_LWIP_TCPTHREAD_MBOX_SIZE 8
 #define RT_LWIP_TCPTHREAD_STACKSIZE 4096
 #define LWIP_NO_TX_THREAD
-#define RT_LWIP_ETHTHREAD_PRIORITY 12
+#define RT_LWIP_ETHTHREAD_PRIORITY 30
 #define RT_LWIP_ETHTHREAD_STACKSIZE 4096
 #define RT_LWIP_ETHTHREAD_MBOX_SIZE 16
 #define LWIP_NETIF_STATUS_CALLBACK 1
@@ -187,22 +188,6 @@
 #define LWIP_NETIF_LOOPBACK 0
 #define RT_LWIP_USING_HW_CHECKSUM
 #define RT_LWIP_USING_PING
-
-//#define RT_LWIP_DEBUG
-//#define RT_LWIP_SYS_DEBUG
-//#define RT_LWIP_MEM_DEBUG
-//#define RT_LWIP_TCPIP_DEBUG
-//#define RT_LWIP_SOCKETS_DEBUG
-//#define RT_LWIP_TCP_DEBUG
-//#define RT_LWIP_TCP_INPUT_DEBUG
-//#define RT_LWIP_TCP_OUTPUT_DEBUG
-//#define RT_LWIP_TCP_RTO_DEBUG
-//#define RT_LWIP_TCP_CWND_DEBUG
-//#define RT_LWIP_TCP_WND_DEBUG
-//#define RT_LWIP_TCP_FR_DEBUG
-//#define RT_LWIP_TCP_QLEN_DEBUG
-//#define RT_LWIP_TCP_RST_DEBUG
-
 /* end of Network */
 
 /* Utilities */
@@ -238,9 +223,22 @@
 /* Wiced WiFi */
 
 /* end of Wiced WiFi */
+
+/* CYW43012 WiFi */
+
+/* end of CYW43012 WiFi */
+
+/* BL808 WiFi */
+
+/* end of BL808 WiFi */
+
+/* CYW43439 WiFi */
+
+/* end of CYW43439 WiFi */
 /* end of Wi-Fi */
 #define PKG_USING_NETUTILS
 #define PKG_NETUTILS_IPERF
+#define IPERF_THREAD_STACK_SIZE 2048
 #define PKG_NETUTILS_NTP
 #define NETUTILS_NTP_HOSTNAME "cn.ntp.org.cn"
 #define NETUTILS_NTP_HOSTNAME2 "ntp.rt-thread.org"
@@ -277,10 +275,6 @@
 /* u8g2: a monochrome graphic library */
 
 /* end of u8g2: a monochrome graphic library */
-
-/* PainterEngine: A cross-platform graphics application framework written in C language */
-
-/* end of PainterEngine: A cross-platform graphics application framework written in C language */
 /* end of multimedia packages */
 
 /* tools packages */
@@ -308,15 +302,37 @@
 
 /* peripheral libraries and drivers */
 
+/* HAL & SDK Drivers */
+
+/* STM32 HAL & SDK Drivers */
+
+/* end of STM32 HAL & SDK Drivers */
+
+/* Infineon HAL Packages */
+
+/* end of Infineon HAL Packages */
 
 /* Kendryte SDK */
 
 /* end of Kendryte SDK */
+/* end of HAL & SDK Drivers */
+
+/* sensors drivers */
+
+/* end of sensors drivers */
+
+/* touch drivers */
+
+/* end of touch drivers */
 /* end of peripheral libraries and drivers */
 
 /* AI packages */
 
 /* end of AI packages */
+
+/* Signal Processing and Control Algorithm Packages */
+
+/* end of Signal Processing and Control Algorithm Packages */
 
 /* miscellaneous packages */
 
@@ -336,9 +352,9 @@
 /* Arduino libraries */
 
 
-/* Projects */
+/* Projects and Demos */
 
-/* end of Projects */
+/* end of Projects and Demos */
 
 /* Sensors */
 
@@ -360,11 +376,15 @@
 
 /* Communication */
 
+/* end of Communication */
+
 /* Device Control */
 
 /* end of Device Control */
 
 /* Other */
+
+/* end of Other */
 
 /* Signal IO */
 

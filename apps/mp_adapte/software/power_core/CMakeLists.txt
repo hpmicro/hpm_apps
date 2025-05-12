@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 set(HPM_SDK_NO_NANO_SPECS 1)
 set(CONFIG_HPM_ADC 1)
 
@@ -26,5 +28,7 @@ sdk_app_src(src/demo.c)
 sdk_ld_options("-lm")
 sdk_ses_compile_options(-mabi=ilp32f)
 sdk_ses_compile_options(-march=rv32imafc)
+
+add_subdirectory(../../../.. hpm_apps/build_tmp)
 
 generate_ses_project()

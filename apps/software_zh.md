@@ -9,6 +9,7 @@
    mp_adapte/README_zh
    pwm_adc_spi/README_zh
    ota/README_zh
+   otav2/README_zh
    bootrom_ota/README_zh
    femc_8080lcd/README_zh
    led_screen/README_zh
@@ -19,5 +20,6 @@
    ethercat_master/README_zh
    i2s_dma_chain/README_zh
    ethernet_loopnet/README_zh
+   full_port/README_zh
 
 :::

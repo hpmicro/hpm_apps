@@ -180,7 +180,7 @@ int main(void)
     ret = hpm_platform_flash_init();
     if (ret != 0)
     {
-        printf("BAD! flash init fail:%d\r\n");
+        printf("BAD! flash init fail:%d\r\n", ret);
         while (1)
         {
         }

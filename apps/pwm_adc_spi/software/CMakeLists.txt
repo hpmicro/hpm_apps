@@ -3,9 +3,14 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 
 project(adc16_example)
 
 sdk_app_src(src/adc16.c)
+
+add_subdirectory(../../.. hpm_apps/build_tmp)
+
 generate_ses_project()

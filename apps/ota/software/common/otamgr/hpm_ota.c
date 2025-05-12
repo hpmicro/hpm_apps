@@ -422,20 +422,26 @@ void hpm_appindex_jump(uint8_t appindex)
     rom_xpi_nor_remap_disable(HPM_XPI0);
     if (appindex == HPM_APP2)
     {
-        rom_xpi_nor_remap_config(HPM_XPI0, FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE, FLASH_USER_APP1_SIZE, FLASH_USER_APP1_SIZE);
-        rom_xpi_nor_is_remap_enabled(HPM_XPI0);
+        if(!rom_xpi_nor_remap_config(HPM_XPI0, FLASH_USER_APP1_ADDR + FLASH_ADDR_BASE, FLASH_USER_APP2_SIZE, FLASH_USER_APP2_ADDR - FLASH_USER_APP1_ADDR))
+        {
+            printf("BAD, xip remap config failed!\rn");
+            return;
+        }
+        if(!rom_xpi_nor_is_remap_enabled(HPM_XPI0))
+        {
+            printf("BAD, xpi remap enable invalid!\r\n");
+            return;
+        }
     }
 #endif
     disable_global_irq(CSR_MSTATUS_MIE_MASK);
-    //disable_global_irq(CSR_MSTATUS_SIE_MASK);
-    disable_global_irq(CSR_MSTATUS_UIE_MASK);
     l1c_dc_invalidate_all();
     l1c_dc_disable();
     l1c_ic_disable();
     fencei();
     __asm("la a0, %0" ::"i"(FLASH_USER_APP1_ADDR + sizeof(hpm_app_header_t) + FLASH_ADDR_BASE));
     __asm("jr a0");
-    // WFI();
+    WFI();
     while (1)
     {
     }

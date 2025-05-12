@@ -1,5 +1,7 @@
 # HPM PWM_ADC_SPI sample Documentation
 
+## Depend on SDK1.8.0
+
 ## Introduction
 
 This solution utilizes PWM to trigger ADC sampling at specific moments . Simultaneously triggers HDMA to operate the SPI controller at another specific time within the PWM cycle.

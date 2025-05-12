@@ -1,5 +1,6 @@
 # LWIP+ADC High performance solutions
 
+## Depend on SDK1.8.0
 
 ## Introduction
 

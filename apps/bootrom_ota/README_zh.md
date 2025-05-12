@@ -1,5 +1,7 @@
 # Bootrom OTA
 
+## 依赖SDK1.8.0
+
 ## 概述
 
 本节主要介绍如何借助 bootrom 自带的 **SEC_IMG_OFFSET** 功能进行 OTA 升级。OTA 升级我们采用 UART xmodem 功能，并且运行的是加密固件。

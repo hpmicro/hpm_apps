@@ -1,5 +1,7 @@
 # HPM Dual Port Ring Communication Solution
 
+## Depend on Rtthread: V5.0.2
+
 ## Ring network topology
 
 ![loop_net1](doc/api/assets/loop_net_1.png)

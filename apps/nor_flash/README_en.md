@@ -1,5 +1,7 @@
 # Nor flash with SPI
 
+## Depend on SDK1.8.0
+
 ## Overview
 
 - The example shows the use of SPI interface with single/dual/quad mode to read and write nor flash memory.

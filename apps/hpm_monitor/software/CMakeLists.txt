@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 set(SES_TOOLCHAIN_VARIANT "Andes")
 
 set(RV_ARCH "rv32imafc")

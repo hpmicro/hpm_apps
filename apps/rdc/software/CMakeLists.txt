@@ -1,6 +1,9 @@
 # Copyright 2021 hpmicro
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.13)
+
+set(APP_VERSION_STRING "\"1.8.0\"")
+
 # set(CONFIG_HPM_MATH 1)
 set(CONFIG_MOTORCTRL 1)
 set(CONFIG_HPM_ADC 1)
@@ -10,13 +13,9 @@ find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 # sdk_compile_options("-Os")
 project(hardware_rdc)
 
-
-
 sdk_app_inc(src)
 sdk_app_src(src/hardware_rdc.c)
 sdk_app_src(src/rdc_init.c)
-
-
 
 sdk_ld_options("-lm")
 sdk_ses_compile_options(-mabi=ilp32f)

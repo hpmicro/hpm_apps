@@ -1,5 +1,9 @@
 # HPM二级Boot固件升级方案
 
+(hpm_ota_v1_instruction_zh)=
+
+## 依赖SDK1.9.0
+
 ## 简介
 
 - IPA(in application programming) 应用编程。
