@@ -10,7 +10,7 @@ typedef void (*esc_sdo_config_t)(void);
 extern volatile bool esc_enter_op;
 extern volatile bool esc_pdo_error;
 
-int ethercat_common_start(esc_sdo_config_t sdo_config);
+int ethercat_common_start(esc_sdo_config_t prev_config, esc_sdo_config_t post_config);
 void ethercat_common_stop(void);
 
 #endif

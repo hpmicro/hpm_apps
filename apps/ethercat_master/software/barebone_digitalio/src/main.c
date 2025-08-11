@@ -36,7 +36,7 @@ int main(void)
     while (1) {
         if (bfin_get_link_status()) {
             if (ethercat_start == false) {
-                if (ethercat_common_start(NULL) == 0) {
+                if (ethercat_common_start(NULL, NULL) == 0) {
                     ethercat_start = true;
                 }
             }

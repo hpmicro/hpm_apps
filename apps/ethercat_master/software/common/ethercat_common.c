@@ -1,12 +1,22 @@
 #include "ethercat_common.h"
+#include "hpm_gpio_drv.h"
+#include "hpm_gpiom_drv.h"
 
-#define ESC_TIMER          (HPM_GPTMR3)
-#define ESC_TIMER_CH       1
-#define ESC_TIMER_IRQ      IRQn_GPTMR3
-#define ESC_TIMER_CLK_NAME (clock_gptmr3)
+#define ESC_TIMER           (HPM_GPTMR4)
+#define ESC_TIMER_CH        1
+#define ESC_TIMER_IRQ       IRQn_GPTMR4
+#define ESC_TIMER_CLK_NAME  (clock_gptmr4)
+
+#define ESC_TEST_GPIO_CTRL  HPM_FGPIO
+#define ESC_TEST_GPIO_INDEX GPIO_DI_GPIOE
+#define ESC_TEST_GPIO_PIN   16
 
 volatile bool esc_pdo_error = false;
 volatile bool esc_enter_op = false;
+
+#define ESC_TEST_GPIO  0
+
+#define ESC_CYCLY_TIME 10000000 // 1ms
 
 char IOmap[512];
 
@@ -18,23 +28,40 @@ void esc_timer_isr(void)
 
     if (gptmr_check_status(ESC_TIMER, GPTMR_CH_RLD_STAT_MASK(ESC_TIMER_CH))) {
         gptmr_clear_status(ESC_TIMER, GPTMR_CH_RLD_STAT_MASK(ESC_TIMER_CH));
+#if ESC_TEST_GPIO
+        gpio_toggle_pin(ESC_TEST_GPIO_CTRL, ESC_TEST_GPIO_INDEX, ESC_TEST_GPIO_PIN);
+#endif
         ec_send_processdata();
         wkc = ec_receive_processdata(200);
         esc_pdo_error = false;
-        if ((wkc / 3) != ec_slavecount) {
+        if (wkc != (ec_slavecount * 3)) {
             esc_pdo_error = true;
-            printf("wkc error, expect %d but %d!\n", ec_slavecount, wkc);
             esc_timer_stop();
+            printf("wkc error, expect %d but %d!\n", ec_slavecount * 3, wkc);
         }
     }
 }
 SDK_DECLARE_EXT_ISR_M(ESC_TIMER_IRQ, esc_timer_isr);
 
+#if ESC_TEST_GPIO
+void esc_test_gpio_init(void)
+{
+    HPM_IOC->PAD[IOC_PAD_PE16].FUNC_CTL = IOC_PE16_FUNC_CTL_GPIO_E_16;
+    HPM_IOC->PAD[IOC_PAD_PE16].PAD_CTL = IOC_PAD_PAD_CTL_PE_SET(1) | IOC_PAD_PAD_CTL_PS_SET(1) | IOC_PAD_PAD_CTL_PRS_SET(3);
+
+    gpio_set_pin_output(ESC_TEST_GPIO_CTRL, ESC_TEST_GPIO_INDEX, ESC_TEST_GPIO_PIN);
+    gpiom_set_pin_controller(BOARD_APP_GPIOM_BASE, ESC_TEST_GPIO_INDEX, ESC_TEST_GPIO_PIN, gpiom_core0_fast);
+    gpiom_enable_pin_visibility(BOARD_APP_GPIOM_BASE, ESC_TEST_GPIO_INDEX, ESC_TEST_GPIO_PIN, gpiom_core0_fast);
+    gpiom_lock_pin(BOARD_APP_GPIOM_BASE, ESC_TEST_GPIO_INDEX, ESC_TEST_GPIO_PIN);
+}
+#endif
 void esc_timer_create(uint32_t us)
 {
     uint32_t gptmr_freq;
     gptmr_channel_config_t config;
-
+#if ESC_TEST_GPIO
+    esc_test_gpio_init();
+#endif
     gptmr_channel_get_default_config(ESC_TIMER, &config);
 
     clock_add_to_group(ESC_TIMER_CLK_NAME, 0);
@@ -43,7 +70,7 @@ void esc_timer_create(uint32_t us)
     config.reload = gptmr_freq / 1000000 * us;
     gptmr_channel_config(ESC_TIMER, ESC_TIMER_CH, &config, false);
     gptmr_enable_irq(ESC_TIMER, GPTMR_CH_RLD_IRQ_MASK(ESC_TIMER_CH));
-    intc_m_enable_irq_with_priority(ESC_TIMER_IRQ, 1);
+    intc_m_enable_irq_with_priority(ESC_TIMER_IRQ, 10);
 
     gptmr_start_counter(ESC_TIMER, ESC_TIMER_CH);
 }
@@ -55,7 +82,7 @@ void esc_timer_stop(void)
     intc_m_disable_irq(ESC_TIMER_IRQ);
 }
 
-int ethercat_common_start(esc_sdo_config_t sdo_config)
+int ethercat_common_start(esc_sdo_config_t prev_config, esc_sdo_config_t post_config)
 {
     int cnt, i, j, slc, try_count;
 
@@ -71,12 +98,14 @@ int ethercat_common_start(esc_sdo_config_t sdo_config)
                 printf("Found %s at position %d\n", ec_slave[slc].name, slc);
             }
 
-            if (sdo_config) {
-                sdo_config();
+            if (prev_config) {
+                prev_config();
             }
 
             ec_configdc();
-            ec_dcsync0(1, TRUE, 1 * 1000000, 20000); // SYNC0 on slave 1
+            for (slc = 1; slc <= ec_slavecount; slc++) {
+                ec_dcsync0(slc, TRUE, ESC_CYCLY_TIME, 1000000); // SYNC0 on slave 1
+            }
 
             uint32 dc_time;
             for (uint16_t i = 0; i < 16000; i++) {
@@ -84,10 +113,14 @@ int ethercat_common_start(esc_sdo_config_t sdo_config)
                 ec_FRMW(ec_slave[1].configadr, ECT_REG_DCSYSTIME, 4, &dc_time, EC_TIMEOUTRET);
             }
 
-            slc = 0;
-
             /* Run IO mapping */
             ec_config_map(&IOmap);
+
+            if (post_config) {
+                post_config();
+            }
+
+            slc = 0;
 
             printf("Slaves mapped, state to SAFE_OP.\n");
             /* wait for all slaves to reach SAFE_OP state */
@@ -116,7 +149,7 @@ int ethercat_common_start(esc_sdo_config_t sdo_config)
             }
 
             printf("Request operational state for all slaves\n");
-            esc_timer_create(1000);
+            esc_timer_create(ESC_CYCLY_TIME / 1000);
 
             try_count = 0;
             ec_slave[slc].state = EC_STATE_OPERATIONAL;
@@ -161,5 +194,9 @@ int ethercat_common_start(esc_sdo_config_t sdo_config)
 void ethercat_common_stop(void)
 {
     esc_enter_op = false;
+    ec_slave[0].state = EC_STATE_PRE_OP;
+    if (bfin_get_link_status()) {
+        ec_writestate(0);
+    }
     esc_timer_stop();
 }
