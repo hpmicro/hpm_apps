@@ -1,6 +1,6 @@
 # HPM6E00 FULL PORT
 
-## Depend on SDK1.9.0
+## Depend on SDK1.10.0
 
 ## Overview
 

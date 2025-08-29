@@ -5,7 +5,7 @@
 
 
 define memory with size = 4G;
-define symbol BOOT_USER_OFFSET = 0x43000;
+define symbol BOOT_USER_OFFSET = 0x44000;
 
 /* Regions */
 //define region NOR_CFG_OPTION = [ from 0x80000400 size 0xc00 ];

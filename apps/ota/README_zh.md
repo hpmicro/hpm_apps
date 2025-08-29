@@ -2,7 +2,7 @@
 
 (hpm_ota_v1_instruction_zh)=
 
-## 依赖SDK1.9.0
+## 依赖SDK1.10.0
 
 ## 简介
 

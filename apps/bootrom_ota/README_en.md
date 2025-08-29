@@ -1,6 +1,6 @@
 # Bootrom OTA
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Overview
 

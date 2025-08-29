@@ -1,6 +1,6 @@
 # HPM FEMC driver 8080 screen
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Introduction
 

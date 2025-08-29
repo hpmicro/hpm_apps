@@ -361,8 +361,8 @@ void sei_pins_int(SEI_Type *ptr, uint8_t sei_ctrl_idx)
 
 
 void sei_cfg_init(void)
-{
-    sei_tranceiver_config_t tranceiver_config = {0};
+{  
+    sei_transceiver_config_t tranceiver_config = {0};
     sei_data_format_config_t data_format_config = {0};
     sei_engine_config_t engine_config = {0};
     sei_trigger_input_config_t trigger_input_conifg = {0};
@@ -383,7 +383,7 @@ void sei_cfg_init(void)
     tranceiver_config.asynchronous_config.data_idle_high_z = false;
     tranceiver_config.asynchronous_config.data_idle_state = sei_idle_high_state;
     tranceiver_config.asynchronous_config.baudrate = 2500000;
-    sei_tranceiver_config_init(HPM_SEI, PMSM_SEI_CTRL, &tranceiver_config);
+    sei_transceiver_config_init(HPM_SEI, PMSM_SEI_CTRL, &tranceiver_config);
 
     /* [2] data register config */
     /* data register 2: send CF */

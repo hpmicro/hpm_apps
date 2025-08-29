@@ -20,7 +20,7 @@ sys.path.insert(0, str(HPM_APP_BASE / "docs" / "_ext"))
 HTML_STATIC_DIR.mkdir(parents = True, exist_ok = True)
 
 project = 'HPMicro Software Development Kit'
-copyright = '2020-2023, HPMicro'
+copyright = '2020-2025, HPMicro'
 author = 'HPMicro Software Team'
 
 # -- General configuration ---------------------------------------------------

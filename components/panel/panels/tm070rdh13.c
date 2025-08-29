@@ -51,13 +51,13 @@ hpm_panel_t panel_tm070rdh13 = {
     .if_type = HPM_PANEL_IF_TYPE_RGB,
     .timing = {
         .pixel_clock_khz = 60000,
-        .hactive = 800,
+        .hactive = 1024,
         .hfront_porch = 50,
         .hback_porch = 36,
         .hsync_len = 10,
         .hsync_pol = 1,
 
-        .vactive = 480,
+        .vactive = 600,
         .vfront_porch = 10,
         .vback_porch = 20,
         .vsync_len = 3,

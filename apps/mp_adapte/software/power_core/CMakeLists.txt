@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.8.0\"")
+set(APP_VERSION_STRING "\"1.10.0\"")
 
 set(HPM_SDK_NO_NANO_SPECS 1)
 set(CONFIG_HPM_ADC 1)

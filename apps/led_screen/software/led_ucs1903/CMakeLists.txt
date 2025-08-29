@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.8.0\"")
+set(APP_VERSION_STRING "\"1.10.0\"")
 
 set(CUSTOM_GCC_LINKER_FILE ${CMAKE_CURRENT_SOURCE_DIR}/linkers/segger/ucs1903_ram.icf)
 

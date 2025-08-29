@@ -5,7 +5,7 @@
 
 ENTRY(_start)
 
-BOOT_USER_OFFSET = 0x43000;
+BOOT_USER_OFFSET = 0x44000;
 
 STACK_SIZE = _stack_size;
 HEAP_SIZE = _heap_size;

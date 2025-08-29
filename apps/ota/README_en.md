@@ -2,7 +2,7 @@
 
 (hpm_ota_v1_instruction_en)=
 
-## Depend on SDK1.9.0
+## Depend on SDK1.10.0
 
 ## Introduction
 

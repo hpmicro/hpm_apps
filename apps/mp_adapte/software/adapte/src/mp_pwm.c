@@ -1026,7 +1026,7 @@ int mp_pwm_sync_config(hpm_mp_t* mp_t)
             trgm_x = HPM_TRGM1;
 #ifdef HPM_TRGM1_INPUT_SRC_SYNT1_CH0
             config.input = HPM_TRGM1_INPUT_SRC_SYNT1_CH0;
-#elif HPM_TRGM1_INPUT_SRC_SYNT0_CH0
+#elif defined(HPM_TRGM1_INPUT_SRC_SYNT0_CH0)
             config.input = HPM_TRGM1_INPUT_SRC_SYNT0_CH0;
 #else
             config.input = HPM_TRGM1_INPUT_SRC_SYNT_CH0;

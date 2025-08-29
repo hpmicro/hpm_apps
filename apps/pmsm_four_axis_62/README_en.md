@@ -1,6 +1,6 @@
 # HPM6200 four-axis servo-driver Solution
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Overview
 

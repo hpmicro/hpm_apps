@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.8.0\"")
+set(APP_VERSION_STRING "\"1.10.0\"")
 
 set(CONFIG_SPI_NOR_FLASH 1)
 

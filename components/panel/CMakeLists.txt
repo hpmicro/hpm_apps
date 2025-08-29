@@ -1,14 +1,25 @@
-# Copyright (c) 2023 HPMicro
+# Copyright (c) 2023-2025 HPMicro
 # SPDX-License-Identifier: BSD-3-Clause
 
 sdk_inc(.)
 sdk_src(hpm_panel.c)
 sdk_compile_definitions(-DCONFIG_HPM_PANEL)
 
+if(NOT ${CONFIG_HPM_PANEL_MULTI_ENABLE} EQUAL 0)
+    sdk_compile_definitions(-DCONFIG_HPM_PANEL_MULTI_ENABLE=1)
+    sdk_compile_definitions(-DCONFIG_PANEL_RGB_TM070RDH13=1)
+    sdk_src(panels/tm070rdh13.c)
+    sdk_compile_definitions(-DCONFIG_PANEL_MIPI_MC10128007_31B=1)
+    sdk_src(panels/mc10128007_31b.c)
+    sdk_compile_definitions(-DCONFIG_PANEL_LVDS_TM103XDGP01=1)
+    sdk_src(panels/tm103xdgp01.c)
+    sdk_compile_definitions(-DCONFIG_PANEL_LVDS_CC10128007=1)
+    sdk_src(panels/cc10128007.c)
+else()
 if(NOT $ENV{CONFIG_PANEL_RGB_TM070RDH13} EQUAL 0)
     sdk_compile_definitions(-DCONFIG_PANEL_RGB_TM070RDH13=1)
-    sdk_compile_definitions(-DPANEL_SIZE_WIDTH=800)
-    sdk_compile_definitions(-DPANEL_SIZE_HEIGHT=480)
+    sdk_compile_definitions(-DPANEL_SIZE_WIDTH=1024)
+    sdk_compile_definitions(-DPANEL_SIZE_HEIGHT=600)
     sdk_src(panels/tm070rdh13.c)
 elseif(NOT $ENV{CONFIG_PANEL_MIPI_MC10128007_31B} EQUAL 0)
     sdk_compile_definitions(-DCONFIG_PANEL_MIPI_MC10128007_31B=1)
@@ -35,6 +46,7 @@ elseif(NOT $ENV{CONFIG_PANEL_MIPI_ZE099DA} EQUAL 0)
     sdk_compile_definitions(-DPANEL_SIZE_WIDTH=3840)
     sdk_compile_definitions(-DPANEL_SIZE_HEIGHT=5120)
     sdk_src(panels/ze099da.c)
+endif()
 endif()
 
 

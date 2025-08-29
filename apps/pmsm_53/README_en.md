@@ -1,6 +1,6 @@
 # HPM5300 Micro-servo&driver Solution
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Overview
 

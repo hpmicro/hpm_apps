@@ -96,7 +96,7 @@
 // /------------------/
 // /    BOOTUSER      / 256K
 // /------------------/
-// /    USERKEY       / 0K
+// /    USERKEY       / 4K
 // /------------------/
 // /    APP1IMG       / 256K
 // /------------------/
@@ -125,7 +125,7 @@
 #define FLASH_BOOT_USER_SIZE     (0x40000)
 
 #define FLASH_USER_KEY_ADDR      (FLASH_BOOT_USER_ADDR + FLASH_BOOT_USER_SIZE)
-#define FLASH_USER_KEY_SIZE      (0)
+#define FLASH_USER_KEY_SIZE      (0x1000)
 
 #define FLASH_USER_APP1_ADDR     (FLASH_USER_KEY_ADDR + FLASH_USER_KEY_SIZE)
 #define FLASH_USER_APP1_SIZE     (0x40000)
@@ -137,7 +137,7 @@
 #define FLASH_DIFF_APP_SIZE      (0x19000)
 
 #define FLASH_USER_COMMON_ADDR   (FLASH_DIFF_APP_ADDR + FLASH_DIFF_APP_SIZE)
-#define FLASH_USER_COMMON_SIZE   (0x2000)
+#define FLASH_USER_COMMON_SIZE   (0x1000)
 
 #endif
 

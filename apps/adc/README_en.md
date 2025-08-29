@@ -1,11 +1,11 @@
 # HPM ADC EVK
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Overview
 
-HPM series MCU is a high-performance real-time RISC-V microcontroller from Shanghai HPM Semiconductor Technology Co., Ltd., which provides great computing power and efficient control capability for industrial automation and edge computing applications. Shanghai HPM  Semiconductor has currently released multiple series of high-performance microcontroller products, such as HPM6700/6400, HPM6300, HPM6200, HPM5300, etc.
-The HPM6700/6400 series microcontrollers are equipped with three 12 bit and one 16 bit ADC controller, the HPM6300 and HPM6200 series microcontrollers are equipped with three 16 bit ADC controllers, and the HPM5300 series microcontrollers are equipped with two 16 bit microcontrollers. The 12 bit ADC supports a maximum sampling rate of 5MSPS, while the 16 bit ADC supports a maximum sampling rate of 2MSPS. Supports multiple sampling modes such as read, cycle, sequence, and preemption. The input mode supports single ended (12 bit, 16 bit) and differential input (12 bit), and supports configurable resolution and sampling cycle number, as well as DMA conversion results written into memory.
+HPM series MCU is a high-performance real-time RISC-V microcontroller from Shanghai HPM Semiconductor Technology Co., Ltd., which provides great computing power and efficient control capability for industrial automation and edge computing applications. Shanghai HPM  Semiconductor has currently released multiple series of high-performance microcontroller products, such as HPM6700/6400, HPM6300, HPM6200, HPM5300,HPM6E00 etc.
+The HPM6700/6400 series microcontrollers have 3 built-in 12-bit and 1 16-bit ADC controllers. The HPM6300 and HPM6200 series microcontrollers are equipped with 3 built-in 16-bit ADC controllers. The HPM5300 series microcontrollers feature 2 built-in 16-bit ADC controllers. The HPM6E00 series microcontrollers come with 4 built-in 16-bit ADC controllers, and the HPM6P00 series microcontrollers also have 4 built-in 16-bit ADC controllers. Among them, the 12-bit ADC supports a maximum sampling rate of 5MSPS, and the 16-bit ADC supports a maximum sampling rate of 2MSPS. They support multiple sampling modes such as read, periodic, sequence, and preemption. The input modes include single-ended input (12-bit, 16-bit) and differential input (12-bit). Additionally, they support configurable resolution and number of sampling cycles, as well as writing DMA conversion results into memory.
 For the HPM series MCU high-precision ADC, HPM Semiconductor has launched a series of ADC EVK to evaluate ADC performance, which includes ADC EVK hardware design drawings, ADC EVK user guide, ADC design guide, and ADC test code. Intended to help users achieve optimal ADC performance.
 
 ## Test samples
@@ -34,6 +34,10 @@ Please See the hardware engineering path (hpm_app/apps/adc/hardware/HPM675000_AD
 Please read user guide [HPM6E00_ADC_EVK用户指南](doc/HPM6E00_ADC_EVK_UG_V1.0.pdf)
 Please read hardware schematic [HPM6E00_ADC_EVK_RevA](hardware/HPM6E00ADCEVKRevC.pdf)
 Please See the hardware engineering path(hpm_app/apps/adc/hardware/HPM6E00ADCEVKRevC-Project)
+
+Please read user guide [HPM6P00_ADC_EVK用户指南](doc/HPM6P00_ADC_EVK_UG_V1.0.pdf)
+Please read hardware schematic [HPM6P00_ADC_EVK_RevB](hardware/HPM6P00ADCEVKRevB.pdf)
+Please See the hardware engineering path(hpm_app/apps/adc/hardware/HPM6P00ADCEVKRevB-Project)
 
 #### Device Connection
 

@@ -237,7 +237,7 @@ int bootuser_get_jump_app(bool pbutn_enable)
             }
 
             if(diff_header.diff_header.magic == HPM_APP_DIFF_FLAG_MAGIC && 
-               app1_header.version == diff_header.diff_header.new_version &&
+               app1_header.version >= diff_header.diff_header.new_version &&
                app2_header.version <= app1_header.version)
             {
                 if (bootuser_verify_app_valid(FLASH_USER_APP1_ADDR, &app1_header))
@@ -248,7 +248,7 @@ int bootuser_get_jump_app(bool pbutn_enable)
 
             if(OTA_TYPE_BODY_GET(app2_header.type) == OTA_TYPE_NORMAL_FIRMWARE && 
                diff_header.diff_header.magic == HPM_APP_DIFF_FLAG_MAGIC &&
-               app2_header.version == diff_header.diff_header.new_version)
+               app2_header.version >= diff_header.diff_header.new_version)
             {
                 if (bootuser_verify_app_valid(FLASH_USER_APP2_ADDR, &app2_header))
                 {
@@ -482,7 +482,7 @@ int bootuser_get_jump_app(bool pbutn_enable)
                 app1_auto_make_hash(&app1_header, &diff_header);
             }
 
-            if(diff_header.diff_header.magic == HPM_APP_DIFF_FLAG_MAGIC && app1_header.version == diff_header.diff_header.new_version)
+            if(diff_header.diff_header.magic == HPM_APP_DIFF_FLAG_MAGIC && app1_header.version >= diff_header.diff_header.new_version)
             {
                 if (bootuser_verify_app_valid(FLASH_USER_APP1_ADDR, &app1_header))
                 {
@@ -551,7 +551,7 @@ int bootuser_get_jump_app(bool pbutn_enable)
         {
 #if defined(CONFIG_DIFF_IMAGE_ENABLE) && CONFIG_DIFF_IMAGE_ENABLE
             if(OTA_TYPE_BODY_GET(app2_header.type) == OTA_TYPE_NORMAL_FIRMWARE && diff_header.diff_header.magic == HPM_APP_DIFF_FLAG_MAGIC && \
-               app2_header.version == diff_header.diff_header.new_version)
+               app2_header.version >= diff_header.diff_header.new_version)
             {
                 if (bootuser_verify_app_valid(FLASH_USER_APP2_ADDR, &app2_header))
                 {

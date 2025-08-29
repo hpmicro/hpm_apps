@@ -1,12 +1,12 @@
 # HPM ADC EVK
 
-## 依赖SDK1.8.0
+## 依赖SDK1.10.0
 
 ## 概述
 
-HPM系列MCU是来自上海先楫半导体科技有限公司的高性能实时RISC-V微控制器，为工业自动化及边缘计算应用提供了极大的算力、高效的控制能力。上海先楫半导体目前已经发布了如 HPM6700/6400、HPM6300、HPM6200、HPM5300等多个系列的高性能微控制器产品。 
+HPM系列MCU是来自上海先楫半导体科技有限公司的高性能实时RISC-V微控制器，为工业自动化及边缘计算应用提供了极大的算力、高效的控制能力。上海先楫半导体目前已经发布了如 HPM6700/6400、HPM6300、HPM6200、HPM5300、HPM6E00等多个系列的高性能微控制器产品。 
 
-HPM6700/6400系列微控制器内置3个12位和1个16位ADC控制器，HPM6300和HPM6200系列微控制器内置3个16位ADC控制器，HPM5300系列微控制内置2个16位微控制器。其中12位ADC支持最高采样率5MSPS，16位ADC支持最高采样率2MSPS。支持读取、周期、序列、抢占多种采样模式，输入模式支持单端（12位，16位）和 差分输入（12位），并且支持可配置分辨率和采样周期数，以及DMA转换结果写入内存中。
+HPM6700/6400系列微控制器内置3个12位和1个16位ADC控制器，HPM6300和HPM6200系列微控制器内置3个16位ADC控制器，HPM5300系列微控制器内置2个16位微控制器，HPM6E00系列微控制器内置4个16位微控制器，HPM6P00系列微控制器内置4个16位微控制器。其中12位ADC支持最高采样率5MSPS，16位ADC支持最高采样率2MSPS。支持读取、周期、序列、抢占多种采样模式，输入模式支持单端（12位，16位）和 差分输入（12位），并且支持可配置分辨率和采样周期数，以及DMA转换结果写入内存中。
 
 针对HPM系列MCU高精度ADC，先楫半导体推出系列ADC EVK用于评估ADC性能，其中包含了ADC EVK硬件设计图纸，ADC EVK用户指南，ADC设计指南，以及ADC测试代码。旨在帮助用户实现最佳ADC性能。 
 
@@ -37,6 +37,10 @@ HPM6750:硬件工程路径见：(hpm_app/apps/adc/hardware/HPM6750_ADC_EVK_RevA-
 HPM6E00: 查看用户指南 [HPM6E00_ADC_EVK用户指南](doc/HPM6E00_ADC_EVK_UG_V1.0.pdf)  
 HPM6E00: 查看硬件原理图 [HPM6E00_ADC_EVK_RevA](hardware/HPM6E00ADCEVKRevC.pdf)  
 HPM6E00:硬件工程路径见：(hpm_app/apps/adc/hardware/HPM6E00ADCEVKRevC-工程文件)  
+
+HPM6P00: 查看用户指南 [HPM6P00_ADC_EVK用户指南](doc/HPM6P00_ADC_EVK_UG_V1.0.pdf)  
+HPM6P00: 查看硬件原理图 [HPM6P00_ADC_EVK_RevB](hardware/HPM6P00ADCEVKRevB.pdf)  
+HPM6P00:硬件工程路径见：(hpm_app/apps/adc/hardware/HPM6P00ADCEVKRevB-工程文件)  
 
 
 

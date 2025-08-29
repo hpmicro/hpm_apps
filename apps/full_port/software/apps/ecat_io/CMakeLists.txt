@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.9.0\"")
+set(APP_VERSION_STRING "\"1.10.0\"")
 
 set(CONFIG_EEPROM_EMULATION 1) # using eeprom emulation compenent
 
@@ -41,7 +41,5 @@ sdk_src(application/digital_io.c)
 
 sdk_inc(.)
 sdk_app_src(main.c)
-
-add_subdirectory(../../../../.. hpm_apps/build_tmp)
 
 generate_ide_projects()

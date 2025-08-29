@@ -1,6 +1,6 @@
 # General software architecture solution for Power
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Introduction
 

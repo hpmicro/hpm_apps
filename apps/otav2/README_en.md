@@ -1,6 +1,6 @@
 # HPM Secondary BOOT Firmware V2 Upgrade Solution
 
-## Depend on SDK1.9.0
+## Depend on SDK1.10.0
 
 ## Introduction
 - IPA (In Application Programming) application programming.

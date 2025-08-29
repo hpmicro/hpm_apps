@@ -41,7 +41,7 @@ define exported symbol __boot_header_load_addr__ = start of region BOOT_HEADER;
 define exported symbol __app_load_addr__ = start of region XPI0;
 define exported symbol __app_offset__ = __app_load_addr__ - __boot_header_load_addr__;
 define exported symbol __boot_header_length__ = size of block boot_header;
-define exported symbol __fw_size__ = 0x1000;
+define exported symbol __FLASH_segment_used_size__ = 0x1000;
 
 define exported symbol __noncacheable_start__  = start of region NONCACHEABLE_RAM;
 define exported symbol __noncacheable_end__  = end of region NONCACHEABLE_RAM + 1;

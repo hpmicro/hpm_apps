@@ -114,8 +114,6 @@ int main(void)
     board_timer_create(1, hpm_a_irq_timer_handler_cb);
     board_init_ethercat(HPM_ESC); /* init ESC function pins */
     board_init_switch_led();      /* init switch and led for ECAT display */
-	HPM_ESC->PHY_CFG0 = ((HPM_ESC->PHY_CFG0 & (~0x1F000000UL)) | (1<<24));/* phy addr offset 1 */
-	printf("ecat_io\r\n");
 
     full_port_lcd_init();
     full_port_led_init();

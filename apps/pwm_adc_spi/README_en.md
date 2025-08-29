@@ -1,6 +1,6 @@
 # HPM PWM_ADC_SPI sample Documentation
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## Introduction
 

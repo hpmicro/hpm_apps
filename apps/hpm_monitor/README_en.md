@@ -1,6 +1,6 @@
 # hpm_monitor service demo
 
-## Depend on SDK1.8.0
+## Depend on SDK1.10.0
 
 ## introduction
 
