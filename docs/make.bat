@@ -33,6 +33,9 @@ if "%1" == "clean" (
 	rmdir /S /Q .\zh\middleware
 ) else (
     %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+    rmdir /S /Q .\zh\_static
+    rmdir /S /Q .\zh\apps
+    rmdir /S /Q .\zh\middleware
 )
 
 set SOURCEDIR=en
@@ -44,6 +47,9 @@ if "%1" == "clean" (
 	rmdir /S /Q .\en\middleware
 ) else (
     %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+    rmdir /S /Q .\en\_static
+    rmdir /S /Q .\en\apps
+    rmdir /S /Q .\en\middleware
 )
 
 goto end

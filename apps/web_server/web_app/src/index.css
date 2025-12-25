@@ -1,0 +1,558 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 芯片科技风格动画 */
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 电路脉冲动画 */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* 芯片网格背景动画 */
+@keyframes grid-fade {
+
+  0%,
+  100% {
+    opacity: 0.03;
+  }
+
+  50% {
+    opacity: 0.08;
+  }
+}
+
+/* 数据流动画 */
+@keyframes data-flow {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #1e40af;
+  --background-color: #f3f4f6;
+  --text-color: #1f2937;
+  --theme-display-dark: block;
+  --theme-display-light: none;
+}
+
+/* 采用 AdonisUI 全局背景与文本，移除旧的浅色背景 */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 自定义滑块样式 */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider::-webkit-slider-track {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.slider::-moz-range-track {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* AdonisUI 主题变量 - Light Theme (默认) */
+:root {
+  --adonis-bg: #ffffff;
+  --adonis-panel: #ffffff;
+  --adonis-panel-2: #fafafa;
+  --adonis-border: rgba(0, 0, 0, 0.08);
+  --adonis-border-strong: rgba(0, 0, 0, 0.14);
+  --adonis-text: #1e293b;
+  --adonis-text-muted: #64748b;
+  --adonis-accent: #3b82f6;
+  --adonis-accent-strong: #2563eb;
+  --adonis-danger: #ef4444;
+  --adonis-success: #10b981;
+  --adonis-warning: #f59e0b;
+  --adonis-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Light Theme */
+.light {
+  --adonis-bg: #f8fafc;
+  --adonis-panel: #ffffff;
+  --adonis-panel-2: #f1f5f9;
+  --adonis-border: rgba(0, 0, 0, 0.08);
+  --adonis-border-strong: rgba(0, 0, 0, 0.14);
+  --theme-display-dark: none;
+  --theme-display-light: block;
+  --adonis-text: #1e293b;
+  --adonis-text-muted: #64748b;
+  --adonis-accent: #3b82f6;
+  --adonis-accent-strong: #2563eb;
+  --adonis-danger: #ef4444;
+  --adonis-success: #10b981;
+  --adonis-warning: #f59e0b;
+  --adonis-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark Theme (显式定义) */
+.dark {
+  --adonis-bg: #0f1115;
+  --adonis-panel: #151922;
+  --adonis-panel-2: #121621;
+  --adonis-border: rgba(255, 255, 255, 0.08);
+  --adonis-border-strong: rgba(255, 255, 255, 0.14);
+  --theme-display-dark: block;
+  --theme-display-light: none;
+  --adonis-text: #d7dbe7;
+  --adonis-text-muted: #a6aec7;
+  --adonis-accent: #8ab4ff;
+  --adonis-accent-strong: #5b8cff;
+  --adonis-danger: #ff6b6b;
+  --adonis-success: #58d29c;
+  --adonis-warning: #ffd166;
+  --adonis-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* 全局背景与文本（支持主题切换） */
+html,
+body {
+  background-color: var(--adonis-bg);
+  color: var(--adonis-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 主题切换过渡动画 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 主题切换按钮动画 */
+.theme-toggle-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(138, 180, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.theme-toggle-btn:hover::before {
+  width: 100px;
+  height: 100px;
+}
+
+.theme-toggle-btn:active::before {
+  width: 120px;
+  height: 120px;
+}
+
+/* 主题切换时的全局动画 */
+.theme-transitioning {
+  animation: themeTransition 0.3s ease-in-out;
+}
+
+@keyframes themeTransition {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 图标旋转动画 */
+.theme-icon {
+  transition: transform 0.3s ease;
+}
+
+.theme-icon:hover {
+  transform: rotate(15deg);
+}
+
+/* 卡片主题切换动画 */
+.adonis-card {
+  transition: all 0.3s ease;
+}
+
+/* Light主题下的悬停效果 */
+.light .adonis-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark主题下的悬停效果 */
+.dark .adonis-card:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 面板/卡片 */
+.adonis-card {
+  background: var(--adonis-panel);
+  border: 1px solid var(--adonis-border);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Light主题下的扁平化卡片 */
+.light .adonis-card {
+  background: var(--adonis-panel);
+  border: 1px solid var(--adonis-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark主题下的卡片保持原有阴影 */
+.dark .adonis-card {
+  background: linear-gradient(180deg, var(--adonis-panel) 0%, var(--adonis-panel-2) 100%);
+  box-shadow: var(--adonis-shadow);
+}
+
+/* 卡片内标题与分割线 */
+.adonis-section-title {
+  color: var(--adonis-text-muted);
+  font-weight: 600;
+}
+
+.adonis-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--adonis-border);
+}
+
+/* 按钮 */
+.adonis-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--adonis-border);
+  background: var(--adonis-panel-2);
+  color: var(--adonis-text);
+  transition: all 0.2s ease;
+}
+
+/* Light主题下的扁平化按钮 */
+.light .adonis-btn {
+  background: var(--adonis-panel-2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.light .adonis-btn:hover {
+  background: var(--adonis-panel);
+  border-color: var(--adonis-border-strong);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: none;
+}
+
+/* Dark主题下的扁平化按钮 */
+.dark .adonis-btn {
+  background: var(--adonis-panel-2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .adonis-btn:hover {
+  background: var(--adonis-panel);
+  border-color: var(--adonis-border-strong);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+.adonis-btn:active {
+  transform: translateY(0);
+}
+
+.adonis-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 主要强调按钮 */
+.adonis-btn-primary {
+  background: var(--adonis-accent);
+  color: var(--adonis-bg);
+  border-color: var(--adonis-accent);
+}
+
+/* Light主题下的扁平化主要按钮 */
+.light .adonis-btn-primary {
+  background: var(--adonis-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.light .adonis-btn-primary:hover {
+  background: var(--adonis-accent-strong);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: none;
+}
+
+/* Dark主题下的扁平化主要按钮 */
+.dark .adonis-btn-primary {
+  background: var(--adonis-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .adonis-btn-primary:hover {
+  background: var(--adonis-accent-strong);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+/* 危险/成功按钮 */
+.adonis-btn-danger {
+  background: var(--adonis-danger);
+  color: var(--adonis-bg);
+  border-color: var(--adonis-danger);
+}
+
+.adonis-btn-success {
+  background: var(--adonis-success);
+  color: var(--adonis-bg);
+  border-color: var(--adonis-success);
+}
+
+/* Light主题下的扁平化危险/成功按钮 */
+.light .adonis-btn-danger {
+  background: var(--adonis-danger);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.light .adonis-btn-danger:hover {
+  background: #ff5252;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: none;
+}
+
+.light .adonis-btn-success {
+  background: var(--adonis-success);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.light .adonis-btn-success:hover {
+  background: #059669;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: none;
+}
+
+/* Dark主题下的扁平化危险/成功按钮 */
+.dark .adonis-btn-danger {
+  background: var(--adonis-danger);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .adonis-btn-danger:hover {
+  background: #ff5252;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+.dark .adonis-btn-success {
+  background: var(--adonis-success);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .adonis-btn-success:hover {
+  background: #059669;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+/* 输入控件 */
+.adonis-input {
+  width: 100%;
+  color: var(--adonis-text);
+  background: var(--adonis-panel-2);
+  border: 1px solid var(--adonis-border);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.adonis-input:focus {
+  border-color: var(--adonis-accent);
+  box-shadow: 0 0 0 3px rgba(138, 180, 255, 0.2);
+}
+
+.adonis-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 标签/徽章 */
+.adonis-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
+  padding: 0 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--adonis-border);
+  background: var(--adonis-panel-2);
+  color: var(--adonis-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.adonis-badge-success {
+  color: var(--adonis-success);
+  background: rgba(88, 210, 156, 0.12);
+  border-color: rgba(88, 210, 156, 0.35);
+}
+
+.adonis-badge-warning {
+  color: var(--adonis-warning);
+  background: rgba(255, 209, 102, 0.12);
+  border-color: rgba(255, 209, 102, 0.35);
+}
+
+.adonis-badge-info {
+  color: var(--adonis-accent);
+  background: rgba(138, 180, 255, 0.12);
+  border-color: rgba(138, 180, 255, 0.35);
+}
+
+.adonis-badge-muted {
+  color: #9aa3b2;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* 滑条统一风格（沿用已有类并增强暗色） */
+.slider {
+  height: 8px;
+  background: var(--adonis-panel-2);
+  border-radius: 6px;
+}
+
+.slider::-webkit-slider-thumb {
+  background: var(--adonis-accent);
+  border: 2px solid var(--adonis-bg);
+}
+
+.slider::-moz-range-thumb {
+  background: var(--adonis-accent);
+  border: 2px solid var(--adonis-bg);
+}
+
+/* 侧栏与顶部阴影分隔 */
+.adonis-elevation-1 {
+  box-shadow: var(--adonis-shadow);
+}
+
+/* 链接与悬停 */
+.adonis-link {
+  color: var(--adonis-accent);
+}
+
+adonis-link:hover {
+  color: var(--adonis-accent-strong);
+}
+
+/* 切换开关样式 */
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  height: 24px;
+  width: 44px;
+  align-items: center;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid var(--adonis-border);
+}
+
+.toggle-switch:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: var(--adonis-accent);
+  ring-offset: 2px;
+}
+
+.toggle-switch-handle {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+}
+
+.toggle-switch-handle.active {
+  transform: translateX(24px);
+}
+
+.toggle-switch.active {
+  background: var(--adonis-accent);
+}
+
+.toggle-switch:not(.active) {
+  background: var(--adonis-panel-2);
+}

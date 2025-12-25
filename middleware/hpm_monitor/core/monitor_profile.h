@@ -12,7 +12,7 @@
 #include <stdint.h>
 #include "monitor_kconfig.h"
 
-#define MONITOR_PROFILE_VERSION (1)
+#define MONITOR_PROFILE_VERSION (2)
 
 // START:    0x4850                 起始位
 // MAGIC:   0x4D44                 标识位
@@ -39,6 +39,8 @@
 
 #define MONITOR_PROFILE_MIN_SIZE (sizeof(monitor_profile_t) - 4) // 4 is payload point
 
+#define MONITOR_PAYLOAD_DATA_OFFSET ((MONITOR_PROFILE_MIN_SIZE-2)+(sizeof(monitor_payload_t)-4)+(sizeof(data_payload_t)-4))
+
 #define MONITOR_RESULT_ACK_MASK (0x8000)
 
 // uint16_t start;
@@ -57,16 +59,34 @@
 typedef struct
 {
     uint8_t type;
-    uint32_t addr;
-    uint16_t size;
+    uint8_t rsvd1;
+    uint16_t rsvd2;
+    uint32_t addr_or_ch;
     uint8_t *data;
-} __attribute__((packed)) data_payload_t;
+} __attribute__((packed, aligned(1))) data_payload_t;
 
 typedef struct
 {
-    uint16_t count;
-    data_payload_t *data_payload;
-} __attribute__((packed)) monitor_payload_t;
+    uint8_t type;
+    uint8_t mode;
+    uint8_t expr;
+    uint8_t rsvd;
+    uint32_t addr_or_ch;
+    uint8_t *data;
+} __attribute__((packed, aligned(1))) data_trigger_t;
+
+typedef struct
+{
+    uint16_t pkt_count;
+    uint8_t rsvd;
+    uint8_t flag;
+    uint32_t dat_count;
+    uint32_t freq;
+    union {
+        data_payload_t *data_payload;
+        data_trigger_t *data_trigger;
+    };
+} __attribute__((packed, aligned(1))) monitor_payload_t;
 
 typedef struct
 {
@@ -74,7 +94,10 @@ typedef struct
     uint16_t pid;
     uint64_t monitor_version;
     uint32_t maxsize;
-} __attribute__((packed)) monitor_info_t;
+    uint32_t memsize;
+    uint16_t max_count;
+    uint16_t threshold;
+} __attribute__((packed, aligned(1))) monitor_info_t;
 
 typedef struct
 {
@@ -88,10 +111,10 @@ typedef struct
     uint16_t result;
     uint32_t timing;
     uint32_t extend2;
-    uint16_t length;
+    uint32_t length;
     monitor_payload_t *monitor_payload;
     uint16_t end;
-} __attribute__((packed)) monitor_profile_t;
+} __attribute__((packed, aligned(1))) monitor_profile_t;
 
 typedef enum
 {
@@ -103,7 +126,9 @@ typedef enum
     CMD_SETVALUE = 0x00A1,
 
     CMD_NOTIFY = 0x0A00,
-
+    CMD_STREAM = 0x0B00,
+    CMD_BUFFER = 0x0C00,
+    CMD_TRIGGER = 0x0D00,
 } DEVICE_CMD;
 
 typedef enum
@@ -147,17 +172,45 @@ typedef enum
     RESULT_DATA_TYPE_ERR = 0x0009,
     RESULT_PRFILE_OVERFLOW = 0x000A,
     RESULT_CMD_ERR = 0x000B,
+    RESULT_CONFIG_ERR = 0x000C,
+    RESULT_RUNNING_ERR = 0x000D,
 
     RESULT_SUCCESS = 0x00FF,
-    RESULT_NOTIFY_ON = 0x02FF,
-    RESULT_NOTIFY_OFF = 0x01FF,
+    RESULT_ON = 0x02FF,
+    RESULT_OFF = 0x01FF,
+    RESULT_LOSS = 0x0FFF,
 } MONITOR_RESULT;
+
+typedef enum
+{
+    TRIGGER_MODE_EDGE_BOTH = 0,
+    TRIGGER_MODE_EDGE_RISING,
+    TRIGGER_MODE_EDGE_FALLING,
+    TRIGGER_MODE_LEVEL_LOW,
+    TRIGGER_MODE_LEVEL_HIGH,
+} TRIGGER_MODE;
+
+typedef enum
+{
+    TRIGGER_EXPR_AND = 0,
+    TRIGGER_EXPR_OR,
+} TRIGGER_EXPR;
 
 extern const uint32_t d7d75a2a6eebafc3d2ec0a0be089e05322057c4c308d648b374b362ea7eff5fa;
 
 extern const uint64_t be8443a5d67825271edb6f6bee202d6125a38e6aa8f2acbd54652d113af8793b;
 
+#define MONITOR_PAYLOAD_CH_MASK                (0xFFFF0000)
+#define MONITOR_PAYLOAD_CH_DATA(ch)            (ch & ~MONITOR_PAYLOAD_CH_MASK)
+
 // function
+uint16_t monitor_get_value(uint8_t type, uint32_t addr, uint8_t *data);
+
+uint16_t monitor_set_value(uint8_t type, uint32_t addr, uint8_t *data);
+
+bool payload_is_channel_type(uint32_t value);
+
+int monitor_type_convert_byte(DATA_TYPE type);
 
 uint32_t monitor_profile_crc32(uint8_t *data);
 
@@ -166,6 +219,8 @@ void monitor_profile_set_header(uint8_t *data);
 void monitor_profile_set_end(uint8_t *data);
 
 void monitor_profile_set_crc32(uint8_t *data, uint32_t crc32);
+
+uint32_t monitor_profile_get_crc32(uint8_t *data);
 
 uint16_t monitor_profile_get_index(uint8_t *data);
 
@@ -181,13 +236,11 @@ void monitor_profile_set_result(uint8_t *data, uint16_t result);
 
 uint32_t monitor_profile_get_timing(uint8_t *data);
 
-void monitor_profile_set_timing(uint8_t *data, uint32_t timing);
+void monitor_profile_set_timing(uint8_t *data, uint32_t tick_us);
 
-void monitor_profile_set_tickus(uint8_t *data, uint64_t tick_us);
+uint32_t monitor_profile_get_length(uint8_t *data);
 
-uint16_t monitor_profile_get_length(uint8_t *data);
-
-void monitor_profile_set_length(uint8_t *data, uint16_t length);
+void monitor_profile_set_length(uint8_t *data, uint32_t length);
 
 monitor_payload_t *monitor_profile_get_payload(uint8_t *data);
 
@@ -197,8 +250,16 @@ uint16_t monitor_profile_payload_process(uint16_t cmd, uint8_t *data, uint32_t l
 
 uint16_t monitor_profile_info_process(uint8_t *data);
 
-uint16_t monitor_profile_cmd_process(uint16_t cmd, uint16_t parse_result, uint8_t *data, uint16_t length);
+uint16_t monitor_profile_cmd_process(uint16_t cmd, uint16_t parse_result, uint8_t *data, uint32_t length);
 
 uint16_t monitor_profile_parse(uint8_t *data, uint32_t length, uint32_t *drop_offset, uint32_t *expect_length);
+
+const monitor_var_info_t *monitor_ch_info_find_by_name(const char *name);
+
+const monitor_var_info_t *monitor_ch_info_find_by_channel(uint8_t channel);
+
+uint32_t monitor_ch_info_get_registry_count(void);
+
+void monitor_ch_info_print_registry(void);
 
 #endif //__MONITOR_PROFILE_H

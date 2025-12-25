@@ -4,7 +4,7 @@
 
 ## 介绍
 
-hpm_monitor 是一个高效的、易用的、可移植性高的服务，用来实时查看和设置当前设备中的全局变量，或者用来高速(1Khz-1ms)上报全局变量；常常被用来当做监控数据示波器使用；对电机、电源等调试非常友好；
+hpm_monitor 是一个高效的、易用的、可移植性高的服务，用于实时查看和设置设备中的全局变量，以及高速上报全局变量。常被用作监控数据示波器，对电机、电源等调试非常友好。
 
 注意：hpm_monitor服务 需搭配PC上位机HPMicroMonitorStudio工具使用；
 
@@ -12,7 +12,7 @@ HPMicroMonitorStudio从先楫半导体官网获取下载。
 
 为了方便用户使用、了解hpm_monitor服务，本文为hpm_monitor服务使用的demo。
 
-本例程软件实现了4中波形：三角波、正弦波、方波、锯齿波；可通过hpm_monitor服务搭配上位机实时查看此波形，同时也可以设置下发修改波形数据。
+本例程软件实现了4中波形：三角波、正弦波、方波、锯齿波；新增了通过用户自定义通道上报单个和数组数据；可通过hpm_monitor服务搭配上位机实时查看此波形，同时也可以设置下发修改波形数据。
 
 [hpm_monitor服务说明](hpm_monitor_instruction_zh)
 
@@ -22,11 +22,13 @@ HPMicroMonitorStudio从先楫半导体官网获取下载。
 set(CONFIG_A_HPMMONITOR 1) 使能hpm_monitor服务
 set(CONFIG_MONITOR_INTERFACE "uart") 使用UART通道
 set(CONFIG_MONITOR_INTERFACE "usb") 使用USB通道
+set(CONFIG_MONITOR_INTERFACE "enet") 使用ENET通道
 
 ``` c
 set(CONFIG_A_HPMMONITOR 1)
-set(CONFIG_MONITOR_INTERFACE "uart")
-# set(CONFIG_MONITOR_INTERFACE "usb")
+# set(CONFIG_MONITOR_INTERFACE "uart")
+set(CONFIG_MONITOR_INTERFACE "usb")
+# set(CONFIG_MONITOR_INTERFACE "enet")
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
 
@@ -34,15 +36,40 @@ elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "usb")
     set(CONFIG_CHERRYUSB 1)
     set(CONFIG_USB_DEVICE 1)
     set(CONFIG_USB_DEVICE_CDC 1)
+elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "enet")
+    set(CONFIG_LWIP 1)
+    set(CONFIG_ENET_PHY 1)
+    set(APP_USE_ENET_PORT_COUNT 1)
+    #set(APP_USE_ENET_ITF_RGMII 1)
+    #set(APP_USE_ENET_ITF_RMII 1)
+    #set(APP_USE_ENET_PHY_DP83867 1)
+    #set(APP_USE_ENET_PHY_RTL8211 1)
+    #set(APP_USE_ENET_PHY_DP83848 1)
+    #set(APP_USE_ENET_PHY_RTL8201 1)
+    if(NOT DEFINED APP_USE_ENET_PORT_COUNT)
+        message(FATAL_ERROR "APP_USE_ENET_PORT_COUNT is undefined!")
+    endif()
+
+    if(NOT APP_USE_ENET_PORT_COUNT EQUAL 1)
+        message(FATAL_ERROR "This sample supports only one Ethernet port!")
+    endif()
+
+    if (APP_USE_ENET_ITF_RGMII AND APP_USE_ENET_ITF_RMII)
+        message(FATAL_ERROR "This sample doesn't support more than one Ethernet phy!")
+    endif()
 endif()
 
 find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 
-
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
     sdk_compile_definitions("-DCONFIG_UART_CHANNEL=1")
+    sdk_compile_definitions("-DCONFIG_USE_CONSOLE_UART=1")
+    sdk_compile_definitions("-DCONFIG_MONITOR_DBG_LEVEL=0")
 elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "usb")
     sdk_compile_definitions("-DCONFIG_USB_CHANNEL=1")
+elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "enet")
+    sdk_compile_definitions("-DCONFIG_ENET_CHANNEL=1")
+    sdk_inc(inc/enet)
 endif()
 
 ```
@@ -51,25 +78,83 @@ endif()
 int main(void)
 {
     uint64_t time = 0;
+    uint32_t index1, index2;
     board_init();
+    board_init_led_pins();
     printf("general debug demo!\r\n");
     printf("__DATE__:%s, __TIME__:%s\r\n", __DATE__, __TIME__);
 
     monitor_init();
+    board_timer_create(10, timer_cb);
 
+    index1 = 0;
+    index2 = 0;
     while (1)
     {
-        if(clock_get_now_tick_ms() - time >= 10)
+        if(tick_time_ms_read32() - time >= 10)
         {
-            time = clock_get_now_tick_ms();
+            time = tick_time_ms_read32();
             triangule_wave_handle();
             sine_wave_handle();
             square_ware_handle();
             sawtooth_ware_handle();
+            test_square_array[index1++] = test_square_ware;
+            test_sine_array[index2++] = test_sine_wave;
+            if(index1 >= 1024)
+            {
+                index1 = 0;
+                monitor_channel_report_array(2, test_square_array, 1024);
+            }
+            if(index2 >= 1024)
+            {
+                index2 = 0;
+                monitor_channel_report_array(3, test_sine_array, 1024);
+            }
         }
         monitor_handle();
     }
     return 0;
+}
+```
+
+- 用户自定义通道
+
+``` c
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_triangule, 0, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_sawtooth, 1, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_int_square, 2, int32_t, 100, 1024);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_float_sine, 3, float, 100, 1024);
+
+void timer_cb(void)
+{
+    monitor_channel_add_data(0, &test_triangule_wave);
+    monitor_channel_add_data(1, &test_sawtooth_ware);
+    board_led_toggle();
+}
+
+while (1)
+{
+   if(tick_time_ms_read32() - time >= 10)
+   {
+      time = tick_time_ms_read32();
+      triangule_wave_handle();
+      sine_wave_handle();
+      square_ware_handle();
+      sawtooth_ware_handle();
+      test_square_array[index1++] = test_square_ware;
+      test_sine_array[index2++] = test_sine_wave;
+      if(index1 >= 1024)
+      {
+            index1 = 0;
+            monitor_channel_report_array(2, test_square_array, 1024);
+      }
+      if(index2 >= 1024)
+      {
+            index2 = 0;
+            monitor_channel_report_array(3, test_sine_array, 1024);
+      }
+   }
+   monitor_handle();
 }
 ```
 
@@ -83,7 +168,10 @@ int main(void)
 #define MONITOR_VID                  (0x34B7) /* HPMicro VID */
 
 //协议最大数据包设置
-#define MONITOR_PROFILE_MAXSIZE      (512)
+#define MONITOR_PROFILE_MAXSIZE      (4096)
+
+//monitor内存池大小
+#define MONITOR_MEM_SIZE             (40*1024)
 
 //打印日志等级设置
 #define CONFIG_MONITOR_DBG_LEVEL MONITOR_DBG_INFO
@@ -99,6 +187,13 @@ int main(void)
 #define CONFIG_USB_POLLING_ENABLE
 ...
 #endif
+
+#if defined(CONFIG_ENET_CHANNEL) && CONFIG_ENET_CHANNEL
+//ENET通道相关配置
+...
+#endif
+
+
 ```
 
 ## 工程路径
@@ -143,7 +238,10 @@ int main(void)
 
    ![hpm_monitor_run8](doc/api/assets/hpm_monitor_run8.png)
 
-   此时会列出当前固件中所有的全局变量；
+   默认会列出所有的非静态的全局变量；注意：会自动过滤掉monitor服务相关的全局变量。
+   显示通道：点击后会显示用户自定义的通道参数；
+   静态变量：点击后展示参数树，选择要使能显示的文件即可。   
+
    
 8. 界面设置(参数界面)
   创建主菜单和子菜单(菜单名称可任意命名)。
@@ -156,14 +254,23 @@ int main(void)
    选择需要监控或设置的全局变量，并根据需求选择合适的参数控件。
    ![hpm_monitor_run10](doc/api/assets/hpm_monitor_run10.png)
 
-   注：如需变量观测波形，需将对应变量添加到示波器窗口。
+   注：如需变量观测波形，需将对应变量添加到示波器窗口。最多支持4示波器窗口显示。
    ![hpm_monitor_run11](doc/api/assets/hpm_monitor_run11.png)
 
 10. 数据监控(监控界面)
    使能可用的设备连接monitor通信;
    ![hpm_monitor_run12](doc/api/assets/hpm_monitor_run12.png)
+   - 支持Notify采样模式
+   - 支持Stream采样模式
+   - 支持Buffer采样模式
+   - 支持自动降采样
 
    ![hpm_monitor_run13](doc/api/assets/hpm_monitor_run13.png)
+   - 支持多示波器显示
+   - 支持通道显示和关闭
+   - 支持自动X轴或Y轴窗口显示
+   注意：刚开始采样时，由于不晓得各个波形的最大最小值，需要在采样一段时候后，手动点击自动后，即可将所有通道的波形自动铺满整个示波器窗口显示。
+
 
    可设置上报频率和示波器窗口自动显示;
    ![hpm_monitor_run14](doc/api/assets/hpm_monitor_run14.png)
@@ -185,6 +292,20 @@ int main(void)
 
    锯齿波:
    ![hpm_monitor_run19](doc/api/assets/hpm_monitor_run19.png)
+
+
+13. 用户自定义通道上报
+   用于自定义通道上报：
+   ![hpm_monitor_run21](doc/api/assets/hpm_monitor_run21.png)
+
+14. Notify模式采样
+   ![hpm_monitor_run21](doc/api/assets/hpm_monitor_run22.png)
+
+15. Stream模式采样
+   ![hpm_monitor_run22](doc/api/assets/hpm_monitor_run23.png)
+
+16. Buffer模式采样
+   ![hpm_monitor_run23](doc/api/assets/hpm_monitor_run24.png)
 
 
 ## API

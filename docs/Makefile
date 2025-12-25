@@ -12,6 +12,12 @@ SPHINXBUILD   ?= sphinx-build
 html: Makefile
 	@$(SPHINXBUILD) -M $@ "zh" "output/zh" $(SPHINXOPTS) $(O)
 	@$(SPHINXBUILD) -M $@ "en" "output/en" $(SPHINXOPTS) $(O)
+	rm -rf en/_static
+	rm -rf zh/_static
+	rm -rf en/apps
+	rm -rf zh/apps
+	rm -rf en/middleware
+	rm -rf zh/middleware
 
 clean:
 	rm -rf output

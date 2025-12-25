@@ -1,0 +1,93 @@
+/*
+ * Copyright (c) 2025, sakumisu
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+#ifndef EC_CONFIG_H
+#define EC_CONFIG_H
+
+#define CONFIG_EC_PRINTF(...) printf(__VA_ARGS__)
+
+#ifndef CONFIG_EC_DBG_LEVEL
+#define CONFIG_EC_DBG_LEVEL EC_DBG_INFO
+#endif
+
+#ifndef CONFIG_EC_SLAVE_DBG_LEVEL
+#define CONFIG_EC_SLAVE_DBG_LEVEL EC_DBG_INFO
+#endif
+
+/* Enable print with color */
+#define CONFIG_EC_PRINTF_COLOR_ENABLE
+
+#define EC_FAST_CODE_SECTION __attribute__((section(".fast")))
+
+#ifndef CONFIG_EC_MAX_NETDEVS
+#define CONFIG_EC_MAX_NETDEVS 1
+#endif
+
+#ifndef CONFIG_EC_NONPERIOD_PRIO
+#define CONFIG_EC_NONPERIOD_PRIO 0
+#endif
+
+#ifndef CONFIG_EC_NONPERIOD_STACKSIZE
+#define CONFIG_EC_NONPERIOD_STACKSIZE 2048
+#endif
+
+#ifndef CONFIG_EC_NONPERIOD_INTERVAL_MS
+#define CONFIG_EC_NONPERIOD_INTERVAL_MS 10
+#endif
+
+#ifndef CONFIG_EC_NONPERIOD_WAITERS
+#define CONFIG_EC_NONPERIOD_WAITERS 20
+#endif
+
+#ifndef CONFIG_EC_SCAN_PRIO
+#define CONFIG_EC_SCAN_PRIO 10
+#endif
+
+#ifndef CONFIG_EC_SCAN_STACKSIZE
+#define CONFIG_EC_SCAN_STACKSIZE 4096
+#endif
+
+#ifndef CONFIG_EC_SCAN_INTERVAL_MS
+#define CONFIG_EC_SCAN_INTERVAL_MS 100
+#endif
+
+#ifndef CONFIG_EC_PER_SM_MAX_PDOS
+#define CONFIG_EC_PER_SM_MAX_PDOS 8
+#endif
+
+#ifndef CONFIG_EC_PER_PDO_MAX_PDO_ENTRIES
+#define CONFIG_EC_PER_PDO_MAX_PDO_ENTRIES 8
+#endif
+
+#define CONFIG_EC_PERF_ENABLE
+#define CONFIG_EC_CMD_ENABLE
+// #define CONFIG_EC_TIMESTAMP_CUSTOM
+// #define CONFIG_EC_PHY_CUSTOM
+
+#ifndef CONFIG_EC_MAX_PDO_BUFSIZE
+#define CONFIG_EC_MAX_PDO_BUFSIZE 2048
+#endif
+
+#ifndef CONFIG_EC_MAX_ENET_TXBUF_COUNT
+#define CONFIG_EC_MAX_ENET_TXBUF_COUNT 10
+#endif
+
+#ifndef CONFIG_EC_MAX_ENET_RXBUF_COUNT
+#define CONFIG_EC_MAX_ENET_RXBUF_COUNT 10
+#endif
+
+// #define CONFIG_EC_FOE
+
+// #define CONFIG_EC_EOE
+
+#ifndef CONFIG_EC_EOE_PRIO
+#define CONFIG_EC_EOE_PRIO 1
+#endif
+
+#ifndef CONFIG_EC_EOE_STACKSIZE
+#define CONFIG_EC_EOE_STACKSIZE 4096
+#endif
+
+#endif

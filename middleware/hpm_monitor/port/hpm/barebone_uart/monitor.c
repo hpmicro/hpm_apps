@@ -165,11 +165,6 @@ static uint32_t uart_dma_recv_polling(uint8_t *data, uint32_t maxsize)
     return 0;
 }
 
-static bool monitor_get_uart_tx_status(void)
-{
-    return monitor_uart_tx_done;
-}
-
 static int monitor_uart_tx_dma(uint8_t *data, uint32_t len)
 {
     // dma addr must 4byte aligned
@@ -336,4 +331,11 @@ void monitor_handle(void)
 {
     monitor_task_handle();
     uart_channel_handle(monitor_task_input_process);
+}
+
+bool monitor_send_is_idle(void)
+{
+    if(monitor_uart_tx_done)
+        return true;
+    return false;
 }

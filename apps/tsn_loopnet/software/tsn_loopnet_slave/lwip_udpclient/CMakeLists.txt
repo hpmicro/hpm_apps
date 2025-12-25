@@ -1,0 +1,30 @@
+# Copyright (c) 2024-2025 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+cmake_minimum_required(VERSION 3.13)
+set(APP_VERSION_STRING "\"1.10.0\"")
+set(CONFIG_LWIP 1)
+set(HEAP_SIZE 0x10000)
+set(STACK_SIZE 0x10000)
+find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
+sdk_compile_definitions(-D__DISABLE_AUTO_NEGO=0)
+sdk_compile_definitions(-DLWIP_DHCP=0)
+sdk_compile_definitions(-DENABLE_TSW_RECEIVE_INTERRUPT=0)
+
+project(tsn_loopnet_slave_udp)
+sdk_inc(../ports/baremetal/single)
+sdk_inc(../ports/baremetal/single/arch)
+sdk_inc(../common/single)
+sdk_inc(../jl1111)
+sdk_inc(inc)
+sdk_inc(inc/app)
+
+sdk_app_src(../ports/baremetal/single/arch/sys_arch.c)
+sdk_app_src(../ports/baremetal/single/ethernetif.c)
+sdk_app_src(../common/single/common.c)
+sdk_app_src(../common/single/netconf.c)
+sdk_app_src(../jl1111/hpm_jl1111.c)
+sdk_app_src(src/app/udp_client.c)
+sdk_app_src(src/lwip.c)
+add_subdirectory(../../../../../ hpm_apps/build_tmp)
+generate_ide_projects()

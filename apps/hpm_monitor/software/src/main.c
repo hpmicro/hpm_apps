@@ -6,17 +6,27 @@
  */
 #include "board.h"
 #include <math.h>
+#include "hpm_common.h"
+#include "monitor_report.h"
 #include "monitor.h"
 #include "monitor_ticktime.h"
 
-float test_triangule_wave = 0;
-float test_sine_wave = 0;
-int test_square_ware = 0;
-float test_sawtooth_ware = 0;
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) int test_square_array[1024];
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) float test_sine_array[1024];
+
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) float test_triangule_wave = 0;
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) float test_sine_wave = 0;
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) int test_square_ware = 0;
+ATTR_PLACE_AT_FAST_RAM_INIT_WITH_ALIGNMENT(4) float test_sawtooth_ware = 0;
 
 #define SAMPLE_RATE 44100  // 采样率
 #define FREQUENCY 440      // 频率
 #define AMPLITUDE 500      // 振幅
+
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_triangule, 0, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_sawtooth, 1, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_int_square, 2, int32_t, 100, 1024);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_float_sine, 3, float, 100, 1024);
 
 //三角波
 void triangule_wave_handle(void)
@@ -76,25 +86,48 @@ void sawtooth_ware_handle(void)
     i++;
 }
 
+void timer_cb(void)
+{
+    monitor_channel_add_data(0, &test_triangule_wave);
+    monitor_channel_add_data(1, &test_sawtooth_ware);
+    board_led_toggle();
+}
 
 int main(void)
 {
     uint64_t time = 0;
+    uint32_t index1, index2;
     board_init();
+    board_init_led_pins();
     printf("general debug demo!\r\n");
     printf("__DATE__:%s, __TIME__:%s\r\n", __DATE__, __TIME__);
 
     monitor_init();
+    board_timer_create(10, timer_cb);
 
+    index1 = 0;
+    index2 = 0;
     while (1)
     {
-        if(clock_get_now_tick_ms() - time >= 10)
+        if(tick_time_ms_read32() - time >= 10)
         {
-            time = clock_get_now_tick_ms();
+            time = tick_time_ms_read32();
             triangule_wave_handle();
             sine_wave_handle();
             square_ware_handle();
             sawtooth_ware_handle();
+            test_square_array[index1++] = test_square_ware;
+            test_sine_array[index2++] = test_sine_wave;
+            if(index1 >= 1024)
+            {
+                index1 = 0;
+                monitor_channel_report_array(2, test_square_array, 1024);
+            }
+            if(index2 >= 1024)
+            {
+                index2 = 0;
+                monitor_channel_report_array(3, test_sine_array, 1024);
+            }
         }
         monitor_handle();
     }

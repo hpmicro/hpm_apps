@@ -113,7 +113,7 @@ const struct usb_descriptor cdc_descriptor = {
     .string_descriptor_callback = string_descriptor_callback,
 };
 
-static USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t read_buffer[MONITOR_RINGBUFFSER_SIZE];
+static USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t read_buffer[MONITOR_PROFILE_MAXSIZE];
 //static USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t write_buffer[2048];
 static volatile bool ep_tx_busy_flag;
 static int usbd_channel_input(uint8_t *data, uint32_t length);
@@ -157,7 +157,8 @@ int usbd_channel_output(uint8_t *data, uint16_t length)
 
 void usbd_cdc_acm_bulk_out(uint8_t busid, uint8_t ep, uint32_t nbytes)
 {
-    usbd_ep_start_read(busid, ep, &read_buffer[0], usbd_get_ep_mps(busid, ep));
+    usbd_ep_start_read(busid, ep, &read_buffer[0], MONITOR_PROFILE_MAXSIZE);
+    //usbd_ep_start_read(busid, ep, &read_buffer[0], usbd_get_ep_mps(busid, ep));
 
     usbd_channel_input(read_buffer, (uint16_t)nbytes);
     // usbd_ep_start_write(busid, CDC_IN_EP, &read_buffer[0], nbytes);
@@ -229,4 +230,11 @@ void monitor_handle(void)
 #ifdef CONFIG_USB_POLLING_ENABLE
     USBD_IRQHandler(MONITOR_USB_BUSID);
 #endif
+}
+
+bool monitor_send_is_idle(void)
+{
+    if(ep_tx_busy_flag)
+        return false;
+    return true;
 }

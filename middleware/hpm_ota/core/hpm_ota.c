@@ -668,7 +668,7 @@ static void memcpy_userapp(uint32_t img_flash_addr, uint32_t img_run_addr, uint3
     if (l1c_ic_is_enabled() || l1c_dc_is_enabled())
     {
         aligned_start = HPM_L1C_CACHELINE_ALIGN_DOWN(img_run_addr);
-        aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(img_flash_addr + img_size);
+        aligned_end = HPM_L1C_CACHELINE_ALIGN_UP(img_run_addr + img_size);
         aligned_size = aligned_end - aligned_start;
         l1c_dc_flush(aligned_start, aligned_size);
     }

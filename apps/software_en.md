@@ -22,5 +22,8 @@
    i2s_dma_chain/README_en
    ethernet_loopnet/README_en
    full_port/README_en
-
+   ethercat_master/README_en
+   tsn_loopnet/README_en
+   web_server/README_en
+   monitor_adc/README_en
 :::

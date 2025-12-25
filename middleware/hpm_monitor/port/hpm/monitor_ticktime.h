@@ -10,10 +10,20 @@
 
 #include <stdint.h>
 
-uint64_t clock_get_now_tick_us(void);
+void tick_time_init(void);
 
-uint64_t clock_get_now_tick_ms(void);
+void tick_time_clear(void);
 
-uint64_t clock_get_now_tick_s(void);
+void tick_time_restore(void);
+
+void tick_time_save(void);
+
+uint16_t tick_time_read(void);
+
+uint32_t tick_time_read32(void);
+
+uint32_t tick_time_us_read32(void);
+
+uint32_t tick_time_ms_read32(void);
 
 #endif //__HPM_TICKTIME_H

@@ -2,31 +2,33 @@
 
 ## Depend on SDK1.10.0
 
-## introduction
+## Introduction
 
-hpm_monitor is an efficient, easy to use, and highly portable service, which is used to view and set global variables in the current device in real time, or to report global variables at high speed (1Khz-1ms). Often used as a monitoring data oscilloscope; Very friendly to motor, power supply and other debugging;
+hpm_monitor is a highly efficient, user-friendly, and portable service designed for real-time viewing and configuration of global variables within devices, as well as high-speed reporting of global variables. It is commonly used as a monitoring data oscilloscope and is particularly well-suited for debugging motors, power supplies, and similar equipment.
 
-Note: hpm_monitor service needs to be used with HPMicroMonitorStudio tool on PC;
+Note: The hpm_monitor service requires the PC-based HPMicroMonitorStudio tool for operation;
 
-HPMicroMonitorStudio is available for download from the HPMicor website.
+HPMicroMonitorStudio can be downloaded from the official website of Xianji Semiconductor.
 
-In order to facilitate the user to use, understand the hpm_monitor service, this article for the hpm_monitor service to use the demo.
+To facilitate user understanding and utilization of the hpm_monitor service, this document provides a demonstration application.
 
-This demo implements 4 waveforms: triangle waveform, sine waveform, square waveform and sawtooth waveform; the waveform can be viewed in real time by hpm_monitor service with the host computer, and the waveform data can be set up and sent down for modification at the same time.
+This example software implements four waveforms: triangle wave, sine wave, square wave, and sawtooth wave. It introduces the capability to report single and array data via user-defined channels. Users can view these waveforms in real-time through the hpm_monitor service paired with the host computer, while also configuring and modifying waveform data remotely.
 
-[hpm_monitor service description](hpm_monitor_instruction_en)
+[hpm_monitor Service Description](hpm_monitor_instruction_en)
 
-## hpm_monitor service enabled
+## hpm_monitor Service Activation
 
-- cmakelist.txt enable hpm_monitor service
-set(CONFIG_A_HPMMONITOR 1) enable hpm_monitor service
-set(CONFIG_MONITOR_INTERFACE ‘uart’) Use UART channel.
-set(CONFIG_MONITOR_INTERFACE ‘usb’) Use USB channel.
+- cmakelist.txt Enable the hpm_monitor service
+set(CONFIG_A_HPMMONITOR 1) Enable the hpm_monitor service
+set(CONFIG_MONITOR_INTERFACE "uart") Using the UART channel
+set(CONFIG_MONITOR_INTERFACE "usb") Use the USB port
+set(CONFIG_MONITOR_INTERFACE "enet") Use the ENET channel
 
 ``` c
 set(CONFIG_A_HPMMONITOR 1)
-set(CONFIG_MONITOR_INTERFACE "uart")
-# set(CONFIG_MONITOR_INTERFACE "usb")
+# set(CONFIG_MONITOR_INTERFACE "uart")
+set(CONFIG_MONITOR_INTERFACE "usb")
+# set(CONFIG_MONITOR_INTERFACE "enet")
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
 
@@ -34,40 +36,80 @@ elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "usb")
     set(CONFIG_CHERRYUSB 1)
     set(CONFIG_USB_DEVICE 1)
     set(CONFIG_USB_DEVICE_CDC 1)
+elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "enet")
+    set(CONFIG_LWIP 1)
+    set(CONFIG_ENET_PHY 1)
+    set(APP_USE_ENET_PORT_COUNT 1)
+    #set(APP_USE_ENET_ITF_RGMII 1)
+    #set(APP_USE_ENET_ITF_RMII 1)
+    #set(APP_USE_ENET_PHY_DP83867 1)
+    #set(APP_USE_ENET_PHY_RTL8211 1)
+    #set(APP_USE_ENET_PHY_DP83848 1)
+    #set(APP_USE_ENET_PHY_RTL8201 1)
+    if(NOT DEFINED APP_USE_ENET_PORT_COUNT)
+        message(FATAL_ERROR "APP_USE_ENET_PORT_COUNT is undefined!")
+    endif()
+
+    if(NOT APP_USE_ENET_PORT_COUNT EQUAL 1)
+        message(FATAL_ERROR "This sample supports only one Ethernet port!")
+    endif()
+
+    if (APP_USE_ENET_ITF_RGMII AND APP_USE_ENET_ITF_RMII)
+        message(FATAL_ERROR "This sample doesn't support more than one Ethernet phy!")
+    endif()
 endif()
 
 find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 
-
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
     sdk_compile_definitions("-DCONFIG_UART_CHANNEL=1")
+    sdk_compile_definitions("-DCONFIG_USE_CONSOLE_UART=1")
+    sdk_compile_definitions("-DCONFIG_MONITOR_DBG_LEVEL=0")
 elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "usb")
     sdk_compile_definitions("-DCONFIG_USB_CHANNEL=1")
+elseif("${CONFIG_MONITOR_INTERFACE}" STREQUAL "enet")
+    sdk_compile_definitions("-DCONFIG_ENET_CHANNEL=1")
+    sdk_inc(inc/enet)
 endif()
 
 ```
-
-- Service enablement is accomplished by calling initialise monitor_init() and polling monitor_handle();
-
+- Calling monitor_init() for initialization and monitor_handle() for polling completes the service activation.
 ```c
 int main(void)
 {
     uint64_t time = 0;
+    uint32_t index1, index2;
     board_init();
+    board_init_led_pins();
     printf("general debug demo!\r\n");
     printf("__DATE__:%s, __TIME__:%s\r\n", __DATE__, __TIME__);
 
     monitor_init();
+    board_timer_create(10, timer_cb);
 
+    index1 = 0;
+    index2 = 0;
     while (1)
     {
-        if(clock_get_now_tick_ms() - time >= 10)
+        if(tick_time_ms_read32() - time >= 10)
         {
-            time = clock_get_now_tick_ms();
+            time = tick_time_ms_read32();
             triangule_wave_handle();
             sine_wave_handle();
             square_ware_handle();
             sawtooth_ware_handle();
+            test_square_array[index1++] = test_square_ware;
+            test_sine_array[index2++] = test_sine_wave;
+            if(index1 >= 1024)
+            {
+                index1 = 0;
+                monitor_channel_report_array(2, test_square_array, 1024);
+            }
+            if(index2 >= 1024)
+            {
+                index2 = 0;
+                monitor_channel_report_array(3, test_sine_array, 1024);
+            }
         }
         monitor_handle();
     }
@@ -75,119 +117,196 @@ int main(void)
 }
 ```
 
+- User-defined channel
+
+``` c
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_triangule, 0, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_signal_float_sawtooth, 1, float, 100, 0);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_int_square, 2, int32_t, 100, 1024);
+MONITOR_DEFINE_GLOBAL_VAR(ch_array_float_sine, 3, float, 100, 1024);
+
+void timer_cb(void)
+{
+    monitor_channel_add_data(0, &test_triangule_wave);
+    monitor_channel_add_data(1, &test_sawtooth_ware);
+    board_led_toggle();
+}
+
+while (1)
+{
+   if(tick_time_ms_read32() - time >= 10)
+   {
+      time = tick_time_ms_read32();
+      triangule_wave_handle();
+      sine_wave_handle();
+      square_ware_handle();
+      sawtooth_ware_handle();
+      test_square_array[index1++] = test_square_ware;
+      test_sine_array[index2++] = test_sine_wave;
+      if(index1 >= 1024)
+      {
+            index1 = 0;
+            monitor_channel_report_array(2, test_square_array, 1024);
+      }
+      if(index2 >= 1024)
+      {
+            index2 = 0;
+            monitor_channel_report_array(3, test_sine_array, 1024);
+      }
+   }
+   monitor_handle();
+}
+```
+
 - monitor_config.h Configuration
 Note:
- 1. It is recommended to increase the UART communication baud rate (2M and above). Low-rate communication baud rate in the high-speed rate reporting frequency, will lead to probability of reporting failure or setup failure;
- 2. For the motor, power supply high real-time requirements, to avoid other interruptions affecting the motor, power supply current loop and other operations, it is recommended to turn off the monitor communication channel interruptions, such as USB using polling mode (enable #define CONFIG_USB_POLLING_ENABLE);
+ 1. It is recommended to increase the UART communication baud rate (2M or higher). Low baud rates may cause probabilistic reporting failures or configuration failures when operating at high reporting frequencies.
+ 2. To meet the high real-time requirements of motors and power supplies, and to prevent other interrupts from affecting motor or power supply current loop operations, it is recommended to disable interrupts for the monitor communication channel. For USB, use polling mode (enable #define CONFIG_USB_POLLING_ENABLE).
+
 ```c
-//PID VID Configuration
+//PID VID config
 #define MONITOR_PID                  (0xFFFF)
 #define MONITOR_VID                  (0x34B7) /* HPMicro VID */
 
-//Protocol Maximum Packet Setting
-#define MONITOR_PROFILE_MAXSIZE      (512)
+//Maximum Protocol Packet Size Setting
+#define MONITOR_PROFILE_MAXSIZE      (4096)
 
-//Print Log Level Setting
+//monitor Memory pool size
+#define MONITOR_MEM_SIZE             (40*1024)
+
+//Printing Log Level Settings
 #define CONFIG_MONITOR_DBG_LEVEL MONITOR_DBG_INFO
 
 #if defined(CONFIG_UART_CHANNEL) && CONFIG_UART_CHANNEL
-//UART channel related configuration
+//UART Channel-related configuration
 ...
 #endif
 
 #if defined(CONFIG_USB_CHANNEL) && CONFIG_USB_CHANNEL
-//USB Channel Configuration
-//Enable USB polling mode and disable USB interrupt to avoid affecting the high real-time peripherals of the main program.
+//USB Port Related Settings
+//Enable USB polling mode and disable USB interrupts to prevent interference with the high-priority peripherals of the main program.
 #define CONFIG_USB_POLLING_ENABLE
 ...
 #endif
+
+#if defined(CONFIG_ENET_CHANNEL) && CONFIG_ENET_CHANNEL
+//ENET Channel-Related Configuration
+...
+#endif
+
+
 ```
 
 ## Project Path
 
-- Project path: hpm_monitor/software
+- Project Path:hpm_monitor/software
 
-
-## Engineering configuration
+## Engineering Configuration
 
 - None
 
-## Project Construction
+## Engineering Construction
 
-- The current project supports all series of HPM MCUs and boards, users can choose the corresponding board according to their needs. 
-- The project build type can be arbitrary.
-- For example, windows build project.
+- The current project supports the full range of HPM MCUs and boards; users can select the corresponding board based on their requirements.
+- Any build type is acceptable for the project.
+- As shown below for the Windows build project.
 ![hpm_monitor_build1](doc/api/assets/hpm_monitor_build1.png)
 
 
-## Project Run
+## Project Operation
 
-Note: For detailed operation of HPMicro_Monitor_Studio, please refer to the HPMicro_Monitor_Studio help file; this article only introduces the basic functions according to the operation steps.
-1. Burn and run the project 
-2. Depending on the selected communication channel, the device (EVK) is connected to the PC (UART/USB) 
-3. PC double-click to run the HPMicro_Monitor_Studio tool 
-4. Device Connection (Device Interface)
+Note: For detailed operational documentation of HP Micro Monitor Studio, please refer to the HP Micro Monitor Studio Help documentation. This article only introduces basic functions according to the operational steps.
+1. Burn and run the project
+2. Connect the device (EVK) to the computer via the selected communication channel (UART/USB)
+3. Double-click to run the HPMicro_Monitor_Studio tool on the PC
+4. Device connection (Device interface)
    ![hpm_monitor_run2](doc/api/assets/hpm_monitor_run2.png)
 
    ![hpm_monitor_run1](doc/api/assets/hpm_monitor_run1.png)
-5. elf file open (file interface)
+5. Open elf file (File Interface)
    ![hpm_monitor_run3](doc/api/assets/hpm_monitor_run3.png)
 
-6. Parameter file creation (file interface)
+6. Parameter File Creation (File Interface)
    ![hpm_monitor_run4](doc/api/assets/hpm_monitor_run4.png)
 
    ![hpm_monitor_run5](doc/api/assets/hpm_monitor_run5.png)
 
-7. Parameter setting (parameter screen) 
-   Open parameter file
+7. Parameter Settings (Parameter Interface)
+   Open the parameter file
    ![hpm_monitor_run6](doc/api/assets/hpm_monitor_run6.png)
 
    ![hpm_monitor_run7](doc/api/assets/hpm_monitor_run7.png)
 
    ![hpm_monitor_run8](doc/api/assets/hpm_monitor_run8.png)
 
-   This lists all global variables in the current firmware;
+   By default, all non-static global variables are listed; note: global variables related to monitor services are automatically filtered out.
+   Display Channels: Click to show user-defined channel parameters;
+   Static Variables: Click to display the parameter tree; select the files to enable their display.   
+
    
-8. Interface settings (parametric interface)
-   Create main menus and submenus (menu names can be arbitrary). 
-   For example, multi-axis motors can be set as required. 3D printing as below.
+8. Interface Settings (Parameter Interface)
+   Create main menus and submenus (menu names can be freely designated).
+   For example: Multi-axis motors can be configured as needed. As shown below for 3D printing.
   ![hpm_monitor_run20](doc/api/assets/hpm_monitor_run20.png)
 
   ![hpm_monitor_run9](doc/api/assets/hpm_monitor_run9.png)
 
-9. Parameter selection additions (parameter screen)
-   Select the global variables that need to be monitored or set, and select the appropriate parameter controls as required.
+9. Parameter Selection and Addition (Parameter Interface)
+   Select the global variables to monitor or configure, and choose the appropriate parameter controls based on your requirements.
    ![hpm_monitor_run10](doc/api/assets/hpm_monitor_run10.png)
 
-   Note: If you need a variable to observe the waveform, you need to add the corresponding variable to the oscilloscope window.
+   Note: To observe variable waveforms, add the corresponding variables to the oscilloscope window. Up to four oscilloscope windows can be displayed simultaneously.
    ![hpm_monitor_run11](doc/api/assets/hpm_monitor_run11.png)
 
-10. Data monitoring (monitoring interface)
-   Enable available device connection monitor communication.
+10. Data Monitoring (Monitor Interface)
+   Enable available devices to connect for monitor communication;
    ![hpm_monitor_run12](doc/api/assets/hpm_monitor_run12.png)
+   - Supports Notify sampling mode
+   - Supports Stream sampling mode
+   - Supports Buffer sampling mode
+   - Supports automatic downsampling
 
    ![hpm_monitor_run13](doc/api/assets/hpm_monitor_run13.png)
+   - Supports multi-oscilloscope display
+   - Supports channel display and deactivation
+   - Supports automatic X-axis or Y-axis windowing
+   Note: When sampling begins, since the maximum and minimum values of each waveform are unknown, you must manually click "Auto" after sampling for a period. This will automatically stretch all channel waveforms to fill the entire oscilloscope window.
 
-   The reporting frequency and the automatic display of the oscilloscope window can be set.
+
+   Configurable reporting frequency and automatic display of oscilloscope windows;
    ![hpm_monitor_run14](doc/api/assets/hpm_monitor_run14.png)
 
-11. Data dissemination (monitoring interface)
-   Parameters inside the sub-menu can be set to modify the current parameter values as needed, such as the following square wave modification of the waveform display and modify the successful pop-up window reminder;
+11. Data Download (Monitoring Interface)
+   Parameters within the submenu can be configured to download and modify current parameter values as needed. This includes displaying modified waveforms below and displaying a pop-up notification upon successful modification.
    ![hpm_monitor_run15](doc/api/assets/hpm_monitor_run15.png)
 
-12. Waveform effects (monitoring interface)
+12. Waveform Effect (Monitoring Interface)
    Enable or disable the corresponding waveform display;
-   Sine Wave.
+   Sine Wave:
    ![hpm_monitor_run16](doc/api/assets/hpm_monitor_run16.png)
 
-   TRIANGLE WAVE.
+   Triangular wave:
    ![hpm_monitor_run17](doc/api/assets/hpm_monitor_run17.png)
 
-   SQUARE WAVE.
+   Square Wave:
    ![hpm_monitor_run18](doc/api/assets/hpm_monitor_run18.png)
 
-   Sawtooth Wave.
+   Sawtooth wave:
    ![hpm_monitor_run19](doc/api/assets/hpm_monitor_run19.png)
+
+
+13. User-defined channel reporting
+   Used for custom channel reporting:
+   ![hpm_monitor_run21](doc/api/assets/hpm_monitor_run21.png)
+
+14. Notify mode
+   ![hpm_monitor_run21](doc/api/assets/hpm_monitor_run22.png)
+
+15. Stream mode
+   ![hpm_monitor_run22](doc/api/assets/hpm_monitor_run23.png)
+
+16. Buffer mode
+   ![hpm_monitor_run23](doc/api/assets/hpm_monitor_run24.png)
 
 
 ## API

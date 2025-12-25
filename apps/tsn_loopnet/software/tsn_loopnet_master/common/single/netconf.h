@@ -1,0 +1,87 @@
+/*
+ * Copyright (c) 2025 HPMicro, All Rights Reserved
+ * 
+ * SPDX-License-Identifier: BSD-3-Clause
+ * 
+ * @FilePath: netconf.h
+ * @Version: 2.0
+ * @Author: zhaoshuai (shuai.zhao@hpmicro.com)
+ * @Date: 2025-11-10 13:40:17
+ * @LastEditTime: 2025-11-10 15:41:50
+ */
+/*
+ * Copyright (c) 2025 HPMicro, All Rights Reserved
+ * 
+ * SPDX-License-Identifier: BSD-3-Clause
+ * 
+ * @FilePath: netconf.h
+ * @Version: 2.0
+ * @Author: zhaoshuai (shuai.zhao@hpmicro.com)
+ * @Date: 2025-09-01 10:15:37
+ * @LastEditTime: 2025-09-01 11:11:04
+ */
+/*
+ * Copyright (c) 2024-2025 HPMicro
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ */
+#ifndef NETCONF_H
+#define NETCONF_H
+
+#include "lwipopts.h"
+#include "sys_arch.h"
+#include "lwip/netif.h"
+#include "hpm_common.h"
+
+/* MAC Address */
+#ifndef MAC_CONFIG
+#define MAC_CONFIG 98:2c:bc:b1:9f:17
+#endif
+
+/* Static IP Address */
+#ifndef IP_CONFIG
+#define IP_CONFIG 192.168.100.10
+#endif
+#define MAC5 0x40
+/* Netmask */
+#ifndef NETMASK_CONFIG
+#define NETMASK_CONFIG 255.255.255.0
+#endif
+
+/* Gateway Address */
+#ifndef GW_CONFIG
+#define GW_CONFIG 192.168.100.1
+#endif
+
+/* Remote IP Address */
+#ifndef REMOTE_IP_CONFIG
+#define REMOTE_IP_CONFIG 192.168.100.11
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+/* Exported variables---------------------------------------------------------*/
+#if defined(NO_SYS) && !NO_SYS
+extern sys_mbox_t netif_status_mbox;
+#endif
+
+/* Exported functions ------------------------------------------------------- */
+
+#if defined(LWIP_DHCP) && LWIP_DHCP
+void LwIP_DHCP_task(void *pvParameters);
+#endif
+
+void netif_config(struct netif *netif);
+void netif_user_notification(struct netif *netif);
+
+#if defined(NO_SYS) && !NO_SYS
+void netif_update_link_status(void *pvParameters);
+#endif
+
+#ifdef __cplusplus /* __cplusplus */
+}
+#endif
+
+#endif /* NETCONF_H */

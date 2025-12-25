@@ -198,7 +198,7 @@ int main(void)
         tcp_echo_init();
 
         //adc_pmt config, use hdma chain auto process
-        adc_pmt_auto_config();
+        adc_pmt_auto_config(APP_ADC_TRIG_FREQ);
 
         while (1) {
             enet_common_handler(&gnetif);

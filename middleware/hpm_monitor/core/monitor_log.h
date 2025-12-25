@@ -76,6 +76,10 @@
 #define MONITOR_LOG_ERR(...)
 #endif
 
+#if (CONFIG_MONITOR_DBG_LEVEL >= MONITOR_DBG_LOG)
 #define MONITOR_LOG_RAW(...) CONFIG_MONITOR_PRINTF(__VA_ARGS__)
+#else
+#define MONITOR_LOG_RAW(...)
+#endif
 
 #endif /* MONITOR_LOG_H */
