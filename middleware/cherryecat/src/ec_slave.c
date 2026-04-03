@@ -23,7 +23,7 @@
 static void ec_slave_init(ec_slave_t *slave,
                           uint32_t slave_index,
                           ec_master_t *master,
-                          ec_netdev_index_t netdev_idx,
+                          uint8_t netdev_idx,
                           uint16_t autoinc_address,
                           uint16_t station_address)
 {
@@ -105,32 +105,32 @@ errorout1:
     return ret;
 }
 
-/** Get timeout in us.
+/** Get timeout in ns.
  *
  * For defaults see ETG2000_S_R_V1i0i15 section 5.3.6.2.
  */
-unsigned int ec_slave_state_change_timeout_us(ec_slave_state_t old_state, ec_slave_state_t requested_state)
+static uint64_t ec_slave_state_change_timeout_ns(ec_slave_state_t old_state, ec_slave_state_t requested_state)
 {
     ec_slave_state_t from = old_state;
     ec_slave_state_t to = requested_state;
 
     if (from == EC_SLAVE_STATE_INIT &&
         (to == EC_SLAVE_STATE_PREOP || to == EC_SLAVE_STATE_BOOT)) {
-        return (3000 * 1000); // PreopTimeout
+        return (3000 * 1000 * 1000ULL); // PreopTimeout
     }
     if ((from == EC_SLAVE_STATE_PREOP && to == EC_SLAVE_STATE_SAFEOP) ||
         (from == EC_SLAVE_STATE_SAFEOP && to == EC_SLAVE_STATE_OP)) {
-        return (10000 * 1000); // SafeopOpTimeout
+        return (10000 * 1000 * 1000ULL); // SafeopOpTimeout
     }
     if (to == EC_SLAVE_STATE_INIT ||
         ((from == EC_SLAVE_STATE_OP || from == EC_SLAVE_STATE_SAFEOP) && to == EC_SLAVE_STATE_PREOP)) {
-        return (5000 * 1000); // BackToInitTimeout
+        return (5000 * 1000 * 1000ULL); // BackToInitTimeout
     }
     if (from == EC_SLAVE_STATE_OP && to == EC_SLAVE_STATE_SAFEOP) {
-        return (200 * 1000); // BackToSafeopTimeout
+        return (200 * 1000 * 1000ULL); // BackToSafeopTimeout
     }
 
-    return (10000 * 1000); // default [us]
+    return (10000 * 1000 * 1000ULL); // default [ns]
 }
 
 static uint8_t ec_slave_get_previous_port(const ec_slave_t *slave, uint8_t port_index)
@@ -218,7 +218,7 @@ static ec_slave_t *ec_slave_find_next_dc_slave(ec_slave_t *slave)
     return dc_slave;
 }
 
-void ec_slave_calc_port_delays(ec_slave_t *slave)
+static void ec_slave_calc_port_delays(ec_slave_t *slave)
 {
     uint8_t port_index;
     ec_slave_t *next_slave, *next_dc;
@@ -251,7 +251,7 @@ void ec_slave_calc_port_delays(ec_slave_t *slave)
     }
 }
 
-void ec_slave_calc_transmission_delays(ec_slave_t *slave, uint32_t *delay)
+static void ec_slave_calc_transmission_delays(ec_slave_t *slave, uint32_t *delay)
 {
     unsigned int i;
     ec_slave_t *next_dc;
@@ -330,7 +330,7 @@ repeat_check:
             return -EC_ERR_ALERR;
         }
     } else {
-        if ((jiffies - start_time) > ec_slave_state_change_timeout_us(slave->current_state, requested_state)) {
+        if ((jiffies - start_time) > ec_slave_state_change_timeout_ns(slave->current_state, requested_state)) {
             return -EC_ERR_TIMEOUT;
         }
         goto repeat_check;
@@ -387,7 +387,7 @@ repeat_check:
             return ec_slave_state_clear_ack_error(slave, requested_state);
         } else {
             old_state = slave->current_state;
-            if ((jiffies - start_time) > ec_slave_state_change_timeout_us(slave->current_state, requested_state)) {
+            if ((jiffies - start_time) > ec_slave_state_change_timeout_ns(slave->current_state, requested_state)) {
                 return -EC_ERR_TIMEOUT;
             }
             goto repeat_check;
@@ -395,7 +395,7 @@ repeat_check:
     }
 
     // still in old state
-    if ((jiffies - start_time) > ec_slave_state_change_timeout_us(slave->current_state, requested_state)) {
+    if ((jiffies - start_time) > ec_slave_state_change_timeout_ns(slave->current_state, requested_state)) {
         return -EC_ERR_TIMEOUT;
     }
     goto repeat_check;
@@ -421,54 +421,6 @@ static inline void ec_slave_fmmu_config(ec_sm_info_t *sm, uint8_t *data)
     EC_WRITE_U8(data + 11, sm->fmmu.dir == EC_DIR_INPUT ? 0x01 : 0x02);
     EC_WRITE_U16(data + 12, 0x0001); // enable
     EC_WRITE_U16(data + 14, 0x0000); // reserved
-}
-
-static int ec_slave_config_dc_systime_and_delay(ec_slave_t *slave)
-{
-    ec_datagram_t *datagram;
-    uint64_t system_time, old_system_time_offset, new_system_time_offset;
-    uint64_t time_diff;
-    int ret;
-
-    datagram = &slave->master->main_datagram;
-
-    if (slave->base_dc_supported && slave->has_dc_system_time) {
-        ec_datagram_fprd(datagram, slave->station_address, ESCREG_OF(ESCREG->SYS_TIME), 24);
-        datagram->netdev_idx = slave->netdev_idx;
-        ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
-        if (ret < 0) {
-            return ret;
-        }
-        system_time = EC_READ_U64(datagram->data);
-        old_system_time_offset = EC_READ_U64(datagram->data + 16);
-
-        if (slave->base_dc_range == EC_DC_32) {
-            system_time = (uint32_t)system_time + (jiffies - datagram->jiffies_sent) * 1000;
-            old_system_time_offset = (uint32_t)old_system_time_offset;
-        } else {
-            system_time = system_time + (jiffies - datagram->jiffies_sent) * 1000;
-        }
-
-        time_diff = ec_timestamp_get_time_ns() - system_time;
-
-        if (time_diff > 1000000) { // 1ms
-            new_system_time_offset = time_diff + old_system_time_offset;
-        } else {
-            new_system_time_offset = old_system_time_offset;
-        }
-
-        // set DC system time offset and transmission delay
-        ec_datagram_fpwr(datagram, slave->station_address, ESCREG_OF(ESCREG->SYS_TIME_OFFSET), 12);
-        EC_WRITE_U64(datagram->data, new_system_time_offset);
-        EC_WRITE_U32(datagram->data + 8, slave->transmission_delay);
-        datagram->netdev_idx = slave->netdev_idx;
-        ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
-        if (ret < 0) {
-            return ret;
-        }
-    }
-
-    return 0;
 }
 
 static int ec_slave_config(ec_slave_t *slave)
@@ -530,6 +482,13 @@ static int ec_slave_config(ec_slave_t *slave)
     }
 
     if (slave->requested_state == EC_SLAVE_STATE_BOOT) {
+        if (!(slave->sii.mailbox_protocols & EC_MBXPROT_FOE)) {
+            EC_SLAVE_LOG_ERR("Slave %u does not support BOOT mailbox protocol\n", slave->index);
+            ret = -EC_ERR_NOSUPP;
+            step = 5;
+            goto errorout;
+        }
+
         ec_sm_info_t sm_info[2];
 
         sm_info[0].physical_start_address = slave->sii.boot_rx_mailbox_offset;
@@ -593,6 +552,12 @@ static int ec_slave_config(ec_slave_t *slave)
     ret = ec_slave_state_change(slave, EC_SLAVE_STATE_PREOP);
     if (ret < 0) {
         step = 8;
+        goto errorout;
+    }
+
+    // preop state done
+    if (slave->current_state == slave->requested_state) {
+        ret = 0;
         goto errorout;
     }
 
@@ -704,44 +669,46 @@ static int ec_slave_config(ec_slave_t *slave)
         }
     }
 
-    // preop state done
-    if (slave->current_state == slave->requested_state) {
-        ret = 0;
-        goto errorout;
-    }
+    if (slave->config) {
+        // Config process data sm
+        ec_datagram_fpwr(datagram, slave->station_address,
+                         ESCREG_OF(ESCREG->SYNCM[pdo_sm_offset]), EC_SYNC_PAGE_SIZE * pdo_sm_count);
+        ec_datagram_zero(datagram);
+        for (uint8_t i = 0; i < pdo_sm_count; i++) {
+            ec_slave_sm_config(&slave->sm_info[pdo_sm_offset + i], datagram->data + EC_SYNC_PAGE_SIZE * i);
+        }
+        datagram->netdev_idx = slave->netdev_idx;
+        ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
+        if (ret < 0) {
+            step = 21;
+            goto errorout;
+        }
 
-    // Config process data sm
-    ec_datagram_fpwr(datagram, slave->station_address,
-                     ESCREG_OF(ESCREG->SYNCM[pdo_sm_offset]), EC_SYNC_PAGE_SIZE * pdo_sm_count);
-    ec_datagram_zero(datagram);
-    for (uint8_t i = 0; i < pdo_sm_count; i++) {
-        ec_slave_sm_config(&slave->sm_info[pdo_sm_offset + i], datagram->data + EC_SYNC_PAGE_SIZE * i);
-    }
-    datagram->netdev_idx = slave->netdev_idx;
-    ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
-    if (ret < 0) {
-        step = 21;
-        goto errorout;
-    }
-
-    ec_datagram_fpwr(datagram, slave->station_address, ESCREG_OF(ESCREG->FMMU[0]), EC_FMMU_PAGE_SIZE * pdo_sm_count);
-    ec_datagram_zero(datagram);
-    for (uint8_t i = 0; i < pdo_sm_count; i++) {
-        ec_slave_fmmu_config(&slave->sm_info[pdo_sm_offset + i], datagram->data + EC_FMMU_PAGE_SIZE * i);
-    }
-    datagram->netdev_idx = slave->netdev_idx;
-    ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
-    if (ret < 0) {
-        step = 22;
-        goto errorout;
+        ec_datagram_fpwr(datagram, slave->station_address, ESCREG_OF(ESCREG->FMMU[0]), EC_FMMU_PAGE_SIZE * pdo_sm_count);
+        ec_datagram_zero(datagram);
+        for (uint8_t i = 0; i < pdo_sm_count; i++) {
+            ec_slave_fmmu_config(&slave->sm_info[pdo_sm_offset + i], datagram->data + EC_FMMU_PAGE_SIZE * i);
+        }
+        datagram->netdev_idx = slave->netdev_idx;
+        ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
+        if (ret < 0) {
+            step = 22;
+            goto errorout;
+        }
     }
 
     if (slave->config && slave->config->dc_assign_activate) {
-        if (!slave->base_dc_supported) {
-            EC_SLAVE_LOG_WRN("Slave %u does not support DC, but DC is activated in master config\n", slave->index);
-        }
+        EC_ASSERT_MSG(slave->base_dc_supported, "Slave %u does not support DC", slave->index);
 
-        ec_slave_config_dc_systime_and_delay(slave);
+        // set DC system time offset and transmission delay
+        ec_datagram_fpwr(datagram, slave->station_address, ESCREG_OF(ESCREG->SYS_TIME_OFFSET), 12);
+        EC_WRITE_U64(datagram->data, slave->system_time_offset);
+        EC_WRITE_U32(datagram->data + 8, slave->transmission_delay);
+        datagram->netdev_idx = slave->netdev_idx;
+        ret = ec_master_queue_ext_datagram(slave->master, datagram, true, true);
+        if (ret < 0) {
+            return ret;
+        }
 
         // set DC cycle times
         ec_datagram_fpwr(datagram, slave->station_address, ESCREG_OF(ESCREG->SYNC0_CYC_TIME), 8);
@@ -848,7 +815,7 @@ static void ec_master_clear_slaves(ec_master_t *master)
     master->slave_count = 0;
 }
 
-static int ec_master_calc_topology_rec(ec_master_t *master, ec_slave_t *port0_slave, unsigned int *slave_position)
+static int ec_master_calc_topology(ec_master_t *master, ec_slave_t *port0_slave, unsigned int *slave_position)
 {
     ec_slave_t *slave = master->slaves + *slave_position;
     unsigned int port_index;
@@ -867,8 +834,8 @@ static int ec_master_calc_topology_rec(ec_master_t *master, ec_slave_t *port0_sl
             if (*slave_position < master->slave_count) {
                 slave->ports[port_index].next_slave =
                     master->slaves + *slave_position;
-                ret = ec_master_calc_topology_rec(master,
-                                                  slave, slave_position);
+                ret = ec_master_calc_topology(master,
+                                              slave, slave_position);
                 if (ret) {
                     return ret;
                 }
@@ -891,7 +858,7 @@ static void ec_master_find_dc_ref_clock(ec_master_t *master)
     for (slave = master->slaves;
          slave < master->slaves + master->slave_count;
          slave++) {
-        if (slave->base_dc_supported && slave->has_dc_system_time) {
+        if (slave->base_dc_supported) {
             ref = slave;
             break;
         }
@@ -909,17 +876,6 @@ static void ec_master_find_dc_ref_clock(ec_master_t *master)
                      ref ? ref->station_address : 0xffff, ESCREG_OF(ESCREG->SYS_TIME), ref ? (ref->base_dc_range == EC_DC_64 ? 8 : 4) : 4);
     ec_datagram_frmw(&master->dc_all_sync_datagram,
                      ref ? ref->station_address : 0xffff, ESCREG_OF(ESCREG->SYS_TIME), ref ? (ref->base_dc_range == EC_DC_64 ? 8 : 4) : 4);
-}
-
-static void ec_master_calc_topology(ec_master_t *master)
-{
-    unsigned int slave_position = 0;
-
-    if (master->slave_count == 0)
-        return;
-
-    EC_ASSERT_MSG(ec_master_calc_topology_rec(master, NULL, &slave_position) == 0,
-                  "Failed to calculate bus topology\n");
 }
 
 static void ec_master_calc_transmission_delays(ec_master_t *master)
@@ -940,12 +896,16 @@ static void ec_master_calc_transmission_delays(ec_master_t *master)
 
 static void ec_master_calc_dc(ec_master_t *master)
 {
+    unsigned int slave_position = 0;
+
     // find DC reference clock
     ec_master_find_dc_ref_clock(master);
 
     // calculate bus topology
-    ec_master_calc_topology(master);
+    EC_ASSERT_MSG(ec_master_calc_topology(master, NULL, &slave_position) == 0,
+                  "Failed to calculate bus topology\n");
 
+    // calculate transmission delay
     ec_master_calc_transmission_delays(master);
 }
 
@@ -996,9 +956,9 @@ void ec_slaves_scanning(ec_master_t *master)
 {
     ec_datagram_t *datagram;
     ec_slave_t *slave;
-    ec_netdev_index_t netdev_idx;
-    bool rescan_required = false;
-    unsigned int scan_jiffies;
+    uint8_t netdev_idx;
+    uint64_t scan_jiffies;
+    uint64_t ref_time[CONFIG_EC_MAX_NETDEVS] = { 0 };
     int ret;
 
     datagram = &master->main_datagram;
@@ -1020,7 +980,7 @@ void ec_slaves_scanning(ec_master_t *master)
 
             for (uint8_t i = EC_NETDEV_MAIN; i < CONFIG_EC_MAX_NETDEVS; i++) {
                 master->slaves_state[i] = 0x00;
-                master->slaves_responding[i] = 0;
+                master->slaves_working_counter[i] = 0;
             }
             master->scan_done = false;
             ec_osal_mutex_give(master->scan_lock);
@@ -1037,15 +997,15 @@ void ec_slaves_scanning(ec_master_t *master)
             return;
         }
 
-        if (datagram->working_counter != master->slaves_responding[netdev_idx]) {
-            rescan_required = 1;
-            master->slaves_responding[netdev_idx] = datagram->working_counter;
+        if (datagram->working_counter != master->slaves_working_counter[netdev_idx]) {
+            master->rescan_request = true;
+            master->slaves_working_counter[netdev_idx] = datagram->working_counter;
             EC_LOG_INFO("%u slaves responding on %s device\n",
-                        master->slaves_responding[netdev_idx],
+                        master->slaves_working_counter[netdev_idx],
                         master->netdev[netdev_idx]->name);
         }
 
-        if (master->slaves_responding[netdev_idx] > 0) {
+        if (master->slaves_working_counter[netdev_idx] > 0) {
             uint8_t states = EC_READ_U8(datagram->data);
             if (states != master->slaves_state[netdev_idx]) {
                 // slave states changed
@@ -1058,17 +1018,14 @@ void ec_slaves_scanning(ec_master_t *master)
         }
     }
 
-    if (rescan_required || master->rescan_request) {
+    if (master->rescan_request) {
         uint32_t count = 0, slave_index, autoinc_address;
         uint8_t step = 0;
-
-        master->rescan_request = false;
-        rescan_required = 0;
 
         ec_master_stop(master);
 
         ec_osal_mutex_take(master->scan_lock);
-
+        master->rescan_request = false;
         master->scan_done = false;
         EC_LOG_INFO("Rescanning bus...\n");
 
@@ -1077,7 +1034,7 @@ void ec_slaves_scanning(ec_master_t *master)
         scan_jiffies = jiffies;
 
         for (uint8_t i = EC_NETDEV_MAIN; i < CONFIG_EC_MAX_NETDEVS; i++) {
-            count += master->slaves_responding[i];
+            count += master->slaves_working_counter[i];
         }
 
         if (!count) {
@@ -1097,7 +1054,7 @@ void ec_slaves_scanning(ec_master_t *master)
         slave_index = 0;
         for (uint8_t netdev_idx = EC_NETDEV_MAIN; netdev_idx < CONFIG_EC_MAX_NETDEVS; netdev_idx++) {
             autoinc_address = 0;
-            for (uint32_t j = 0; j < master->slaves_responding[netdev_idx]; j++) {
+            for (uint32_t j = 0; j < master->slaves_working_counter[netdev_idx]; j++) {
                 slave = master->slaves + slave_index;
 
                 ec_slave_init(slave, slave_index, master, netdev_idx, (int16_t)autoinc_address * (-1), slave_index + 1001);
@@ -1108,7 +1065,7 @@ void ec_slaves_scanning(ec_master_t *master)
         }
 
         for (uint8_t netdev_idx = EC_NETDEV_MAIN; netdev_idx < CONFIG_EC_MAX_NETDEVS; netdev_idx++) {
-            if (master->slaves_responding[netdev_idx] == 0) {
+            if (master->slaves_working_counter[netdev_idx] == 0) {
                 continue;
             }
             // Clear station address
@@ -1130,6 +1087,8 @@ void ec_slaves_scanning(ec_master_t *master)
                 step = 4;
                 goto mutex_unlock;
             }
+
+            ref_time[netdev_idx] = datagram->jiffies_sent;
         }
 
         for (uint32_t slave_index = 0; slave_index < master->slave_count; slave_index++) {
@@ -1172,18 +1131,14 @@ void ec_slaves_scanning(ec_master_t *master)
             slave->base_build = EC_READ_U16(datagram->data + 2);
 
             slave->base_fmmu_count = EC_READ_U8(datagram->data + 4);
-            if (slave->base_fmmu_count > EC_MAX_FMMUS) {
-                EC_SLAVE_LOG_WRN("Slave has more FMMUs (%u) than the master can handle (%u)\n",
-                                 slave->base_fmmu_count, EC_MAX_FMMUS);
-                slave->base_fmmu_count = EC_MAX_FMMUS;
-            }
+            EC_ASSERT_MSG(slave->base_fmmu_count <= EC_MAX_FMMUS,
+                          "Slave %u FMMU count %u is overflow",
+                          slave->index, slave->base_fmmu_count);
 
             slave->base_sync_count = EC_READ_U8(datagram->data + 5);
-            if (slave->base_sync_count > EC_MAX_SYNC_MANAGERS) {
-                EC_SLAVE_LOG_WRN("Slave provides more sync managers (%u) than the master can handle (%u)\n",
-                                 slave->base_sync_count, EC_MAX_SYNC_MANAGERS);
-                slave->base_sync_count = EC_MAX_SYNC_MANAGERS;
-            }
+            EC_ASSERT_MSG(slave->base_sync_count <= EC_MAX_SYNC_MANAGERS,
+                          "Slave %u sync managers count %u is overflow",
+                          slave->index, slave->base_fmmu_count);
 
             uint8_t data = EC_READ_U8(datagram->data + 7);
             for (uint8_t i = 0; i < EC_MAX_PORTS; i++) {
@@ -1207,14 +1162,6 @@ void ec_slaves_scanning(ec_master_t *master)
                     goto mutex_unlock;
                 }
 
-                if (datagram->working_counter == 1) {
-                    slave->has_dc_system_time = 1;
-                    EC_SLAVE_LOG_DBG("Slave has the System Time register\n");
-                } else {
-                    slave->has_dc_system_time = 0;
-                    EC_SLAVE_LOG_DBG("Slave has no System Time register; delay measurement only\n");
-                }
-
                 // Read DC port receive times
                 ec_datagram_fprd(datagram, slave->station_address, ESCREG_OF(ESCREG->RCV_TIME[0]), 16);
                 ec_datagram_zero(datagram);
@@ -1228,6 +1175,17 @@ void ec_slaves_scanning(ec_master_t *master)
                 for (uint8_t i = 0; i < EC_MAX_PORTS; i++) {
                     slave->ports[i].receive_time = EC_READ_U32(datagram->data + 4 * i);
                 }
+
+                ec_datagram_fprd(datagram, slave->station_address, ESCREG_OF(ESCREG->RCVT_ECAT_PU), 8);
+                ec_datagram_zero(datagram);
+                datagram->netdev_idx = slave->netdev_idx;
+                ret = ec_master_queue_ext_datagram(master, datagram, true, true);
+                if (ret < 0) {
+                    step = 9;
+                    goto mutex_unlock;
+                }
+
+                slave->system_time_offset = ref_time[netdev_idx] - EC_READ_U64(datagram->data);
             } else {
             }
 
@@ -1290,7 +1248,7 @@ void ec_slaves_scanning(ec_master_t *master)
 
             slave->sii.aliasaddr =
                 EC_READ_U16(slave->sii_image + 0x0004);
-            slave->effective_alias = slave->sii.aliasaddr;
+            slave->alias_address = slave->sii.aliasaddr;
             slave->sii.vendor_id =
                 EC_READ_U32(slave->sii_image + 0x0008);
             slave->sii.product_code =
@@ -1386,7 +1344,7 @@ void ec_slaves_scanning(ec_master_t *master)
             }
         }
 
-        EC_LOG_INFO("Bus scanning completed in %u ms\n", (unsigned int)((jiffies - scan_jiffies) / 1000));
+        EC_LOG_INFO("Bus scanning completed in %u ms\n", (unsigned int)((jiffies - scan_jiffies) / 1000000));
         master->scan_done = true;
 
         ec_master_calc_dc(master);

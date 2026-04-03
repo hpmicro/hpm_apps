@@ -45,7 +45,7 @@ typedef struct {
     ec_dlist_t queue;
     ec_dlist_t ext_queue;
     ec_dlist_t sent;
-    ec_netdev_index_t netdev_idx;     /**< Netdev via which the datagram shall be / was sent. */
+    uint8_t netdev_idx;               /**< Netdev via which the datagram shall be / was sent. */
     ec_datagram_type_t type;          /**< Datagram type (APRD, BWR, etc.). */
     bool static_alloc;                /**< True, if \a data is statically allocated. */
     uint8_t address[EC_ADDR_LEN];     /**< Recipient address. */
@@ -55,10 +55,8 @@ typedef struct {
     uint8_t index;                    /**< Index (set by master). */
     uint16_t working_counter;         /**< Working counter. */
     ec_datagram_state_t state;        /**< State. */
-    uint32_t lrw_read_offset;         /**< Read Offset in LRW datagram. */
-    uint32_t lrw_read_size;           /**< Read Size in LRW datagram. */
-    uint64_t jiffies_sent;            /**< Jiffies, when the datagram was sent. */
-    uint64_t jiffies_received;        /**< Jiffies, when the datagram was received. */
+    uint64_t jiffies_sent;            /**< Jiffies [ns], when the datagram was sent. */
+    uint64_t jiffies_received;        /**< Jiffies [ns], when the datagram was received. */
     char name[EC_DATAGRAM_NAME_SIZE]; /**< Description of the datagram. */
     bool waiter;                      /**< True, if someone is waiting for the datagram. */
     ec_osal_sem_t wait;               /**< Semaphore for waiting. */

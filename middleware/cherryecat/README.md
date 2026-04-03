@@ -11,6 +11,7 @@ CherryECAT is a tiny and beautiful, high real-time and low-jitter EtherCAT maste
 
 ## Feature
 
+- **RTOS only, do not support Linux and windows** (designed to contrast with the latter)
 - ~ 4K ram, ~40K flash(24K + 16K shell cmd, including log)
 - Asynchronous queue-based transfer (one transfer can carry multiple datagrams)
 - Zero-copy technology: directly use enet tx/rx buffer to fill and parse ethercat data
@@ -25,10 +26,11 @@ CherryECAT is a tiny and beautiful, high real-time and low-jitter EtherCAT maste
 - Support Slave SII access
 - Support Slave register access
 - Support multi master
-- **Support backup redundancy(TODO)**
+- Support PDO transfer with single domain or multi domain（single domain：all slaves share one LRW datagram，multi domain：each slave has one LRW datagram）
 - **Minimum PDO cyclic time < 40 us (depends on master and slave hardware)**
 - **DC jitter < 3us (depends on master and slave hardware)**
 - **Support multi cyclic time(every slave can use different proportional cyclic time)**
+- **Support backup redundancy(TODO)**
 - Support ethercat cmd with shell, ref to IgH
 
 The pic shows dc jitter < 3us (hpm6800evk with flash_xip):
@@ -46,6 +48,7 @@ The pic shows dc jitter < 3us (hpm6800evk with flash_xip):
 - **Slave**
 	- Must support DC and system time
 	- Must support sdo complete access
+	- Must support LRW
 	- SII must have sync manager information
 
 ## Shell cmd
@@ -60,6 +63,7 @@ The pic shows dc jitter < 3us (hpm6800evk with flash_xip):
 ![ethercat](docs/assets/ethercat7.png)
 ![ethercat](docs/assets/ethercat8.png)
 ![ethercat](docs/assets/ethercat9.png)
+![ethercat](docs/assets/ethercat10.png)
 
 ## Tool
 
@@ -104,7 +108,9 @@ Generating C code...
 ## Support Boards
 
 - HPM6750EVK2/HPM6800EVK/**HPM5E00EVK**(hybrid internal)
-- RT-Thread RZN2L-EtherKit/RA8P1 Titan Board
+- RT-Thread RZN2L-EtherKit/RA8P1 Titan/RuiQing Pai
+- STM32H7
+
 
 ## Contact
 
@@ -112,4 +118,4 @@ QQ group: 563650597
 
 ## License
 
-FOE, EOE and backup redundancy features are available for commercial charge; other are free to use
+FOE, EOE and backup redundancy features are available in **Royalty-Free**; other are free to use

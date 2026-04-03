@@ -14,10 +14,10 @@ if(CONFIG_CHERRYECAT)
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_mailbox.c
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_master.c
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_netdev.c
-        ${CMAKE_CURRENT_LIST_DIR}/src/ec_perf.c
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_sii.c
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_slave.c
         ${CMAKE_CURRENT_LIST_DIR}/src/ec_timestamp.c
+        ${CMAKE_CURRENT_LIST_DIR}/src/ec_slave_table.c
         ${CMAKE_CURRENT_LIST_DIR}/src/phy/chry_phy.c
     )
 
@@ -29,6 +29,10 @@ if(CONFIG_CHERRYECAT)
         elseif("${CONFIG_CHERRYECAT_OSAL}" STREQUAL "threadx")
             list(APPEND cherryec_srcs ${CMAKE_CURRENT_LIST_DIR}/osal/ec_osal_threadx.c)
         endif()
+    endif()
+
+    if(CHERRYECAT_NETDEV_STM32H7)
+        list(APPEND cherryec_srcs port/netdev_stm32h7.c)
     endif()
 
     if(HPM_SDK_BASE)

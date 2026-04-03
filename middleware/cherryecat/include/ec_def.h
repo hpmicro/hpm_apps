@@ -127,6 +127,13 @@ typedef enum {
     /**< Acknowledge/Error bit (no actual state) */
 } ec_slave_state_t;
 
+typedef enum {
+    EC_PORT_NOT_IMPLEMENTED, /**< Port is not implemented. */
+    EC_PORT_NOT_CONFIGURED,  /**< Port is not configured. */
+    EC_PORT_EBUS,            /**< Port is an E-Bus. */
+    EC_PORT_MII              /**< Port is a MII. */
+} ec_slave_port_desc_t;
+
 /** Slave information interface CANopen over EtherCAT details flags.
  */
 typedef struct {
@@ -565,5 +572,12 @@ typedef struct {
     ec_pdo_info_t const *pdos;
     ec_watchdog_mode_t watchdog_mode;
 } ec_sync_info_t;
+
+#define EC_CIA402_OPERATION_MODE_NO_MODE 0x00
+#define EC_CIA402_OPERATION_MODE_CSP     0x01
+#define EC_CIA402_OPERATION_MODE_CSV     0x02
+#define EC_CIA402_OPERATION_MODE_CSP_CSV 0x03
+#define EC_CIA402_OPERATION_MODE_CST     0x04
+#define EC_CIA402_OPERATION_MODE_HOME    0x05
 
 #endif
