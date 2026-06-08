@@ -149,9 +149,4 @@ OSIN(yellow)，OCOS(pink)
 
 ![vel50](doc/api/assets/vel50_en.png)
 
-## API
 
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/soft_rdc/html/index.html>`_ .
-:::

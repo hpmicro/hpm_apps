@@ -188,9 +188,3 @@ The following are the ADC test results:
 
 ![result_enet_transmission_rate](doc/api/assets/result_enet_transmission_rate.png)
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/lwip_adc/html/index.html>`_ 。
-:::

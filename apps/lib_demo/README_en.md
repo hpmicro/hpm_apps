@@ -205,10 +205,3 @@ int main (void)
 - Observe the values of the velcmd and poscmd arrays with the following test results:
 
 ![test result](doc/api/assets/7_en.png)
-
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/lib_demo/html/index.html>`_ .
-:::

@@ -186,10 +186,3 @@ int main(void)
 
 ![result_enet_transmission_rate](doc/api/assets/result_enet_transmission_rate.png)
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/lwip_adc/html/index.html>`_ 。
-:::

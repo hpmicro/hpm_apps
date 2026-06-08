@@ -127,10 +127,3 @@ int main(void)
 
 ![result_fft_connect_speaker](doc/api/assets/result_fft_connect_speaker.png)
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/i2s_dma_chain/html/index.html>`_ 。
-:::

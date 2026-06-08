@@ -246,9 +246,3 @@ Direcotry Path: /
 File   Name: USBHost.txt
 
 ```
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/adc/html/index.html>`_ 。
-:::

@@ -219,9 +219,3 @@ cmd_gene_disable
 
 
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/middleware/hpm_motor/html/index.html>`_ 。
-:::

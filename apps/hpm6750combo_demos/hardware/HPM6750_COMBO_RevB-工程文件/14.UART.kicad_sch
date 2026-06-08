@@ -1,0 +1,8436 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "f9e9a5c2-2d5e-47ae-8fba-9bb4b8bee11a")
+	(paper "A4")
+	(title_block
+		(title "HPM6750_COMBO_RevB")
+		(date "2024-04-06")
+		(rev "RevB")
+	)
+	(lib_symbols
+		(symbol "0.1uF,16V_2"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0.1uF,16V_2"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "03_HPM_Capacitance:C_0402"
+				(at 3.81 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "CL05B104KO5NNNC"
+				(at 2.54 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "SAMSUNG(三星)"
+				(at 1.27 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "0.1uF,16V_2_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0.1uF,16V_2_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "00_HPM_power:+3.3V"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3.3V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3.3V_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3.3V_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+3.3V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "00_HPM_power:GND"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR0123"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 0.8 0.8)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 0.8 0.8)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "电源符号创建名为 'GND' 的全局标签"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_0"
+				(polyline
+					(pts
+						(xy -2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -3.302) (xy 1.778 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -4.064) (xy 1.016 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 -4.826) (xy 0.254 -4.826)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0) hide
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "01-HPM-Peripheral:DM-02-V"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at -0.635 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DM-02-V"
+				(at -0.635 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "01_HPM_Peripheral:SW-SMD_DM-02-V"
+				(at 0 -6.985 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "拨码开关"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "DM-02-V"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 0.001 0.001)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "圜达"
+				(at -0.635 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DM-02-V_1_1"
+				(rectangle
+					(start -5.08 -3.81)
+					(end 5.08 3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -3.81 2.54)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 -1.905)
+					(end 2.54 -0.635)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.54 0.635)
+					(end 2.54 1.905)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -0.635) (xy 0 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.905) (xy 0 0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -7.62 1.27 0)
+					(length 2.54)
+					(name "PIN1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -1.27 0)
+					(length 2.54)
+					(name "PIN2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 -1.27 180)
+					(length 2.54)
+					(name "PIN3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 1.27 180)
+					(length 2.54)
+					(name "PIN4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "01-HPM-Peripheral:LED_GREEN"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "LED"
+				(at -5.08 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED_GREEN"
+				(at 0 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "01_HPM_Peripheral:LED_0603"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 5.461 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "NCD0603C1"
+				(at -1.27 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "国星光电"
+				(at -1.27 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at -2.54 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_GREEN_1_1"
+				(polyline
+					(pts
+						(xy -2.54 1.524) (xy -2.54 -1.524)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 2.032) (xy -3.556 3.81)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.762 3.048) (xy -2.54 4.826)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.556 3.81) (xy -2.54 3.302) (xy -3.048 2.794) (xy -3.556 3.81)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 4.826) (xy -1.524 4.318) (xy -2.032 3.81) (xy -2.54 4.826)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.524) (xy -2.54 0) (xy 0 1.524) (xy 0 -1.524)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -6.35 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "01-HPM-Peripheral:测试针"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -3.175 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "测试针"
+				(at 0.635 6.985 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "01_HPM_Peripheral:探针"
+				(at 0.635 -6.985 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0.635 5.715 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "4952"
+				(at 0.635 -3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" " Keystone"
+				(at 0.635 -4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 3.81 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "测试针_1_1"
+				(circle
+					(center -1.905 1.905)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.54 1.27)
+					(end -2.54 6.35)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at 0 -1.27 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "01-HPM-Peripheral:轻触开关4.5mm*4.5mm*4mm"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "轻触开关4.5mm*4.5mm*4mm"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "01_HPM_Peripheral:轻触开关SMD-4P,4.5x4.5mm"
+				(at 1.27 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 3.9116 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" " TS4540TP"
+				(at -1.27 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "SHOU HAN(首韩)"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "轻触开关4.5mm*4.5mm*4mm_1_1"
+				(arc
+					(start -3.81 -2.8194)
+					(mid -3.048 -3.5781)
+					(end -2.286 -2.8194)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.81 0.2286)
+					(mid -3.048 -0.5301)
+					(end -2.286 0.2286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.286 -2.794)
+					(mid -3.0605 -2.0571)
+					(end -3.81 -2.8194)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -2.286 0.254)
+					(mid -3.0605 0.9909)
+					(end -3.81 0.2286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 -2.54) (xy -4.064 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.08 0) (xy -4.064 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 0.254) (xy -3.81 -2.794)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -2.794) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 -2.54) (xy 4.064 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 4.064 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 2.032) (xy -3.81 1.778) (xy -3.81 1.778) (xy 3.81 1.778) (xy 3.81 1.778) (xy 3.81 2.032)
+						(xy 3.81 2.032) (xy 1.016 2.032) (xy 1.016 2.032) (xy 1.016 2.794) (xy 1.016 2.794) (xy -1.016 2.794)
+						(xy -1.016 2.794) (xy -1.016 2.032) (xy -1.016 2.032) (xy -3.81 2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.286 -2.8194)
+					(mid 3.048 -3.5781)
+					(end 3.81 -2.8194)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.286 0.2286)
+					(mid 3.048 -0.5301)
+					(end 3.81 0.2286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.81 -2.794)
+					(mid 3.0355 -2.0568)
+					(end 2.286 -2.8194)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.81 0.254)
+					(mid 3.0355 0.9912)
+					(end 2.286 0.2286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 -2.54 180)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "02_HPM_Resistor:10K_0402"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10K"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "0402WGF1002TCE"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "UNI-ROYAL(厚声)"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10K_0402_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10K_0402_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "02_HPM_Resistor:10K_0603"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10K"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+				(at 2.54 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "RC0603FR-0710KL\n"
+				(at 1.27 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "YAGEO\n"
+				(at 1.27 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10K_0603_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10K_0603_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "02_HPM_Resistor:10Ω_0603"
+			(pin_numbers hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10Ω"
+				(at -0.1778 7.5946 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+				(at -0.0254 -9.779 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" " 0603WAF100JT5E"
+				(at 0.2032 -3.9116 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" " UNI-ROYAL(厚声) "
+				(at -1.0668 -6.985 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10Ω_0603_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10Ω_0603_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "02_HPM_Resistor:2K"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at -5.08 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "2K"
+				(at 5.08 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0402"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "0402WGF2001TCE"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "UNI-ROYAL(厚声)"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "2K_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "2K_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "02_HPM_Resistor:2K_0402"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "2K"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "0402WGF2001TCE"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "UNI-ROYAL(厚声)"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "2K_0402_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "2K_0402_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "03_HPM_Capacitance:0.1uF,16V_0402"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at -1.27 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0.1uF,16V"
+				(at -5.08 12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "03_HPM_Capacitance:C_0402_1005Metric"
+				(at 2.54 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "CL05B104KO5NNNC"
+				(at 1.27 -16.51 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "SAMSUNG(三星)"
+				(at 0 -11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "0.1uF,16V_0402_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0.1uF,16V_0402_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "03_HPM_Capacitance:10uF,10V_0402"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at -3.81 15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10uF,10V"
+				(at -3.81 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "03_HPM_Capacitance:C_0402_1005Metric"
+				(at 1.27 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "CL05A106MP5NUNC"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" " SAMSUNG(三星)"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10uF,10V_0402_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10uF,10V_0402_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "03_HPM_Capacitance:1nF,2kV_1206"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at -3.81 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Value" "1nF,2kV"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Footprint" "03_HPM_Capacitance:C_1206_3216Metric"
+				(at 1.27 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "1206"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "1206B102K202NT"
+				(at -1.27 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "FH(风华)"
+				(at -1.27 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1nF,2kV_1206_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1nF,2kV_1206_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "04_HPM_Diode:SS34A"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SS34A"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "04_HPM_Diode:D_SMA"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at -1.27 -9.779 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "肖特基二极管，40V,3A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "SS34A"
+				(at -1.27 -11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "YANGJIE(扬杰)"
+				(at -1.27 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SS34A_1_1"
+				(polyline
+					(pts
+						(xy 1.27 1.524) (xy -1.27 0) (xy -1.27 0) (xy 1.27 -1.778) (xy 1.27 -1.778) (xy 1.27 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type color)
+						(color 132 50 65 1)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 1.524) (xy -2.032 1.778) (xy -2.032 1.778) (xy -1.524 1.778) (xy -1.524 1.778) (xy -1.524 -2.032)
+						(xy -1.524 -2.032) (xy -1.016 -2.032) (xy -1.016 -2.032) (xy -1.016 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 5.08 0 180)
+					(length 3.81)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "05_HPM_Connector_Other:USB_Type-C"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 21.59 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "USB_Type-C"
+				(at 11.43 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "05_HPM_Connector_other:TYPE-C-16P"
+				(at 10.16 -63.5 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 30.48 -25.4 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "kinghelm(金航标)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "KH-TYPE-C-16P"
+				(at 11.43 -60.96 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "kinghelm(金航标)"
+				(at 11.43 -57.15 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "USB_Type-C_1_0"
+				(rectangle
+					(start 0 0)
+					(end 22.86 -54.61)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 27.94 -52.07 180)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -49.53 180)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -46.99 180)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -44.45 180)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -12.7 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -15.24 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -2.54 180)
+					(length 5.08)
+					(name "VBUS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -34.29 180)
+					(length 5.08)
+					(name "CC1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -22.86 180)
+					(length 5.08)
+					(name "DP1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -27.94 180)
+					(length 5.08)
+					(name "DN1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -39.37 180)
+					(length 5.08)
+					(name "SUB1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -5.08 180)
+					(length 5.08)
+					(name "VBUS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -20.32 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -17.78 180)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -10.16 180)
+					(length 5.08)
+					(name "VBUS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -36.83 180)
+					(length 5.08)
+					(name "CC2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -25.4 180)
+					(length 5.08)
+					(name "DP2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -30.48 180)
+					(length 5.08)
+					(name "DN2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -41.91 180)
+					(length 5.08)
+					(name "SUB2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 27.94 -7.62 180)
+					(length 5.08)
+					(name "VBUS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "USB_Type-C_1_1"
+				(text "USB TYPE-C"
+					(at 6.35 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+							(bold yes)
+							(italic yes)
+						)
+					)
+				)
+			)
+		)
+		(symbol "06_HPM_IC:CH340E"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -7.62 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "CH340E"
+				(at 1.27 13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_SO:MSOP-10_3x3mm_P0.5mm"
+				(at -12.7 -19.05 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at -8.89 20.32 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "USB serial converter, UART, MSOP-10"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "CH340E"
+				(at 1.27 -24.13 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "WCH(南京沁恒)"
+				(at 1.27 -21.59 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "USB UART Serial Converter Interface"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MSOP*3x3mm*P0.5mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CH340E_0_1"
+				(rectangle
+					(start -7.62 12.7)
+					(end 7.62 -12.7)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "CH340E_1_1"
+				(pin bidirectional line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "UD+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 15.24 270)
+					(length 2.54)
+					(name "V3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -10.16 0 0)
+					(length 2.54)
+					(name "UD-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -15.24 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 10.16 -10.16 180)
+					(length 2.54)
+					(name "~{RTS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "~{CTS}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "TNOW"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 15.24 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 10.16 10.16 180)
+					(length 2.54)
+					(name "TXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 10.16 7.62 180)
+					(length 2.54)
+					(name "RXD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "10K_0402_1"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10K"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Model" "0402WGF1002TCE"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Company" "UNI-ROYAL(厚声)"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ASSY_OPT" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10K_0402_1_0_1"
+				(rectangle
+					(start 2.54 -1.016)
+					(end -2.54 1.016)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "10K_0402_1_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "456-altium-import:GND"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "电源符号创建名为 'GND' 的全局标签"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_0"
+				(polyline
+					(pts
+						(xy -2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -3.302) (xy 1.778 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -4.064) (xy 1.016 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 -4.826) (xy 0.254 -4.826)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0) hide
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Power-altium-import:+5V"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5V"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "电源符号创建名为 '+5V' 的全局标签"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+5V_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0) hide
+					(name "+5V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:+3.3V"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3.3V"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3.3V_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3.3V_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+3.3V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 46.99 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0abb2199-ffc5-4f05-aa8b-643e66ebaec5")
+	)
+	(junction
+		(at 46.99 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "110d17bd-2ec8-48ce-aae7-306bcb0645fb")
+	)
+	(junction
+		(at 46.99 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1bfbb3cd-866d-4a54-aa9a-b70f2fe9c930")
+	)
+	(junction
+		(at 118.11 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f5fd85c-ebaf-4686-8a50-de9539d42b6c")
+	)
+	(junction
+		(at 118.11 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "390b3eca-9fb0-42ac-8e0d-1100507a516f")
+	)
+	(junction
+		(at 46.99 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ac459a6-1924-4158-a88b-9392532fb5d0")
+	)
+	(junction
+		(at 46.99 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5ca10c41-acb7-49d9-a3e2-94f645f332d0")
+	)
+	(junction
+		(at 46.99 57.15)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5d35350a-2264-4afd-8ad8-63b9c3dba69f")
+	)
+	(junction
+		(at 93.98 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "65fb886a-d1d0-4ec0-afd8-b41b92f631e9")
+	)
+	(junction
+		(at 46.99 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "849ab4a5-f811-4b8b-b36e-2143a7c40772")
+	)
+	(junction
+		(at 59.69 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8c71709d-c344-4f92-8504-0b17a599339c")
+	)
+	(junction
+		(at 96.52 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8d9e23e8-c055-4eba-91f7-fd2101202d53")
+	)
+	(junction
+		(at 57.15 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6f25be9-b885-4fed-b418-e9d408f40144")
+	)
+	(junction
+		(at 173.355 93.345)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b16be947-fb35-4c35-8f3b-becc7cad5a06")
+	)
+	(junction
+		(at 229.235 50.165)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b7335314-e56a-4c12-a264-6c4ca64bff37")
+	)
+	(junction
+		(at 57.15 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d90c2e99-9b50-4447-9472-f1cb806cd0cf")
+	)
+	(junction
+		(at 57.15 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e10e42a1-6b10-4373-8023-8eb53cf040e6")
+	)
+	(junction
+		(at 123.19 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e1d73cf6-d67d-4f2d-b75f-48854bd8c3bf")
+	)
+	(junction
+		(at 46.99 41.91)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f66691de-6e6a-41d5-9c40-9f849bd0265d")
+	)
+	(no_connect
+		(at 210.185 47.625)
+		(uuid "0f05dcec-e5f0-4e19-a15a-fe1f18e28bdd")
+	)
+	(no_connect
+		(at 225.425 47.625)
+		(uuid "901c6d77-9e03-472f-8889-1dc67a8f4b04")
+	)
+	(no_connect
+		(at 46.99 78.74)
+		(uuid "93c0d344-5b1f-41f2-9848-8530e6098b39")
+	)
+	(no_connect
+		(at 46.99 81.28)
+		(uuid "eb0892ce-f2b6-4d96-bdfc-f168d9934cd1")
+	)
+	(wire
+		(pts
+			(xy 229.235 41.275) (xy 229.235 40.005)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "01ba72b7-5df9-4f24-bf6b-61876247de3d")
+	)
+	(wire
+		(pts
+			(xy 96.52 50.8) (xy 96.52 40.64)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "09a21ee6-6e36-4544-8e81-e54e1b28dfad")
+	)
+	(wire
+		(pts
+			(xy 57.15 83.82) (xy 46.99 83.82)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "09f46069-7bae-4443-a2ca-ee88be8f3ea1")
+	)
+	(wire
+		(pts
+			(xy 109.22 76.2) (xy 106.68 76.2)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "0a764d95-6d07-4567-b04b-b11e570bdbd1")
+	)
+	(wire
+		(pts
+			(xy 85.09 63.5) (xy 85.09 62.23)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "0e8c9507-e973-4e4b-bfdb-8aa7501af502")
+	)
+	(wire
+		(pts
+			(xy 173.355 95.885) (xy 175.895 95.885)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "10bb67df-4097-453f-8229-0ea21af0690b")
+	)
+	(wire
+		(pts
+			(xy 118.11 45.72) (xy 123.19 45.72)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "16c47092-7fa9-4930-9727-28864e399729")
+	)
+	(wire
+		(pts
+			(xy 57.15 88.9) (xy 46.99 88.9)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "193f88d7-c99d-42d0-af4a-1e5d54cec87a")
+	)
+	(wire
+		(pts
+			(xy 175.895 41.275) (xy 179.705 41.275)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "1c26482b-9914-496d-94ad-ccb72cdac9e0")
+	)
+	(wire
+		(pts
+			(xy 179.705 64.135) (xy 179.705 61.595)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "1d347420-18c7-4d32-a0ff-ed3189b5c0b1")
+	)
+	(wire
+		(pts
+			(xy 46.99 67.31) (xy 46.99 69.85)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "1f02044c-b5c9-4741-9986-651c46bb2984")
+	)
+	(wire
+		(pts
+			(xy 93.98 40.64) (xy 93.98 50.8)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "21ca8cbf-c78c-4f10-8403-e79c30614c50")
+	)
+	(wire
+		(pts
+			(xy 59.69 35.56) (xy 67.31 35.56)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "22f1e398-cbfa-4278-b66f-54e4458018a2")
+	)
+	(wire
+		(pts
+			(xy 57.15 88.9) (xy 57.15 91.44)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "29fd7c15-16e2-4d66-9176-4363f54a491d")
+	)
+	(wire
+		(pts
+			(xy 46.99 52.07) (xy 46.99 54.61)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "2c27cd3a-3af5-43db-8cce-49e1835b03d7")
+	)
+	(wire
+		(pts
+			(xy 118.11 39.37) (xy 118.11 45.72)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "2c28db44-dbf0-4937-a79d-cbcca106994c")
+	)
+	(wire
+		(pts
+			(xy 196.215 93.345) (xy 191.135 93.345)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "2e58b547-642d-44a9-b38e-5cdb836992c8")
+	)
+	(wire
+		(pts
+			(xy 210.185 50.165) (xy 210.185 60.325)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "30674a49-6a22-4a80-86da-79393c5a5dd1")
+	)
+	(wire
+		(pts
+			(xy 46.99 57.15) (xy 46.99 59.69)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "32267e85-8141-4023-9439-18064a949541")
+	)
+	(wire
+		(pts
+			(xy 179.705 53.975) (xy 179.705 52.705)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "3267d897-5478-4bc3-96e2-dff567ef358e")
+	)
+	(wire
+		(pts
+			(xy 229.235 50.165) (xy 240.665 50.165)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "34ff2def-fb6c-43e5-bd47-eb2321896cf9")
+	)
+	(wire
+		(pts
+			(xy 123.19 58.42) (xy 127 58.42)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "40bb544d-ec36-48af-b1b8-f5290cbb9c84")
+	)
+	(wire
+		(pts
+			(xy 85.09 66.04) (xy 86.36 66.04)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "4179522e-6bc8-4932-844c-49c724ac258b")
+	)
+	(wire
+		(pts
+			(xy 173.355 93.345) (xy 173.355 95.885)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "42ccbe1e-c47c-4b9d-9661-330de8404219")
+	)
+	(wire
+		(pts
+			(xy 46.99 35.56) (xy 59.69 35.56)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "446a4889-81ec-4e2b-98d5-0b18777c29af")
+	)
+	(wire
+		(pts
+			(xy 109.22 73.66) (xy 109.22 76.2)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "4b2fbd2d-6a8c-48ed-a97f-00b28a16b411")
+	)
+	(wire
+		(pts
+			(xy 57.15 105.41) (xy 57.15 104.14)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "4e4be358-d15f-4c5b-8b6f-83de533072d1")
+	)
+	(wire
+		(pts
+			(xy 46.99 67.31) (xy 85.09 67.31)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "54a6ea2e-e820-4f1f-b878-6a242dbb987f")
+	)
+	(wire
+		(pts
+			(xy 57.15 91.44) (xy 46.99 91.44)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "58605710-a7c7-4f31-b57c-8364fdc679b7")
+	)
+	(wire
+		(pts
+			(xy 46.99 46.99) (xy 46.99 49.53)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "5ddd0aad-2663-42d7-9832-2a3d6b970062")
+	)
+	(wire
+		(pts
+			(xy 216.535 93.345) (xy 203.835 93.345)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "621b815d-219b-49b9-bb6d-b8335f74ae17")
+	)
+	(wire
+		(pts
+			(xy 106.68 63.5) (xy 109.22 63.5)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "625e4cfa-8f36-45e5-a7c9-8632439c021c")
+	)
+	(wire
+		(pts
+			(xy 106.68 58.42) (xy 123.19 58.42)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "6305bc21-0dab-4c19-a9a7-4b7127842984")
+	)
+	(wire
+		(pts
+			(xy 229.235 52.705) (xy 229.235 50.165)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "6adf0f52-85b7-4ab3-9918-040e57c092ea")
+	)
+	(wire
+		(pts
+			(xy 109.22 63.5) (xy 109.22 66.04)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "745c63bc-3f80-41e3-9778-097047af6ba8")
+	)
+	(wire
+		(pts
+			(xy 57.15 86.36) (xy 46.99 86.36)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "80690e09-680c-4012-8328-d7e701e41b62")
+	)
+	(wire
+		(pts
+			(xy 216.535 95.885) (xy 203.835 95.885)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "83c9fdbe-d02c-465a-858e-49f71633035e")
+	)
+	(wire
+		(pts
+			(xy 123.19 53.34) (xy 123.19 58.42)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "8565e12c-e1bb-4c8e-83c4-97b1ad132485")
+	)
+	(wire
+		(pts
+			(xy 77.47 35.56) (xy 78.74 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87223bf1-b2c8-45c8-b037-6a19ba4fd4ea")
+	)
+	(wire
+		(pts
+			(xy 118.11 55.88) (xy 106.68 55.88)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "8cefee01-8786-4c66-97d2-7d14029257f1")
+	)
+	(wire
+		(pts
+			(xy 196.215 95.885) (xy 191.135 95.885)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9133f536-db55-44d9-bf7c-d97a1d181795")
+	)
+	(wire
+		(pts
+			(xy 248.285 93.98) (xy 245.745 93.98)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9558cf67-1d58-4010-b1e4-2e5b2906e1dc")
+	)
+	(wire
+		(pts
+			(xy 173.355 93.345) (xy 175.895 93.345)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9779f67c-5f5b-4cd5-84ed-33b6f8a9f8f8")
+	)
+	(wire
+		(pts
+			(xy 85.09 67.31) (xy 85.09 66.04)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9977ff18-085d-410e-b055-792d60bb30cd")
+	)
+	(wire
+		(pts
+			(xy 46.99 54.61) (xy 46.99 57.15)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9ac218fd-effb-45f9-83cd-1360189cf1f2")
+	)
+	(wire
+		(pts
+			(xy 127 55.88) (xy 118.11 55.88)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "9b55b4cd-5e16-46a6-9432-33ef10038e0e")
+	)
+	(wire
+		(pts
+			(xy 86.36 63.5) (xy 85.09 63.5)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "a0f3a7c5-76ff-4b4c-bd9f-6158f3d94f6d")
+	)
+	(wire
+		(pts
+			(xy 118.11 53.34) (xy 118.11 55.88)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "aa2be29f-5c86-43f5-8e13-83312b348f97")
+	)
+	(wire
+		(pts
+			(xy 46.99 52.07) (xy 53.34 52.07)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b00fd352-a7e8-40cf-b4b0-f51eb2233b65")
+	)
+	(wire
+		(pts
+			(xy 46.99 35.56) (xy 46.99 41.91)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b3a1cb43-94ae-4d33-a081-ea8881c48d03")
+	)
+	(wire
+		(pts
+			(xy 57.15 83.82) (xy 57.15 86.36)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b4b7482b-19e9-4bd0-ae4a-42e48166c1bc")
+	)
+	(wire
+		(pts
+			(xy 57.15 86.36) (xy 57.15 88.9)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b56a1b0c-a801-4556-a7c3-765c8887908c")
+	)
+	(wire
+		(pts
+			(xy 46.99 62.23) (xy 85.09 62.23)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b5973aa3-f22a-4434-9739-3b2a89675e58")
+	)
+	(wire
+		(pts
+			(xy 77.47 35.56) (xy 85.09 35.56)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "b6da0d41-e805-46e5-a118-7b0fb44f9511")
+	)
+	(wire
+		(pts
+			(xy 179.705 41.275) (xy 179.705 42.545)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "c2431b37-8423-4859-ab57-46a90b62830d")
+	)
+	(wire
+		(pts
+			(xy 93.98 40.64) (xy 96.52 40.64)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "c57f2035-ee6f-4312-897d-da51735a8c33")
+	)
+	(wire
+		(pts
+			(xy 137.795 55.88) (xy 134.62 55.88)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "c66f238d-d842-4ebd-aa02-a7cdb716f4e5")
+	)
+	(wire
+		(pts
+			(xy 46.99 44.45) (xy 46.99 46.99)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "c87e0dc2-acd5-4634-b936-dfc96e14a286")
+	)
+	(wire
+		(pts
+			(xy 80.01 40.64) (xy 93.98 40.64)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "cd469adb-7299-48ba-b68b-d3b90ef22b65")
+	)
+	(wire
+		(pts
+			(xy 46.99 62.23) (xy 46.99 64.77)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "cec8cf88-e13b-4cf1-a8e9-fef5fb2dca7d")
+	)
+	(wire
+		(pts
+			(xy 229.235 48.895) (xy 229.235 50.165)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "d0c10fdf-9e55-45e2-80f7-acd0b7bed7df")
+	)
+	(wire
+		(pts
+			(xy 134.62 58.42) (xy 137.795 58.42)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "e1742303-6b8e-4511-98be-19231b58e625")
+	)
+	(wire
+		(pts
+			(xy 46.99 41.91) (xy 46.99 44.45)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "f4ac57bb-ae73-45e5-9175-5b9d8cae16b4")
+	)
+	(wire
+		(pts
+			(xy 225.425 50.165) (xy 229.235 50.165)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "f6617a51-a945-4f3f-afe3-94bf94714724")
+	)
+	(wire
+		(pts
+			(xy 57.15 96.52) (xy 57.15 91.44)
+		)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(uuid "fab4cbe2-b0c9-42a1-b2e0-0464bc5ae0a5")
+	)
+	(text "USB_UART"
+		(exclude_from_sim no)
+		(at 22.86 30.48 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "75cf89b7-fbb8-4d1b-a2e8-40b2b4cb3256")
+	)
+	(label "DN"
+		(at 69.215 67.31 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "78c38b15-c5c6-4f83-811a-a55300e95dcd")
+	)
+	(label "DP"
+		(at 69.215 62.23 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left bottom)
+		)
+		(uuid "b38c80cf-ea9a-409f-b5d3-f668da54d69d")
+	)
+	(hierarchical_label "KEYA"
+		(shape input)
+		(at 240.665 50.165 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "11dbffb1-d747-4588-a2cb-aabac2e12e46")
+	)
+	(hierarchical_label "BOOT1"
+		(shape input)
+		(at 216.535 95.885 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "3664ffcd-9923-4a42-87c1-ba84a90c4b62")
+	)
+	(hierarchical_label "LED_G"
+		(shape input)
+		(at 175.895 41.275 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "44aa121c-82e7-4f34-911e-5abcc05af214")
+	)
+	(hierarchical_label "MCU_TXD"
+		(shape input)
+		(at 137.795 58.42 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "6d0f101f-9e52-456d-bf98-297a14ce1e9e")
+	)
+	(hierarchical_label "BOOT0"
+		(shape input)
+		(at 216.535 93.345 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c7218df7-e020-4a2b-8f47-8ed3703a7073")
+	)
+	(hierarchical_label "MCU_RXD"
+		(shape input)
+		(at 137.795 55.88 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify left)
+		)
+		(uuid "db814386-5615-4856-948d-20290bddb467")
+	)
+	(symbol
+		(lib_id "00_HPM_power:+3.3V")
+		(at 173.355 93.345 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00cea5cf-e46d-47b4-baa7-19b838c74a9e")
+		(property "Reference" "#PWR?"
+			(at 173.355 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 173.355 89.789 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.355 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.355 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 173.355 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f7e67e71-e82c-4d28-a3e4-076cf3898f92")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-CON-JTAG"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR058")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR055")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 SKT Board LQFP100 REVA"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "01-HPM-Peripheral:LED_GREEN")
+		(at 179.705 46.355 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "030e5305-781b-41de-9c03-a64555f06d6d")
+		(property "Reference" "LED2"
+			(at 186.055 50.165 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED_GREEN"
+			(at 188.595 47.625 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "01_HPM_Peripheral:LED_0603"
+			(at 183.515 46.355 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 174.244 46.355 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.705 46.355 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "NCD0603C1"
+			(at 188.595 47.625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "国星光电"
+			(at 186.055 47.625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 179.705 48.895 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8188d0c1-ab36-42f6-b23a-7fafd02b1cd2")
+		)
+		(pin "1"
+			(uuid "b9394129-2b8f-48cb-b029-9697a84d01ea")
+		)
+		(instances
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "LED2")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "LED8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "03_HPM_Capacitance:10uF,10V_0402")
+		(at 59.69 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "073f831c-b7d0-4318-8b23-8b8bcb905cc0")
+		(property "Reference" "C180"
+			(at 53.34 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10uF,10V"
+			(at 50.165 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "03_HPM_Capacitance:C_0402_1005Metric"
+			(at 60.96 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "CL05A106MP5NUNC"
+			(at 59.69 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" " SAMSUNG(三星)"
+			(at 59.69 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 59.69 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c61ad2cd-85bf-4bba-9c1c-75e535b49a1a")
+		)
+		(pin "2"
+			(uuid "2bcf6e9c-20f6-4f3b-8607-02755924138a")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "C180")
+					(unit 1)
+				)
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/f33c95d3-a307-43ac-b7f4-7cd337f89db4"
+					(reference "C15")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/25fbddd4-121b-45bc-9d5c-b1a29b271505"
+					(reference "C106")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "C55")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ec6a6f6f-ae47-4a68-be51-cbf014b7338a"
+					(reference "C80")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "C55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "03_HPM_Capacitance:1nF,2kV_1206")
+		(at 57.15 100.33 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "08150eeb-4c5f-4953-a039-62c6a9a86ee6")
+		(property "Reference" "C189"
+			(at 55.88 96.52 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "1nF,2kV"
+			(at 53.34 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "03_HPM_Capacitance:C_1206_3216Metric"
+			(at 55.88 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 57.15 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "1206B102K202NT"
+			(at 58.42 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "FH(风华)"
+			(at 58.42 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 57.15 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ac56b6ee-ea71-48fb-9b10-5c5f6fa4c4d7")
+		)
+		(pin "1"
+			(uuid "4c37069c-329c-4883-9ecf-cc94c5af412b")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "C189")
+					(unit 1)
+				)
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/e1a198a2-dea3-477e-8260-0a54e9f3245a"
+					(reference "C91")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "C57")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "C57")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "01-HPM-Peripheral:测试针")
+		(at 244.475 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1abf313e-cb87-4108-8d5f-90188b6c51fd")
+		(property "Reference" "J7"
+			(at 244.1575 88.5825 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "测试针"
+			(at 244.1575 86.0425 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "01_HPM_Peripheral:探针"
+			(at 251.46 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 244.475 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "4952"
+			(at 247.65 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" " Keystone"
+			(at 248.92 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" "DNP"
+			(at 240.665 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f2a3e4bb-750e-4899-8055-8f3b55ac9102")
+		)
+		(instances
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "J7")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "J8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 57.15 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "287cb3c1-9ed6-4abe-91db-1d3f07199ebc")
+		(property "Reference" "#PWR?"
+			(at 57.15 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 57.15 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 105.41 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 105.41 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 57.15 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "1aa944d2-f5d9-4593-8ac0-ddce95ec256f")
+		)
+		(instances
+			(project "Power"
+				(path "/1b443ce4-f3f3-472f-b8c0-27b504415663"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0276")
+					(unit 1)
+				)
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/e1a198a2-dea3-477e-8260-0a54e9f3245a"
+					(reference "#PWR0226")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10Ω_0603")
+		(at 130.81 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "30f22a9b-2221-4570-ae31-81ffff31808c")
+		(property "Reference" "R161"
+			(at 130.9878 55.8546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10Ω"
+			(at 130.81 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+			(at 130.7846 65.659 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 130.81 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" " 0603WAF100JT5E"
+			(at 131.0132 59.7916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" " UNI-ROYAL(厚声) "
+			(at 129.7432 62.865 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 130.81 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5c7cc6b6-18d2-4f3b-affc-d4e312e007c6")
+		)
+		(pin "2"
+			(uuid "d0c70032-4081-4021-9965-d6e228bdf0cf")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "R161")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R36")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R36")
+					(unit 1)
+				)
+			)
+			(project "DRV8962DDVR_REVA"
+				(path "/ed8a7f02-cf05-41d0-97b4-4388ef205e73/5598f68b-5e88-432e-a0c3-8225cd23ccd9"
+					(reference "R53")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "10K_0402_1")
+		(lib_id "02_HPM_Resistor:10K_0402")
+		(at 229.235 45.085 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "33c07ca3-e6db-4ac0-a035-59340a33372c")
+		(property "Reference" "R?"
+			(at 231.775 41.275 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 231.775 48.895 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+			(at 226.695 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.235 45.085 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.235 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "0402WGF1002TCE"
+			(at 221.615 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "UNI-ROYAL(厚声)"
+			(at 224.155 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 229.235 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8c515b4d-96c2-4d8c-a027-aafda9944dc2")
+		)
+		(pin "2"
+			(uuid "0e44f222-54f5-49dd-9d62-dbcfc70d7c93")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "R?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R22")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R26")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "R?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:+3.3V")
+		(at 229.235 40.005 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3719fcad-0fc3-46fb-825d-6ad799bcf0c6")
+		(property "Reference" "#PWR?"
+			(at 229.235 43.815 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 229.235 36.449 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.235 40.005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.235 40.005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.235 40.005 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b363e86-749a-4c29-a3fc-1e6c84189269")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR057")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR056")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:2K_0402")
+		(at 179.705 57.785 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "45fd9eef-5107-4c53-9ac2-017f4829926e")
+		(property "Reference" "R?"
+			(at 173.355 56.515 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "2K"
+			(at 173.355 59.055 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+			(at 182.245 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 179.705 57.785 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.705 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "0402WGF2001TCE"
+			(at 187.325 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "UNI-ROYAL(厚声)"
+			(at 184.785 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 179.705 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "80293478-306c-4aea-8cd7-0f3b2933a42a")
+		)
+		(pin "2"
+			(uuid "c313e390-6a5b-4318-8fe7-371807f08b7d")
+		)
+		(instances
+			(project "peripheral"
+				(path "/11dec7fb-7f02-492e-8333-0c6734b2b037"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R24")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10K_0402")
+		(at 200.025 93.345 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4dca35a1-317d-4a30-a3c0-7ac75c9067be")
+		(property "Reference" "R?"
+			(at 194.945 92.075 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K_0402"
+			(at 207.645 92.075 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+			(at 200.025 95.885 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.025 93.345 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 200.025 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "0402WGF1002TCE"
+			(at 200.025 100.965 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "UNI-ROYAL(厚声)"
+			(at 200.025 98.425 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 200.025 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee144296-1c8a-40b9-a157-574dad9866ad")
+		)
+		(pin "2"
+			(uuid "b6183abf-3632-411d-94c9-396e9be3d085")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "R?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R26")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "456-altium-import:GND")
+		(at 80.01 48.26 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "553bfbaf-0534-49f9-9f7f-434627a9f592")
+		(property "Reference" "#PWR0272"
+			(at 80.01 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 80.01 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 80.01 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 80.01 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "476fb6cd-081d-4e3a-8ea2-e9d70016a6fe")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0272")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "#PWR0142")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0110")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0110")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "01-HPM-Peripheral:轻触开关4.5mm*4.5mm*4mm")
+		(at 217.805 47.625 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5ef6bb3e-79cb-4d1f-be7d-c047aeee53a0")
+		(property "Reference" "SW?"
+			(at 217.805 41.275 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "轻触开关4.5mm*4.5mm*4mm"
+			(at 219.075 69.215 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "01_HPM_Peripheral:轻触开关SMD-4P,4.5x4.5mm"
+			(at 219.075 60.325 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 217.805 43.7134 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.805 47.625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" " TS4540TP"
+			(at 216.535 55.245 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "SHOU HAN(首韩)"
+			(at 217.805 57.785 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 217.805 47.625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5bd32b18-2b4c-40cd-8ecf-e4d807f4971f")
+		)
+		(pin "2"
+			(uuid "4d0b5a88-672f-491a-af8e-9cd19873f3a4")
+		)
+		(pin "3"
+			(uuid "ed76f5e4-5767-42fa-af87-b5f9f5e7b8fd")
+		)
+		(pin "4"
+			(uuid "549cf12b-620e-4f7c-904b-2c61838dc4a5")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "SW?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "SW2")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "SW?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "04_HPM_Diode:SS34A")
+		(at 72.39 35.56 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6ad0ec4b-078c-4e41-91aa-b3224e457450")
+		(property "Reference" "D3"
+			(at 72.771 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS34A"
+			(at 72.771 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "04_HPM_Diode:D_SMA"
+			(at 72.39 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 45.339 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 72.39 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "SS34A"
+			(at 73.66 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "YANGJIE(扬杰)"
+			(at 73.66 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 72.39 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "52e9f5b1-2247-42d3-9ec8-8916f2bff968")
+		)
+		(pin "2"
+			(uuid "337442f5-0161-4112-a0c7-01cc589f4325")
+		)
+		(instances
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "D3")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10K_0603")
+		(at 118.11 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6ebd113e-ab7d-495c-accf-0325a05b4c90")
+		(property "Reference" "R159"
+			(at 118.11 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 120.65 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+			(at 120.65 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "RC0603FR-0710KL\n"
+			(at 123.19 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "YAGEO\n"
+			(at 125.73 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 118.11 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "dfd116d5-85c9-4bb7-a8f0-e1585e3fce69")
+		)
+		(pin "1"
+			(uuid "702945c0-b7ae-4b4c-a3e3-e5415c11e237")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "R159")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R20")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R20")
+					(unit 1)
+				)
+			)
+			(project "DRV8962DDVR_REVA"
+				(path "/ed8a7f02-cf05-41d0-97b4-4388ef205e73/5598f68b-5e88-432e-a0c3-8225cd23ccd9"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 96.52 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "71fccdf1-b5ea-4b8f-b3d5-1504c16a52eb")
+		(property "Reference" "#PWR0270"
+			(at 96.52 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 96.52 37.084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 96.52 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 96.52 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 96.52 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b8a01f07-310b-4993-8e65-3eb899851e41")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0270")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "#PWR0145")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0108")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 59.69 43.18 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "765870e9-bfac-42f5-85b9-58563da053b7")
+		(property "Reference" "#PWR0271"
+			(at 59.69 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 59.69 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 43.18 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 43.18 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "6106124d-5a33-4c30-bf03-6f0f913d4d50")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0271")
+					(unit 1)
+				)
+			)
+			(project "DRV_PWR_RevA"
+				(path "/85f490ff-5ecf-4723-a715-5abb5e59d671/f4807bd5-6187-4c8b-91c9-d4f207063cf7/d1ee26dd-417e-44b3-a4f5-686cc08ed1ce"
+					(reference "#PWR0169")
+					(unit 1)
+				)
+			)
+			(project "DRV_CTL"
+				(path "/96c8360a-ae30-434f-8975-9f96bf4b5ae3/0c28688d-3a89-4d8f-a356-941d886f3d9e/8fa85e3d-5a99-480f-94db-09f80f019569"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0109")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0109")
+					(unit 1)
+				)
+			)
+			(project "EncoderCard"
+				(path "/ea9bdce2-f318-4eeb-941a-a326c91147b9"
+					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+			(project "24V_STEP_NONE_2A_REVB"
+				(path "/ed8a7f02-cf05-41d0-97b4-4388ef205e73/1c3b13de-9c2d-4c08-82e7-29893273e2ef"
+					(reference "#PWR045")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "05_HPM_Connector_Other:USB_Type-C")
+		(at 19.05 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79a14987-4656-4052-a000-d6c44436d14c")
+		(property "Reference" "J4"
+			(at 40.64 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_Type-C"
+			(at 30.48 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "05_HPM_Connector_other:TYPE-C-16P"
+			(at 29.21 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 49.53 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 19.05 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "KH-TYPE-C-16P"
+			(at 30.48 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "kinghelm(金航标)"
+			(at 30.48 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 19.05 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d5ea6155-b364-4ac9-8118-e0057695484a")
+		)
+		(pin "2"
+			(uuid "df008772-bacf-41f5-ac94-5cda641d9ec3")
+		)
+		(pin "3"
+			(uuid "d936409d-4884-4fe4-833d-9c1321e13e93")
+		)
+		(pin "4"
+			(uuid "19494f7f-c72f-4156-b9d3-3bc166ec4587")
+		)
+		(pin "A1"
+			(uuid "fdee4f60-7843-44ea-a26b-464a62ddb77a")
+		)
+		(pin "A12"
+			(uuid "1bc3a94e-03e5-44e3-aed4-2c02c763874f")
+		)
+		(pin "A4"
+			(uuid "ad2dd04a-2bfa-4304-bfb6-bc72a30bc954")
+		)
+		(pin "A5"
+			(uuid "1c2172cc-90d2-4747-a3a5-ae420fc8e018")
+		)
+		(pin "A6"
+			(uuid "6af4ac60-fa0d-4ae1-8081-30e2955b807f")
+		)
+		(pin "A7"
+			(uuid "fde0a650-85bf-4f01-868b-304d31fe6358")
+		)
+		(pin "A8"
+			(uuid "e396acf1-35e8-4bea-ac0a-186077a5c1af")
+		)
+		(pin "A9"
+			(uuid "e3b3c801-a2b6-4cb2-bb35-8013c6ecef8a")
+		)
+		(pin "B1"
+			(uuid "a99b40bd-2b4b-43b6-b33d-58ae2cc01909")
+		)
+		(pin "B12"
+			(uuid "ef0e4fb7-5370-43d9-93dc-34cc08b1b421")
+		)
+		(pin "B4"
+			(uuid "4d54a12e-e3a6-466f-bf11-d8351044855d")
+		)
+		(pin "B5"
+			(uuid "1da0d1b7-aed2-4437-8902-f3078e47da59")
+		)
+		(pin "B6"
+			(uuid "4aea9764-6485-487c-a3d0-bf8105063f1f")
+		)
+		(pin "B7"
+			(uuid "21e20eb4-9a54-43b4-9305-e0d78d5f220d")
+		)
+		(pin "B8"
+			(uuid "654339e5-5aaa-4df0-ae7d-097580304ad7")
+		)
+		(pin "B9"
+			(uuid "ae2fc92f-995b-406b-9ffb-df36e69e16f4")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+			(project "HPM6200EVK"
+				(path "/935f42ea-e3d4-436c-8830-2b34b396b4fc/f093cca7-ce24-4530-b910-81c48c41fbea/284e9f37-a848-42fc-b439-b43f143ee13c"
+					(reference "J?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "J4")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/69be527f-3c7c-4a2f-985b-3f7157e7d1bb"
+					(reference "J?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/ab1ee188-dbc9-4b9f-a0e1-24eadf57325e"
+					(reference "J?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 229.235 60.325 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "909f4e5c-c30d-4f30-8147-b094359be28d")
+		(property "Reference" "#PWR?"
+			(at 229.235 66.675 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 229.235 66.675 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.235 60.325 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.235 60.325 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.235 60.325 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "17f4529c-d241-40ff-ae81-0bbc87c283a0")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0118")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR058")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 248.285 93.98 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "90e5252d-ce9b-4a10-bee2-c8947289dfbf")
+		(property "Reference" "#PWR?"
+			(at 254.635 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 254.635 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 248.285 93.98 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.285 93.98 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 248.285 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "ae0293da-8ed4-4ca1-b359-bd36a4d32f81")
+		)
+		(instances
+			(project "peripheral"
+				(path "/11dec7fb-7f02-492e-8333-0c6734b2b037"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6200EVK"
+				(path "/935f42ea-e3d4-436c-8830-2b34b396b4fc/f093cca7-ce24-4530-b910-81c48c41fbea/073dce45-32b7-4e45-9f65-4ad0c97e1064"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR055")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0250")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "456-altium-import:GND")
+		(at 96.52 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9723bdd2-c05e-4263-8bf9-c8ec6d8b510a")
+		(property "Reference" "#PWR0275"
+			(at 96.52 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 96.52 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 96.52 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 96.52 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 96.52 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "a2432670-cc6b-434a-9a4b-6951508049e2")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0275")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "#PWR0141")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0112")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_name "0.1uF,16V_2")
+		(lib_id "03_HPM_Capacitance:0.1uF,16V")
+		(at 80.01 44.45 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a40051ed-c88a-4e2a-9e81-196b49082e98")
+		(property "Reference" "C188"
+			(at 80.645 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF,16V"
+			(at 80.645 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "03_HPM_Capacitance:C_0402"
+			(at 83.82 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 80.01 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 80.01 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "CL05B104KO5NNNC"
+			(at 82.55 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "SAMSUNG(三星)"
+			(at 81.28 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DNP" ""
+			(at 80.01 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 80.01 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be046284-1165-48e3-b71a-c40509957963")
+		)
+		(pin "2"
+			(uuid "507329af-b566-44b4-ac8d-3c1c1276305a")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "C188")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "C56")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "C56")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "C56")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Power-altium-import:+5V")
+		(at 85.09 35.56 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ad7ba71f-d7cc-4d05-8aa8-a338c333a6d1")
+		(property "Reference" "#PWR?"
+			(at 85.09 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 85.09 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 85.09 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 85.09 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 85.09 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "938f5d27-35d8-48ac-8dc1-5ebf5fd58c51")
+		)
+		(instances
+			(project "Power"
+				(path "/1b443ce4-f3f3-472f-b8c0-27b504415663"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0267")
+					(unit 1)
+				)
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/e1a198a2-dea3-477e-8260-0a54e9f3245a"
+					(reference "#PWR0230")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0106")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "01-HPM-Peripheral:DM-02-V")
+		(at 183.515 94.615 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b8e8402c-4b23-4255-b7c0-dcd33ecea867")
+		(property "Reference" "SW?"
+			(at 179.705 89.535 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "拨码开关"
+			(at 183.515 88.265 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "01_HPM_Peripheral:SW-SMD_DM-02-V"
+			(at 183.515 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 183.515 90.805 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 183.515 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "DM-02-V"
+			(at 183.515 85.725 0)
+			(effects
+				(font
+					(size 0.001 0.001)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "圜达"
+			(at 182.88 103.505 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 183.515 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5081b11f-7863-4f89-ba0a-f99554206553")
+		)
+		(pin "2"
+			(uuid "10a83274-6c6d-4ba8-be6d-a1a1d40f666f")
+		)
+		(pin "3"
+			(uuid "39b3c20c-05f4-4337-b5f7-25a02ab1d06c")
+		)
+		(pin "4"
+			(uuid "1b8a5a56-80d2-4c4c-834b-03218eead591")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-CON-JTAG"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "SW?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "SW5")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 SKT Board LQFP100 REVA"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "SW?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10Ω_0603")
+		(at 130.81 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c4dce18f-a2f4-4fba-924d-2bd9f7eb5b57")
+		(property "Reference" "R162"
+			(at 130.9878 58.3946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10Ω"
+			(at 130.81 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+			(at 130.7846 68.199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 130.81 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" " 0603WAF100JT5E"
+			(at 131.0132 62.3316 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" " UNI-ROYAL(厚声) "
+			(at 129.7432 65.405 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 130.81 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e05269f6-c6da-48ee-b811-079883b40a0f")
+		)
+		(pin "2"
+			(uuid "da9e9d79-ddf4-4aa7-970d-84095e375420")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "R162")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R37")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R37")
+					(unit 1)
+				)
+			)
+			(project "DRV8962DDVR_REVA"
+				(path "/ed8a7f02-cf05-41d0-97b4-4388ef205e73/5598f68b-5e88-432e-a0c3-8225cd23ccd9"
+					(reference "R53")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "06_HPM_IC:CH340E")
+		(at 96.52 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c602c227-d78a-43d0-bb59-ad81bf1b41b8")
+		(property "Reference" "U20"
+			(at 86.995 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CH340E"
+			(at 97.79 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "06_HPM_SO:MSOP-10"
+			(at 83.82 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 87.63 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 96.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "CH340E"
+			(at 97.79 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "WCH(南京沁恒)"
+			(at 97.79 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DNP" ""
+			(at 96.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 96.52 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8be96693-4c5f-4136-931d-a77478264715")
+		)
+		(pin "10"
+			(uuid "68384c53-bf67-4ada-a609-95c69f9bd62b")
+		)
+		(pin "2"
+			(uuid "a701a271-39d4-4586-aec7-83a046576e52")
+		)
+		(pin "3"
+			(uuid "f08a1cc6-2cf2-481b-90fa-1132b28123dd")
+		)
+		(pin "4"
+			(uuid "03766090-6684-4b9d-8504-7baa5a55c20b")
+		)
+		(pin "5"
+			(uuid "c513aec7-3310-4dd1-a31f-e229366053de")
+		)
+		(pin "6"
+			(uuid "96a23558-1b5e-45f1-8686-8e91b43dbdc6")
+		)
+		(pin "7"
+			(uuid "95b2e65d-d8f1-459e-b369-9366be767df1")
+		)
+		(pin "8"
+			(uuid "e20cb159-99bb-41ff-8391-960a4770e22a")
+		)
+		(pin "9"
+			(uuid "6093d7f3-b4d9-4150-a66a-609a153d6260")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "U20")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "U11")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "U17")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "U17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:2K")
+		(at 109.22 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c97e1d63-52b5-4a16-b2ca-580bbdaa2cb1")
+		(property "Reference" "R163"
+			(at 111.76 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2K"
+			(at 111.76 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+			(at 111.76 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 109.22 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "0402WGF2001TCE"
+			(at 116.84 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "UNI-ROYAL(厚声)"
+			(at 114.3 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 109.22 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "02a5d633-c8ec-4619-90b9-ee4ac9abc68f")
+		)
+		(pin "2"
+			(uuid "a07a353c-8793-437b-b302-6af60efd5c7a")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "R163")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "R53")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R38")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R38")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 210.185 60.325 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ced9981c-5d40-41b4-8936-c6eafdff5888")
+		(property "Reference" "#PWR?"
+			(at 210.185 66.675 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 210.185 66.675 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 210.185 60.325 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 210.185 60.325 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 210.185 60.325 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "b897c80b-0aed-46ee-bf9e-78f35ba03f4d")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0117")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "456-altium-import:GND")
+		(at 53.34 52.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d009fcb8-3612-4fab-8dd0-ea57f7db2a19")
+		(property "Reference" "#PWR0274"
+			(at 53.34 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 53.34 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 53.34 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 53.34 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 53.34 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "d13b6e57-6ae7-490b-82fa-fb1af3c20944")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0274")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "#PWR0171")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0111")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "00_HPM_power:GND")
+		(at 179.705 64.135 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d6ba660f-b32f-4e02-9867-0c876497c5a6")
+		(property "Reference" "#PWR?"
+			(at 179.705 70.485 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 179.705 70.485 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.705 64.135 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.705 64.135 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.705 64.135 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "64fd0aa2-f693-4239-97a7-5c8d948dea9c")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0119")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR054")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "#PWR?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10K_0603")
+		(at 123.19 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "de33d8e3-5456-4706-85aa-8a73f6754e61")
+		(property "Reference" "R160"
+			(at 123.19 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 125.73 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0603_1608Metric"
+			(at 125.73 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.19 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 123.19 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "RC0603FR-0710KL\n"
+			(at 128.27 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "YAGEO\n"
+			(at 130.81 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 123.19 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "aeb5d3e3-77bc-493e-b73d-9f8a62a10501")
+		)
+		(pin "1"
+			(uuid "625616b6-ffc4-4622-90d3-e62ba0fffc99")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "R160")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R35")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R35")
+					(unit 1)
+				)
+			)
+			(project "DRV8962DDVR_REVA"
+				(path "/ed8a7f02-cf05-41d0-97b4-4388ef205e73/5598f68b-5e88-432e-a0c3-8225cd23ccd9"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "02_HPM_Resistor:10K_0402")
+		(at 200.025 95.885 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e4ccaade-33a2-4801-afd5-2c06c60ef502")
+		(property "Reference" "R?"
+			(at 194.945 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K_0402"
+			(at 207.645 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "02_HPM_Resistor:R_0402_1005Metric"
+			(at 200.025 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 200.025 95.885 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 200.025 95.885 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "0402WGF1002TCE"
+			(at 200.025 88.265 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "UNI-ROYAL(厚声)"
+			(at 200.025 90.805 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 200.025 95.885 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e08de9e8-c4b6-4274-afc9-ca99eb1a27aa")
+		)
+		(pin "2"
+			(uuid "39bcc6ec-abae-4db3-a0e5-25adbf4be5c9")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "R?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "R39")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "R22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 118.11 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ebd39fcd-bbad-49a9-8a43-da2c11be5263")
+		(property "Reference" "#PWR0268"
+			(at 118.11 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 118.11 35.814 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 118.11 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 118.11 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 118.11 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "40a5a3fb-a046-4848-92b9-245b2792f468")
+		)
+		(instances
+			(project "EthercatStepperdriverRevD"
+				(path "/50bd1e86-a795-434b-8748-64d06de2b450/c5bd00a3-ba7b-40a9-b3ae-5b04aafb9566"
+					(reference "#PWR0268")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/26258b01-d699-48f1-bf49-060b9aea75c9"
+					(reference "#PWR0146")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "#PWR0107")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "#PWR0107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "03_HPM_Capacitance:0.1uF,16V_0402")
+		(at 229.235 56.515 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f7cfcd39-4e31-4e6e-a92b-89731b62b5cc")
+		(property "Reference" "C?"
+			(at 229.235 53.975 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.1uF,16V"
+			(at 229.235 59.055 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "03_HPM_Capacitance:C_0402_1005Metric"
+			(at 231.775 70.485 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.235 56.515 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 229.235 56.515 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Model" "CL05B104KO5NNNC"
+			(at 230.505 73.025 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Company" "SAMSUNG(三星)"
+			(at 229.235 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ASSY_OPT" ""
+			(at 229.235 56.515 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "af1cb491-1c46-42b2-861a-4ea4ab607168")
+		)
+		(pin "2"
+			(uuid "e11db7ff-02f7-4414-bfcd-2e465334145f")
+		)
+		(instances
+			(project "HPM6E00-PA00-PA31-JTAG-BOOT-LED-KEY"
+				(path "/29ac3f40-2113-4dac-8d58-a13bca3aee97"
+					(reference "C?")
+					(unit 1)
+				)
+			)
+			(project "HPM5300-USB-OSC"
+				(path "/4c7b0ad0-b5a1-4a84-9055-796c57236d5e"
+					(reference "C?")
+					(unit 1)
+				)
+			)
+			(project "HPM6E00 SKT Board BGA289_BDIF REVA"
+				(path "/a41b0905-ef56-48d9-b06d-4dc9518abdc7/4660a489-af31-41d2-86b5-fc0246e827ca/93cfbad6-56e7-43a8-afcb-a52eb13db8c0"
+					(reference "C?")
+					(unit 1)
+				)
+			)
+			(project "03-HPM5300-JTAG-FLASH"
+				(path "/bac2711e-84a2-4344-ae08-8e581d112422"
+					(reference "C?")
+					(unit 1)
+				)
+			)
+			(project "HPM6750_COMBO_RevA "
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/64c6c979-a234-4d9b-ab9c-77c628dd08ef"
+					(reference "C?")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/9d240966-71f8-4ab0-bd2d-44e64aeaeb70"
+					(reference "C58")
+					(unit 1)
+				)
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208/f1049d94-3709-48ef-97b5-91120e738f00/ede36aad-ac34-4d4f-8b81-cc1b3553ddbb"
+					(reference "C32")
+					(unit 1)
+				)
+			)
+			(project "HPM5300 EVK REVC"
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/90f77b5a-179f-413e-aafd-05aa0b392bd1"
+					(reference "C?")
+					(unit 1)
+				)
+				(path "/da9d8c97-5301-4179-9d57-0a9ed815b1de/f237d9fc-f580-4ea3-9608-ea1fa5e8032f/f20b2654-0424-4c49-9857-f83b37957c4e"
+					(reference "C?")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

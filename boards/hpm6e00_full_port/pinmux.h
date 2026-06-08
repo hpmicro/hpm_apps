@@ -24,7 +24,10 @@ void init_lcd_pins(void);
 void init_esc_pins(void);
 void init_esc_in_out_pin(void);
 void init_tsw_pins(void);
-
+void init_usb_pins(void);
+void init_enet_pins(ENET_Type *ptr);
+void init_enet_pps_pins(void);
+void init_enet_pps_capture_pins(void);
 #ifdef __cplusplus
 }
 #endif

@@ -553,10 +553,3 @@ ECAT FOE Funcation
 EEPROM loading successful, no checksum error.
 
 ```
-
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/ota/html/index.html>`_ .
-:::

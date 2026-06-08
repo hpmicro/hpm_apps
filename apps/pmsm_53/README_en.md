@@ -176,9 +176,3 @@ Note: You need to select the corresponding resistance welding or not according t
 
 ![eeprom_save](doc/api/assets/param_default.png)
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/pmsm_53/html/index.html>`_ .
-:::

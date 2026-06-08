@@ -1,0 +1,722 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "beb44ed8-7622-45cf-bbfb-b2d5b9d8c208")
+	(paper "A4")
+	(title_block
+		(title "HPM6E00EnetConnectTsnRevB")
+		(date "2026-02-11")
+	)
+	(lib_symbols)
+	(polyline
+		(pts
+			(xy 97.79 62.23) (xy 111.76 62.23)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "09b02041-f40f-4084-afec-d1020b72e4cb")
+	)
+	(polyline
+		(pts
+			(xy 97.79 157.48) (xy 111.76 157.48)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "0ee5b7a8-9fa9-4001-a784-c36c73701df7")
+	)
+	(polyline
+		(pts
+			(xy 97.79 100.33) (xy 111.76 100.33)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "19923992-1b78-4208-a4b6-6ac764d16ce8")
+	)
+	(polyline
+		(pts
+			(xy 275.59 31.75) (xy 275.59 157.48)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "1a9d5086-227a-408f-b439-f0eed3402c4f")
+	)
+	(polyline
+		(pts
+			(xy 177.8 44.45) (xy 271.78 44.45)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "2c6c6ed7-b067-4bf5-8e4a-49327b3e3e98")
+	)
+	(polyline
+		(pts
+			(xy 247.65 38.1) (xy 247.65 157.48)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "499af925-8715-4074-9295-43658406abe2")
+	)
+	(polyline
+		(pts
+			(xy 275.59 157.48) (xy 177.8 157.48)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "60e35fa3-94a3-4f2d-a09b-69f8ec58f572")
+	)
+	(polyline
+		(pts
+			(xy 270.51 157.48) (xy 275.59 157.48)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "666e79be-1093-4254-a000-ab61b19d6606")
+	)
+	(polyline
+		(pts
+			(xy 177.8 38.1) (xy 271.78 38.1)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "6de8f8f6-f3d9-4578-8c40-2a3ff30a2d51")
+	)
+	(polyline
+		(pts
+			(xy 69.85 157.48) (xy 83.82 157.48)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "7f1346fb-3408-4487-a432-b73b60b1ca17")
+	)
+	(polyline
+		(pts
+			(xy 97.79 121.92) (xy 111.76 121.92)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "8b2c9c89-c1cb-4634-ac37-57833a6669b5")
+	)
+	(polyline
+		(pts
+			(xy 69.85 43.18) (xy 83.82 43.18)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "90cc77f9-d2b0-470c-bbcb-3c656ebfa4b4")
+	)
+	(polyline
+		(pts
+			(xy 177.8 31.75) (xy 177.8 157.48)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "944d28f3-30b1-4d4d-80a2-338cb16f6662")
+	)
+	(polyline
+		(pts
+			(xy 69.85 81.28) (xy 83.82 81.28)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "9ff806ce-5484-4748-b4be-936bcd80a428")
+	)
+	(polyline
+		(pts
+			(xy 97.79 43.18) (xy 111.76 43.18)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "a5fd95d3-a136-4a01-881a-285e26a6da57")
+	)
+	(polyline
+		(pts
+			(xy 69.85 121.92) (xy 83.82 121.92)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "b00bd814-4510-4075-8fa6-a48c0dae6fbb")
+	)
+	(polyline
+		(pts
+			(xy 177.8 31.75) (xy 275.59 31.75)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "b2b58d6e-8d10-4f4e-915d-84700ffa57a8")
+	)
+	(polyline
+		(pts
+			(xy 69.85 100.33) (xy 83.82 100.33)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "b5bf5413-c48f-4c21-b03b-3663552a4c3e")
+	)
+	(polyline
+		(pts
+			(xy 271.78 38.1) (xy 275.59 38.1)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "ce7dd213-862e-440b-b82c-f4f8c6017cf7")
+	)
+	(polyline
+		(pts
+			(xy 271.78 44.45) (xy 275.59 44.45)
+		)
+		(stroke
+			(width 1)
+			(type solid)
+		)
+		(uuid "e0ed3192-8436-41f2-ba0e-e0df439df400")
+	)
+	(polyline
+		(pts
+			(xy 269.24 157.48) (xy 275.59 157.48)
+		)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(uuid "e762dc86-7f47-42f8-9337-5fedb80d99b3")
+	)
+	(rectangle
+		(start 111.76 55.88)
+		(end 145.923 68.58)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 006d72cb-dc45-43e9-9e84-842f689041cd)
+	)
+	(rectangle
+		(start 35.56 36.83)
+		(end 69.723 68.58)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 03e46093-d36c-4102-ae3e-fae94c1e82fa)
+	)
+	(rectangle
+		(start 35.56 93.98)
+		(end 69.723 106.68)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 2be65911-d425-44fb-8a05-c282fccd7024)
+	)
+	(rectangle
+		(start 21.463 16.383)
+		(end 160.02 194.183)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 338aa8f8-4d7c-4669-8913-883452d0895b)
+	)
+	(rectangle
+		(start 35.56 113.03)
+		(end 69.723 128.27)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 3edf5720-2762-492e-9caf-c5b3d67dc195)
+	)
+	(rectangle
+		(start 35.56 148.59)
+		(end 69.723 163.83)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 42cdf91c-890c-4f78-9213-a382815e1f3c)
+	)
+	(rectangle
+		(start 111.76 146.05)
+		(end 145.923 180.34)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 546092c3-3f42-4327-882c-c93503603a81)
+	)
+	(rectangle
+		(start 111.76 113.03)
+		(end 145.923 139.7)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 72593684-c4d1-48f8-9a54-317cd12d42e7)
+	)
+	(rectangle
+		(start 35.56 74.93)
+		(end 69.723 87.63)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid ca0fd762-fcdd-4fc1-b88a-7fd69e711290)
+	)
+	(rectangle
+		(start 111.76 36.83)
+		(end 145.923 49.53)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid cab9182e-d623-4777-8f2e-095f477afd4a)
+	)
+	(rectangle
+		(start 111.76 93.98)
+		(end 145.923 106.68)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid d3cb549f-8276-4efa-a4e8-36592904ebf1)
+	)
+	(rectangle
+		(start 83.82 36.703)
+		(end 97.79 180.34)
+		(stroke
+			(width 1)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid f2015875-c323-482b-96de-7afbd9e918ce)
+	)
+	(text "HPM6E00EnetConnectTsnRevB"
+		(exclude_from_sim no)
+		(at 178.308 54.61 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "03086bd2-7804-4401-a56e-730bf06bdb2e")
+	)
+	(text "VANA_LDO_3V3"
+		(exclude_from_sim no)
+		(at 35.56 46.99 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "0b35bc9f-4116-459f-bea1-5e3637eeec85")
+	)
+	(text "USB-OTG\nTYPE C\n"
+		(exclude_from_sim no)
+		(at 38.1 85.09 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "149a441d-375f-468d-b77a-c541feca8c2f")
+	)
+	(text "HPM6E00EnetConnectTsnRevB"
+		(exclude_from_sim no)
+		(at 92.71 137.16 90)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "1987abcc-8b4d-4b87-a50d-44a66bbe419d")
+	)
+	(text "时间"
+		(exclude_from_sim no)
+		(at 256.54 43.18 0)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left bottom)
+		)
+		(uuid "19acb71e-3406-4b9a-a040-c791d57ba2c7")
+	)
+	(text "DCDC 2A 3V3"
+		(exclude_from_sim no)
+		(at 35.56 62.23 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "31308750-7a07-4a49-9cba-0a691661553f")
+	)
+	(text "USB-UART\nTYPE C\n"
+		(exclude_from_sim no)
+		(at 38.1 105.41 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "35c2d829-f7a3-485d-a981-e23448976782")
+	)
+	(text "内容"
+		(exclude_from_sim no)
+		(at 207.01 43.18 0)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left bottom)
+		)
+		(uuid "5ac19539-6c64-4735-ab60-56d6acb0ca92")
+	)
+	(text "POWER"
+		(exclude_from_sim no)
+		(at 35.56 35.56 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "698666e9-ad03-43a7-80b6-0b42726819e7")
+	)
+	(text "FLASH 128Mb\n"
+		(exclude_from_sim no)
+		(at 114.3 64.77 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "6b289dee-a9f1-4169-85e9-68f046383834")
+	)
+	(text "KEYA KEYB"
+		(exclude_from_sim no)
+		(at 114.3 161.29 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "6d479b91-d6e7-490a-9a7c-9eb549684520")
+	)
+	(text "以太网\n通过RC\n直连TSN P3口\nRGMII"
+		(exclude_from_sim no)
+		(at 114.3 135.128 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "7372b520-38ac-41d5-b31d-30c496a65880")
+	)
+	(text "System block diagram"
+		(exclude_from_sim no)
+		(at 63.373 26.543 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "7d185d7c-2d1f-4a51-a731-7bd7e0e0b8cd")
+	)
+	(text "20260211"
+		(exclude_from_sim no)
+		(at 250.19 54.61 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.5)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "9a7fcc40-a332-46d1-a189-266ab9d94409")
+	)
+	(text "JTAG20PIN\n"
+		(exclude_from_sim no)
+		(at 114.3 44.45 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1f44efb-de91-4a03-9244-27eb25c34466")
+	)
+	(text "2X10插针"
+		(exclude_from_sim no)
+		(at 114.3 102.108 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "b5b9a2ef-fdb6-4b01-bc96-9163c6281a80")
+	)
+	(text "2路TSN\nP1/P2"
+		(exclude_from_sim no)
+		(at 43.434 125.73 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "ba80b94a-3edc-419b-95f1-9572ae87d21b")
+	)
+	(text "BOOT SW\n"
+		(exclude_from_sim no)
+		(at 114.3 171.45 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "cd482ca9-9a95-4f1a-b6fe-259de0e53743")
+	)
+	(text "1路OLED"
+		(exclude_from_sim no)
+		(at 42.926 159.258 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "d6218eaa-58d4-4693-ad23-4748a72e28a4")
+	)
+	(text "修订历史\n"
+		(exclude_from_sim no)
+		(at 218.44 36.83 0)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left bottom)
+		)
+		(uuid "d90b2be7-1211-42d1-9719-a1d8f6d72c66")
+	)
+	(text "KEYC KEYD"
+		(exclude_from_sim no)
+		(at 114.3 166.37 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "f050ee35-f8bb-442f-9ebe-37361dad6d89")
+	)
+	(text "LEDx2"
+		(exclude_from_sim no)
+		(at 114.3 176.53 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc8b3cfa-0bb9-4240-8b4d-f2e228252ff1")
+	)
+	(text "RESET KEY\n"
+		(exclude_from_sim no)
+		(at 114.681 155.956 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+				(italic yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "ff2a3440-5f20-4a66-afce-4f92dd05c502")
+	)
+	(sheet
+		(at 21.463 16.51)
+		(size 138.557 177.8)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "f1049d94-3709-48ef-97b5-91120e738f00")
+		(property "Sheetname" "HPM6E00EnetConnectTsnRevB"
+			(at 21.59 15.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "HPM6E00EnetConnectTsnMainentry.kicad_sch"
+			(at 21.59 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "HPM6E00EnetConnectTsnRevB"
+				(path "/beb44ed8-7622-45cf-bbfb-b2d5b9d8c208"
+					(page "1")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "0")
+		)
+	)
+)

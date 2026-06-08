@@ -137,9 +137,3 @@ dma transfer down!
 
 ![led_pwm_2](doc/api/assets/led_pwm_2.png)
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/led_screen/html/index.html>`_ 。
-:::

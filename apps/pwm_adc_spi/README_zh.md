@@ -225,10 +225,3 @@ void isr_adc16(void)
 ![LOG信息](doc/api/assets/log_test.png)
 
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/pwm_adc_spi/html/index.html>`_ 。
-:::

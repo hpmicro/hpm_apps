@@ -67,9 +67,3 @@ write_speed:614.73 KB/s read_speed:6084.88 KB/s
 page program: wbuff and rbuff compare finsh ok
 ```
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/nor_flash/html/index.html>`_ 。
-:::

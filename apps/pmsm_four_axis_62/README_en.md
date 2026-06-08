@@ -228,9 +228,3 @@ controlw_world [n] set to 0：
 
 Axis n stops
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/pmsm_four_axis_62/html/index.html>`_ .
-:::

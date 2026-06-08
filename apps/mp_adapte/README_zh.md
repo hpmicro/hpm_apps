@@ -293,9 +293,4 @@ int main(void)
 
 ![result_pwm_adc](doc/api/assets/result_pwm_adc.png)
 
-## API
 
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/mp_adapte/html/index.html>`_ 。
-:::

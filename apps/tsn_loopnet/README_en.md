@@ -97,10 +97,3 @@ The master device and all slave devices must be on the same network segment; oth
 2. Disconnection test: Communication remains normal even if one network cable is disconnected.
 
 Note:This example program only detects the PHY connection status of port P2. During the disconnection test, do not disconnect the network cable of port P2, otherwise the slave device will go offline directly.
-
-## API
-
-:::{eval-rst}
-
-About software API:  `API doc <../../_static/apps/tsn_loopnet/html/index.html>`_ 。
-:::

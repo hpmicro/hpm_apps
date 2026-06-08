@@ -19,7 +19,7 @@
 
 2. **Real-Time Data Monitoring:**
     - Transmits ADC data in real-time via hpm_monitor service
-    - Supports both USB and UART communication interfaces
+    - Supports USB, UART, and ENET communication interfaces
     - Low-latency, high-bandwidth data transmission
 
 3. **Flexible Data Processing:**
@@ -44,7 +44,8 @@
    Currently validated with HPM6300EVK; other EVKs require manual program or pin adjustments.
 
 2. **Communication Interface Selection**
-    - USB CDC: Recommended for high bandwidth and convenient connectivity
+    - ENET TCP: Suitable for direct network connection with the PC host tool
+    - USB CDC: High bandwidth and convenient connectivity
     - UART: Optional, supports up to 10Mbps baud rate
 
 ## Software Configuration
@@ -70,8 +71,8 @@ set(RV_ABI "ilp32f")
 
 set(CONFIG_A_HPMMONITOR 1)
 # set(CONFIG_MONITOR_INTERFACE "uart")
-set(CONFIG_MONITOR_INTERFACE "usb")
-# set(CONFIG_MONITOR_INTERFACE "enet")
+# set(CONFIG_MONITOR_INTERFACE "usb")
+set(CONFIG_MONITOR_INTERFACE "enet")
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
 
@@ -330,9 +331,3 @@ int main(void)
 ## Important Notes
    - Waveform frame loss indicates packet loss or other transmission issues. The performance of the HPMicroMonitorStudio tool is still undergoing continuous optimization; it is advisable to reduce the ADC sampling frequency appropriately.
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/monitor_adc/html/index.html>`_ 。
-:::

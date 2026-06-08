@@ -1,0 +1,11 @@
+excluded_targets:
+  - debug
+  - release
+  - sec_core_img
+  - sec_core_img_release
+
+dependency:
+  - board_ap6256_evb
+
+excluded_ides:
+  - iar

@@ -107,9 +107,3 @@ PC上双网卡静态IP配置：
 所有从机均快速重连成功。
 ![test6](doc/api/assets/test6.png)
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/ethernet_loopnet/html/index.html>`_ 。
-:::

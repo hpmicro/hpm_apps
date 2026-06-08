@@ -533,10 +533,3 @@ EEPROM loading successful, no checksum error.
 
 ```
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/ota/html/index.html>`_ 。
-:::

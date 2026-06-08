@@ -325,11 +325,6 @@ Using TwinCAT to control the onboard EtherCAT, you can see
 ![ping diagram](doc/api/assets/ecat_io.png)
 Box1, Box2, Box3 respectively represent the devices connected to ports P0, P1, and P2. You can see that the devices are in OP state. Meanwhile, InputCounter and OutputCounter of each device can be modified online. InputCounter is the input, that is, the status of SW1 DIP switch can be displayed on InputCounter in real time. OutputCounter is the output. TwinCAT is used to modify the parameter in real time. The value can be reflected in LED11-18.
 
-## API
 
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/full_port/html/index.html>`_ 。
-:::
 
 

@@ -141,6 +141,7 @@ open Web
 ![LOG_with_open_web](doc/api/assets/log_2.png)
 
 ### Web Interface Features
+![Web](doc/api/assets/web.png)
 
 1. **Device Status Display**
 
@@ -244,9 +245,3 @@ Response: {"status": "ok"}
 - While the firmware is running, the PC may be disconnected from the internet. To restore normal internet access on the PC, disconnect the USB cable from the development board.
 
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/web_server/html/index.html>`_ 。
-:::

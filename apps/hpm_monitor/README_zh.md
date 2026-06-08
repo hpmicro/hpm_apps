@@ -1,6 +1,6 @@
 # hpm_monitor服务使用例程
 
-## 依赖SDK1.10.0
+## 依赖SDK1.11.0
 
 ## 介绍
 
@@ -307,10 +307,3 @@ while (1)
 16. Buffer模式采样
    ![hpm_monitor_run23](doc/api/assets/hpm_monitor_run24.png)
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/hpm_monitor/html/index.html>`_ 。
-:::

@@ -195,9 +195,3 @@ int main (void)
 
 ![测试结果](doc/api/assets/7.png)
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/lib_demo/html/index.html>`_ 。
-:::

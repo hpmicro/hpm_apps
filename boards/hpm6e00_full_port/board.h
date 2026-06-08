@@ -74,6 +74,21 @@
 #define BOARD_CALLBACK_TIMER_IRQ        IRQn_GPTMR3
 #define BOARD_CALLBACK_TIMER_CLK_NAME   (clock_gptmr3)
 
+/* gptmr section */
+#define BOARD_GPTMR                   HPM_GPTMR4
+#define BOARD_GPTMR_IRQ               IRQn_GPTMR4
+#define BOARD_GPTMR_CHANNEL           0
+#define BOARD_GPTMR_DMA_SRC           HPM_DMA_SRC_GPTMR4_0
+#define BOARD_GPTMR_CLK_NAME          clock_gptmr4
+#define BOARD_GPTMR_PWM               HPM_GPTMR4
+#define BOARD_GPTMR_PWM_CHANNEL       0
+#define BOARD_GPTMR_PWM_DMA_SRC       HPM_DMA_SRC_GPTMR4_0
+#define BOARD_GPTMR_PWM_CLK_NAME      clock_gptmr4
+#define BOARD_GPTMR_PWM_IRQ           IRQn_GPTMR4
+#define BOARD_GPTMR_PWM_SYNC          HPM_GPTMR4
+#define BOARD_GPTMR_PWM_SYNC_CHANNEL  3
+#define BOARD_GPTMR_PWM_SYNC_CLK_NAME clock_gptmr4
+
 /* LED */
 #define BOARD_LED0_GPIO_CTRL            HPM_GPIO0
 #define BOARD_LED0_GPIO_INDEX           GPIO_DO_GPIOD
@@ -242,6 +257,22 @@
 
 #define BOARD_ECAT_PHY_ADDR_OFFSET (1U)
 
+/* enet section */
+#define BOARD_ENET_RGMII_RST_GPIO       HPM_GPIO0
+#define BOARD_ENET_RGMII_RST_GPIO_INDEX GPIO_DO_GPIOD
+#define BOARD_ENET_RGMII_RST_GPIO_PIN   (22U)
+
+#define BOARD_ENET_RGMII             HPM_ENET0
+#define BOARD_ENET_RGMII_TX_DLY      (0U)
+#define BOARD_ENET_RGMII_RX_DLY      (0U)
+#define BOARD_ENET_RGMII_PTP_CLOCK   (clock_ptp0)
+#define BOARD_ENET_RGMII_PPS0_PINOUT (1)
+
+/* USB section */
+#define BOARD_USB HPM_USB0
+#define BOARD_USB_IRQn IRQn_USB0
+#define BOARD_USB_BASE HPM_USB0_BASE
+
 #ifndef BOARD_SHOW_CLOCK
 #define BOARD_SHOW_CLOCK 1
 #endif
@@ -305,7 +336,16 @@ void board_init_clock(void);
 uint32_t board_init_uart_clock(UART_Type *ptr);
 void board_tsw_phy_set(uint8_t index, bool flag);
 void board_init_tsw(void);
-
+void board_init_usb(void);
+uint8_t board_get_enet_dma_pbl(ENET_Type *ptr);
+hpm_stat_t board_enable_enet_irq(ENET_Type *ptr);
+hpm_stat_t board_enable_enet_irq(ENET_Type *ptr);
+hpm_stat_t board_init_enet_rmii_reference_clock(ENET_Type *ptr, bool internal);
+hpm_stat_t board_init_enet_rgmii_clock_delay(ENET_Type *ptr);
+hpm_stat_t board_reset_enet_phy(ENET_Type *ptr);
+hpm_stat_t board_init_enet_pins(ENET_Type *ptr);
+void board_init_ethercat(ESC_Type *ptr);
+void board_init_switch_led(void);
 #if defined(__cplusplus)
 }
 #endif /* __cplusplus */

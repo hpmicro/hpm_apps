@@ -160,9 +160,3 @@ void board_init_pmp(void)
 
 
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/femc_8080lcd/html/index.html>`_ 。
-:::

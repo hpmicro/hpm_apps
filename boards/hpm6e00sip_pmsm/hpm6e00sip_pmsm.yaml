@@ -1,0 +1,31 @@
+# Copyright (c) 2021-2024 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+board:
+    name: hpm6e00_pmsm_SIP_CES
+    soc: HPM6E80
+    device: HPM6E80xVMx
+    openocd-soc: hpm6e80-dual-core
+    openocd-probe: cmsis_dap
+    on-board-ram:
+      type: sdram
+      size: 32M
+      width: 16bit
+    on-board-flash:
+      type: qspi-nor-flash
+      size: 16M
+    feature:
+      - board_sdram
+      - board_mtg
+      - board_sei
+      - board_qei
+      - board_audio_in
+      - board_audio_out
+      - board_audio_codec
+      - board_enet_phy
+      - board_tsw_phy
+      - board_motor_control
+      - board_puart_pin
+      - board_gpt_pin
+      - board_enet_pps_output_pin
+      - board_enet_pps_input_pin

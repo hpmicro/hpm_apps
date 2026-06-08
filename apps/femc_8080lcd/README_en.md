@@ -160,10 +160,4 @@ none
 ![display_board](doc/api/assets/display_board.png)
 
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/femc_8080lcd/html/index.html>`_ .
-:::
 

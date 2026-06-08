@@ -230,11 +230,6 @@ fill_selfaddress: 6/16
 fill_selfaddress: 7/16
 ```
 
-## API
 
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/ddr/html/index.html>`_ 。
-:::
 
 

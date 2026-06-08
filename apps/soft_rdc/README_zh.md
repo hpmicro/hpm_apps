@@ -145,9 +145,3 @@ OSIN(黄)，OCOS(粉红)
 
 ![vel50](doc/api/assets/vel50.png)
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/soft_rdc/html/index.html>`_ 。
-:::

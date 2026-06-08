@@ -55,10 +55,3 @@
 
 详细信号波形图、基于ABZ平台的性能对比测试结果请查阅:[《HPMicro_RDC_Report》](doc/HPMicro_RDC_Report.pdf)
 
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/rdc/html/index.html>`_ 。
-:::

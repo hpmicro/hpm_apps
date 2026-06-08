@@ -55,10 +55,3 @@ Install screen printing please see: [《HPM5300_RDC_installation》](doc/HPM5300
 
 See the detailed signal waveform and ABZ platform performance comparison test results:[《HPMicro_RDC_Report》](doc/HPMicro_RDC_Report.pdf)
 
-
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/rdc/html/index.html>`_ .
-:::

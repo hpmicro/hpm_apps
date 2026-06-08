@@ -268,9 +268,3 @@ fill_selfaddress: 6/16
 fill_selfaddress: 7/16
 ```
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/ddr/html/index.html>`_ 。
-:::

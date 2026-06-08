@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "b0594f53-0bd2-413b-88c0-69af4677c4f6")
+	(paper "A4")
+	(title_block
+		(title "HPM6750_COMBO_RevA")
+		(date "2024-04-06")
+		(rev "RevA")
+	)
+	(lib_symbols)
+)

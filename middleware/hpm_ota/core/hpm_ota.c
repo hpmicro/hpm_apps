@@ -58,7 +58,7 @@ static int hpm_ota_complete_end(bool reset_enable)
 
 static int hpm_ota_flash_write(uint32_t addr, void const *src, uint32_t len)
 {
-    if (ota_handle.current_erase <= (addr + len))
+    while (ota_handle.current_erase <= (addr + len))
     {
         if (ota_handle.current_erase == 0)
         {

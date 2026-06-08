@@ -133,9 +133,3 @@ int main(void)
 
 ![result fft connect speaker](doc/api/assets/result_fft_connect_speaker.png)
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/i2s_dma_chain/html/index.html>`_ 。
-:::

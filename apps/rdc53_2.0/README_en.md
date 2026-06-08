@@ -520,9 +520,4 @@ sdk_ses_opt_lib_io_type(RTT)
 
 (6) The speed fluctuation range of PLL and PLL_II is ±0.3r/s at medium, low and high speeds.
 
-## API
 
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/rdc53_2.0/html/index.html>`_ .
-:::

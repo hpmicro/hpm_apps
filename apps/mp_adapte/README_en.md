@@ -294,9 +294,3 @@ The following is the waveform diagram:
 ![result_pwm_adc](doc/api/assets/result_pwm_adc_en.png)
 
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/mp_adapte/html/index.html>`_ 。
-:::

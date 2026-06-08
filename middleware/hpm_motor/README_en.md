@@ -210,10 +210,3 @@ Steps to use the library function:
 
 4, Storage variable of inertia result: INTERIA_CalHdl->INTERIA_OutObj.J, unit (𝑘𝑔 ∙ 𝑚2). // The premise is that inertia identification has been completed, that is, INERTIA_CalObj.INTERIA_OutObj.status = 0.
 
-
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/middleware/hpm_motor/html/index.html>`_ .
-:::

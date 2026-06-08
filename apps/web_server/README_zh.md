@@ -145,6 +145,8 @@ build_and_pack_full.bat
 
 ### Web界面功能
 
+![Web](doc/api/assets/web.png)
+
 1. **设备状态显示**
 
    - 左上角显示"HPM5E00EVK 开发板"和在线状态
@@ -243,10 +245,3 @@ Response: {"status": "ok"}
 
 ## 注意事项
 - 代码运行过程中，电脑处于断网状态，因为此时RNDIS 虚拟网卡成为默认网关。如果想要恢复上网功能，需要断开USB连接。
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/web_server/html/index.html>`_ 。
-:::

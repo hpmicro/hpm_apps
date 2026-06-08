@@ -1,0 +1,32 @@
+#ifndef LV_APP_CONF_H
+#define LV_APP_CONF_H
+
+#undef LV_DEF_REFR_PERIOD
+#define LV_DEF_REFR_PERIOD 33
+
+#undef lV_USE_PERF_MONITOR
+#define LV_USE_PERF_MONITOR 1
+
+#undef LV_USE_PERF_MONITOR
+#define LV_USE_PERF_MONITOR 1
+
+#undef LV_USE_SUBJECT
+#define LV_USE_SUBJECT 1
+
+#undef LV_USE_OBJ_NAME
+#define LV_USE_OBJ_NAME 1
+
+#undef LV_USE_HPM_MODE_DIRECT
+#define LV_USE_HPM_MODE_DIRECT 1
+
+#undef LV_USE_HPM_PDMA_FLUSH
+#define LV_USE_HPM_PDMA_FLUSH 1
+
+#undef LV_USE_HPM_PDMA_WAIT_VSYNC
+#define LV_USE_HPM_PDMA_WAIT_VSYNC 0
+
+#ifdef ESP_PLATFORM
+#undef ESP_PLATFORM
+#endif
+
+#endif

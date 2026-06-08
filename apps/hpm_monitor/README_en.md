@@ -1,6 +1,6 @@
 # hpm_monitor service demo
 
-## Depend on SDK1.10.0
+## Depend on SDK1.11.0
 
 ## Introduction
 
@@ -309,9 +309,3 @@ Note: For detailed operational documentation of HP Micro Monitor Studio, please 
    ![hpm_monitor_run23](doc/api/assets/hpm_monitor_run24.png)
 
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/hpm_monitor/html/index.html>`_ 。
-:::

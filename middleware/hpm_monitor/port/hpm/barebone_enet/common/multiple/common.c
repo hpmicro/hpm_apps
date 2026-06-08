@@ -140,7 +140,7 @@ ATTR_WEAK uint8_t enet_get_mac_address(uint8_t i, uint8_t *mac)
     }
 
     /* load MAC address from MACRO definitions */
-    memcpy(mac, &mac_init[i], ENET_MAC);
+    memcpy(mac, &mac_init[i], ENET_MAC_SIZE);
     return ENET_MAC_ADDR_FROM_MACRO;
 }
 

@@ -56,6 +56,7 @@ void full_port_tsn_set_rtc_offset(uint32_t u32Ns, uint32_t u32SSl, uint32_t u32S
 void full_port_tsn_set_bin_txdata(uint8_t u8Port, uint8_t u8Index, uint32_t* pu32TxData, uint8_t u8Len);
 void full_port_tsn_init(void);
 void full_port_irq_tsn0_init(full_port_irq_cb_func cb);
+void full_port_tsn_recv_desc(uint32_t *pu32buf, uint32_t u32Len, uint8_t u8Id);
 
 
 #endif // __FULL_PORT_TSN_H_

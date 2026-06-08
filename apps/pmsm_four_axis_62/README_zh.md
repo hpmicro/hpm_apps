@@ -228,9 +228,3 @@ control_world[n]设置为0：
 
 轴n停止运动；
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/pmsm_four_axis_62/html/index.html>`_ 。
-:::

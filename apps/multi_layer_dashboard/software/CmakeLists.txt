@@ -1,0 +1,80 @@
+cmake_minimum_required(VERSION 3.13)
+
+set(APP_VERSION_STRING "\"1.11.0\"")
+
+set(CONFIG_HPM_PANEL 1)
+set(CONFIG_FREERTOS 1)
+set(CONFIG_LVGL_CUSTOM_PORTABLE 1)
+
+# ENABLE LVGL
+set(CONFIG_A_LVGL 1)
+
+if("${HPM_BUILD_TYPE}" STREQUAL "")
+    SET(HPM_BUILD_TYPE flash_sdram_xip)
+endif()
+
+find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
+
+project(multi_layer_dashboard)
+
+# LVGL CONF
+sdk_compile_definitions(-DCONFIG_LV_HAS_EXTRA_CONFIG="lv_app_conf.h")
+sdk_compile_definitions(-DLV_LVGL_H_INCLUDE_SIMPLE=1)
+sdk_compile_definitions(-DLV_USE_OS=LV_OS_NONE)
+sdk_compile_definitions(-DLV_DRAW_BUF_ALIGN=64)
+sdk_compile_definitions(-DLV_DRAW_BUF_STRIDE_ALIGN=64)
+sdk_compile_definitions(-DLV_USE_SYSMON=1)
+
+
+sdk_compile_options("-O2")
+
+sdk_ld_options("-lm")
+sdk_compile_definitions(-DUSE_NONVECTOR_MODE=1)
+sdk_compile_definitions(-DDISABLE_IRQ_PREEMPTIVE=1)
+
+
+sdk_inc(inc)
+sdk_inc(ui)
+sdk_inc(ui/screens)
+
+sdk_app_src(src/main.c)
+sdk_app_src(src/user_lvgl_port.c)
+
+sdk_app_src(ui/watch.c)
+sdk_app_src(ui/watch_gen.c)
+
+
+# fonts soureces
+sdk_app_src(ui/fonts/NotoSeri_30_data.c)
+sdk_app_src(ui/fonts/NotoSeri_50_data.c)
+sdk_app_src(ui/fonts/SemiBold_30_data.c)
+sdk_app_src(ui/fonts/SemiBold_50_data.c)
+sdk_app_src(ui/fonts/SemiBold_70_data.c)
+sdk_app_src(ui/fonts/SemiBold_90_data.c)
+
+# Image sources
+sdk_app_src(ui/images/bk_data.c)
+sdk_app_src(ui/images/needle_data.c)
+sdk_app_src(ui/images/anquandai_data.c)
+sdk_app_src(ui/images/fadongji_data.c)
+sdk_app_src(ui/images/jinguangdeng_data.c)
+sdk_app_src(ui/images/oil_low_data.c)
+sdk_app_src(ui/images/oil_normal_data.c)
+sdk_app_src(ui/images/shousha_data.c)
+sdk_app_src(ui/images/wudeng_data.c)
+sdk_app_src(ui/images/youjiantou_data.c)
+sdk_app_src(ui/images/youliang_data.c)
+sdk_app_src(ui/images/youzhuan_data.c)
+sdk_app_src(ui/images/yuanguangdeng_data.c)
+sdk_app_src(ui/images/zuozhuan_data.c)
+sdk_app_src(ui/images/shuiwen_high_data.c)
+sdk_app_src(ui/images/shuiwen_low_data.c)
+
+# Screen sources
+sdk_app_src(ui/screens/home_gen.c)
+
+sdk_app_src(${SOURCE_FILES})
+
+add_subdirectory(../../../ hpm_apps/build_tmp)
+
+generate_ses_project()

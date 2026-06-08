@@ -88,9 +88,3 @@ comparison test: from 0xf8000000 to 0xf8020000
 [11:33:17.502]收←◆**  u8 comparison succeeded
 
 ```  
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/daugherboard/html/index.html>`_ 。
-:::

@@ -363,9 +363,3 @@ BOOTUSER has finished processing the firmware, and after the successful signatur
 As follows: 
 ![ota2_bootuser_run_2](doc/api/assets/ota2_bootuser_run_2.png)
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/otav2/html/index.html>`_ .
-:::

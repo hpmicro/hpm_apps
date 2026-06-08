@@ -509,9 +509,3 @@ sdk_ses_opt_lib_io_type(RTT)
 
 (6)中低高各速度下，PLL与PLL_II速度波动范围为±0.3r/s。
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/rdc53_2.0/html/index.html>`_ 。
-:::

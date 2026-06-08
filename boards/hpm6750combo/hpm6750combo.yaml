@@ -1,0 +1,29 @@
+# Copyright (c) 2022-2025 HPMicro
+# SPDX-License-Identifier: BSD-3-Clause
+
+board:
+    soc: HPM6750            # the name of SOC used on this board
+    device: HPM6754xVMx     # device name used for jlink connection
+    openocd-soc: hpm6750-dual-core    # used for openocd soc config file name: hpm6750-dual-core.cfg
+    openocd-probe: cmsis_dap    # used for openocd probe config file name: cmsis_dap.cfg
+    on-board-ram:
+      type: sdram
+      size: 32M             # the size of on-board ram will be used in linker script as external ram size
+      width: 32bit
+    on-board-flash:
+      type: qspi-nor-flash
+      size: 4M             # the size of on-board flash which will be used in linker script
+    feature:
+      - board_uart_software_rx_idle_pin
+      - board_puart_pin
+      - board_enet_pps_output_pin
+      - board_enet_pps_input_pin
+      - board_sdcard
+      - board_enet_phy
+      - board_usb_dual_port
+      - board_usb_otg
+      - board_power_button
+      - board_ap6256_evb
+    excluded_samples:
+      - samples/multicore/erpc/erpc_motor
+      - samples/opener/motor

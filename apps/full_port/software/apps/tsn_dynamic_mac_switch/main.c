@@ -19,7 +19,7 @@ static uint8_t s_u8TimeOutForKeyB = 0;
 static uint8_t s_u8TimeOutForKeyC = 0;
 static uint8_t s_u8TimeOutForKeyD = 0;	
 
-ATTR_PLACE_AT_NONCACHEABLE_BSS_WITH_ALIGNMENT(4) volatile uint8_t recv_buff[TSN_RECV_DEEP][TSN_RECV_LENGTH];
+ATTR_PLACE_AT_NONCACHEABLE_BSS_WITH_ALIGNMENT(4) uint8_t recv_buff[TSN_RECV_DEEP][TSN_RECV_LENGTH];
 
 tsn_mac_table_t stMacTable = {.mac[0] = 0x4e000000f050, .depth = 1, .mac_port[0]=0x01};
 
@@ -113,7 +113,7 @@ static void hpm_a_irq_tsn0_handler_cb(void)
 		do {
 			uint32_t u32RecvResp = full_port_tsn_get_recv_dma_resp();
 			uint8_t u8Id = TSW_S2MM_RESP_ID_GET(u32RecvResp);
-			uint16_t u16Len = TSW_S2MM_RESP_LENGTH_GET(u32RecvResp);
+			//uint16_t u16Len = TSW_S2MM_RESP_LENGTH_GET(u32RecvResp);
 
 			if(!TSW_S2MM_RESP_DECERR_GET(u32RecvResp) && !TSW_S2MM_RESP_SLVERR_GET(u32RecvResp)) {
 				uint64_t u64DesMac = ((uint64_t)recv_buff[u8Id][16]) << 40|
@@ -182,7 +182,7 @@ int main(void)
 	
 	for(int i=0; i<TSN_RECV_DEEP; i++)
 	{
-		full_port_tsn_set_recv((uint32_t*)(&(recv_buff[i][0])), TSN_RECV_LENGTH, i);
+		full_port_tsn_set_recv((uint8_t*)(&(recv_buff[i][0])), TSN_RECV_LENGTH, i);
 	}
 
 	full_port_tsn_set_broadcast_frame_action(tsw_dst_port_1 | tsw_dst_port_2 | tsw_dst_port_3);

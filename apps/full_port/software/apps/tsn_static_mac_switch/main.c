@@ -24,7 +24,7 @@ uint8_t u8Port1DesMac[6] = {0x08, 0x92, 0x04, 0x1e, 0xb9, 0x62};
 uint8_t u8Port2DesMac[6] = {0x00, 0xe0, 0x6a, 0x00, 0x90, 0x3e};
 uint8_t u8Port3DesMac[6] = {0x08, 0x92, 0x04, 0x14, 0xf9, 0x40};
 
-ATTR_PLACE_AT_NONCACHEABLE_BSS_WITH_ALIGNMENT(4) volatile uint8_t recv_buff[TSN_RECV_DEEP][TSN_RECV_LENGTH];
+ATTR_PLACE_AT_NONCACHEABLE_BSS_WITH_ALIGNMENT(4) uint8_t recv_buff[TSN_RECV_DEEP][TSN_RECV_LENGTH];
 
 static void hpm_a_irq_timer_handler_cb(void)
 {

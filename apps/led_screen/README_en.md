@@ -140,9 +140,4 @@ The following operating waveform diagram:
 
 ![led_pwm_2](doc/api/assets/led_pwm_2.png)
 
-## Software API
 
-:::{eval-rst}
-
-About software API:  `API doc <../../_static/apps/led_screen/html/index.html>`_ 。
-:::

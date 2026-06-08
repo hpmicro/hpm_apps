@@ -1,0 +1,87 @@
+<screen permanent="true">
+	<styles>
+		<style name="move_arc_knob" width="0" height="0" opa="0" />
+		<style name="arc_indicator" arc_color="0x074dc3" radius="5" />
+		<style name="roller_selected" text_font="SemiBold_50" text_color="0xffffff" bg_color="0x157c43" bg_opa="0" />
+	</styles>
+	<view>
+		<lv_image src="bk" />
+		<lv_image src="needle" x="486" y="213" />
+		<lv_label
+			x="830"
+			y="140"
+			width="144"
+			bind_text="subject_speed_value"
+			style_text_color="0xffffff"
+			style_text_font="SemiBold_70"
+			style_text_align="center"
+		/>
+		<lv_roller
+			x="780"
+			y="250"
+			name="mode_inner_roller"
+			width="100"
+			height="content"
+			style_radius="0"
+			options="P&#10;R&#10;N&#10;D&#10;S"
+			style_text_font="SemiBold_50"
+			style_text_color="0x424242"
+			style_bg_opa="0"
+			style_border_width="0"
+			style_text_line_space="30"
+			visible_row_count="3"
+			options-mode="infinite"
+		>
+			<style name="roller_selected" selector="selected" />
+		</lv_roller>
+		<lv_label
+			x="910"
+			y="330"
+			width="100"
+			text="P"
+			style_text_color="0xffffff"
+			style_text_font="SemiBold_90"
+			style_radius="10"
+			style_border_width="3"
+			style_bg_color="0x000000"
+			style_border_color="0xfff"
+			style_bg_grad_dir="hor"
+			style_bg_grad_color="0x3255ef"
+			style_bg_opa="100"
+			style_text_align="center"
+		/>
+		<lv_image x="650" y="630" src="anquandai" />
+		<lv_image x="1180" y="630" src="anquandai" />
+		<lv_image x="1550" y="630" src="shousha" />
+		<lv_image x="410" y="635" src="jinguangdeng" />
+		<lv_image x="330" y="635" src="yuanguangdeng" />
+		<lv_image x="240" y="630" src="wudeng" />
+		<lv_image x="1710" y="128" src="oil_normal" />
+		<lv_image x="890" y="500" src="youliang" />
+		<lv_image x="890" y="500" src="youliang" />
+		<lv_image x="180" y="580" src="shuiwen_low" />
+		<lv_image x="1385" y="500" src="fadongji" />
+		<lv_label x="950" y="510" text="360km" style_text_color="0xfff" style_text_font="SemiBold_30" />
+		<lv_label
+			x="860"
+			y="640"
+			width="200"
+			style_text_align="center"
+			text="2026 . 3 . 11"
+			style_text_color="0xfff"
+			style_text_font="NotoSeri_30"
+		/>
+		<lv_label
+			x="885"
+			y="580"
+			width="150"
+			text="19:23"
+			style_text_color="0xfff"
+			style_text_font="NotoSeri_50"
+			style_text_align="center"
+		/>
+		<lv_label x="1600" y="30" text="18.0°C" style_text_color="0xfff" style_text_font="NotoSeri_50" />
+		<lv_image x="1150" y="20" src="youzhuan" />
+		<lv_image x="690" y="20" src="zuozhuan" />
+	</view>
+</screen>

@@ -222,10 +222,4 @@ None
 ![LOG信息](doc/api/assets/log_test.png)
 
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/pwm_adc_spi/html/index.html>`_ .
-:::
 

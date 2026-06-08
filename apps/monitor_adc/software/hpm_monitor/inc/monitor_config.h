@@ -13,7 +13,7 @@
 
 #define MONITOR_PROFILE_MAXSIZE      (4096)
 
-#define MONITOR_MEM_SIZE             (10*1024)
+#define MONITOR_MEM_SIZE             (20*1024)
 
 /*--------monitor log--------*/
 #define CONFIG_MONITOR_PRINTF(...) printf(__VA_ARGS__)

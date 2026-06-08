@@ -19,7 +19,7 @@
 
 2. **实时数据监控：**
     - 通过 hpm_monitor 服务实时传输 ADC 数据
-    - 支持 USB/UART 两种通信接口
+    - 支持 USB/UART/ENET 三种通信接口
     - 低延迟、高带宽数据传输
 
 3. **灵活的数据处理：**
@@ -42,7 +42,8 @@
    当前以HPM6300EVK验证，其余EVK需手动微调程序或引脚。
 
 2. **通信接口选择**
-    - USB CDC：推荐使用，带宽高，连接方便
+    - ENET TCP：适合与 PC 上位机通过网络直连调试
+    - USB CDC：带宽高，连接方便
     - UART：可选，最高支持 10Mbps 波特率
 
 ## 软件配置
@@ -68,8 +69,8 @@ set(RV_ABI "ilp32f")
 
 set(CONFIG_A_HPMMONITOR 1)
 # set(CONFIG_MONITOR_INTERFACE "uart")
-set(CONFIG_MONITOR_INTERFACE "usb")
-# set(CONFIG_MONITOR_INTERFACE "enet")
+# set(CONFIG_MONITOR_INTERFACE "usb")
+set(CONFIG_MONITOR_INTERFACE "enet")
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
 
@@ -327,10 +328,3 @@ int main(void)
 
 ## 注意事项
    - 当出现波形断帧时，说明传输存在丢包等情况。当前HPMicroMonitorStudio工具性能还在持续优化中，可适当降低ADC采样频率。
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/monitor_adc/html/index.html>`_ 。
-:::

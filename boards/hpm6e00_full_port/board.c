@@ -570,3 +570,119 @@ void board_init_tsw(void)
     gpio_set_pin_input(BOARD_TSN_P2_INT_CTRL, BOARD_TSN_P2_INT_INDEX, BOARD_TSN_P2_INT_PIN);
     gpio_set_pin_input(BOARD_TSN_P3_INT_CTRL, BOARD_TSN_P3_INT_INDEX, BOARD_TSN_P3_INT_PIN);
 }
+
+void board_init_usb(void)
+{
+        init_usb_pins();
+
+        usb_hcd_set_power_ctrl_polarity(BOARD_USB, true);
+        /* Wait USB_PWR pin control vbus power stable. Time depend on decoupling capacitor, you can decrease or increase this time */
+        board_delay_ms(100);
+}
+
+void board_usb_vbus_ctrl(uint8_t usb_index, uint8_t level)
+{
+    (void) usb_index;
+    (void) level;
+}
+
+hpm_stat_t board_init_enet_pins(ENET_Type *ptr)
+{
+    init_enet_pins(ptr);
+
+    if (ptr == HPM_ENET0) {
+        gpio_set_pin_output_with_initial(BOARD_ENET_RGMII_RST_GPIO, BOARD_ENET_RGMII_RST_GPIO_INDEX, BOARD_ENET_RGMII_RST_GPIO_PIN, 0);
+    }  else {
+        return status_invalid_argument;
+    }
+
+    return status_success;
+}
+
+hpm_stat_t board_reset_enet_phy(ENET_Type *ptr)
+{
+    if (ptr == HPM_ENET0) {
+        gpio_write_pin(BOARD_ENET_RGMII_RST_GPIO, BOARD_ENET_RGMII_RST_GPIO_INDEX, BOARD_ENET_RGMII_RST_GPIO_PIN, 0);
+        board_delay_ms(1);
+        gpio_write_pin(BOARD_ENET_RGMII_RST_GPIO, BOARD_ENET_RGMII_RST_GPIO_INDEX, BOARD_ENET_RGMII_RST_GPIO_PIN, 1);
+    } else {
+        return status_invalid_argument;
+    }
+
+    return status_success;
+}
+
+uint8_t board_get_enet_dma_pbl(ENET_Type *ptr)
+{
+    (void) ptr;
+    return enet_pbl_32;
+}
+
+hpm_stat_t board_enable_enet_irq(ENET_Type *ptr)
+{
+    if (ptr == HPM_ENET0) {
+        intc_m_enable_irq(IRQn_ENET0);
+    } else {
+        return status_invalid_argument;
+    }
+
+    return status_success;
+}
+
+hpm_stat_t board_disable_enet_irq(ENET_Type *ptr)
+{
+    if (ptr == HPM_ENET0) {
+        intc_m_disable_irq(IRQn_ENET0);
+    }  else {
+        return status_invalid_argument;
+    }
+
+    return status_success;
+}
+
+void board_init_enet_pps_pins(ENET_Type *ptr)
+{
+    (void) ptr;
+    init_enet_pps_pins();
+}
+
+void board_init_enet_pps_capture_pins(ENET_Type *ptr)
+{
+    (void) ptr;
+    init_enet_pps_capture_pins();
+}
+
+hpm_stat_t board_init_enet_rmii_reference_clock(ENET_Type *ptr, bool internal)
+{
+    /* Configure Enet clock to output reference clock */
+    if (ptr == HPM_ENET0) {
+        clock_add_to_group(clock_eth0, BOARD_RUNNING_CORE & 0x1);
+        if (internal) {
+            /* set pll output frequency at 1GHz */
+            if (pllctlv2_init_pll_with_freq(HPM_PLLCTLV2, pllctlv2_pll2, 1000000000UL) == status_success) {
+                /* set pll2_clk1 output frequency at 250MHz from PLL2 divided by 4 (1 + 15 / 5) */
+                pllctlv2_set_postdiv(HPM_PLLCTLV2, pllctlv2_pll2, pllctlv2_clk1, pllctlv2_div_4p0);
+                /* set eth clock frequency at 50MHz for enet0 */
+                /* clock_set_source_divider(clock_eth0, clk_src_pll2_clk1, 5); */
+            } else {
+                return status_fail;
+            }
+        }
+    } else {
+        return status_invalid_argument;
+    }
+
+    enet_rmii_enable_clock(ptr, internal);
+
+    return status_success;
+}
+
+hpm_stat_t board_init_enet_rgmii_clock_delay(ENET_Type *ptr)
+{
+    if (ptr == HPM_ENET0) {
+        clock_add_to_group(clock_eth0, BOARD_RUNNING_CORE & 0x1);
+        return enet_rgmii_set_clock_delay(ptr, BOARD_ENET_RGMII_TX_DLY, BOARD_ENET_RGMII_RX_DLY);
+    }
+
+    return status_invalid_argument;
+}

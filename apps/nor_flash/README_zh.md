@@ -64,10 +64,3 @@ wbuff and rbuff compare finsh ok
 write_speed:614.73 KB/s read_speed:6084.88 KB/s
 page program: wbuff and rbuff compare finsh ok
 ```
-
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/nor_flash/html/index.html>`_ 。
-:::

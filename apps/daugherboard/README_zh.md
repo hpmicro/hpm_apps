@@ -89,11 +89,6 @@ comparison test: from 0xf8000000 to 0xf8020000
  ```  
 
 
-## API
 
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/daugherboard/html/index.html>`_ 。
-:::
 
 

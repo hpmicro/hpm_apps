@@ -26,7 +26,7 @@
  * @brief APP_ADC16_DMA_BUFF_LEN_IN_BYTES:DMA BUFF size for storing ADC16 sampling data.
  *        ;存放ADC16采样数据的DMA BUFF大小
  */
-#define APP_ADC16_DMA_BUFF_LEN_IN_BYTES   (1024U)
+#define APP_ADC16_DMA_BUFF_LEN_IN_BYTES   (2048U)
 /**
  * @brief APP_ADC16_TCP_SEND_SIZE:The number of 16 bit sampling data sent by TCP each time.
  *        ;TCP每次发送的16位采样数据的个数。

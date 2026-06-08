@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.10.0\"")
+set(APP_VERSION_STRING "\"1.11.0\"")
 
 set(RV_ARCH "rv32imafc")
 set(RV_ABI "ilp32f")

@@ -26,4 +26,11 @@
    tsn_loopnet/README_en
    web_server/README_en
    monitor_adc/README_en
+   hpm6750combo_demos/README_en
+   multi_layer_dashboard/README_en
+   ecat_master_motor_control/README_en
+   gateway_device/README_en
+   gateway_ecat_master/README_en
+   gateway_ecat2can/README_en
+   enet_connect_tsn/README_en
 :::

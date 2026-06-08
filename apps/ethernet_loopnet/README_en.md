@@ -109,9 +109,4 @@ All slaves were reconnected quickly and successfully.
 ![test6](doc/api/assets/test6.png)
 
 
-## Software API
 
-:::{eval-rst}
-
-About software API:  `API doc <../../_static/apps/ethernet_loopnet/html/index.html>`_ 。
-:::

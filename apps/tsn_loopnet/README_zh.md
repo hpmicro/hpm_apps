@@ -108,9 +108,3 @@ udp_echo.h中修改主机端口
 注意:
 本例程检测phy连接状态只检测了P2口状态，断开测试时，不能断开P2口网线，否则会导致从机直接掉线。
 
-## API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/tsn_loopnet/html/index.html>`_ 。
-:::

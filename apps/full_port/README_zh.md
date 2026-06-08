@@ -328,11 +328,5 @@ EEPROM loading successful, no checksum error.
 ![ping diagram](doc/api/assets/ecat_io.png)
 Box1，Box2，Box3分别代表连接P0 P1 P2口的设备，可以看到处于OP状态，同时，每个设备的InputCounter及OutputCounter均可在线修改。InputCounter为输入，即SW1拨码开关的状态可以实时显示在InputCounter。OutputCounter为输出，通过TwinCAT实时修改该参数，数值可反应在LED11-18上。
 
-## API
-
-:::{eval-rst}
-
-About software API: `API doc <../../_static/apps/full_port/html/index.html>`_ 。
-:::
 
 

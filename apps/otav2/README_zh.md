@@ -404,9 +404,3 @@ BOOTUSER对固件处理完，验签成功后跳转新的APP运行，固件升级
 如下：
 ![ota2_bootuser_run_2](doc/api/assets/ota2_bootuser_run_2.png)
 
-## 软件API
-
-:::{eval-rst}
-
-关于软件API 请查看 `方案API 文档 <../../_static/apps/otav2/html/index.html>`_ 。
-:::

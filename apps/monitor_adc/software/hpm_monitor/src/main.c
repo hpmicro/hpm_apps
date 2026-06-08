@@ -12,7 +12,7 @@
 #include "monitor_ticktime.h"
 #include "adc_16_pmt.h"
 
-#define ADC_SAMPLE_FREQ             (100000UL)
+#define ADC_SAMPLE_FREQ             (200000UL)
 MONITOR_DEFINE_GLOBAL_VAR(adc_ch, 0, uint16_t, ADC_SAMPLE_FREQ, APP_ADC16_DMA_BUFF_LEN_IN_BYTES);
 
 static void monitor_adc_handle(void)
@@ -21,15 +21,20 @@ static void monitor_adc_handle(void)
     {
         printf("adc dual buff full up!\r\n");
     }
-    if (adc_get_done(0) && monitor_report_ch_is_released(0))
+
+    if (monitor_report_ch_is_released(0))
     {
-        adc_clear_done(0);
-        monitor_channel_report_array(0, adc_get_buf_addr_point(0), APP_ADC16_DMA_BUFF_LEN_IN_BYTES);
-    }
-    else if (adc_get_done(1) && monitor_report_ch_is_released(0))
-    {
-        adc_clear_done(1);
-        monitor_channel_report_array(0, adc_get_buf_addr_point(1), APP_ADC16_DMA_BUFF_LEN_IN_BYTES);
+        if (adc_get_done(0))
+        {
+            adc_clear_done(0);
+            monitor_channel_report_array(0, adc_get_buf_addr_point(0), APP_ADC16_DMA_BUFF_LEN_IN_BYTES);
+        }
+
+        if (adc_get_done(1))
+        {
+            adc_clear_done(1);
+            monitor_channel_report_array(0, adc_get_buf_addr_point(1), APP_ADC16_DMA_BUFF_LEN_IN_BYTES);
+        }
     }
 }
 
