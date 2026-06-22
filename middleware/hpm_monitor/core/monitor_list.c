@@ -35,9 +35,18 @@ bool data_list_add(StaticDataLinkedList *list, uint32_t addr, uint32_t len, int 
     new_node->result = result;
     new_node->ch_or_sample = ch_or_sample;
     new_node->tick_us = tick_us;
+    new_node->next = NULL;
 
-    new_node->next = list->active_list;
-    list->active_list = new_node;
+    /* FIFO: append at tail to preserve time order */
+    if (list->active_list == NULL) {
+        list->active_list = new_node;
+    } else {
+        ListDataNode *tail = list->active_list;
+        while (tail->next) {
+            tail = tail->next;
+        }
+        tail->next = new_node;
+    }
     return true;
 }
 

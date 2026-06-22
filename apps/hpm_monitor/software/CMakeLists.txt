@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(APP_VERSION_STRING "\"1.10.0\"")
+set(APP_VERSION_STRING "\"1.11.0\"")
 
 set(RV_ARCH "rv32imafc")
 set(RV_ABI "ilp32f")
@@ -16,8 +16,8 @@ set(RV_ABI "ilp32f")
 
 set(CONFIG_A_HPMMONITOR 1)
 # set(CONFIG_MONITOR_INTERFACE "uart")
-set(CONFIG_MONITOR_INTERFACE "usb")
-# set(CONFIG_MONITOR_INTERFACE "enet")
+# set(CONFIG_MONITOR_INTERFACE "usb")
+set(CONFIG_MONITOR_INTERFACE "enet")
 
 if("${CONFIG_MONITOR_INTERFACE}" STREQUAL "uart")
 

@@ -146,7 +146,7 @@ static void usbd_event_handler(uint8_t busid, uint8_t event)
     }
 }
 
-int usbd_channel_output(uint8_t *data, uint16_t length)
+int usbd_channel_output(uint8_t *data, uint32_t length)
 {
     if(ep_tx_busy_flag)
         return -1;

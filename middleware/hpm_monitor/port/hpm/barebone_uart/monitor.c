@@ -190,7 +190,7 @@ static int monitor_uart_tx_dma(uint8_t *data, uint32_t len)
 
 typedef int (*uart_cb_t)(uint8_t *data, uint32_t len, uint32_t *drop_offset, uint32_t *expect_length);
 
-static int uart_channel_output(uint8_t *data, uint16_t length)
+static int uart_channel_output(uint8_t *data, uint32_t length)
 {
     if (data == NULL || length <= 0)
         return -1;

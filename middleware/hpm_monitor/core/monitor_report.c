@@ -1302,6 +1302,7 @@ static int monitor_report_config(uint8_t type)
 {
     monitor_report_t *ctx = MONITOR_REPORT_CTX;
     init_static_data_list(&ctx->data_list);
+    monitor_report_send_reset();
     int ret;
 
     if(ctx->data_type != type)
@@ -1656,17 +1657,125 @@ int monitor_notify_handle(uint8_t **output)
     return ret;
 }
 
+typedef struct {
+    ListDataNode *node;
+    uint16_t next_index;
+    uint8_t finalized;
+} monitor_sample_send_ctx_t;
+
+static monitor_sample_send_ctx_t s_buffer_send = {0};
+static monitor_sample_send_ctx_t s_stream_send = {0};
+
+void monitor_report_send_reset(void)
+{
+    s_buffer_send.node = NULL;
+    s_buffer_send.next_index = 0;
+    s_buffer_send.finalized = 0;
+    s_stream_send.node = NULL;
+    s_stream_send.next_index = 0;
+    s_stream_send.finalized = 0;
+}
+
+static bool monitor_sample_send_pending(monitor_sample_send_ctx_t *send_ctx)
+{
+    monitor_report_t *ctx = MONITOR_REPORT_CTX;
+
+    if (send_ctx->node == NULL) {
+        return false;
+    }
+
+    if (send_ctx->node->ch_or_sample < 0) {
+        return send_ctx->next_index < ctx->packet.sample.pkt_count;
+    }
+
+    return false;
+}
+
+static uint32_t monitor_sample_send_node_addr(monitor_sample_send_ctx_t *send_ctx)
+{
+    if (send_ctx->node != NULL) {
+        return send_ctx->node->addr;
+    }
+    return 0;
+}
+
+bool monitor_buffer_send_pending(void)
+{
+    return monitor_sample_send_pending(&s_buffer_send);
+}
+
+uint32_t monitor_buffer_send_node_addr(void)
+{
+    return monitor_sample_send_node_addr(&s_buffer_send);
+}
+
+bool monitor_stream_send_pending(void)
+{
+    return monitor_sample_send_pending(&s_stream_send);
+}
+
+uint32_t monitor_stream_send_node_addr(void)
+{
+    return monitor_sample_send_node_addr(&s_stream_send);
+}
+
+static int monitor_sample_output_step(uint16_t cmd, monitor_sample_send_ctx_t *send_ctx, uint8_t **output)
+{
+    monitor_report_t *ctx = MONITOR_REPORT_CTX;
+    montiro_report_data_t *data = &ctx->packet;
+
+    if (send_ctx->node != NULL && send_ctx->node->ch_or_sample < 0 &&
+        send_ctx->next_index < data->sample.pkt_count) {
+        uint8_t *buffer = (uint8_t *)send_ctx->node->addr;
+        *output = buffer + data->sample.mem_payload_offset[send_ctx->next_index];
+        int len = (int)data->sample.mem_payload_len[send_ctx->next_index];
+        send_ctx->next_index++;
+        return len;
+    }
+
+    send_ctx->node = data_list_get_valid(&ctx->data_list);
+    send_ctx->next_index = 0;
+    send_ctx->finalized = 0;
+
+    if (send_ctx->node == NULL) {
+        return 0;
+    }
+
+    if (send_ctx->node->ch_or_sample < 0) {
+        if (!send_ctx->finalized) {
+            uint8_t *dummy;
+            monitor_report_packet_process(cmd, send_ctx->node, &dummy);
+            send_ctx->finalized = 1;
+        }
+
+        if (data->sample.pkt_count <= 0) {
+            data_list_remove_node(&ctx->data_list, send_ctx->node);
+            send_ctx->node = NULL;
+            return 0;
+        }
+
+        {
+            uint8_t *buffer = (uint8_t *)send_ctx->node->addr;
+            *output = buffer + data->sample.mem_payload_offset[0];
+            int len = (int)data->sample.mem_payload_len[0];
+            send_ctx->next_index = 1;
+            return len;
+        }
+    }
+
+    {
+        ListDataNode *channel_node = send_ctx->node;
+        send_ctx->node = NULL;
+        return monitor_report_packet_process(cmd, channel_node, output);
+    }
+}
+
 int monitor_stream_handle(uint8_t **output)
 {
     monitor_report_t *ctx = MONITOR_REPORT_CTX;
-    ListDataNode *Node;
     if (ctx->enable == TYPE_STREAM)
     {
-        Node = data_list_get_valid(&ctx->data_list);
-        if (Node != NULL)
-        {
-            return monitor_report_packet_process(CMD_STREAM, Node, output);
-        }
+        return monitor_sample_output_step(CMD_STREAM, &s_stream_send, output);
     }
     return 0;
 }
@@ -1674,14 +1783,9 @@ int monitor_stream_handle(uint8_t **output)
 int monitor_buffer_handle(uint8_t **output)
 {
     monitor_report_t *ctx = MONITOR_REPORT_CTX;
-    ListDataNode *Node;
     if (ctx->enable == TYPE_BUFFER)
     {
-        Node = data_list_get_valid(&ctx->data_list);
-        if (Node != NULL)
-        {
-            return monitor_report_packet_process(CMD_BUFFER, Node, output);
-        }
+        return monitor_sample_output_step(CMD_BUFFER, &s_buffer_send, output);
     }
     return 0;
 }
@@ -1690,6 +1794,7 @@ void monitor_report_done(uint32_t free_addr)
 {
     monitor_report_t *ctx = MONITOR_REPORT_CTX;
     data_list_remove_of_addr(&ctx->data_list, free_addr);
+    monitor_report_send_reset();
     if (ctx->enable == TYPE_STREAM)
     {
         if (ctx->packet.sample.pkt_count > 0 && !monitor_timer_sample_is_running())

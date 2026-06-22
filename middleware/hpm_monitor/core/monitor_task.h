@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-typedef int (*monitor_channel_cb)(uint8_t *src, uint16_t length);
+typedef int (*monitor_channel_cb)(uint8_t *src, uint32_t length);
 
 void monitor_task_init(void);
 

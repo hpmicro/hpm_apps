@@ -273,7 +273,7 @@ void monitor_report_stream_handle(void)
     uint32_t len;
     if(monitor_send_is_idle())
     {
-        if(free_addr != 0)
+        if(free_addr != 0 && !monitor_stream_send_pending())
         {
             monitor_report_done(free_addr);
             free_addr = 0;
@@ -282,7 +282,14 @@ void monitor_report_stream_handle(void)
         if(len > 0)
         {
             ctx->output(output, len);
-            free_addr = (uint32_t)output;
+            if (free_addr == 0)
+            {
+                free_addr = monitor_stream_send_node_addr();
+                if (free_addr == 0)
+                {
+                    free_addr = (uint32_t)output;
+                }
+            }
         }
     }
 }
@@ -295,7 +302,7 @@ void monitor_report_buffer_handle(void)
     uint32_t len;
     if(monitor_send_is_idle())
     {
-        if(free_addr != 0)
+        if(free_addr != 0 && !monitor_buffer_send_pending())
         {
             monitor_report_done(free_addr);
             free_addr = 0;
@@ -304,7 +311,14 @@ void monitor_report_buffer_handle(void)
         if(len > 0)
         {
             ctx->output(output, len);
-            free_addr = (uint32_t)output;
+            if (free_addr == 0)
+            {
+                free_addr = monitor_buffer_send_node_addr();
+                if (free_addr == 0)
+                {
+                    free_addr = (uint32_t)output;
+                }
+            }
         }
     }
 }

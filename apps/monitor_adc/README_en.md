@@ -1,6 +1,6 @@
 # HPM_MONITOR + ADC High-Performance Data Monitoring Solution
 
-## Depend on SDK1.10.0
+## Depend on SDK1.11.0
 
 ## Introduction
 

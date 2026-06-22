@@ -466,6 +466,8 @@ void monitor_sample_dma_start(void)
     if(ctx->monitor_data == NULL)
         return;
 
+    ctx->is_running = 1;
+
 #ifndef MONITOR_SAMPLE_DMA_1_BASE
     return;
 #else

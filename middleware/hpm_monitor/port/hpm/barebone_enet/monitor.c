@@ -49,6 +49,18 @@ struct netif gnetif;
 static struct tcp_pcb *send_newpcb = NULL;
 static bool monitor_enet_send_done;
 
+/** Bytes copied into lwIP per monitor_handle iteration (keeps RX/command path responsive). */
+#define ENET_TCP_PUMP_BUDGET 4096U
+
+typedef struct {
+    const uint8_t *data;
+    uint32_t len;
+    uint32_t offset;
+    bool active;
+} enet_tcp_send_ctx_t;
+
+static enet_tcp_send_ctx_t s_tcp_send = {0};
+
 typedef void (*monitor_enet_timer_cb)(void);
 static monitor_enet_timer_cb enet_timer_cb;
 
@@ -183,6 +195,10 @@ static err_t tcpecho_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t
     }
     else if (err == ERR_OK)
     {
+        send_newpcb = NULL;
+        s_tcp_send.active = false;
+        s_tcp_send.data = NULL;
+        monitor_enet_send_done = true;
         return tcp_close(tpcb);
     }
     return ERR_OK;
@@ -195,36 +211,122 @@ static err_t tcpecho_accept(void *arg, struct tcp_pcb *newpcb, err_t err)
 
     tcp_recv(newpcb, tcpecho_recv);
     send_newpcb = newpcb;
+    s_tcp_send.active = false;
+    s_tcp_send.data = NULL;
+    monitor_enet_send_done = true;
     return ERR_OK;
 }
 
-static int enet_tcp_block_output(uint8_t *buff, uint16_t len)
+static void enet_tcp_send_fail(void)
 {
-    int ret;
-    if (send_newpcb == NULL)
-        return -1;
-    monitor_enet_send_done = false;
-    do
+    if (send_newpcb != NULL)
     {
-        ret = tcp_write(send_newpcb, buff, len, 0); // TCP_WRITE_FLAG_COPY
-        if (ret >= ERR_OK)
+        tcp_close(send_newpcb);
+        send_newpcb = NULL;
+    }
+    s_tcp_send.active = false;
+    s_tcp_send.data = NULL;
+    s_tcp_send.len = 0;
+    s_tcp_send.offset = 0;
+    monitor_enet_send_done = true;
+}
+
+static err_t enet_tcp_try_write_chunk(void)
+{
+    uint32_t budget = ENET_TCP_PUMP_BUDGET;
+
+    if (!s_tcp_send.active || send_newpcb == NULL)
+    {
+        return ERR_OK;
+    }
+
+    while (s_tcp_send.offset < s_tcp_send.len && budget > 0U)
+    {
+        uint32_t space = tcp_sndbuf(send_newpcb);
+        if (space == 0U)
         {
             tcp_output(send_newpcb);
-            break;
+            return ERR_MEM;
         }
-        else if (ret == ERR_MEM)
+
+        uint32_t remain = s_tcp_send.len - s_tcp_send.offset;
+        uint16_t chunk = remain > space ? (uint16_t)space : (uint16_t)remain;
+        if (chunk > budget)
         {
-            // printf("send err1:%d\r\n", ret);
+            chunk = (uint16_t)budget;
+        }
+
+        /* COPY: stream DMA buffers are reused immediately after send; zero-copy would corrupt frames. */
+        err_t ret = tcp_write(send_newpcb, s_tcp_send.data + s_tcp_send.offset, chunk, TCP_WRITE_FLAG_COPY);
+        if (ret == ERR_OK)
+        {
+            s_tcp_send.offset += chunk;
+            budget -= chunk;
             continue;
         }
-        else
+        if (ret == ERR_MEM)
         {
-            tcp_close(send_newpcb);
-            send_newpcb = NULL;
-            break;
+            tcp_output(send_newpcb);
+            return ERR_MEM;
         }
-    } while (0);
-    monitor_enet_send_done = true;
+
+        return ret;
+    }
+
+    if (s_tcp_send.offset >= s_tcp_send.len)
+    {
+        tcp_output(send_newpcb);
+        s_tcp_send.active = false;
+        s_tcp_send.data = NULL;
+        monitor_enet_send_done = true;
+    }
+
+    return ERR_OK;
+}
+
+static void enet_tcp_send_pump(void)
+{
+    err_t ret;
+
+    if (!s_tcp_send.active)
+    {
+        return;
+    }
+
+    ret = enet_tcp_try_write_chunk();
+    if (ret != ERR_OK && ret != ERR_MEM)
+    {
+        enet_tcp_send_fail();
+    }
+}
+
+static int enet_tcp_block_output(uint8_t *buff, uint32_t len)
+{
+    err_t ret;
+
+    if (send_newpcb == NULL || buff == NULL || len == 0U)
+    {
+        return -1;
+    }
+
+    if (s_tcp_send.active)
+    {
+        return -1;
+    }
+
+    s_tcp_send.data = buff;
+    s_tcp_send.len = len;
+    s_tcp_send.offset = 0U;
+    s_tcp_send.active = true;
+    monitor_enet_send_done = false;
+
+    ret = enet_tcp_try_write_chunk();
+    if (ret != ERR_OK && ret != ERR_MEM)
+    {
+        enet_tcp_send_fail();
+        return -1;
+    }
+
     return 0;
 }
 
@@ -336,10 +438,11 @@ int monitor_init(void)
 void monitor_handle(void)
 {
     enet_common_handler(&gnetif);
+    enet_tcp_send_pump();
     monitor_task_handle();
 }
 
 bool monitor_send_is_idle(void)
 {
-    return monitor_enet_send_done;
+    return (!s_tcp_send.active) && monitor_enet_send_done;
 }

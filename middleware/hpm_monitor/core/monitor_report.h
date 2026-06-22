@@ -125,6 +125,16 @@ int monitor_stream_handle(uint8_t** output);
 
 int monitor_buffer_handle(uint8_t** output);
 
+bool monitor_buffer_send_pending(void);
+
+uint32_t monitor_buffer_send_node_addr(void);
+
+bool monitor_stream_send_pending(void);
+
+uint32_t monitor_stream_send_node_addr(void);
+
+void monitor_report_send_reset(void);
+
 void monitor_report_done(uint32_t free_addr);
 
 int monitor_trigger_handle(void);
